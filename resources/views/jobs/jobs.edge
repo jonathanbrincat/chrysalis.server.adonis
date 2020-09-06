@@ -1,0 +1,60 @@
+@layout('main')
+
+@section('content')
+<h1>Post a Job</h1>
+
+<div class="job-container">
+  @if(flashMessage('message'))
+    <span>{{ flashMessage('message') }}</span>
+  @endif
+
+  <form action="{{ route('JobController.create') }}" method="POST">
+    {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
+
+    <div class="field form-group">
+      <label for="title">Job Title</label>
+      <input type="text" class="form-control" name="title" value="{{ old('title', '') }}" />
+      @if(hasErrorFor('title'))
+        <span>{{ getErrorFor('title')}}</span>
+      @endif
+    </div>
+
+    <div class="field form-group">
+      <label for="link">Link URL</label>
+      <input type="text" class="form-control" name="link" value="{{ old('link', '') }}" />
+      @if(hasErrorFor('link'))
+        <span>{{ getErrorFor('link')}}</span>
+      @endif
+    </div>
+
+    <div class="field form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" name="description" value="{{ old('description', '') }}" />
+      @if(hasErrorFor('description'))
+        <span>{{ getErrorFor('description')}}</span>
+      @endif
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit a Job</button>
+  </form>
+</div>
+
+<h2>My Jobs</h2>
+
+@each(job in jobs)
+<div class="job-container2">
+  <div class="blank"></div>
+  <div class="job-info card">
+    <h3><a href="{{ job.link }}">{{ job.title }}</a></h3>
+    <p>{{ job.description }}</p>
+    <ul class="list-unstyled">
+      <li>
+        <a class="btn btn-secondary" href="{{ route('JobController.delete', { id: job.id}) }}">Delete</a>
+        <a class="btn btn-secondary" href="{{ route('JobController.edit', { id: job.id}) }}">Edit</a>
+      </li>
+    </ul>
+  </div>
+</div>
+@endeach
+
+@endsection

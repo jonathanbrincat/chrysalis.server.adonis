@@ -1,0 +1,41 @@
+@layout('main')
+
+@section('content')
+<h1>Edit Job</h1>
+
+<div class="job-container">
+  @if(flashMessage('message'))
+    <span>{{ flashMessage('message') }}</span>
+  @endif
+
+  <form action="{{ route('JobController.update', { id: job.id }) }}" method="POST">
+    {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
+
+    <div class="field form-group">
+      <label for="title">Job Title</label>
+      <input type="text" class="form-control" name="title" value="{{ job.title }}" />
+      @if(hasErrorFor('title'))
+        <span>{{ getErrorFor('title')}}</span>
+      @endif
+    </div>
+
+    <div class="field form-group">
+      <label for="link">Link URL</label>
+      <input type="text" class="form-control" name="link" value="{{ job.link }}" />
+      @if(hasErrorFor('link'))
+        <span>{{ getErrorFor('link')}}</span>
+      @endif
+    </div>
+
+    <div class="field form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" name="description" value="{{ job.description }}" />
+      @if(hasErrorFor('description'))
+        <span>{{ getErrorFor('description')}}</span>
+      @endif
+    </div>
+
+    <button type="submit" class="btn btn-primary">Make changes</button>
+  </form>
+</div>
+@endsection
