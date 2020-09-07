@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@200;300;400;600;700&family=Montserrat:wght@200;400&display=swap');
+
+html, body {
+  font-family: Montserrat, Helvetica, arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  /*font-family: Comfortaa, Helvetica, arial, sans-serif;*/
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+
+/**/
+
+.navbar {
+  background-color: #00ccbc;
+}
+
+.btn {
+  border-width: 0;
+  border-radius: 1px;
+}
+
+.btn-light {
+  background-color: #fff;
+  color: #00ccbc;
+}
+
+.btn-dark {
+  background-color: #00ccbc;
+  color: #fff;
+}
+
+/**/
+
+.perk__listing a:hover {
+  text-decoration: none;
+}
+
+.perk__list-item {
+  padding: 0;
+}
+
+.perk__list-item > a {
+  display: block;
+}
+
+.perk {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "header body"
+    "header footer";
+  color: #333;
+  padding: 20px 10px;
+}
+
+.perk__list-item > a:hover .perk {
+  background-color: #00ccbc;
+  color: #fff;
+}
+
+.perk__header {
+  margin: 0;
+  padding: 0 10px;
+  position: relative;
+  grid-area: header;
+}
+
+  .header__image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .merchant__logo {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    height: 50%;
+  }
+
+.perk__body {
+  margin: 0;
+  padding: 0 10px;
+  grid-area: body;
+}
+
+  .perk__merchant {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-variant: small-caps;
+  }
+
+  .perk__title {
+    font-size: 28px;
+    font-weight: 300;
+  }
+
+.perk__footer {
+  display: flex;
+  margin: 0;
+  padding: 0 10px;
+  grid-area: footer;
+}
+
+.perk__expiry { flex: 1; }
+.perk__favourite {}
+
+/**/
+
+.perk__code {
+  border: 1px solid #333;
+  padding: 20px;
+  border: 1px dashed #ff6c00;
+  margin: 0 auto 24px;
+  background-color: #fffaf1;
+  width: 50%;
+  display: flex;
+}
+
+.code {
+  font-family: Menlo, monospace;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 5px;
+  cursor: pointer;
+  flex: 1;
+  margin: 0;
+}

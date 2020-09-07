@@ -1,10 +1,10 @@
 @layout('main')
 
 @section('content')
-  <a href="/posts">Go back</a>
+  <a href="/perks">Go back</a>
   <hr>
-  <h1>Add Post</h1>
-  <form action="/posts" method="POST">
+  <h1>Add Perk</h1>
+  <form action="/perks" method="POST">
     {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
 
     <div class="form-group">

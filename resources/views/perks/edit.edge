@@ -1,21 +1,21 @@
 @layout('main')
 
 @section('content')
-  <a href="/posts">Go back</a>
+  <a href="/perks">Go back</a>
   <hr>
-  <h1>Edit Post</h1>
-  <form action="{{ '/posts/' + post.id + '?_method=PUT' }}" method="POST">
+  <h1>Edit Perk</h1>
+  <form action="{{ '/perks/' + perk.id + '?_method=PUT' }}" method="POST">
     {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
 
     <div class="form-group">
       <label>Title</label>
-      <input type="text" class="form-control" name="title" placeholder="Title" value="{{ post.title }}" />
+      <input type="text" class="form-control" name="title" placeholder="Title" value="{{ perk.title }}" />
 
       {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
     </div>
     <div class="form-group">
       <label>Body</label>
-      <textarea class="form-control" name="body" placeholder="Body">{{ post.body }}</textarea>
+      <textarea class="form-control" name="body" placeholder="Body">{{ perk.body }}</textarea>
 
       {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }}
     </div>

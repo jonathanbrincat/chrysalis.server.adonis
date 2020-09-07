@@ -24,28 +24,30 @@ Route.on('/login').render('auth.login')
 Route.post('/login', 'UserController.login').validator('LoginUser')
 Route.get('/logout', 'UserController.logout')
 
-Route.get('/posts', 'PostController.index')
-Route.get('/posts/create', 'PostController.create')
-Route.post('/posts', 'PostController.createSave')
-Route.get('/posts/edit/:uid', 'PostController.edit')
-Route.put('/posts/:uid', 'PostController.editSave')
-Route.delete('/posts/:uid', 'PostController.delete')
-Route.get('/posts/:uid', 'PostController.details') //DEVNOTE: keep bottom of route deinitions otherwise router will intercept and assign wrong controller
+Route.on('/perks/favourites').render('perks.favourites')
+Route.on('/perks/activated').render('perks.activated')
 
-Route.get('/jobs', 'JobController.index')
+Route.get('/perks', 'PerkController.index')
+Route.get('/perks/create', 'PerkController.create')
+Route.post('/perks', 'PerkController.createSave')
+Route.get('/perks/edit/:uid', 'PerkController.edit')
+Route.put('/perks/:uid', 'PerkController.editSave')
+Route.delete('/perks/:uid', 'PerkController.delete')
+Route.get('/perks/:uid', 'PerkController.details') //DEVNOTE: keep bottom of route deinitions otherwise router will intercept and assign wrong controller
+
+/*Route.get('/jobs', 'JobController.index')
 Route.get('/jobs/create', 'JobController.userIndex')
 Route.post('/jobs/create', 'JobController.create').validator('CreateJob')
 Route.get('/jobs/edit/:id', 'JobController.edit')
 Route.post('/jobs/save/:id', 'JobController.createSave').validator('CreateJob')
-Route.get('/jobs/delete/:id', 'JobController.delete')
+Route.get('/jobs/delete/:id', 'JobController.delete')*/
 
-// Route.post('/jobs/create', 'JobController.create').validator('CreateJob')
-// Route.group( () => {
-//   Route.get('edit/:id', 'JobController.edit')
-//   Route.post('save/:id', 'JobController.createSave').validator('CreateJob')
-//   Route.get('delete/:id', 'JobController.delete')
-// }).prefix('/jobs/')
-// }).prefix('/jobs/').auth() // DEVNOTE: you can chain and add middleware. in this instance calling auth will restrict access to these routes
+/*Route.post('/jobs/create', 'JobController.create').validator('CreateJob')
+Route.group( () => {
+  Route.get('edit/:id', 'JobController.edit')
+  Route.post('save/:id', 'JobController.createSave').validator('CreateJob')
+  Route.get('delete/:id', 'JobController.delete')
+}).prefix('/jobs/')
+}).prefix('/jobs/').auth() // DEVNOTE: you can chain and add middleware. in this instance calling auth will restrict access to these routes*/
 
-// Route.get('/test', () => 'Hello World')
 // Route.get('/test/:uid', ({params}) => `This is id ${params.uid}`)
