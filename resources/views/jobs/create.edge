@@ -41,20 +41,20 @@
 
 <h2>My Jobs</h2>
 
+<ul class="list-group">
 @each(job in jobs)
-<div class="job-container2">
-  <div class="blank"></div>
-  <div class="job-info card">
-    <h3><a href="{{ job.link }}">{{ job.title }}</a></h3>
+  <li class="list-group-item">
+    <p><a href="{{ job.link }}">{{ job.title }}</a></p>
     <p>{{ job.description }}</p>
+
     <ul class="list-unstyled">
       <li>
         <a class="btn btn-secondary" href="{{ route('JobController.delete', { id: job.id}) }}">Delete</a>
         <a class="btn btn-secondary" href="{{ route('JobController.edit', { id: job.id}) }}">Edit</a>
       </li>
     </ul>
-  </div>
-</div>
+  </li>
 @endeach
+</ul>
 
 @endsection

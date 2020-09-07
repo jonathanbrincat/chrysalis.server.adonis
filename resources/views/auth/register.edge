@@ -3,14 +3,18 @@
 @section('content')
 <div class="row align-items-center justify-content-center">
   <div class="col-5">
-    <h1>Rider Login</h1>
+    <h1>Join up now</h1>
 
-    @if(flashMessage('loginError'))
-      <span>{{ flashMessage('LoginError') }}</span>
-    @endif
-
-    <form action="{{ route('UserController.login') }}" method="POST">
+    <form action="{{ route('UserController.create') }}" method="POST">
       {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
+
+      <div class="field form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" value="{{ old('username', '') }}" />
+        @if(hasErrorFor('username'))
+          <span>{{ getErrorFor('username')}}</span>
+        @endif
+      </div>
 
       <div class="field form-group">
         <label for="email">Email</label>
@@ -28,7 +32,7 @@
         @endif
       </div>
 
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
   </div>
 </div>

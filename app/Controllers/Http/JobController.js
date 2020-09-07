@@ -4,16 +4,6 @@ const JobModel = use('App/Models/Job')
 
 class JobController {
   async index({ view }) {
-
-    // temp: create a job
-    // const job = new JobModel;
-    // job.title = 'My job title';
-    // job.link = 'http://google.com';
-    // job.description = 'My job description';
-
-    // await job.save();
-
-    //Fetch jobs
     const jobs = await JobModel.all();
 
     return view.render('jobs.index', {
@@ -31,7 +21,7 @@ class JobController {
   async userIndex({ request, response, view, auth }) {
     const jobs = await auth.user.jobs().fetch();
 
-    return view.render('jobs.jobs', {
+    return view.render('jobs.create', {
       jobs: jobs.toJSON()
     })
   }
@@ -60,7 +50,7 @@ class JobController {
     return response.redirect('back')
   }
 
-  async update({ request, response, session, params }) {
+  async createSave({ request, response, session, params }) {
     const job = await JobModel.find(params.id)
 
     job.title = request.all().title;
@@ -71,7 +61,7 @@ class JobController {
 
     session.flash({ message: 'Your job has been updated'})
 
-    return response.redirect('/post-a-job')
+    return response.redirect('/jobs/create')
   }
 }
 

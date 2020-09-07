@@ -30,11 +30,7 @@ class PostController {
     });
   }
 
-  async add({ view }) {
-    return view.render('posts.add')
-  }
-
-  async store({ request, response, session }) {
+  async createSave({ request, response, session }) {
     const validation = await validate(request.all(), {
       title: 'required|min:3|max:255',
       body: 'required|min:3',
@@ -57,6 +53,10 @@ class PostController {
     return response.redirect('/posts')
   }
 
+  async create({ view }) {
+    return view.render('posts.create')
+  }
+
   async edit({ view, params }) {
     const post = await PostModel.find(params.uid)
 
@@ -65,7 +65,7 @@ class PostController {
     })
   }
 
-  async update({ request, response, session, params }) {
+  async editSave({ request, response, session, params }) {
     const validation = await validate(request.all(), {
       title: 'required|min:3|max:255',
       body: 'required|min:3',
@@ -88,7 +88,7 @@ class PostController {
     return response.redirect('/posts')
   }
 
-  async destroy({ request, response, session, params }) {
+  async delete({ request, response, session, params }) {
     const post = await PostModel.find(params.uid)
 
     await post.delete();

@@ -10,9 +10,9 @@
 <ul class="list-group">
   @each(post in posts)
   <li class="list-group-item">
-    <a href="/posts/{{post.id}}">
-      {{post.title}}
-    </a>
+    <p>
+      <a href="/posts/{{post.id}}">{{ post.title }}</a>
+    </p>
   </li>
   @endeach
 </ul>
