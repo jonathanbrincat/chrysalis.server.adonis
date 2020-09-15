@@ -7,7 +7,7 @@ const Hash = use('Hash')
 const Model = use('Model')
 
 class User extends Model {
-  static boot () {
+  static boot() {
     super.boot()
 
     /**
@@ -31,12 +31,20 @@ class User extends Model {
    *
    * @return {Object}
    */
-  tokens () {
+  tokens() {
     return this.hasMany('App/Models/Token')
   }
 
   jobs() {
-    return this.hasMany('App/Models/Job')
+    return this.hasMany('App/Models/Job') //every user can have many jobs
+  }
+
+  profile() {
+    return this.hasOne('App/Models/Profile') //every user can have one profile
+  }
+
+  posts() {
+    return this.hasMany('App/Models/Post')
   }
 }
 

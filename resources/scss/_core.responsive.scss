@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+
+/* =============================================================================
+	Core Responsive breakpoints
+	========================================================================== */
+/*body {
+	@include breakpoint($screen-xl-min) {
+		max-width: 1800px; //1500px;
+		margin: 0 auto;
+	}
+}*/
+
+/*.app__viewport {
+    @include breakpoint($screen-xl-min) {
+        max-width: 1800px; //1500px;
+        margin: 0 auto;
+    }
+}*/
+
+#app--header,
+.container {
+	width: auto;
+	max-width: 360px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-left: auto;
+	margin-right: auto;
+
+	@include breakpoint($screen-sm-min) {
+		max-width: none;
+	}
+
+	@include breakpoint($screen-md-min) {
+		max-width: 740px;
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+
+	@include breakpoint($screen-lg-min) {
+		max-width: none;
+	}
+
+	@include breakpoint($screen-xl-min) {
+	}
+}
+
+#app--header {
+	max-width: none;
+}

@@ -1,0 +1,324 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_core.utils.scss (partial)
+* 	@project:	mytr
+* 	@author: 	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	Utility
+	========================================================================== */
+.left 	{float:left 	!important;}
+.right 	{float:right 	!important;}
+
+.fix 	{position:fixed !important;}
+
+.first 	{margin-top:0 !important;margin-left:0 !important;border-top-width: 0 !important;border-left-width: 0 !important;}
+.last 	{margin-bottom:0 !important;margin-right:0 !important;border-bottom-width: 0 !important;border-right-width: 0 !important;}
+
+.alpha 	{margin-left:0 	!important;}
+.omega 	{margin-right:0 !important;}
+
+.nomargin 							{margin:0 				!important;}
+.nomargintop, .notopmargin 			{margin-top:0 			!important;}
+.nomarginbottom, .nobottommargin 	{margin-bottom:0 		!important;}
+
+.nopadding 							{padding:0 			!important;}
+.nopaddingtop, .notoppadding 		{padding-top:0 		!important;}
+.nopaddingbottom, .nobottompadding 	{padding-bottom:0 	!important;}
+
+.noborder{border:0 none !important;}
+
+.noliststyle{list-style:none; padding-left:0;}
+
+.small{
+	@include font-size(1.2rem);
+}
+
+.strike {
+	text-decoration: line-through;
+}
+
+img.noscale {
+	display: inline-block;
+	height: auto !important;
+	width: auto !important;
+	vertical-align: middle;
+}
+
+.clear 		{clear:both;}
+.clearleft 	{clear:left;}
+.clearright {clear:right;}
+.clearer{
+	clear:both;
+	line-height:0em;
+	width:100%;
+	height:0;
+	overflow:hidden;
+}
+
+.offset{position:absolute; left:-999em;}
+.invisible{visibility:hidden;}
+.hide{display:none !important; visibility:hidden;}
+.show{display:block !important; visibility:visible;}
+.block{display:block;}
+.inline{display:inline;}
+
+@mixin pix8-inline-block(){
+	display:inline-block;
+	zoom:1;
+	*display:inline;
+}
+
+.inline-block{
+	@include pix8-inline-block();
+}
+
+.ir{display:block; border:0; text-indent:-999em; overflow:hidden; background-color:transparent; background-repeat:no-repeat; text-align:left; direction:ltr; *line-height:0;}
+.ir br{display:none;}
+
+
+@mixin triangle($size) {
+    border: $size solid transparent;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+
+    &.up {border-bottom: $size solid;}
+    &.down {border-top: $size solid;}
+    &.left {border-right: $size solid;}
+    &.right {border-left: $size solid;}
+}
+
+/* ========================================= Hidden + visible to assistive tech */
+/* Hide only visually, but have it available for screenreaders: by Jon Neal. www.webaim.org/techniques/css/invisiblecontent/ & j.mp/visuallyhidden */
+.visuallyhidden{border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow:hidden; padding:0; position:absolute; width:1px;}
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: drupal.org/node/897638 */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus{clip:auto; height:auto; margin:0; overflow:visible; position:static; width:auto;}
+
+.image-replace{position: relative; overflow:hidden;}
+.image-replace span{position:absolute; top:0px; left:0px; width:100%; height:100%; display:block;}
+
+.emphasize, .bold 	{font-weight: 		bold;}
+.italic 			{font-style: 		italic;}
+.underline 			{text-decoration: 	underline;}
+
+.ltr{text-align:left; direction:ltr}
+.rtl{text-align:right; direction:rtl;}
+
+@mixin overspill(){
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+/* ========================================= Clearfix */
+@mixin clearfix(){
+
+	&:after{
+		content:"\0020";
+		display:table;
+		clear:both;
+	}
+}
+.clearfix{
+	@include clearfix();
+}
+
+// Opacity
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  // IE8 filter
+  $opacity-ie: ($opacity * 100);
+  filter: alpha(opacity=$opacity-ie);
+}
+
+/* ========================================= List unstyled */
+
+// [converter] extracted from `.list-unstyled` for libsass compatibility
+@mixin list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+// [converter] extracted as `@mixin list-unstyled` for libsass compatibility
+.list-unstyled {
+  @include list-unstyled;
+}
+
+// Text overflow
+// Requires inline-block or block for proper styling
+
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//
+// Utility classes
+// --------------------------------------------------
+
+
+// Clearfix
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+//
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Center-align a block level element
+
+@mixin center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Floats
+// -------------------------
+
+.clearfix {
+  @include clearfix;
+}
+.center-block {
+  @include center-block;
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+
+
+// Toggling content
+// -------------------------
+
+// Note: Deprecated .hide in favor of .hidden or .sr-only (as appropriate) in v3.0.1
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.invisible {
+  visibility: hidden;
+}
+.text-hide {
+  @include text-hide;
+}
+
+
+// Hide from screenreaders and browsers
+//
+// Credit: HTML5 Boilerplate
+
+.hidden {
+  display: none !important;
+}
+
+
+// For Affix plugin
+// -------------------------
+
+.affix {
+  position: fixed;
+}
+
+
+// Image Mixins
+// - Responsive image
+// - Retina image
+
+
+// Responsive image
+//
+// Keep images from scaling beyond the width of their parents.
+@mixin img-responsive($display: block) {
+  display: $display;
+  max-width: 100%; // Part 1: Set a maximum relative to the parent
+  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+}
+
+
+// Retina image
+//
+// Short retina mixin for setting background-image and -size. Note that the
+// spelling of `min--moz-device-pixel-ratio` is intentional.
+
+$bootstrap-sass-asset-helper: false !default;
+
+@mixin img-retina($file-1x, $file-2x, $width-1x, $height-1x) {
+  background-image: url(if($bootstrap-sass-asset-helper, twbs-image-path("#{$file-1x}"), "#{$file-1x}"));
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url(if($bootstrap-sass-asset-helper, twbs-image-path("#{$file-2x}"), "#{$file-2x}"));
+    background-size: $width-1x $height-1x;
+  }
+}
+
+// Responsive images (ensure images don't scale beyond their parents)
+.img-responsive {
+  @include img-responsive;
+}
+
+
+// Only display content to screen readers
+//
+// See: http://a11yproject.com/posts/how-to-hide-content
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+// Use in conjunction with .sr-only to only display content when it's focused.
+// Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+// Credit: HTML5 Boilerplate
+
+.sr-only-focusable {
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+  }
+}

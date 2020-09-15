@@ -1,20 +1,17 @@
 'use strict'
 
 const PerkModel = use('App/Models/Perk')
+const LikeModel = use('App/Models/Like')
 
 const { validate } =  use('Validator')
 
 class PerkController {
   async index({ view, auth }) {
     const perks = await PerkModel.all()
-    const user = await auth.getUser()
-
-    console.log('wtf ', user.toJSON());
 
     return view.render('perks.index', {
       title: 'Rider\'s Benefits & Promotions',
       perks: perks.toJSON(),
-      user: user.toJSON(),
     });
   }
 
@@ -92,6 +89,20 @@ class PerkController {
     session.flash({ notification: 'Perk successfully deleted! '})
 
     return response.redirect('/perks')
+  }
+
+  async activate({ request, response, session, params, auth }) {
+    const user = await auth.getUser()
+  }
+
+  async getLikePost({ request, response, session, params, auth }) {
+    const perk = await PerkModel.find(params.uid)
+
+    const like = new LikeModel();
+
+    perk.likes().save(like);
+
+    return response.redirect('back')
   }
 }
 

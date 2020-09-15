@@ -1,0 +1,14 @@
+.ui__card {
+    width: 262px;
+    height: 100%;
+    min-height: 312px;
+    border-radius: 4px;
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+    background-color: $color__white;
+    padding: 18px;
+    text-align: center;
+
+    .card__header {
+        text-align: left;
+    }
+}

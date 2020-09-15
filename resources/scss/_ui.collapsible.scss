@@ -1,0 +1,217 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_ui.collapsible.scss (partial)
+* 	@project:	mytr
+* 	@author: 	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+*
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	UI collapsible
+	========================================================================== */
+//mfy rip
+#app--main {
+	.ui__collapsible,
+	.ui__accordion {
+		@extend .clearfix;
+		//@include background-image(linear-gradient(to bottom right, $theme__primary 40%, rgba($theme__secondary, 0.8) 92%));
+		background-color: $theme__primary;
+
+		margin: 20px 0;
+
+		.collapsible__header,
+		.collapsible__pane,
+		dt, dd {
+			display: block;
+			margin: 0;
+		}
+
+		.collapsible__header,
+		dt {
+			color: $color__white;
+			position: relative;
+			//padding: 12px (20px + 15 + 30) 13px 20px;
+			border-top: 4px solid $color__white;
+
+			&:after {
+				content: "\00A0";
+				position: absolute;
+				top: 15px;
+				right: 30px;
+				width: 15px;
+				height: 15px;
+				border-top: 2px solid $color__white;
+				border-right: 2px solid $color__white;
+
+				transform: rotate(135deg);
+				transition: transform 500ms;
+			}
+
+			&.active {
+				&:after {
+					transform: rotate(-45deg);
+				}
+
+				& + dd,
+				& + .collapsible__pane {
+					display: block;
+				}
+			}
+
+			p {
+				font-weight: 700;
+				margin: 0;
+
+				a {
+					background-color: $theme__secondary;
+					text-decoration: none;
+				}
+			}
+
+			a {
+				color: $color__white;
+				padding: 12px (20px + 15 + 30) 13px 20px;
+				display: block;
+
+				&:hover {
+					background-color: $color__orange-dark !important;
+				}
+			}
+		}
+
+		.ui__pane {
+			&:first-child {
+				.collapsible__header {
+					border-top: 0;
+				}
+			}
+
+			&.active {
+				.collapsible__header {
+					&:after {
+						transform: rotate(-45deg);
+					}
+				}
+
+				.collapsible__pane {
+					display: block;
+				}
+
+				a {
+					background-color: $theme__primary;
+				}
+			}
+		}
+
+		.collapsible__pane,
+		dd {
+			overflow: hidden; /*clearfix + margin-collapse*/
+			background-color: $color__white;
+			margin: 0 2px 2px;
+			padding: 0 20px;
+			display: none;
+		}
+
+		.ui__animate {
+			transition: all 500ms;
+		}
+
+		.v-enter-active, .v-leave-active {
+			transition: opacity 500ms;
+		}
+
+		.v-enter, .v-leave-active {
+			opacity: 0;
+		}
+
+		.v-move {
+			transition: transform 1s;
+		}
+	}
+}
+
+.ui__collapsible {
+	@extend .list-unstyled;
+
+	margin: 0;
+
+	dt, dd {
+		@extend .clearfix;
+
+		margin: 0;
+
+		& > a {
+			display: block;
+			padding: 20px 25px;
+
+			&:hover, &:focus {
+				text-decoration: none;
+			}
+		}
+	}
+
+	dt {
+		a {
+			/* @extend .svg__caret-down;
+
+			&:before {
+				@extend .icon__svg;
+				float: right;
+			} */
+
+			position: relative;
+
+			&:before {
+				content: "\00A0";
+				position: absolute;
+				//top: 0.8em;
+				right: 25px;
+				width: 0.8em;
+				height: 0.8em;
+				border-top: 2px solid $color__white;
+				border-right: 2px solid $color__white;
+
+				transform: rotate(135deg);
+				transition: transform 500ms;
+			}
+		}
+
+		&.state__active {
+			a {
+				/* @extend .svg__caret-up; */
+
+				&:before {
+					transform: rotate(-45deg);
+				}
+			}
+		}
+	}
+}
+
+.module__primary-nav .collapsible__header a {
+	position: relative;
+
+	&:before {
+		content: "\00A0";
+		position: absolute;
+		right: 25px;
+		width: 0.8em;
+		height: 0.8em;
+		border-top: 2px solid $color__white;
+		border-right: 2px solid $color__white;
+
+		transform: rotate(135deg);
+		transition: transform 500ms;
+	}
+}
+
+.module__primary-nav .active .collapsible__header a {
+
+	&:before {
+		transform: rotate(-45deg);
+	}
+}

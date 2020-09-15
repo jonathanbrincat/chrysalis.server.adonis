@@ -19,7 +19,7 @@ class JobController {
 
   // DEVNOTE: fetch particular user's jobs
   async userIndex({ request, response, view, auth }) {
-    const jobs = await auth.user.jobs().fetch();
+    const jobs = await auth.user.jobs().fetch(); //====> see Model/User.js Model
 
     return view.render('jobs.create', {
       jobs: jobs.toJSON()
@@ -29,7 +29,7 @@ class JobController {
   async create({ request, response, session, auth }) {
     const job = request.all();
 
-    const posted = await auth.user.jobs().create({
+    await auth.user.jobs().create({ //====> see Model/User.js Model
       title: job.title,
       link: job.link,
       description: job.description,

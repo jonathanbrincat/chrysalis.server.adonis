@@ -1,0 +1,537 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_mod.banner.scss (partial)
+* 	@project: 	mytr
+* 	@author:	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	MODULE banner
+	========================================================================== */
+//DEVNOTE: this wrapper is to get around flex layout enforcing child flex rules and impeding desired layout at larger views
+.module__banner {
+	border: 0 solid $swatch__tr-grey;
+	line-height: 2rem;								//20px;
+	flex-shrink: 0;
+	order: 0;
+
+	.state__open & {
+		border-top-width: 1px;
+		border-bottom-width: 1px;
+	}
+
+	@include breakpoint($screen-md-min) {
+		position: relative;
+		right: 200px;
+		display: flex;
+		order: 1;
+
+		transition-property: right;
+		transition-duration: 250ms;
+		transition-timing-function: linear; //ease;
+
+		&,
+		.state__open & {
+			border-top-width: 0;
+			border-bottom-width: 1px;
+		}
+	}
+
+	@include breakpoint($screen-xl-min) {
+		position: static;
+	}
+
+	.state__open & {
+		@include breakpoint($screen-md-min) {
+			right: 0;
+		}
+	}
+}
+
+	/* ========================================= MyTR logo */
+	.module__mytr-logo {
+		@include font-size(1.8rem);
+		letter-spacing: 1.25px;
+		vertical-align: middle;
+		padding: 0 25px;
+
+		@include breakpoint($screen-md-min) {
+			padding-left: 20px;
+			min-width: auto;
+		}
+
+		@include breakpoint($screen-xl-min) {
+			padding-left: 25px;
+		}
+
+		.state__open & {
+			background-color: $swatch__tr-grey-dark;
+			//position: fixed;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+
+			@include breakpoint($screen-md-min) {
+				background-color: transparent;
+				position: static;
+			}
+		}
+	}
+
+	/* ========================================= User */
+	.module__user {
+		padding: 0 25px;
+		display: none;
+
+		@include breakpoint($screen-md-min) {
+			clear: none;
+			display: block;
+			padding: 0 20px;
+			flex-grow: 1;
+		}
+
+		@include breakpoint($screen-xl-min) {
+			padding: 0 25px;
+		}
+
+		.state__open & {
+			display: block;
+		}
+
+		/* &.state__active {
+			.user__avatar .ui__icon {
+				&:after {
+					border-color: $theme__primary;
+					border-width: 3px;
+
+					transition-property: none;
+				}
+			}
+		} */
+
+		p {
+			line-height: inherit;
+			float: left;
+
+			a,
+			.ui__icon {
+				vertical-align: middle;
+			}
+
+			.ui__icon {
+				position: relative;
+				z-index: 1;
+			}
+
+			@include breakpoint($screen-md-min) {
+				float: right;
+			}
+		}
+
+		.user__avatar {
+
+			.ui__icon {
+				@include breakpoint($screen-md-min) {
+					margin-right: 0;
+				}
+			}
+
+			span {
+				@include breakpoint($screen-md-min) {
+					display: none;
+				}
+			}
+
+			/* a {
+				&:hover {
+					.ui__icon {
+						&:after {
+							background-color: darken($swatch__tr-grey-dark, 5%);
+
+							transition-property: none;
+						}
+					}
+				}
+			}
+
+			.ui__icon {
+				position: relative;
+
+				&:after {
+					content: '\020';
+					border: 20px solid transparent;
+					border-radius: 50%;
+					position: absolute;
+					z-index: 0;
+					top: 50%;
+					left: 50%;
+					width: 40px;
+					height: 40px;
+					margin-top: -18px;
+					margin-left: -20px;
+
+					transition-property: background-color, border-width;
+					transition-duration: 250ms;
+					transition-timing-function: ease;
+
+					background-color: darken($swatch__tr-grey-dark, 5%);
+				}
+			} */
+		}
+
+		.ui__cta {
+			float: right;
+
+			//DEVNOTE: temp answer to colour approach
+			a:after {
+				@extend .svg__arrow-right-white;
+			}
+
+			@include breakpoint($screen-md-min) {
+				display: none;
+			}
+		}
+	}
+
+	/* ========================================= User login */
+	.module__logintoggle {
+		background-color: darken($swatch__tr-grey-dark, 5%);
+		padding: 0 156px 0 25px;
+		position: relative;
+		overflow: hidden; /*clearfix*/
+		display: none;
+
+		@include breakpoint($screen-md-min) {
+			background-color: transparent;
+			position: static;
+			clear: none;
+			display: block;
+			flex-grow: 1;
+			padding-right: 25px;
+		}
+
+		/* @include breakpoint($screen-xl-min) {
+			display: none;
+		}*/
+
+		.state__open & {
+			display: block;
+
+			/* @include breakpoint($screen-xl-min) {
+				display: none;
+			} */
+		}
+
+		button {
+			border: 0 none;
+			background-color: darken($swatch__tr-grey-dark, 5%);
+			line-height: inherit;
+			position: relative;
+			overflow: hidden;
+			display: none;
+
+			// Supress user agent focus states on this instance
+			outline-style: none;
+			box-shadow: none;
+			border-color: transparent;
+
+			&:before {
+				content: '\020';
+				border-radius: 50%;
+				background-color: $color__orange;
+				width: 90px;
+				height: 90px;
+				position: absolute;
+				top: -15px;
+				bottom: -15px;
+				left: -15px;
+				right: -15px;
+				margin: auto;
+				opacity: 1;
+
+				transition-property: all;
+				transition-duration: 250ms;
+				transition-timing-function: linear; //ease;
+			}
+
+			@include breakpoint($screen-md-min) {
+				float: right;
+				display: block;
+				width: 60px;
+				height: 100%;
+				margin-right: -25px;
+			}
+
+			@include breakpoint($screen-xl-min) {
+				display: none;
+			}
+
+			span {
+				position: relative;
+			}
+		}
+
+		.state__open & {
+			button {
+				&:before {
+					width: 0;
+					height: 0;
+					opacity: 0;
+				}
+			}
+		}
+
+		.ui__cta {
+			font-weight: inherit;
+			line-height: inherit;
+			background-color: $swatch__tr-grey-dark;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			margin: 0;
+			padding: 20px 30px;
+
+			@include breakpoint($screen-md-min) {
+				display: none;
+			}
+
+			//DEVNOTE: temp answer to colour approach
+			a:after {
+				@extend .svg__arrow-right-white;
+			}
+		}
+
+		.signpost__login {
+			.ui__icon {
+				vertical-align: middle;
+			}
+
+			@include breakpoint($screen-md-min) {
+				display: none;
+			}
+
+			@include breakpoint($screen-xl-min) {
+				background-color: darken($swatch__tr-grey-dark, 5%);
+				line-height: 60px;
+				text-align: center;
+				vertical-align: middle;
+				position: relative;
+				overflow: hidden;
+				float: right;
+				display: block;
+				width: 65px;
+				height: 100%;
+				margin: 0;
+				margin-right: -25px;
+
+				.ui__icon {
+					margin-right: 0;
+				}
+
+				span {
+					display: none;
+				}
+			}
+		}
+	}
+
+	/* ========================================= User login */
+	.module__login {
+		background-color: darken($swatch__tr-grey-dark, 5%);
+		border-bottom: 1px solid lighten($swatch__tr-grey-dark, 5%);
+		box-shadow: inset 0px -4px 10px -5px rgba($color__grey-dark, 0.5);
+		font-weight: 400;
+		margin-top: -1px;
+		padding: 0 25px;
+		display: none;
+
+		.state__open & {
+			display: block;
+		}
+
+		@include breakpoint($screen-md-min) {
+			//margin-top: -1px;
+			order: 1;
+
+			display: block;
+			overflow: hidden;
+			height: 0;
+			z-index: 1;
+
+			transition-property: height;
+			transition-duration: 250ms;
+			transition-timing-function: linear; //ease;
+
+			.state__open & {
+				//height: auto;
+				height: 145px; //DEVNOTE: HARDCODED VALUE! Needed for the desired transition effect
+			}
+		}
+
+		@include breakpoint($screen-xl-min) {
+			height: auto;
+		}
+
+		form {
+			margin: 30px 0;
+		}
+
+		input[type="submit"] {
+			font-weight: inherit;
+			width: 100%;
+		}
+
+		p {
+			font-weight: inherit;
+		}
+
+		/* padding: 0 25px;
+		display: none;
+
+		@include breakpoint($screen-md-min) {
+			clear: none;
+			display: block;
+			flex-grow: 1;
+		}
+
+		@include breakpoint($screen-xl-min) {
+		}
+
+		.state__open & {
+			display: block;
+		}*/
+
+		.ui__cta {
+			/* float: right;
+
+			@include breakpoint($screen-md-min) {
+				display: none;
+			} */
+
+			//DEVNOTE: temp answer to colour approach
+			a:after {
+				@extend .svg__arrow-right-white;
+			}
+		}
+	}
+
+	/* ========================================= MyTR logo */
+	.module__tr-logo {
+		font-family: $font__museomoderno;
+		color: $color__white;
+		border-top: 1px solid $swatch__tr-grey;
+		@include font-size(1.2rem);
+		// text-transform: uppercase;
+		letter-spacing: 1.25px;
+		padding: 0 20px;
+		margin-top: 60px;
+		display: none;
+		order: 1;
+
+		.state__open & {
+			display: block;
+		}
+
+		@include breakpoint($screen-md-min) {
+			display: block;
+			padding-left: 15px;
+			padding-right: 15px;
+			margin-top: 0;
+			order: 3;
+		}
+
+		@include breakpoint($screen-xl-min) {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		p {
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
+
+		span {
+			@include breakpoint($screen-md-min) {
+				opacity: 0;
+
+				.state__open & {
+					opacity: 1;
+
+					transition-property: opacity;
+					transition-duration: 250ms;
+					transition-timing-function: linear; //ease;
+				}
+			}
+
+			@include breakpoint($screen-xl-min) {
+				opacity: 1;
+			}
+		}
+	}
+
+	.icn__svg_thomson-reuters-kinesis {
+		background: transparent url(../svg/logo/logo_thomson-reuters-kinesis-orange.svg) 0 0 no-repeat;
+		width: 3rem;
+		height: 3rem;
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 10px;
+
+		.state__active & {
+			background-image: url(../svg/logo/logo_thomson-reuters-kinesis-white.svg);
+		}
+	}
+
+
+/* =============================================================================
+	MODULE banner
+	========================================================================== */
+.module__banner {
+	.ui__collapsible & {
+		@extend .clearfix;
+
+		background-color: rgb(255,128,0);
+		padding: 0 25px;
+		margin-left: -30px;
+	}
+
+	legend {
+		@include font-size(1.8rem);
+	}
+
+	label {
+		font-weight: 200;
+		line-height: 1.6;
+		display: block;
+		margin: 1em 0;
+	}
+
+	input {
+		border-color: $color__white;
+		display: block;
+		margin: 2em 0;
+		width: 100%;
+
+		&[type="submit"] {
+			background-color: $theme__secondary;
+			border-color: $theme__secondary;
+			color: $color__white;
+		}
+	}
+
+	label ~ input {
+		margin-top: 0;
+	}
+
+	label > input {
+		display: inline;
+		width: auto;
+		margin: 0 10px 0 0;
+	}
+}

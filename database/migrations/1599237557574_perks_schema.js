@@ -7,11 +7,15 @@ class PerksSchema extends Schema {
   up () {
     this.createIfNotExists('perks', (table) => {
       table.increments()
+      table.string('merchant')
       table.text('title')
+      table.text('blurb')
       table.text('body')
-      table.string('logo_src')
-      table.string('hero_src')
+      table.string('gfx_logo_src')
+      table.string('img_header_src')
+      table.string('code')
       table.datetime('expiry')
+      table.boolean('is_enabled')
       table.timestamps()
     })
   }

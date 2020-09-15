@@ -1,0 +1,107 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_mod.discover.scss (partial)
+* 	@project: 	mytr
+* 	@author:	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	MODULE discover
+	========================================================================== */
+.module__discover {
+	background-color: $color__grey-dark;
+	@include font-size(1.2rem); 			//inheritance
+	color: $color__white; 					//inheritance
+	display: none;
+	order: 2;
+
+	@include breakpoint($screen-md-min) {
+		display: block;
+		opacity: 0;
+		z-index: -1;
+		order: 0;
+
+		transition-property: opacity;
+		transition-duration: 250ms;
+		transition-timing-function: linear; //ease;
+	}
+
+	@include breakpoint($screen-xl-min) {
+		display: block;
+		opacity: 1;
+		z-index: auto;
+
+		transition-property: none;
+	}
+
+	.state__open & {
+		display: block;
+		opacity: 1;
+		z-index: auto;
+	}
+
+	nav {
+		@include breakpoint($screen-md-min) {
+			opacity: 0;
+			visibility: hidden;
+
+			.state__open & {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+
+		@include breakpoint($screen-md-min) {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	dt {
+		font-weight: 400;
+		line-height: 1.3;
+	}
+
+	dt > a {
+		padding: 10px 25px !important; // temp override ui.collapsible.scss
+		color: inherit;
+
+		@include breakpoint($screen-md-min) {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		@include breakpoint($screen-xl-min) {
+			padding-left: 25px;
+			padding-right: 25px;
+		}
+	}
+
+    li {
+        line-height: 1.6;
+        margin: 20px 0;
+    }
+
+	li > a {
+		color: inherit;
+		padding: 0 25px;
+
+		@include breakpoint($screen-md-min) {
+			padding-left: 20px;
+		}
+
+		@include breakpoint($screen-xl-min) {
+			padding-left: 25px;
+		}
+
+		#app--masthead & {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}

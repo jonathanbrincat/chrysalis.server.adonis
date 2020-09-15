@@ -1,0 +1,27 @@
+@layout('_layout/master')
+
+@section('content')
+  <a href="/">Go back</a>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p class="quote">{{ post.title }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p>{{ post.__meta__.likes_count }} Likes |
+        <a href="{{ route('blog.post.like', { id: post.id }) }}">Like</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p>{{ post.content }}</p>
+    </div>
+  </div>
+@endsection

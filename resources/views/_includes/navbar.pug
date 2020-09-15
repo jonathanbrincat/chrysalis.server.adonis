@@ -1,0 +1,29 @@
+nav.navbar.navbar-expand-lg.navbar-dark.mb-3
+  .container
+    a.navbar-brand(href="/") Kangeroo
+
+    //- @loggedIn
+    a(href="/logout" class="btn btn-light") ({{ auth.user.username }}) Log Out
+    //- @endloggedIn
+
+    button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav")
+      span.navbar-toggler-icon
+
+    #navbarNav.collapse.navbar-collapse
+      //- @loggedIn
+      ul.navbar-nav.ml-auto
+        li.nav-item
+          a.nav-link(href="/perks") Rider's Perks
+        //-
+          li.nav-item
+            a.nav-link(href="/perks/create") Add Perk
+        li.nav-item
+          a.nav-link(href="/perks/favourites") Favourites List
+        li.nav-item
+          a.nav-link(href="/perks/activated") Activated List
+        //-
+          li.nav-item
+            a.nav-link(href="/jobs") Jobs
+          li.nav-item
+            a.nav-link(href="/jobs/create") Add Job
+      //- @endloggedIn
