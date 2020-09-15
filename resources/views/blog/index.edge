@@ -53,38 +53,11 @@
   </div>
   @endeach
 
-  <!--{--
-  <p>Page {{ posts.page }}</p>
-  <p>Last page {{ posts.lastPage }}</p>
-  <p>Per page {{ posts.perPage }}</p>
-  <p>Total {{ posts.total }}</p>
-  --}-->
-
   <div class="row">
     <div class="col">
-      <!-- Generated pagination controls is Laravel feature only. Not in adonis -->
+      <!-- DEVNOTE: Generated pagination controls is a Laravel only feature. Not built into adonis. -->
       <!-- https://mauricius.dev/effective-pagination-in-adonisjs/ -->
-      {{-- posts.links --}}
-      <ul class="ui__pagination">
-        <li class="pagination__page pagination__page-previous">
-          <a class="pagination__page-link" href="{{ (posts.page == 1) ? '' : '?page=' + (posts.page - 1) }}" aria-label="Previous">
-            <span aria-hidden="true">&lt;</span>
-          </a>
-        </li>
-        @each(page in range(1, posts.lastPage))
-        <li class="pagination__page pagination__page-index">
-          <a class="pagination__page-link" href="?page={{page }}">{{ page }}</a>
-        </li>
-        @endeach
-        <li class="pagination__page pagination__page-next">
-          <a class="pagination__page-link" href="{{ (posts.page == posts.lastPage) ? '' : '?page=' + (posts.page + 1) }}" aria-label="Next">
-            <span aria-hidden="true">&gt;</span>
-          </a>
-        </li>
-      </ul>
-
       @if(posts.data.length)
-      <hr>
       @!component('../components/pagination', pagination = posts, request = request, presenter = 'PaginationPresenter')
       @endif
     </div>

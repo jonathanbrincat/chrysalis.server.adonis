@@ -13,27 +13,36 @@
   }
 }
 
-.pagination__page-previous {
-
-}
-
-.pagination__page-next {
-
-}
-
-.pagination__page-index {
-}
+.pagination__page-previous {}
+.pagination__page-next {}
+.pagination__page-index {}
 
 .pagination__page-link {
   background-color: $color__white;
   text-decoration: none;
   text-align: center;
-  padding: 6px 10px;
+  padding: 6px 8px;
   display: block;
+  min-width: 30px;
 
   &:hover,
   &:focus {
     background-color: $color__mint;
     color: $color__white;
+  }
+
+  .pagination__page-index--active & {
+    background-color: $color__black;
+    color: $color__white;
+  }
+
+  .pagination__page--disable & {
+    opacity: 0.1;
+
+    &:hover,
+    &:focus {
+      background-color: $color__white;
+      color: inherit;
+    }
   }
 }

@@ -18,10 +18,10 @@
 
     <!-- DEVNOTE: there is another way of achieving this that removes the need for a dedicated view; using an empty form in situ to perform the  post -->
     <!-- Laravel sourced example -->
-    <!--{{--
+    {{--
     <a href="{{ url('/logout') }}" class="btn btn-light" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">({{ auth.user.username }}) Log Out </a>
     <form action="{{ url('/logout') }}" method="POST" style="...">{{ csrfField() }}</form>
-    --}}-->
+    --}}
     @endloggedIn
 
     <div id="navbarNav2" class="collapse navbar-collapse">
@@ -30,11 +30,9 @@
         <li class="nav-item">
           <a href="/perks" class="nav-link">Rider's Perks</a>
         </li>
-        <!--
         <li class="nav-item">
           <a href="/perks/create" class="nav-link">Add Perk</a>
         </li>
-        -->
         <li class="nav-item">
           <a href="/perks/favourites" class="nav-link">Favourites List</a>
         </li>

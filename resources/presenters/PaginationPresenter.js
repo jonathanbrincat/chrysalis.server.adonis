@@ -1,3 +1,4 @@
+const url = require('url')
 const { BasePresenter } = require('edge.js')
 
 class PaginationPresenter extends BasePresenter {
@@ -5,7 +6,7 @@ class PaginationPresenter extends BasePresenter {
     return pagination.page == 1
   }
 
-  isCurrent(pagination, page) {
+  isCurrent(page, pagination) {
     return pagination.page == page
   }
 
@@ -13,7 +14,13 @@ class PaginationPresenter extends BasePresenter {
     return pagination.page == pagination.lastPage
   }
 
-  append(current_url, key, value) {
+  setPage(page, pagination) {
+    if(page < 1 || page > pagination.lastPage) return pagination.page;
+
+    return page;
+  }
+
+  appendParams(current_url, key, value) {
     const current = url.parse(current_url)
     const params = new URLSearchParams(current.search)
 
@@ -25,37 +32,7 @@ class PaginationPresenter extends BasePresenter {
 
 module.exports = PaginationPresenter
 
-
-// implement updated version that limits display of paginated output and orders it
-// implement active/current css class
 /*
-<ul>
-  <li>
-    <a {{ isFirst(pagination) ? '' : 'href=?page=' + (pagination.page - 1) }}>Previous</a>
-  </li>
-  @each(page in range(1, pagination.lastPage))
-    <li>
-      <a {{ isCurrent(pagination, page) ? '' : 'href=?page' + page }}>{{ page }}</a>
-    </li>
-  @endeach
-  <li>
-    <a {{ isLast(pagination) ? '' : 'href=?page=' + (pagination.page + 1) }}>Next</a>
-  </li>
-</ul>
-
-<ul>
-  <li>
-    <a {{ isFirst(pagination) ? '' : 'href=?' + append(request.originalUrl(), 'page', pagination.page - 1) }}>Previous</a>
-  </li>
-  @each(page in range(1, pagination.lastPage))
-    <li>
-      <a {{ !isCurrent(pagination, page) ? 'href=?' + append(request.originalUrl(), 'page', page) : '' }}>
-          {{ page }}
-      </a>
-    </li>
-  @endeach
-  <li>
-    <a {{ isLast(pagination) ? '' : 'href=?' + append(request.originalUrl(), 'page', pagination.page + 1) }}>Next</a>
-  </li>
-</ul>
+page ::  1
+pagination ::  {total: 7, perPage: 2, page: 1, lastPage: 4, data: Array(2)}
 */

@@ -33,7 +33,8 @@ Factory.blueprint('App/Models/User', async (faker) => {
 // Post blueprint
 Factory.blueprint('App/Models/Post', (faker) => {
   return {
-    title: faker.sentence(),
-    content: faker.paragraph()
+    title: faker.sentence({ words: faker.natural({ min: 2, max: 6 }) }),
+    content: faker.paragraph(),
+    user_id: faker.natural({ min: 1, max: 10 })
   }
 })
