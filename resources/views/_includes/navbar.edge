@@ -1,11 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-dark mb-3">
-  <div class="container">
-    <a href="/" class="navbar-brand">Kangeroo</a>
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark mb-3">
+    <a class="navbar-brand" href="/">White Label</a>
 
-    <ul class="nav navbar-nav">
-      <li><a href="{{ route('blog.index') }}">Blog</a></li>
-      <li><a href="{{ route('admin.index') }}">Posts</a></li>
-    </ul>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav1">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbarNav1" class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="{{ route('blog.index') }}">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('admin.index') }}">Posts</a></li>
+      </ul>
+    </div>
 
     @loggedIn
     <a href="/logout" class="btn btn-light">({{ auth.user.username }}) Log Out </a>
@@ -18,11 +24,7 @@
     --}}-->
     @endloggedIn
 
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div id="navbarNav" class="collapse navbar-collapse">
+    <div id="navbarNav2" class="collapse navbar-collapse">
       @loggedIn
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -51,5 +53,5 @@
       </ul>
       @endloggedIn
     </div>
-  </div>
-</nav>
+  </nav>
+</div>

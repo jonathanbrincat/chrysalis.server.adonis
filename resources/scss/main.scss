@@ -1,9 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@200;300;400;600;700&family=Montserrat:wght@200;400&display=swap');
-
 /*  =============================================================================
     Vendor
     ============================================================================= */
-@import 'breakpoint';
 @import 'bootstrap';
 
 // /*  =============================================================================
@@ -22,7 +19,7 @@
 @import 'app.iconology';
 
 // @import 'core.utils';
-// @import 'bootstrap.grid'; //mytr
+// @import 'bootstrap.grid';
 // @import 'core.responsive';
 
 // /*  =============================================================================
@@ -31,11 +28,12 @@
 @import 'styles.main';
 // @import 'styles.form';
 
-// @import 'mod.banner'; // mytr
-// @import 'mod.discover'; // mytr
+// @import 'mod.banner';
+// @import 'mod.discover';
 
 // /*  =============================================================================
 //     UI components
 //     ============================================================================= */
-// @import 'ui.card'; // mytr
-// @import 'ui.collapsible'; // mytr
+@import 'ui.card';
+@import 'ui.tags';
+@import 'ui.pagination';

@@ -18,6 +18,9 @@ class UserSeeder {
   async run () {
     // const users = await Database.table('users')
     // console.log(users);
+    const user = await Factory
+      .model('App/Models/User')
+      .createMany(10)
   }
 }
 

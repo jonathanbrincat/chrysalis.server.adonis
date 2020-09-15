@@ -1,9 +1,17 @@
-<ul class="list-unstyled">
-  <li>
-    <a href="?page={{ (pagination.page - 1) }}">Previous</a>
-    @each(page in range(1, pagination.lastPage))
-    <li><a href="?page={{page }}">{{ page }}</a></li>
-    @endeach
-    <a href="?page={{ (pagination.page + 1) }}">Next</a>
+<ul class="ui__pagination">
+  <li class="pagination__page pagination__page-previous">
+    <a class="pagination__page-link" href="?page={{ (pagination.page - 1) }}" aria-label="Previous">
+      <span aria-hidden="true">&lt;</span>
+    </a>
+  </li>
+  @each(page in range(1, pagination.lastPage))
+  <li class="pagination__page pagination__page-index">
+    <a class="pagination__page-link" href="?page={{page }}">{{ page }}</a>
+  </li>
+  @endeach
+  <li class="pagination__page pagination__page-next">
+    <a class="pagination__page-link" href="?page={{ (pagination.page + 1) }}" aria-label="Next">
+      <span aria-hidden="true">&gt;</span>
+    </a>
   </li>
 </ul>

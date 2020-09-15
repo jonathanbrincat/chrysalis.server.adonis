@@ -1,14 +1,36 @@
 .ui__card {
-    width: 262px;
-    height: 100%;
-    min-height: 312px;
-    border-radius: 4px;
-    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 2px;
+    border: 1px solid #dcdcdc;
+    // box-shadow: 0 2px 16px 0 rgba($color__black, 0.08);
     background-color: $color__white;
-    padding: 18px;
-    text-align: center;
+    margin: 24px 0;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+    "header body"
+    "header footer";
+}
 
-    .card__header {
-        text-align: left;
-    }
+.card__header {
+  grid-area: header;
+}
+
+.card__body {
+  grid-area: body;
+  padding: 12px 24px;
+}
+
+.card__footer {
+  grid-area: footer;
+  padding: 12px 24px;
+  display: flex;
+}
+
+.card__title {
+  font-size: 28px;
+}
+
+.card__creation {
+  font-size: 12px;
 }

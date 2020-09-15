@@ -1,0 +1,39 @@
+.ui__pagination {
+  @include list-unstyled;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__page {
+  border: 1px solid #dcdcdc;
+  border-right-width: 0;
+
+  &:last-of-type {
+    border-right-width: 1px;
+  }
+}
+
+.pagination__page-previous {
+
+}
+
+.pagination__page-next {
+
+}
+
+.pagination__page-index {
+}
+
+.pagination__page-link {
+  background-color: $color__white;
+  text-decoration: none;
+  text-align: center;
+  padding: 6px 10px;
+  display: block;
+
+  &:hover,
+  &:focus {
+    background-color: $color__mint;
+    color: $color__white;
+  }
+}

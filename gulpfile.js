@@ -18,8 +18,7 @@ task('styles', () => {
   const options = {
     //outputStyle: 'compressed'         //nested | expanded | compact | compressed
     includePaths: [
-      './node_modules/breakpoint-sass/stylesheets',
-      './node_modules/bootstrap-sass/assets/stylesheets'
+      './node_modules/bootstrap/scss'
     ]
   }
 

@@ -2,25 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Adonis 4.0</title>
+  <title>Adonis Project</title>
 
-  {{-- {{ style('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css') }} --}}
-  {{-- {{ style('styles') }} --}}
   {{ style('styles/main') }}
-  {{-- {{ script('foo.js') }} --}}
 </head>
 <body>
-  @include('_includes/navbar')
+  <header id="app__masthead">
+    @include('_includes/navbar')
+  </header>
 
-  <div class="container">
-    @!section('content')
-  </div>
+  <main id="app__body">
+    <div class="container">
+      @!section('content')
+    </div>
+  </main>
 
-  {{-- {{ script('/js/app.js') }} --}}
-  {{--
-  {{ script('https://code.jquery.com/jquery-3.5.1.slim.min.js') }}
-  {{ script('https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js') }}
-  {{ script('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js') }}
-  --}}
+  {{-- {{ script('foo.js') }} --}}
 </body>
 </html>
