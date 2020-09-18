@@ -46,3 +46,12 @@
     }
   }
 }
+
+.pagination__page-ellipsis {
+  // background-color: $color__white;
+  text-decoration: none;
+  text-align: center;
+  padding: 6px 8px;
+  display: block;
+  min-width: 30px;
+}

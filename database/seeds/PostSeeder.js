@@ -32,7 +32,7 @@ class PostSeeder {
 
     const posts = await Factory
       .model("App/Models/Post")
-      .createMany(12);
+      .createMany(30);
   }
 }
 

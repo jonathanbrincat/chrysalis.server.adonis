@@ -4,9 +4,30 @@ html, body {
 }
 
 /**/
+.ui__brand {
+  color: #93FFE8;
+  margin: 0;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.brand__link {
+  display: block;
+  width: 160px;
+}
+
+#app__footer {
+  background-color: #394149;
+  color: $color__white;
+  padding: 10px;
+}
 
 #app__masthead {
   background-color: #00ccbc;
+  color: #394149;
 }
 
 .btn {

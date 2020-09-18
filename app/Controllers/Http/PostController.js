@@ -15,7 +15,7 @@ class PostController {
     // https://forum.adonisjs.com/t/please-help-me-with-adonisjs-pagination/4648
     // https://mauricius.dev/effective-pagination-in-adonisjs/
     const index = request.get().page || 1 //take from querystring param if it exists
-    const posts = await PostModel.query().orderBy('created_at', 'desc').withCount('likes').paginate(index, 2) // DEVNOTE: with adonis pagination. paginate(page to fetch results, page size limit) // need to provide the page to get value e.g. example.com/articles?page=2.
+    const posts = await PostModel.query().orderBy('created_at', 'desc').withCount('likes').paginate(index, 5) // DEVNOTE: with adonis pagination. paginate(page to fetch results, page size limit) // need to provide the page to get value e.g. example.com/articles?page=2.
 
     return view.render('blog.index', {
       posts: posts.toJSON()

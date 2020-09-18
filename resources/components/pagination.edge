@@ -10,9 +10,15 @@
 
   @each(page in paginate(pagination.page, pagination.lastPage, 5))
   <li class="pagination__page pagination__page-index {{ isCurrent(page, pagination) ? 'pagination__page-index--active' : '' }}">
+    @if(page === '...')
+    <span class="pagination__page-ellipsis">
+      {{ page }}
+    </span>
+    @else
     <a class="pagination__page-link" {{ isCurrent(page, pagination) ? 'aria-disabled=true aria-selected=true' : 'href=?' + appendParams(request.originalUrl(), 'page', setPage(page, pagination)) }}>
       {{ page }}
     </a>
+    @endif
   </li>
   @endeach
 
