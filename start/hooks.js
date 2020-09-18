@@ -12,7 +12,9 @@ hooks.after.providersBooted(() => {
     return _[method](args)
   })
 
-  View.global('range', (start, size) => {
+  // DEVNOTE: redundant. was being used to augment pagination but now algorithm handles this
+  /*View.global('range', (start, size) => {
     return [...Array(size).keys()].map(i => i + start)
-  })
+    //return Array.from({length: size}, (a, i) => i + start)
+  })*/
 })

@@ -28,11 +28,19 @@ class PaginationPresenter extends BasePresenter {
 
     return params.toString()
   }
+
+  paginate(curr, total, delta = 5) {
+    const noop = (v, indice) => (total === 1 || indice%total === 1) ? [] : (v === 1) ? [v, '...'] : ['...', v];
+
+    if(delta > total) delta = total;
+
+    let indice;
+    indice = curr - Math.floor(delta / 2);
+    indice = Math.max(indice, 1);
+    indice = Math.min(indice, 1 + (total - delta));
+
+    return [...noop(1, indice), ...Array.from({length: delta}, () => indice++), ...noop(total, indice)];
+  }
 }
 
 module.exports = PaginationPresenter
-
-/*
-page ::  1
-pagination ::  {total: 7, perPage: 2, page: 1, lastPage: 4, data: Array(2)}
-*/
