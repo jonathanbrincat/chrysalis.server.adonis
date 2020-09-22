@@ -1,0 +1,233 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_ui.btn.scss (partial)
+* 	@project: 	mytr
+* 	@author:	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+**/
+
+@charset "UTF-8";
+
+
+@mixin state-hover() {
+
+}
+
+@mixin state-focus() {
+
+}
+
+@mixin state-disabled() {
+
+}
+
+/* =============================================================================
+	UI btn - generic
+	========================================================================== */
+.ui__btn {
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px;
+	//font-weight: 700;
+	font-weight: 500;
+	line-height: 1.5;
+	text-decoration: none;
+	display: inline-block;
+	min-width: 50px;
+	padding: 12px 30px;
+
+	transition-property: background-color, border-color, color;
+	transition-duration: 400ms;
+	transition-timing-function: ease;
+
+	&:hover,
+	&:focus {
+		transition-property: none;
+		text-decoration: none;
+	}
+}
+
+/* bootstrap 5
+.btn {
+  color: #212529;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}*/
+
+p.ui__btn, li.ui__btn {
+	padding: 0;
+	min-width: 0;
+
+	a {
+		text-decoration: none;
+		display: inline-block;
+		min-width: 50px;
+		padding: 12px 30px;
+
+		&:hover,
+		&:focus {
+			color: inherit;
+		}
+	}
+}
+
+/* =============================================================================
+	UI btn > pill
+	========================================================================== */
+.btn__pill {
+	border-radius: 999px;
+}
+
+/* =============================================================================
+	UI btn > round / circular
+	========================================================================== */
+.btn__round,
+.btn__circular {
+	border-radius: 50%;
+	min-width: 0;
+	width: 3.333em;
+	height: 3.333em;
+	padding: 10px;
+	overflow: hidden;
+}
+
+/* =============================================================================
+	UI btn SIZE
+	========================================================================== */
+.btn__size-{
+	&sm {
+		padding: 5px 20px;
+
+		&.btn__round,
+		&.btn__circular {
+			text-align: center;
+			padding: 5px;
+			width: 2.5em;
+			height: 2.5em;
+		}
+	}
+}
+
+p.ui__btn, li.ui__btn {
+	&.btn__size-{
+		&sm {
+			padding: 0;
+
+			a {
+				padding: 5px 20px;
+			}
+
+			&.btn__round,
+			&.btn__circular {
+
+				a {
+					text-align: center;
+					padding: 5px;
+					min-width: 0;
+					width: 2.5em;
+					height: 2.5em;
+				}
+			}
+		}
+	}
+}
+
+/* =============================================================================
+	UI btn THEMES
+	========================================================================== */
+.ui__btn {
+	background-color: $color__white;
+	border-color: $swatch__tr-grey-dark;
+	color: $swatch__tr-grey-dark;
+
+	&.state__hover,
+	&:hover {
+		background-color: $swatch__tr-grey-dark;
+		border-color: $swatch__tr-grey-dark;
+		color: $color__white;
+	}
+
+	&.state__focus,
+	&:focus {
+		//TBC
+	}
+
+	&.state__disabled,
+	&:disabled {
+		&,
+		&:hover,
+		&:focus {
+			background-color: $color__white;
+			border-color: $swatch__tr-grey-light;
+			color: $swatch__tr-grey-light;
+		}
+	}
+}
+
+.btn__primary {
+	background-color: $color__mint;
+	border-color: $color__mint;
+	color: $color__white;
+
+	&.state__hover,
+	&:hover {
+		background-color: darken($color__mint, 50%);
+		border-color: darken($color__mint, 50%);
+	}
+
+	&.state__focus,
+	&:focus {
+		//TBC
+	}
+
+	&.state__disabled,
+	&:disabled {
+
+		&,
+		&:hover,
+		&:focus {
+			background-color: $swatch__tr-grey-light;
+			border-color: $swatch__tr-grey-light;
+			color: $color__white;
+		}
+	}
+}
+
+//DEVNOTE: don't really have to declare this as is assumed default style
+// .btn__secondary {
+// 	background-color: $color__white;
+// 	border-color: $swatch__tr-grey-dark;
+// 	color: $swatch__tr-grey-dark;
+
+// 	&.state__hover,
+// 	&:hover {
+// 		background-color: $swatch__tr-grey-dark;
+// 		border-color: $swatch__tr-grey-dark;
+// 		color: $color__white;
+// 	}
+
+// 	&.state__focus,
+// 	&:focus {
+// 		//TBC
+// 	}
+
+// 	&.state__disabled,
+// 	&:disabled {
+
+// 		&,
+// 		&:hover,
+// 		&:focus {
+// 			background-color: $color__white;
+// 			border-color: $swatch__tr-grey-light;
+// 			color: $swatch__tr-grey-light;
+// 		}
+// 	}
+// }

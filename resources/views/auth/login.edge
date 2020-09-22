@@ -3,7 +3,7 @@
 @section('content')
 <div class="row align-items-center justify-content-center">
   <div class="col-5">
-    <h1>Rider Login</h1>
+    <h1>Login</h1>
 
     @if(flashMessage('loginError'))
       <span>{{ flashMessage('LoginError') }}</span>
@@ -12,23 +12,27 @@
     <form action="{{ route('UserController.login') }}" method="POST">
       {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
 
-      <div class="field form-group">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" name="email" value="{{ old('email', '') }}" />
+      <div class="form__field field form-group">
+        <label class="form__control">
+          <span class="form__label">Email</span>
+          <input type="text" name="email" value="{{ old('email', '') }}" />
+        </label>
         @if(hasErrorFor('email'))
           <span>{{ getErrorFor('email')}}</span>
         @endif
       </div>
 
-      <div class="field form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" value="{{ old('password', '') }}" />
+      <div class="form__field field form-group">
+        <label class="form__control">
+          <span class="form__label">Password</span>
+          <input type="password" name="password" value="{{ old('password', '') }}" />
+        </label>
         @if(hasErrorFor('password'))
           <span>{{ getErrorFor('password')}}</span>
         @endif
       </div>
 
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="ui__btn btn__primary">Login</button>
     </form>
   </div>
 </div>

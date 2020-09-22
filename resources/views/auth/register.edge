@@ -8,31 +8,37 @@
     <form action="{{ route('UserController.create') }}" method="POST">
       {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
 
-      <div class="field form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" name="username" value="{{ old('username', '') }}" />
+      <div class="form__field field form-group">
+        <label class="form__control">
+          <span class="form__label">Username</span>
+          <input type="text" name="username" value="{{ old('username', '') }}" />
+        </label>
         @if(hasErrorFor('username'))
           <span>{{ getErrorFor('username')}}</span>
         @endif
       </div>
 
-      <div class="field form-group">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" name="email" value="{{ old('email', '') }}" />
+      <div class="form__field field form-group">
+        <label class="form__control">
+          <span class="form__label">Email</span>
+          <input type="text" name="email" value="{{ old('email', '') }}" />
+        </label>
         @if(hasErrorFor('email'))
           <span>{{ getErrorFor('email')}}</span>
         @endif
       </div>
 
-      <div class="field form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" value="{{ old('password', '') }}" />
+      <div class="form__field field form-group">
+        <label class="form__control">
+          <span class="form__label">Password</span>
+          <input type="password" name="password" value="{{ old('password', '') }}" />
+        </label>
         @if(hasErrorFor('password'))
           <span>{{ getErrorFor('password')}}</span>
         @endif
       </div>
 
-      <button type="submit" class="btn btn-primary">Sign up</button>
+      <button type="submit" class="ui__btn btn__primary">Sign up</button>
     </form>
   </div>
 </div>

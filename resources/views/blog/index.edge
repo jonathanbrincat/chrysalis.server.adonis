@@ -2,9 +2,17 @@
 
 @section('content')
   <div class="container">
-    <div class="row">
+    <!-- {{-- <div class="row">
       <div class="col">
         <p>{{ _('toUpper', 'This response will be mutated by adonis and the sentence will appear uppercase') }}</p>
+      </div>
+    </div> --}} -->
+
+    <div class="row">
+      <div class="col">
+        @if(posts.data.length)
+        @!component('../components/pagination', pagination = posts, request = request, presenter = 'PaginationPresenter')
+        @endif
       </div>
     </div>
 

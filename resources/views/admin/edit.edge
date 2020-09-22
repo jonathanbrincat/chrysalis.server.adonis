@@ -20,7 +20,7 @@
             <p class="form__field">
               <label class="form__control">
                 <span class="form__label">Title</span>
-                <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}" />
+                <input type="text" id="title" name="title" value="{{ post.title }}" />
               </label>
             </p>
           </div>
@@ -29,7 +29,7 @@
             <p class="form__field">
               <label class="form__control">
                 <span class="form__label">Content</span>
-                <input type="text" class="form-control" id="content" name="content" value="{{ post.content }}" />
+                <input type="text" id="content" name="content" value="{{ post.content }}" />
               </label>
             </p>
           </div>
@@ -53,7 +53,7 @@
           <p class="form__field">
             <!-- used to pass the id to the controller but unneccesary as we pass and can grab from uri params -->
             <!-- <input type="hidden" name="id" value={{ postId }} /> -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="ui__btn btn__primary">Submit</button>
           </p>
         </form>
       </div>

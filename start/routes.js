@@ -16,6 +16,12 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+Route.on('/register').render('auth.register')
+Route.post('/register', 'UserController.create').validator('CreateUser')
+Route.on('/login').render('auth.login')
+Route.post('/login', 'UserController.login').validator('LoginUser')
+Route.get('/logout', 'UserController.logout')
+
 Route.get('/', 'PostController.getIndex').as('blog.index')
 Route.get('/post/:id', 'PostController.getPost').as('blog.post')
 Route.get('/post/:id/like', 'PostController.getLike').as('blog.post.like')
@@ -34,11 +40,6 @@ Route.on('/').render('index')
 // Route.get('/', 'PerkController.index')
 // Route.get('/perks/like', 'PerkController.getLikePost')
 
-Route.on('/register').render('auth.register')
-Route.post('/register', 'UserController.create').validator('CreateUser')
-Route.on('/login').render('auth.login')
-Route.post('/login', 'UserController.login').validator('LoginUser')
-Route.get('/logout', 'UserController.logout')
 
 Route.on('/perks/favourites').render('perks.favourites')
 Route.on('/perks/activated').render('perks.activated')

@@ -14,7 +14,7 @@
       <div class="col">
         <header class='ui__toolbar'>
           <p class="ui__field">
-            <a href="{{ route('admin.create') }}" class="btn btn-primary">New Post</a>
+            <a href="{{ route('admin.create') }}" class="ui__btn btn__primary">New Post</a>
           </p>
         </header>
       </div>
@@ -28,10 +28,10 @@
 
           <div class="ui__controlbar">
             <p class="ui__field">
-              <a href="{{ route('admin.edit', { id: post.id }) }}" class="btn btn-primary">Edit</a>
+              <a href="{{ route('admin.edit', { id: post.id }) }}" class="ui__btn">Edit</a>
             </p>
             <p class="ui__field">
-              <a href="{{ route('admin.delete', { id: post.id }) }}" class="btn btn-primary">Delete</a>
+              <a href="{{ route('admin.delete', { id: post.id }) }}" class="ui__btn">Delete</a>
             </p>
           </div>
         </article>

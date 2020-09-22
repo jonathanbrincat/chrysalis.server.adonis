@@ -1,3 +1,20 @@
+@charset "UTF-8";
+
+
+/* =============================================================================
+  Form
+  ========================================================================== */
+form {
+  .state--error {
+    color: $color__red;
+    border-color: $color__red;
+  }
+
+  .state--focus {
+    border-color: $color__grey-dark;
+  }
+}
+
 .fieldset {
     border-top: 1px solid $color__grey-alto;
     margin: ($margin*10) 0;
@@ -7,13 +24,6 @@
         border-top-width: 0;
         padding-top: 0;
     }
-}
-
-.legend {
-    font-size: 26px;
-    font-weight: 500;
-    color: $theme__body-text-light;
-    margin-bottom: $margin*7;
 }
 
 /*
@@ -38,3 +48,73 @@
     }
 }
 */
+
+legend,
+.form__legend {
+  //reset bootstrap
+  font-size: inherit;
+  color: inherit;
+  border: 0 none;
+  margin: 20px 0;
+}
+
+label {
+  cursor: pointer;
+  margin: 20px 0;
+}
+
+button, input, select, option, textarea {
+  &:focus {   outline-color: $theme__primary;}
+}
+
+input {
+  border: 1px solid $swatch__tr-silver;
+  border-radius: 5px; //$borderRadius;
+  color: $color__grey;
+  width: 100%;
+  padding: 15px;
+}
+
+/* bootstrap 5
+.form-control {
+  display: block;
+  min-height: calc(1.5em + .75rem + 2px);
+  font-size: 1rem;
+  line-height: 1.5;
+  background-clip: padding-box;
+  appearance: none;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}*/
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+}
+
+textarea {
+  border: 1px solid $swatch__tr-silver;
+  border-radius: 5px;
+  width: 100%;
+  min-height: 10em;
+  padding: 10px;
+}
+
+input[type="file"] {
+  border: 1px solid $swatch__tr-silver;
+  border-radius: 5px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  background-color: $theme__primary;
+  border-color: $theme__primary;
+  color: $color__white;
+  font-weight: 700;
+  margin: 0 auto;
+  display: block;
+  width: 360px;
+}
+
+select {
+  width: 100%;
+}

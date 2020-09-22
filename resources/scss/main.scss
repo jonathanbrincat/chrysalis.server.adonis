@@ -26,7 +26,7 @@
 //     Base styles
 //     ============================================================================= */
 @import 'styles.main';
-// @import 'styles.form';
+@import 'styles.form';
 
 // @import 'mod.banner';
 // @import 'mod.discover';
@@ -34,6 +34,7 @@
 // /*  =============================================================================
 //     UI components
 //     ============================================================================= */
+@import 'ui.btn';
 @import 'ui.card';
 @import 'ui.tags';
 @import 'ui.pagination';
