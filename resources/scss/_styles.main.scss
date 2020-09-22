@@ -1,6 +1,16 @@
 html, body {
   font-family: Montserrat, Helvetica, arial, sans-serif;
   background-color: whitesmoke;
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#app__body {
+  flex: 1;
 }
 
 /**/
@@ -28,6 +38,11 @@ html, body {
 #app__masthead {
   background-color: #00ccbc;
   color: #394149;
+
+  a:hover,
+  a:focus {
+    color: $color__white;
+  }
 }
 
 .btn {

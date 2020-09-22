@@ -1,31 +1,42 @@
 @layout('_layout/master')
-{{-- @layout('_layout/admin') --}}
 
 @section('content')
-  @if(flashMessage('info'))
-  <div class="row">
-    <div class="col-md-12">
-      <p class="alert alert-info">{{ flashMessage('info') }}</p>
+  <div class="container">
+    @if(flashMessage('info'))
+    <div class="row">
+      <div class="col">
+        <p class="alert alert-info">{{ flashMessage('info') }}</p>
+      </div>
     </div>
-  </div>
-  @endif
+    @endif
 
-  <div class="row">
-    <div class="col-md-12">
-      <a href="{{ route('admin.create') }}" class="btn btn-success">New Post</a>
+    <div class="row">
+      <div class="col">
+        <header class='ui__toolbar'>
+          <p class="ui__field">
+            <a href="{{ route('admin.create') }}" class="btn btn-primary">New Post</a>
+          </p>
+        </header>
+      </div>
     </div>
-  </div>
-  <hr />
 
-  @each(post in posts)
-  <div class="row">
-    <div class="col-md-12">
-      <p>
-        <strong>{{ post.title }}</strong>
-        <a href="{{ route('admin.edit', { id: post.id }) }}">Edit</a>
-        <a href="{{ route('admin.delete', { id: post.id }) }}">Delete</a>
-      </p>
+    <div class="row">
+      @each(post in posts)
+      <div class="col-12">
+        <article class="admin__post">
+          <p>{{ post.title }}</p>
+
+          <div class="ui__controlbar">
+            <p class="ui__field">
+              <a href="{{ route('admin.edit', { id: post.id }) }}" class="btn btn-primary">Edit</a>
+            </p>
+            <p class="ui__field">
+              <a href="{{ route('admin.delete', { id: post.id }) }}" class="btn btn-primary">Delete</a>
+            </p>
+          </div>
+        </article>
+      </div>
+      @endeach
     </div>
   </div>
-  @endeach
 @endsection

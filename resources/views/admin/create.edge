@@ -1,35 +1,52 @@
 @layout('_layout/master')
-{{-- @layout('_layout/admin') --}}
 
 @section('content')
   {{-- @include('partials.errors') --}}
 
-  <div class="row">
-    <div class="col-md-12">
-      <form action="{{ route('admin.create') }}" method="post">
-        {{ csrfField() }}
+  <div class="container">
+    <p>
+      <a href="/admin">Go back</a>
+    </p>
 
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" class="form-control" id="title" name="title" />
-        </div>
+    <hr>
 
-        <div class="form-group">
-          <label for="content">Content</label>
-          <input type="text" class="form-control" id="content" name="content" />
-        </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form action="{{ route('admin.create') }}" method="post">
+          {{ csrfField() }}
 
-        @each(tag in tags)
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"  name="tags[]" value="{{ tag.id }}" />
-            {{ tag.name }}
-          </label>
-        </div>
-        @endeach
+          <div class="form-group">
+            <p class="form__field">
+              <label class="form__control">
+                <span>Title</span>
+                <input type="text" class="form-control" id="title" name="title" />
+              </label>
+            </p>
+          </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+          <div class="form-group">
+            <p class="form__field">
+              <label class="form__control">
+                <span>Content</span>
+              <input type="text" class="form-control" id="content" name="content" />
+              </label>
+            </p>
+          </div>
+
+          @each(tag in tags)
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"  name="tags[]" value="{{ tag.id }}" />
+              {{ tag.name }}
+            </label>
+          </div>
+          @endeach
+
+          <p class="form__field">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </p>
+        </form>
+      </div>
     </div>
   </div>
 @endsection
