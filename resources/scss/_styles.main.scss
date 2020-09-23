@@ -93,6 +93,14 @@ body {
   display: block;
 }
 
+.ui__tag {
+  border-radius: 3px;
+  background-color: $color__black;
+  color: $color__white;
+  padding: 3px 6px;
+  margin: 0 3px;
+}
+
 /**/
 
 .perk__listing a:hover {

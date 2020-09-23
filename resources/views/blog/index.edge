@@ -9,8 +9,10 @@
     </div> --}} -->
 
     <div class="row">
+      @if(posts.data.length)
       <div class="col-12">
-        @if(posts.data.length)
+
+        @if(posts.total > 1)
         @!component('../components/pagination', pagination = posts, request = request, presenter = 'PaginationPresenter')
         @endif
 
@@ -31,14 +33,16 @@
             </p>
           </div>
           <footer class="card__footer">
+            @if(post.tags.length)
             <dl class="ui__tags">
               <dt class="tags__title">Tags</dt>
               <dd class="tags__item">
                 @each(tag in post.tags)
-                  - {{ tag.name }} -
+                <span class="ui__tag">{{ tag.name }}</span>
                 @endeach
               </dd>
             </dl>
+            @endif
 
             <p>
               <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hand-thumbs-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -50,12 +54,18 @@
         </article>
         @endeach
 
+        @if(posts.total > 1)
         <!-- DEVNOTE: Generated pagination controls is a Laravel only feature. Not built into adonis. -->
         <!-- https://mauricius.dev/effective-pagination-in-adonisjs/ -->
-        @if(posts.data.length)
         @!component('../components/pagination', pagination = posts, request = request, presenter = 'PaginationPresenter')
         @endif
       </div>
+
+      @else
+      <div class="col-12">
+        <h2>No posts have been made</h2>
+      </div>
+      @endif
     </div>
   </div>
 @endsection
