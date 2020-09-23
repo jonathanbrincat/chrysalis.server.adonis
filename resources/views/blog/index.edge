@@ -12,7 +12,7 @@
       @if(posts.data.length)
       <div class="col-12">
 
-        @if(posts.total > 1)
+        @if(posts.lastPage > 1)
         @!component('../components/pagination', pagination = posts, request = request, presenter = 'PaginationPresenter')
         @endif
 
@@ -25,6 +25,7 @@
           <div class="card__body">
             <p class="card__creation">{{ post.created_at }}</p>
             <h2 class="card__title">{{ post.title }}</h2>
+            {{-- <h4>{{ post.titleAndDate }}</h4> --}}
 
             <p class="post__synopsis">{{ post.content }}</p>
 
@@ -54,7 +55,7 @@
         </article>
         @endeach
 
-        @if(posts.total > 1)
+        @if(posts.lastPage > 1)
         <!-- DEVNOTE: Generated pagination controls is a Laravel only feature. Not built into adonis. -->
         <!-- https://mauricius.dev/effective-pagination-in-adonisjs/ -->
         @!component('../components/pagination', pagination = posts, request = request, presenter = 'PaginationPresenter')

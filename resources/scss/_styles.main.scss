@@ -33,6 +33,15 @@ body {
   background-color: #394149;
   color: $color__white;
   padding: 10px;
+
+  & > .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  p {
+    margin: 0;
+  }
 }
 
 #app__masthead {
@@ -99,6 +108,10 @@ body {
   color: $color__white;
   padding: 3px 6px;
   margin: 0 3px;
+
+  &:before {
+    content: "#";
+  }
 }
 
 /**/

@@ -22,7 +22,7 @@ Route.on('/login').render('auth.login')
 Route.post('/login', 'UserController.login').validator('LoginUser')
 Route.get('/logout', 'UserController.logout')
 
-Route.get('/', 'PostController.getIndex').as('blog.index')
+Route.get('/', 'PostController.getPosts').as('blog.index')
 Route.get('/post/:id', 'PostController.getPost').as('blog.post')
 Route.get('/post/:id/like', 'PostController.setLike').as('blog.post.like')
 
@@ -72,3 +72,7 @@ Route.get('/jobs/delete/:id', 'JobController.delete')
 // Route.get('/test/:uid', ({params}) => `This is id ${params.uid}`)
 
 Route.get('/profile', 'ProfileController.index')
+
+// Must be logged in
+// Route.group( () => {
+// }).middleware(["auth"]);

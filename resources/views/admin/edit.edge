@@ -29,24 +29,28 @@
             <p class="form__field">
               <label class="form__control">
                 <span class="form__label">Content</span>
-                <input type="text" id="content" name="content" value="{{ post.content }}" />
+                <textarea id="content" name="content">{{ post.content }}</textarea>
               </label>
             </p>
           </div>
 
           @each(tag in tags)
+          {{-- <pre>{{ json(tags) }}</pre> --}}
+
           <div class="checkbox">
-            <label class="form__control">
-              <!--{{-- <input type="checkbox"  name="tags[]" value="{{ tag.id }}" {{ post.tags.contains(tag.id) ? 'checked' : '' }} />  --}}--><!-- might have to use lodash/underscore/collectjs to perform these operations -->
-              <!-- DEVNOTE: might be able to delimit with query in PostController method using post.tags.query().has(tag.id)  similar to .withCount() -->
-              <input type="checkbox"  name="tags[]" value="{{ tag.id }}" />
-              <span>post_id = {{ post.id }}</span> |
-              <span>tag_id = {{ tag.id }}</span> |
-              isArrayLike? {{ _('isArrayLike', post.tags ) }}
-              {{ _('find', post.tags, { 'tag_id': tag.id } ) }}
-              {{ _('includes', post.tags, tag.id) }}
-              {{ tag.name }}
-            </label>
+            <p class="form__field">
+              <label class="form__control">
+                <input type="checkbox" name="tags[]" value="{{ tag.id }}" {{ postTagsId.includes(tag.id) ? 'checked' : '' }} />
+
+                {{--
+                <span>post_id={{ post.id }}</span>
+                <span>tag={{ tag.id }}</span>
+                <span>{{ postTagsId.includes(tag.id) }}</span>
+                --}}
+
+                <span>{{ tag.name }}</span>
+              </label>
+            </p>
           </div>
           @endeach
 

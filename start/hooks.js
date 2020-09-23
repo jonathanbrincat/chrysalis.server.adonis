@@ -17,4 +17,8 @@ hooks.after.providersBooted(() => {
     return [...Array(size).keys()].map(i => i + start)
     //return Array.from({length: size}, (a, i) => i + start)
   })*/
+
+  View.global('json', (obj) => {
+    return JSON.stringify(obj);
+  })
 })

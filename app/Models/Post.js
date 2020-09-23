@@ -57,6 +57,15 @@ class Post extends Model {
   getTitle(value) {
     return value.toUpperCase()
   }
+
+  // COMPUTED EXAMPLE
+  static get computed () {
+    return ['titleAndDate', 'foobar']
+  }
+
+  getTitleAndDate({ title, updated_at }) {
+    return `${title} ${updated_at}`
+  }
 }
 
 module.exports = Post

@@ -21,6 +21,8 @@ class UserController {
       return response.redirect('/')
 
     }catch(error) {
+      // session.flashExcept(["password"]); //https://howtocode.io/adonis-js-fundamentals-5-user-authentication/
+
       session.flash({ loginError: 'These credentials do now work'})
 
       return response.redirect('/')

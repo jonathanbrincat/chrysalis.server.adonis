@@ -7,28 +7,11 @@ const TagModel = use('App/Models/Tag')
 const { validate } = use('Validator')
 
 class PostController {
-  async getIndex({ request, response, view }) {
+  async getPosts({ request, response, view }) {
     // const posts = await PostModel.all()
     // const posts = await PostModel.query().orderBy('created_at', 'desc').withCount('likes').fetch()
-
-    // https://github.com/adonisjs/lucid/issues/347
-    // https://forum.adonisjs.com/t/please-help-me-with-adonisjs-pagination/4648
-    // https://mauricius.dev/effective-pagination-in-adonisjs/
     const index = request.get().page || 1 //take from querystring param if it exists
-    const posts = await PostModel.query().orderBy('created_at', 'desc').with('tags').withCount('likes').paginate(index, 5) // DEVNOTE: with adonis pagination. paginate(page to fetch results, page size limit) // need to provide the page to get value e.g. example.com/articles?page=2.
-
-    //example 1
-    /*const foo = await PostModel.find(1);
-    const bar = await foo.tags().fetch();
-    console.log('tags :: ', bar.toJSON());*/
-
-    //example 2
-    /*const foo = await PostModel.query().with('tags').fetch();
-    console.log('tags :: ', foo.toJSON());*/
-
-    // for(let post of posts.toJSON().data) {
-    //   console.log('jb :: ', post);
-    // };
+    const posts = await PostModel.query().orderBy('created_at', 'desc').with('tags').withCount('likes').paginate(index, 5)
 
     return view.render('blog.index', {
       posts: posts.toJSON()
@@ -78,12 +61,17 @@ class PostController {
   async getAdminEdit({ request, response, view, params }) {
     const post = await PostModel.find(params.id)
 
-    const tags = await TagModel.all()
+    const postTags = await post.tags().fetch()
+    // console.log('postTags :: ', postTags.toJSON());
+
+    const tagsModel = await TagModel.all()
 
     return view.render('admin.edit', {
       post: post.toJSON(),
       postId: params.id,
-      tags: tags.toJSON()
+      // postTags: postTags.toJSON(),
+      postTagsId: postTags.toJSON().map( ({ id }) => id ),
+      tags: tagsModel.toJSON()
     })
   }
 
@@ -98,6 +86,11 @@ class PostController {
     // if(!auth.check()) {
     //   return response.redirect('back')
     // }
+
+    if(validation.fails()) {
+      session.withErrors(validation.messages()).flashAll()
+      return response.redirect('back')
+    }
 
     const Post = new PostModel()
 
@@ -119,6 +112,11 @@ class PostController {
     //   title: 'required|min:5',
     //   content: 'required|min:10',
     // })
+
+    // if(validation.fails()) {
+    //   session.withErrors(validation.messages()).flashAll()
+    //   return response.redirect('back')
+    // }
 
     const post = await PostModel.find(params.id)
 
