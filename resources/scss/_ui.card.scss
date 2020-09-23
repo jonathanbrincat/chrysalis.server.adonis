@@ -25,12 +25,18 @@
   grid-area: footer;
   padding: 12px 24px;
   display: flex;
+
+  dl, p {
+    margin: 0;
+  }
 }
 
 .card__title {
   font-size: 28px;
+  margin: 0;
 }
 
 .card__creation {
   font-size: 12px;
+  margin: 0;
 }

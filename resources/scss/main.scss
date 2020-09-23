@@ -38,30 +38,3 @@
 @import 'ui.card';
 @import 'ui.tags';
 @import 'ui.pagination';
-
-.admin__post {
-  background-color: $color__white;
-  display: flex;
-  justify-content: space-between;
-  margin: 5px 0;
-  padding: 0 10px;
-}
-
-.ui__toolbar {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px;
-}
-
-.ui__controlbar {
-  display: flex;
-}
-
-.ui__field {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.form__control {
-  display: block;
-}

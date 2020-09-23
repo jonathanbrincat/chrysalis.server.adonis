@@ -51,7 +51,7 @@ Route.get('/perks/edit/:uid', 'PerkController.edit')
 Route.put('/perks/:uid', 'PerkController.editSave')
 Route.delete('/perks/:uid', 'PerkController.delete')
 Route.get('/perks/:uid', 'PerkController.details') //DEVNOTE: keep bottom of route deinitions otherwise router will intercept and assign wrong controller
-
+*/
 
 Route.get('/jobs', 'JobController.index')
 Route.get('/jobs/create', 'JobController.userIndex')
@@ -59,6 +59,7 @@ Route.post('/jobs/create', 'JobController.create').validator('CreateJob')
 Route.get('/jobs/edit/:id', 'JobController.edit')
 Route.post('/jobs/save/:id', 'JobController.createSave').validator('CreateJob')
 Route.get('/jobs/delete/:id', 'JobController.delete')
+
 
 // Route.post('/jobs/create', 'JobController.create').validator('CreateJob')
 // Route.group( () => {
@@ -71,4 +72,3 @@ Route.get('/jobs/delete/:id', 'JobController.delete')
 // Route.get('/test/:uid', ({params}) => `This is id ${params.uid}`)
 
 Route.get('/profile', 'ProfileController.index')
-*/

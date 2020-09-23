@@ -33,11 +33,11 @@ $image-path:                    '../img/';
     ============================================================================= */
 $page-width:                    1200px                          !default;
 
-$margin:                        6px                             !default;
-$margin-percent:                ($margin/$page-width)*100        !default;
+$margin:                        16px                            !default;
+$margin-percent:                ($margin/$page-width)*100       !default;
 
 $padding:                       20px                            !default;
-$padding-percent:               ($padding/$page-width)*100       !default;
+$padding-percent:               ($padding/$page-width)*100      !default;
 
 $base__spacing:                 0.6rem                          !default; //6px - DEVNOTE: mixin with < ie9 fallback in px;
 

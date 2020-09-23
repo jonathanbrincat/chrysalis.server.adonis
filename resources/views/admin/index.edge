@@ -4,25 +4,21 @@
   <div class="container">
     @if(flashMessage('info'))
     <div class="row">
-      <div class="col">
+      <div class="col-12">
         <p class="alert alert-info">{{ flashMessage('info') }}</p>
       </div>
     </div>
     @endif
 
     <div class="row">
-      <div class="col">
+      <div class="col-12">
         <header class='ui__toolbar'>
           <p class="ui__field">
             <a href="{{ route('admin.create') }}" class="ui__btn btn__primary">New Post</a>
           </p>
         </header>
-      </div>
-    </div>
 
-    <div class="row">
-      @each(post in posts)
-      <div class="col-12">
+        @each(post in posts)
         <article class="admin__post">
           <p>{{ post.title }}</p>
 
@@ -35,8 +31,8 @@
             </p>
           </div>
         </article>
+        @endeach
       </div>
-      @endeach
     </div>
   </div>
 @endsection

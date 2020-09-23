@@ -50,14 +50,47 @@ body {
   border-radius: 1px;
 }
 
-.btn-light {
-  background-color: #fff;
-  color: #00ccbc;
+/**/
+
+.navbar-nav {
+  margin: 0;
 }
 
-.btn-dark {
-  background-color: #00ccbc;
-  color: #fff;
+.nav-item {
+  margin: 0;
+}
+
+.post__synopsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.admin__post {
+  background-color: $color__white;
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+  padding: 0 18px;
+}
+
+.ui__toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px;
+}
+
+.ui__controlbar {
+  display: flex;
+}
+
+.ui__field {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.form__control {
+  display: block;
 }
 
 /**/

@@ -35,35 +35,33 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Comfortaa', sans-serif;
     font-weight: 300;
-    line-height: 1.25;
-    margin: ($margin * 3) 0;
+    line-height: 1.6;
+    margin: ($margin * 2) 0;
 }
 
 h1 {
     font-size: 42px;
     font-weight: 300;
-    line-height: 1.55;
+    line-height: 1.85;
     letter-spacing: -0.7px;
 }
 
 h2 {
     font-size: 26px;
     font-weight: 500;
-    line-height: 1.35;
+    line-height: 1.65;
     letter-spacing: -0.6px;
 }
 
 h3 {
     font-size: 20px;
     font-weight: 500;
-    line-height: 1.4;
     letter-spacing: -0.5px;
 }
 
 h4 {
     font-size: 15px;
     font-weight: 700;
-    line-height: 1.33;
 }
 
 
@@ -79,15 +77,15 @@ img {
     height: auto;
 }
 
-p {
+p, pre {
     font-size: inherit;
-    line-height: 1.25;
+    line-height: 1.6;
     margin: ($margin * 2) 0;
 }
 
 ul, ol, dl {
     font-size: inherit;
-    line-height: 1.25;
+    line-height: 1.6;
     list-style: none;
     padding: 0;
     margin: ($margin * 2) 0;
