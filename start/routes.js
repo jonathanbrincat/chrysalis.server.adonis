@@ -24,7 +24,7 @@ Route.get('/logout', 'UserController.logout')
 
 Route.get('/', 'PostController.getIndex').as('blog.index')
 Route.get('/post/:id', 'PostController.getPost').as('blog.post')
-Route.get('/post/:id/like', 'PostController.getLike').as('blog.post.like')
+Route.get('/post/:id/like', 'PostController.setLike').as('blog.post.like')
 
 Route.group( () => {
   Route.get('', 'PostController.getAdminIndex').as('admin.index')

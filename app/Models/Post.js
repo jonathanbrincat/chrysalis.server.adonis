@@ -31,8 +31,8 @@ class Post extends Model {
   }*/
 
   likes() {
-    // return this.hasMany(LikeModel);
-    return this.hasMany('App/Models/Like')
+    return this.hasMany(LikeModel)
+    // return this.hasMany('App/Models/Like')
   }
   //.getCount()
 

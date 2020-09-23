@@ -42,7 +42,7 @@ class PostController {
     })
   }
 
-  async getLike({ request, response, view, params }) {
+  async setLike({ request, response, view, params }) {
     const post = await PostModel.find(params.id)
 
     const like = new LikeModel()
