@@ -7,6 +7,24 @@
         <p>{{ _('toUpper', 'This response will be mutated by adonis and the sentence will appear uppercase') }}</p>
       </div>
     </div> --}} -->
+    <div class="row">
+      <div class="col-12">
+        <form action="{{ route('search') }}" method="post" role="search">
+          {{ csrfField() }}
+
+          <p class="form__field">
+            <label class="form__control">
+              <input type="text" name="q" value="{{ request.input('q') || '' }}" placeholder="Search posts..." />
+              {{-- <input type="text" name="q" value="{{ old('q', '') }}" placeholder="Search posts..." /> --}}
+            </label>
+          </p>
+
+          <p class="form__field">
+            <button type="submit" class="ui__btn btn__primary">Submit</button>
+          </p>
+        </form>
+      </div>
+    </div>
 
     <div class="row">
       @if(posts.data.length)

@@ -4,14 +4,18 @@
   {{-- @include('partials.errors') --}}
 
   <div class="container">
-    <p>
-      <a href="/admin">Go back</a>
-    </p>
+    <div class="row">
+      <div class="col-12">
+        <p>
+          <a href="/admin">Go back</a>
+        </p>
 
-    <hr>
+        <hr>
+      </div>
+    </div>
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-12">
         <form action="{{ route('admin.update', { id: post.id }) }}" method="post">
         <!--{{-- <form action="{{ route('PostController.postAdminUpdate', { id: post.id }) }}" method="post"> --}}-->
           {{ csrfField() }}

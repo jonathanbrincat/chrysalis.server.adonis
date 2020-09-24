@@ -1,0 +1,25 @@
+@layout('_layout/master')
+
+@section('content')
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p>
+          <a href="/">Go back</a>
+        </p>
+
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h1>Search results</h1>
+
+        @each(post in posts)
+        <p>{{ json(post) }}</p>
+        @endeach
+      </div>
+    </div>
+  </div>
+@endsection

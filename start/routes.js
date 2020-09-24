@@ -1,5 +1,8 @@
 'use strict'
 
+const Database = use('Database')
+const PostModel = use('App/Models/Post')
+
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -25,6 +28,33 @@ Route.get('/logout', 'UserController.logout')
 Route.get('/', 'PostController.getPosts').as('blog.index')
 Route.get('/post/:id', 'PostController.getPost').as('blog.post')
 Route.get('/post/:id/like', 'PostController.setLike').as('blog.post.like')
+
+Route.post('/search', async ({request, response, view}) => {
+  const q = request.input('q')
+  console.log('search endpoint hit :: ', q && q.length);
+
+  if(q && q.length > 0) {
+    console.log('search endpoint hit :: ', q);
+
+    const posts = await PostModel.query().where('title', 'LIKE', '%'+q+'%').fetch() //lucid ORM / knex.js
+    // const posts = await PostModel.query().whereRaw('title like %?%', [q]).fetch() //lucid ORM / knex.js
+    // const posts = await Database.select('*').from('posts').where('title', 'LIKE', '%'+q+'%') //raw + sql
+    console.log(posts.toJSON());
+
+    return view.render('blog.search', {
+      posts: posts.toJSON()
+    })
+
+    // return response.status(200).json({
+    //   posts: posts
+    // })
+  }
+
+  return view.render('blog.search', {
+    posts: []
+  })
+
+}).as('search')
 
 Route.group( () => {
   Route.get('', 'PostController.getAdminIndex').as('admin.index')

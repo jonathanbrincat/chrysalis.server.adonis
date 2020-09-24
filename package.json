@@ -5,11 +5,14 @@
   "description": "The fullstack application boilerplate for Adonisjs",
   "main": "index.js",
   "scripts": {
-    "start": "run-p start:server start:gulp",
+    "start": "run-p start:adonis start:gulp",
+    "start:adonis": "adonis serve --dev",
     "start:server": "nodemon --inspect server.js",
     "start:gulp": "gulp",
     "start:webpack": "webpack --watch",
-    "test": "node ace test"
+    "start:laravel-mix": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js --watch",
+    "test": "node ace test",
+    "build:laravel-mix": "NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "keywords": [
     "adonisjs",
@@ -33,25 +36,24 @@
     "adonis-pug": "^4.2.0",
     "bootstrap": "^5.0.0-alpha1",
     "lodash": "^4.17.20",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "webpack": "^5.0.0-beta.33"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "bootstrap-sass": "^3.4.1",
-    "css-loader": "^4.2.2",
     "cssnano": "^4.1.10",
     "gulp": "^4.0.2",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
-    "laravel-mix": "^5.0.5",
-    "mini-css-extract-plugin": "^0.11.0",
+    "laravel-mix": "^6.0.0-alpha.1",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
-    "sass-loader": "^10.0.2",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.44.1"
+    "resolve-url-loader": "^3.1.0",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.12"
   },
   "autoload": {
     "App": "./app"

@@ -1,5 +1,6 @@
 // DEVNOTE: can not use because of https://github.com/JeffreyWay/laravel-mix/issues/2126
 // extract-text-webpack-plugin is deprecated for extracting the output to separate file but they won't support mini-css-extract-plugin
+// attempting to rememdy by jumping to laravel-mix v6. It's an alpha but the author will be forced to address the deprecation UPDATE: looks like laravel-mix v5 was also using an old version of webpack. breaking changes in v6.
 
 let mix = require('laravel-mix');
 
@@ -58,10 +59,18 @@ let mix = require('laravel-mix');
 // "start:webpack": "webpack --config=node_modules/laravel-mix/setup/webpack.config.js --watch",
 
 mix.webpackConfig({
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'resources'),
+      '~': path.resolve(__dirname, 'node_modules')
+    }
+  },
+
   watchOptions: {
-    ignored: /node_modules/
+    ignored: ['node_modules/**']
   }
 })
 
-mix.js('resources/js/foo.js', 'public/js')
-  .sass('resources/scss/foo.scss', 'public/css');
+mix.setPublicPath('public')
+  .js('resources/js/main.js', 'public/scripts')
+  .sass('resources/scss/main.scss', 'public/styles');

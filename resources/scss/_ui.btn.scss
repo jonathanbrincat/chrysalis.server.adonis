@@ -9,15 +9,15 @@
 @charset "UTF-8";
 
 
-@mixin state-hover() {
+@mixin state--hover() {
 
 }
 
-@mixin state-focus() {
+@mixin state--focus() {
 
 }
 
-@mixin state-disabled() {
+@mixin state--disabled() {
 
 }
 
@@ -148,19 +148,16 @@ p.ui__btn, li.ui__btn {
 	border-color: $swatch__tr-grey-dark;
 	color: $swatch__tr-grey-dark;
 
-	&.state__hover,
 	&:hover {
 		background-color: $swatch__tr-grey-dark;
 		border-color: $swatch__tr-grey-dark;
 		color: $color__white;
 	}
 
-	&.state__focus,
 	&:focus {
 		//TBC
 	}
 
-	&.state__disabled,
 	&:disabled {
 		&,
 		&:hover,
@@ -177,18 +174,16 @@ p.ui__btn, li.ui__btn {
 	border-color: $color__mint;
 	color: $color__white;
 
-	&.state__hover,
 	&:hover {
-		background-color: darken($color__mint, 50%);
-		border-color: darken($color__mint, 50%);
+		background-color: darken($color__mint, 5%);
+		border-color: darken($color__mint, 5%);
+    color: $color__white;
 	}
 
-	&.state__focus,
 	&:focus {
 		//TBC
 	}
 
-	&.state__disabled,
 	&:disabled {
 
 		&,
@@ -207,19 +202,16 @@ p.ui__btn, li.ui__btn {
 // 	border-color: $swatch__tr-grey-dark;
 // 	color: $swatch__tr-grey-dark;
 
-// 	&.state__hover,
 // 	&:hover {
 // 		background-color: $swatch__tr-grey-dark;
 // 		border-color: $swatch__tr-grey-dark;
 // 		color: $color__white;
 // 	}
 
-// 	&.state__focus,
 // 	&:focus {
 // 		//TBC
 // 	}
 
-// 	&.state__disabled,
 // 	&:disabled {
 
 // 		&,

@@ -10,7 +10,8 @@ class PostsSchema extends Schema {
       table.timestamps()
       table.string('title')
       table.text('content')
-      table.integer('user_id')
+      table.integer('user_id').unsigned()
+      table.foreign('user_id').references('users.id').onDelete('cascade') //when delete a user. the posts associated with that user are deleted too
     })
   }
 

@@ -10,7 +10,8 @@ class JobsSchema extends Schema {
       table.string('title')
       table.string('link')
       table.string('description')
-      table.integer('user_id')
+      table.integer('user_id').unsigned()
+      table.foreign('user_id').references('users.id')
       table.timestamps()
     })
   }
