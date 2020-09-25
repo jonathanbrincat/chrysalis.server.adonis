@@ -19,12 +19,14 @@ class PostController {
     })
   }
 
-  async getAdminIndex({ request, response, view }) {
+  async getAdminPosts({ request, response, view, auth }) {
     // const posts = await PostModel.all()
     const posts = await PostModel.query().orderBy('title', 'asc').fetch()
+    const userPosts = await auth.user.posts().fetch()
 
     return view.render('admin.index', {
-      posts: posts.toJSON()
+      posts: posts.toJSON(),
+      userPosts: userPosts.toJSON()
     })
   }
 
@@ -101,6 +103,12 @@ class PostController {
     // await auth.user.posts().save(Post)
 
     await Post.tags().attach(request.input('tags') === null ? [] : request.input('tags'))
+
+    const userPost = request.all();
+    await auth.user.posts().create({
+      title: userPost.title,
+      content: userPost.content,
+    })
 
     session.flash({ info: 'Your post has been created'})
 

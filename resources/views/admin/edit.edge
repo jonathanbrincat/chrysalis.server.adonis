@@ -16,6 +16,10 @@
 
     <div class="row">
       <div class="col-12">
+        @if(flashMessage('info'))
+          <span>{{ flashMessage('info') }}</span>
+        @endif
+
         <form action="{{ route('admin.update', { id: post.id }) }}" method="post">
         <!--{{-- <form action="{{ route('PostController.postAdminUpdate', { id: post.id }) }}" method="post"> --}}-->
           {{ csrfField() }}
@@ -26,6 +30,9 @@
                 <span class="form__label">Title</span>
                 <input type="text" id="title" name="title" value="{{ post.title }}" />
               </label>
+              @if(hasErrorFor('title'))
+                <span>{{ getErrorFor('title')}}</span>
+              @endif
             </p>
           </div>
 
@@ -35,6 +42,9 @@
                 <span class="form__label">Content</span>
                 <textarea id="content" name="content">{{ post.content }}</textarea>
               </label>
+              @if(hasErrorFor('content'))
+                <span>{{ getErrorFor('content')}}</span>
+              @endif
             </p>
           </div>
 

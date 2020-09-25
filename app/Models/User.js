@@ -35,16 +35,12 @@ class User extends Model {
     return this.hasMany('App/Models/Token')
   }
 
-  jobs() {
-    return this.hasMany('App/Models/Job') //every user can have many jobs
+  posts() {
+    return this.hasMany('App/Models/Post') //every user can have many posts
   }
 
   profile() {
     return this.hasOne('App/Models/Profile') //every user can have one profile
-  }
-
-  posts() {
-    return this.hasMany('App/Models/Post')
   }
 }
 

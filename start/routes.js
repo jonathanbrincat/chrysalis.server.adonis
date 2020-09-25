@@ -1,6 +1,6 @@
 'use strict'
 
-const Database = use('Database')
+// const Database = use('Database')
 const PostModel = use('App/Models/Post')
 
 /*
@@ -28,6 +28,8 @@ Route.get('/logout', 'UserController.logout')
 Route.get('/', 'PostController.getPosts').as('blog.index')
 Route.get('/post/:id', 'PostController.getPost').as('blog.post')
 Route.get('/post/:id/like', 'PostController.setLike').as('blog.post.like')
+
+Route.get('/profile', 'ProfileController.index')
 
 Route.post('/search', async ({request, response, view}) => {
   const q = request.input('q')
@@ -57,19 +59,18 @@ Route.post('/search', async ({request, response, view}) => {
 }).as('search')
 
 Route.group( () => {
-  Route.get('', 'PostController.getAdminIndex').as('admin.index')
+  Route.get('', 'PostController.getAdminPosts').as('admin.index')
   Route.get('create', 'PostController.getAdminCreate').as('admin.create')
   Route.post('create', 'PostController.postAdminCreate').as('admin.create')
   Route.get('delete/:id', 'PostController.getAdminDelete').as('admin.delete')
   Route.get('edit/:id', 'PostController.getAdminEdit').as('admin.edit')
   Route.post('edit/:id', 'PostController.postAdminUpdate').as('admin.update')
-}).prefix('/admin/')
+}).prefix('/admin/')//.auth() // DEVNOTE: you can chain and add middleware. in this instance calling auth will restrict access to these routes
 
 /*
 Route.on('/').render('index')
 // Route.get('/', 'PerkController.index')
 // Route.get('/perks/like', 'PerkController.getLikePost')
-
 
 Route.on('/perks/favourites').render('perks.favourites')
 Route.on('/perks/activated').render('perks.activated')
@@ -82,26 +83,6 @@ Route.put('/perks/:uid', 'PerkController.editSave')
 Route.delete('/perks/:uid', 'PerkController.delete')
 Route.get('/perks/:uid', 'PerkController.details') //DEVNOTE: keep bottom of route deinitions otherwise router will intercept and assign wrong controller
 */
-
-Route.get('/jobs', 'JobController.index')
-Route.get('/jobs/create', 'JobController.userIndex')
-Route.post('/jobs/create', 'JobController.create').validator('CreateJob')
-Route.get('/jobs/edit/:id', 'JobController.edit')
-Route.post('/jobs/save/:id', 'JobController.createSave').validator('CreateJob')
-Route.get('/jobs/delete/:id', 'JobController.delete')
-
-
-// Route.post('/jobs/create', 'JobController.create').validator('CreateJob')
-// Route.group( () => {
-//   Route.get('edit/:id', 'JobController.edit')
-//   Route.post('save/:id', 'JobController.createSave').validator('CreateJob')
-//   Route.get('delete/:id', 'JobController.delete')
-// }).prefix('/jobs/')
-// }).prefix('/jobs/').auth() // DEVNOTE: you can chain and add middleware. in this instance calling auth will restrict access to these routes
-
-// Route.get('/test/:uid', ({params}) => `This is id ${params.uid}`)
-
-Route.get('/profile', 'ProfileController.index')
 
 // Must be logged in
 // Route.group( () => {

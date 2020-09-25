@@ -1,11 +1,11 @@
 'use strict'
 
-class CreateJob {
-  get rules() {
+class Post {
+  get rules () {
     return {
       // validation rules
       title: 'required',
-      link: 'required',
+      content: 'required',
     }
   }
 
@@ -23,4 +23,4 @@ class CreateJob {
   }
 }
 
-module.exports = CreateJob
+module.exports = Post

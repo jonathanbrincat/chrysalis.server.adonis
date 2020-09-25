@@ -14,9 +14,25 @@
       <div class="col-12">
         <header class='ui__toolbar'>
           <p class="ui__field">
-            <a href="{{ route('admin.create') }}" class="ui__btn btn__primary">New Post</a>
+            <a class="ui__btn btn__primary" href="{{ route('admin.create') }}" >New Post</a>
           </p>
         </header>
+
+        <h2>My Posts</h2>
+        @each(post in userPosts)
+        <article class="admin__post">
+          <p>{{ post.title }}</p>
+          <p>{{ post.content }}</p>
+
+          <div class="ui__controlbar">
+            <p class="ui__field">
+              <a class="ui__btn" href="{{ route('admin.edit', { id: post.id}) }}">Edit</a>
+            </p>
+          </div>
+        </article>
+        @endeach
+
+        <h2>All Posts</h2>
 
         @each(post in posts)
         <article class="admin__post">
@@ -24,10 +40,11 @@
 
           <div class="ui__controlbar">
             <p class="ui__field">
-              <a href="{{ route('admin.edit', { id: post.id }) }}" class="ui__btn">Edit</a>
+              <a class="ui__btn" href="{{ route('admin.edit', { id: post.id }) }}">Edit</a>
             </p>
             <p class="ui__field">
-              <a href="{{ route('admin.delete', { id: post.id }) }}" class="ui__btn">Delete</a>
+              <a class="ui__btn" href="{{ route('admin.delete', { id: post.id }) }}">Delete</a>
+              {{-- <a href="{{ route('PostController.getAdminDelete', { id: post.id }) }}" class="ui__btn">Delete</a> --}}
             </p>
           </div>
         </article>

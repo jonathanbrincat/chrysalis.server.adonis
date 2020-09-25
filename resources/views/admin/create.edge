@@ -16,6 +16,10 @@
 
     <div class="row">
       <div class="col-12">
+        @if(flashMessage('info'))
+          <span>{{ flashMessage('info') }}</span>
+        @endif
+
         <form action="{{ route('admin.create') }}" method="post">
           {{ csrfField() }}
 
@@ -25,6 +29,9 @@
                 <span>Title</span>
                 <input type="text" id="title" name="title" />
               </label>
+              @if(hasErrorFor('title'))
+                <span>{{ getErrorFor('title')}}</span>
+              @endif
             </p>
           </div>
 
@@ -34,6 +41,9 @@
                 <span>Content</span>
                 <textarea id="content" name="content" ></textarea>
               </label>
+              @if(hasErrorFor('content'))
+                <span>{{ getErrorFor('content')}}</span>
+              @endif
             </p>
           </div>
 
