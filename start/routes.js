@@ -63,20 +63,8 @@ Route.group( () => {
   Route.get('create', 'PostController.getAdminCreate').as('admin.create')
   Route.post('create', 'PostController.postAdminCreate').as('admin.create')
   Route.get('delete/:id', 'PostController.getAdminDelete').as('admin.delete')
+  // Route.delete('delete/:id', 'PostController.getAdminDelete')
   Route.get('edit/:id', 'PostController.getAdminEdit').as('admin.edit')
   Route.post('edit/:id', 'PostController.postAdminUpdate').as('admin.update')
+  // Route.put('/edit/:id', 'PostController.postAdminUpdate')
 }).prefix('/admin/')//.auth() //.middleware(["auth"]) // DEVNOTE: you can chain and add middleware. in this instance calling auth will restrict access to these routes
-
-/*
-Route.on('/').render('index')
-// Route.get('/', 'PerkController.index')
-// Route.get('/perks/like', 'PerkController.getLikePost')
-
-Route.get('/perks', 'PerkController.index')
-Route.get('/perks/create', 'PerkController.create')
-Route.post('/perks', 'PerkController.createSave')
-Route.get('/perks/edit/:uid', 'PerkController.edit')
-Route.put('/perks/:uid', 'PerkController.editSave')
-Route.delete('/perks/:uid', 'PerkController.delete')
-Route.get('/perks/:uid', 'PerkController.details') //DEVNOTE: keep bottom of route deinitions otherwise router will intercept and assign wrong controller
-*/

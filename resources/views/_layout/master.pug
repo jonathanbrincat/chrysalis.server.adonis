@@ -4,17 +4,20 @@ head
   meta(charset="UTF-8")
   title Adonis 4.0
 
-  != style('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
-  != style('styles')
-  //- != style('bar') }}
-  //- != script('foo.js') }}
+  //- != style('styles/main')
 
 body
   //- +_favicon()
-  include ../_includes/navbar.pug
 
-  block _content
+  header#app__masthead
+    include ../_includes/navbar.pug
 
-  != script('https://code.jquery.com/jquery-3.5.1.slim.min.js')
-  != script('https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js')
-  != script('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')
+  main#app__body
+    block _content
+
+  footer#app__footer
+    .container
+      p Powered by pix'ie dust. Fuelled by tea. pix8 Ltd &copy; 2020.
+      p:small &hellip;something is brewing.
+
+  //- != script('foo.js')

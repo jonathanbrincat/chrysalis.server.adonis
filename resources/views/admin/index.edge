@@ -2,10 +2,10 @@
 
 @section('content')
   <div class="container">
-    @if(flashMessage('info'))
+    @if(flashMessage('notification'))
     <div class="row">
       <div class="col-12">
-        <p class="alert alert-info">{{ flashMessage('info') }}</p>
+        <p class="alert alert-info">{{ flashMessage('notification') }}</p>
       </div>
     </div>
     @endif
@@ -13,6 +13,7 @@
     <div class="row">
       <div class="col-12">
         <header class='ui__toolbar'>
+          <h2>Hello {{ auth.user.username }}</h2>
           <p class="ui__field">
             <a class="ui__btn btn__primary" href="{{ route('admin.create') }}" >New Post</a>
           </p>
@@ -46,8 +47,9 @@
               <a class="ui__btn" href="{{ route('admin.edit', { id: post.id }) }}">Edit</a>
             </p>
             <p class="ui__field">
-              <a class="ui__btn" href="{{ route('admin.delete', { id: post.id }) }}">Delete</a>
               {{-- <a href="{{ route('PostController.getAdminDelete', { id: post.id }) }}" class="ui__btn">Delete</a> --}}
+              <!--{{-- <form action="{{ '/delete/' + post.id + '?_method=DELETE' }}" method="POST">{{ csrfField() }}<button type="submit" class="ui__btn">Delete</button></form> --}}-->
+              <a class="ui__btn" href="{{ route('admin.delete', { id: post.id }) }}">Delete</a>
             </p>
           </div>
         </article>

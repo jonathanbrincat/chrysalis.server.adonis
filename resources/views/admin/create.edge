@@ -4,6 +4,10 @@
   {{-- @include('partials.errors') --}}
 
   <div class="container">
+    @if(flashMessage('notification'))
+    <span>{{ flashMessage('notification') }}</span>
+    @endif
+
     <div class="row">
       <div class="col-12">
         <p>
@@ -16,19 +20,19 @@
 
     <div class="row">
       <div class="col-12">
-        @if(flashMessage('info'))
-          <span>{{ flashMessage('info') }}</span>
-        @endif
-
+        {{-- <form action="/create" method="POST"> --}} <!--DEVNOTE: don't have to call paths /create /edit /delete etc. use http RESTful vocabulary-->
         <form action="{{ route('admin.create') }}" method="post">
-          {{ csrfField() }}
+          {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
 
           <div class="form-group">
             <p class="form__field">
               <label class="form__control">
                 <span>Title</span>
-                <input type="text" id="title" name="title" />
+                {{-- <input type="text" name="title" value="{{ old('title', '') }}" /> --}}
+                <input type="text" name="title" />
               </label>
+              {{-- {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }} --}}
+
               @if(hasErrorFor('title'))
                 <span>{{ getErrorFor('title')}}</span>
               @endif
@@ -39,8 +43,11 @@
             <p class="form__field">
               <label class="form__control">
                 <span>Content</span>
-                <textarea id="content" name="content" ></textarea>
+                {{-- <textarea name="content">{{ old('body', '') }}</textarea> --}}
+                <textarea name="content" ></textarea>
               </label>
+              {{-- {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }} --}}
+
               @if(hasErrorFor('content'))
                 <span>{{ getErrorFor('content')}}</span>
               @endif

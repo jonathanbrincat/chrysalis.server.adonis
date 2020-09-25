@@ -1,29 +1,28 @@
-nav.navbar.navbar-expand-lg.navbar-dark.mb-3
-  .container
-    a.navbar-brand(href="/") Kangeroo
-
-    //- @loggedIn
-    a(href="/logout" class="btn btn-light") ({{ auth.user.username }}) Log Out
-    //- @endloggedIn
+.container
+  nav.navbar.navbar-expand-lg
+    p.ui__brand
+      a.brand__link(href="/")
+        svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 177.778 100")
+          path(d="M31.941,62.825h25.65V37.175H31.941ZM52.654,47.532h-5.42v-5.42h5.42Zm-15.777-5.42H42.3V52.468H52.654v5.42H36.877Zm37.417-4.937A12.825,12.825,0,1,0,87.119,50,12.84,12.84,0,0,0,74.294,37.175Zm0,20.713A7.888,7.888,0,1,1,82.182,50,7.9,7.9,0,0,1,74.294,57.888Zm58.719-20.713A12.825,12.825,0,1,0,145.837,50,12.84,12.84,0,0,0,133.013,37.175Zm0,20.713A7.888,7.888,0,1,1,140.9,50,7.9,7.9,0,0,1,133.013,57.888Zm-29.36-20.713A12.825,12.825,0,1,0,116.478,50,12.84,12.84,0,0,0,103.653,37.175Zm0,20.713a7.888,7.888,0,1,1,7.488-10.356h-7.488v4.936h7.488A7.9,7.9,0,0,1,103.653,57.888Z" fill="currentColor")
 
     button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav")
       span.navbar-toggler-icon
 
-    #navbarNav.collapse.navbar-collapse
+    #navbarNav.collapse.navbar-collapse(style="width:auto; flex:1;")
       //- @loggedIn
-      ul.navbar-nav.ml-auto
+      ul.navbar-nav
         li.nav-item
-          a.nav-link(href="/perks") Rider's Perks
-        //-
-          li.nav-item
-            a.nav-link(href="/perks/create") Add Perk
+          a.nav-link(href="{{ route('admin.index') }}") My Posts
+      //-
         li.nav-item
-          a.nav-link(href="/perks/favourites") Favourites List
-        li.nav-item
-          a.nav-link(href="/perks/activated") Activated List
-        //-
-          li.nav-item
-            a.nav-link(href="/jobs") Jobs
-          li.nav-item
-            a.nav-link(href="/jobs/create") Add Job
+          a.nav-link(href="/profile") My Profile
       //- @endloggedIn
+
+    //- @loggedIn
+    p(style="margin:0;")
+      a(href="/logout") <span>({{ auth.user.username }})</span> Logout
+    p(style="margin:0;")
+      a.ui__btn(href="/login") Login
+    p(style="margin:0;")
+      a(href="/register") Sign up
+    //- @endloggedIn

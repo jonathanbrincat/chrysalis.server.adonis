@@ -78,16 +78,16 @@ class PostController {
   }
 
   async postAdminCreate({ request, response, view, session, auth }) {
-    const validation = await validate(request.all(), {
-      title: 'required|min:5',
-      content: 'required|min:10',
-    })
-
     // TEMP prevent post if not logged in
     // if(!auth.getUser()) {
     // if(!auth.check()) {
     //   return response.redirect('back')
     // }
+
+    const validation = await validate(request.all(), {
+      title: 'required|min:5|max:255',
+      content: 'required|min:3',
+    })
 
     if(validation.fails()) {
       session.withErrors(validation.messages()).flashAll()
@@ -110,26 +110,26 @@ class PostController {
       content: userPost.content,
     })
 
-    session.flash({ info: 'Your post has been created'})
+    session.flash({ notification: 'Your post has been created'})
 
     return response.redirect('/admin')
   }
 
   async postAdminUpdate({ request, response, view, session, params }) {
-    // const validation = await validate(request.all(), {
-    //   title: 'required|min:5',
-    //   content: 'required|min:10',
-    // })
+    const validation = await validate(request.all(), {
+      title: 'required|min:5|max:255',
+      content: 'required|min:3',
+    })
 
-    // if(validation.fails()) {
-    //   session.withErrors(validation.messages()).flashAll()
-    //   return response.redirect('back')
-    // }
+    if(validation.fails()) {
+      session.withErrors(validation.messages()).flashAll()
+      return response.redirect('back')
+    }
 
     const post = await PostModel.find(params.id)
 
-    post.title = request.all().title
-    post.content = request.all().content
+    post.title = request.all().title //request.input('title')
+    post.content = request.all().content //request.input('content')
 
     await post.save()
 
@@ -140,7 +140,7 @@ class PostController {
     // 2. better solution using .sync() - adonis will handle the comparison
     await post.tags().sync(request.input('tags') === null ? [] : request.input('tags'))
 
-    session.flash({ info: 'Your post has been updated'})
+    session.flash({ notification: 'Your post has been updated'})
 
     return response.redirect('/admin')
   }
@@ -149,12 +149,11 @@ class PostController {
     const post = await PostModel.find(params.id)
 
     await post.likes().delete() // delete any relational entries alongside operation as they are linked to something that no longer exists
-
     await post.tags().detach()
 
     await post.delete()
 
-    session.flash({ info: 'Your post has been deleted'})
+    session.flash({ notification: 'Your post has been deleted'})
 
     return response.redirect('back')
   }

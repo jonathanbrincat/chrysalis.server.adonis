@@ -13,14 +13,11 @@
           {{ csrfField() }}
 
           <p class="form__field">
-            <label class="form__control">
-              <input type="text" name="q" value="{{ request.input('q') || '' }}" placeholder="Search posts..." />
+            <label class="form__control control__group" style="display: flex;">
+              <input type="text" name="q" value="{{ request.input('q') || '' }}" placeholder="Search posts..." style="flex: 1;" />
               {{-- <input type="text" name="q" value="{{ old('q', '') }}" placeholder="Search posts..." /> --}}
+              <button type="submit" class="ui__btn btn__primary">Submit</button>
             </label>
-          </p>
-
-          <p class="form__field">
-            <button type="submit" class="ui__btn btn__primary">Submit</button>
           </p>
         </form>
       </div>
