@@ -28,6 +28,9 @@
             <p class="ui__field">
               <a class="ui__btn" href="{{ route('admin.edit', { id: post.id}) }}">Edit</a>
             </p>
+            <p class="ui__field">
+              <a class="ui__btn" href="{{ route('admin.delete', { id: post.id }) }}">Delete</a>
+            </p>
           </div>
         </article>
         @endeach
