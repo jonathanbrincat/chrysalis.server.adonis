@@ -19,6 +19,20 @@
           </p>
         </header>
 
+        <h2>Saved Posts</h2>
+        @each(post in favouritePosts)
+        <article class="admin__post">
+          <p>{{ post.title }}</p>
+          <p>{{ post.content }}</p>
+
+          <div class="ui__controlbar">
+            <p class="ui__field">
+              <a class="ui__btn" href="{{ route('admin.delete', { id: post.id }) }}">Remove</a>
+            </p>
+          </div>
+        </article>
+        @endeach
+
         <h2>My Posts</h2>
         @each(post in userPosts)
         <article class="admin__post">

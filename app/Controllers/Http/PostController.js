@@ -1,5 +1,6 @@
 'use strict'
 
+const UserModel = use('App/Models/User')
 const PostModel = use('App/Models/Post')
 const LikeModel = use('App/Models/Like')
 const TagModel = use('App/Models/Tag')
@@ -7,15 +8,34 @@ const TagModel = use('App/Models/Tag')
 const { validate } = use('Validator')
 
 class PostController {
-  async getPosts({ request, response, view }) {
+  async getPosts({ request, response, view, auth }) {
     // const posts = await PostModel.all()
     // const posts = await PostModel.query().orderBy('created_at', 'desc').withCount('likes').fetch()
     const index = request.get().page || 1 //take from querystring param if it exists
-    const posts = await PostModel.query().orderBy('created_at', 'desc').with('tags').withCount('likes').paginate(index, 5)
+    const posts = await PostModel.query().orderBy('created_at', 'desc').with('user').with('tags').withCount('likes').paginate(index, 5)
+
+    //all posts with user favourites
+    const postsWithUserFavourites = await PostModel.query().orderBy('created_at', 'desc').with('user').with('favouriteToUser').paginate(index, 5)
+    // return postsWithUserFavourites
+
+    //all user favourites with posts
+    // const userFavouritesWithPosts = await UserModel.all()
+    // const userFavouritesWithPosts = await UserModel.ids()
+    // const userFavouritesWithPosts = await UserModel.query().select('*').with('favouritePosts').fetch()
+    // return userFavouritesWithPosts
+
+    // NOTE! user has to be logged in other auth.user will be null
+    let currentUserFavouritesWithPosts = []
+    if(auth.user) {
+      // const currentUserFavouritesWithPosts = await auth.user.favouritePosts().fetch()
+      currentUserFavouritesWithPosts = await auth.user.favouritePosts().ids() // will return the current user's favourited post in an array containing their ids
+      // return currentUserFavouritesWithPosts
+    }
 
     return view.render('blog.index', {
-      posts: posts.toJSON()
+      posts: posts.toJSON(),
       // posts: posts // DEVNOTE: is a mixed object with page JSON + vanillaSerializer collection('rows' property). each row is already serialized data. I think that's how it works
+      favourites: Array.from(currentUserFavouritesWithPosts)
     })
   }
 
@@ -24,9 +44,17 @@ class PostController {
     const posts = await PostModel.query().orderBy('title', 'asc').fetch()
     const userPosts = await auth.user.posts().fetch()
 
+    //get current user favourite posts
+    const currentUserFavouritesWithPosts = await auth.user.favouritePosts().fetch()
+    // return currentUserFavouritesWithPosts
+
+    //get users who have favourited current post
+    //has current user favourited current post //get current post favourite user
+
     return view.render('admin.index', {
       posts: posts.toJSON(),
-      userPosts: userPosts.toJSON()
+      userPosts: userPosts.toJSON(),
+      favouritePosts: currentUserFavouritesWithPosts.toJSON()
     })
   }
 
@@ -38,20 +66,6 @@ class PostController {
     return view.render('blog.post', {
       post: post.toJSON()
     })
-  }
-
-  async setLike({ request, response, view, params }) {
-    const post = await PostModel.find(params.id)
-
-    const like = new LikeModel()
-
-    await post.likes().save(like)
-
-    // https://forum.adonisjs.com/t/relationship-count-after-create/4359/3
-    // const count = await post.likes().save(like).getCount()
-    // return Object.assign(post.toJSON(), { count })
-
-    return response.redirect('back')
   }
 
   async getAdminCreate({ view }) {
@@ -154,6 +168,41 @@ class PostController {
     await post.delete()
 
     session.flash({ notification: 'Your post has been deleted'})
+
+    return response.redirect('back')
+  }
+
+  async setLike({ request, response, view, params }) {
+    const post = await PostModel.find(params.id)
+
+    const like = new LikeModel()
+
+    await post.likes().save(like)
+
+    // https://forum.adonisjs.com/t/relationship-count-after-create/4359/3
+    // const count = await post.likes().save(like).getCount()
+    // return Object.assign(post.toJSON(), { count })
+
+    return response.redirect('back')
+  }
+
+  async getFavourite({ request, response, view, params, auth }) {
+    // const userFavourites = await auth.user.favouritePosts().fetch()
+    const userId = await auth.user.id
+    // const user = await UserModel.find(userId)
+    const user = await UserModel.query().where('id', '=', userId).with('favouritePosts').fetch()
+    // const fav = await user.query().with('favouritePosts').fetch()
+
+    // return userFavourites
+
+    return user
+    return view.render('admin.favourites', { foo: user })
+  }
+
+  // A User can have MANY favourite posts
+  // A favourite post can belong to one User(owner)
+  async setFavourite({ request, response, view, params, auth }) {
+    const post = await PostModel.find(params.id)
 
     return response.redirect('back')
   }

@@ -35,12 +35,25 @@ class User extends Model {
     return this.hasMany('App/Models/Token')
   }
 
+  // a user hasMany Posts
   posts() {
     return this.hasMany('App/Models/Post') //every user can have many posts
   }
 
+  // a user hasOne Profile
   profile() {
     return this.hasOne('App/Models/Profile') //every user can have one profile
+  }
+
+  // a user hasMany Favourite Posts
+  favouritePosts() {
+    return this.belongsToMany('App/Models/Post').pivotTable('pivot_post_user').withTimestamps()
+
+
+    //
+    // return this.hasMany('App/Models/Post') //.pivotTable('pivot_post_user').withTimestamps()
+
+    // expected return post_id 4 & 5
   }
 }
 

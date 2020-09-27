@@ -2,7 +2,6 @@
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
-const LikeModel = use('App/Models/Like')
 
 class Post extends Model {
 
@@ -30,18 +29,38 @@ class Post extends Model {
     session.put('posts', posts)
   }*/
 
+  // a Post hasMany Likes -> one to many
   likes() {
-    return this.hasMany(LikeModel)
-    // return this.hasMany('App/Models/Like')
+    return this.hasMany('App/Models/Like')
   }
   //.getCount()
 
+  // a Post belongsToMany Tags -> many to many
   tags() {
     return this.belongsToMany('App/Models/Tag').pivotTable('pivot_post_tag').withTimestamps()
   }
 
+  // a Post belongsTo a User -> many to one
   user() {
     return this.belongsTo('App/Models/User')
+  }
+
+  //hasOne
+  //hasMany
+  //belongsTo
+  //belongsToMany
+  //manyThrough
+
+  // A Post belongsToMany user favourites
+  // A Post hasOne user favourite
+  // userFavourite() {
+  favouriteToUser() {
+    return this.belongsToMany('App/Models/User').pivotTable('pivot_post_user').withTimestamps()
+
+
+    //
+    // return this.hasMany('App/Models/User')//.pivotTable('pivot_post_user').withTimestamps()
+    // return this.hasOne('App/Models/User').pivotTable('pivot_post_user').withTimestamps()
   }
 
   // MUTATOR(setter) - is for intercepting and acting upon data before storing it in the database. this is a one-way operation. can not be reversed once the change is made.
