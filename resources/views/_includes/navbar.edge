@@ -1,46 +1,51 @@
 <div class="container">
-  <nav class="navbar navbar-expand-lg">
-    <p class="ui__brand">
-      <a class="brand__link" href="/">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 177.778 100"><path d="M31.941,62.825h25.65V37.175H31.941ZM52.654,47.532h-5.42v-5.42h5.42Zm-15.777-5.42H42.3V52.468H52.654v5.42H36.877Zm37.417-4.937A12.825,12.825,0,1,0,87.119,50,12.84,12.84,0,0,0,74.294,37.175Zm0,20.713A7.888,7.888,0,1,1,82.182,50,7.9,7.9,0,0,1,74.294,57.888Zm58.719-20.713A12.825,12.825,0,1,0,145.837,50,12.84,12.84,0,0,0,133.013,37.175Zm0,20.713A7.888,7.888,0,1,1,140.9,50,7.9,7.9,0,0,1,133.013,57.888Zm-29.36-20.713A12.825,12.825,0,1,0,116.478,50,12.84,12.84,0,0,0,103.653,37.175Zm0,20.713a7.888,7.888,0,1,1,7.488-10.356h-7.488v4.936h7.488A7.9,7.9,0,0,1,103.653,57.888Z" fill="#394149"/></svg>
-      </a>
-    </p>
+  <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark"> -->
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation__primary" aria-controls="navigation__primary" aria-expanded="false">
+        <!--
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        -->
 
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div id="navbarNav" class="collapse navbar-collapse" style="width:auto; flex:1;">
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navigation__primary" aria-controls="navigation__primary" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <p class="ui__brand navbar-brand">
+        <a class="brand__link" href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 177.778 100"><path d="M31.941,62.825h25.65V37.175H31.941ZM52.654,47.532h-5.42v-5.42h5.42Zm-15.777-5.42H42.3V52.468H52.654v5.42H36.877Zm37.417-4.937A12.825,12.825,0,1,0,87.119,50,12.84,12.84,0,0,0,74.294,37.175Zm0,20.713A7.888,7.888,0,1,1,82.182,50,7.9,7.9,0,0,1,74.294,57.888Zm58.719-20.713A12.825,12.825,0,1,0,145.837,50,12.84,12.84,0,0,0,133.013,37.175Zm0,20.713A7.888,7.888,0,1,1,140.9,50,7.9,7.9,0,0,1,133.013,57.888Zm-29.36-20.713A12.825,12.825,0,1,0,116.478,50,12.84,12.84,0,0,0,103.653,37.175Zm0,20.713a7.888,7.888,0,1,1,7.488-10.356h-7.488v4.936h7.488A7.9,7.9,0,0,1,103.653,57.888Z" fill="#394149"/></svg>
+        </a>
+      </p>
+    </div>
+
+    <div id="navigation__primary" class="collapse navbar-collapse">
       <ul class="navbar-nav">
         @loggedIn
-        <li class="nav-item"><a class="nav-link" href="{{ route('admin.index') }}">My Posts</a></li>
+        <li><a href="{{ route('admin.index') }}">My Posts</a></li>
+        <!--<li><a href="/profile">My Profile</a></li> -->
+        @endloggedIn
+      </ul>
 
-        <!--
-        <li class="nav-item">
-          <a href="/profile" class="nav-link">My Profile</a>
-        </li> -->
+      <ul class="nav navbar-nav navbar-right">
+        @loggedIn
+        <li class="nav-item"><a class="nav-link" href="/logout"><span>({{ auth.user.username }})</span> Logout</a></li>
+        @else
+        <li class="nav-item"><a class="nav-link" href="/login" class="ui__btn">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="/register">Sign up</a></li>
         @endloggedIn
       </ul>
     </div>
 
-    @loggedIn
-    <p style="margin:0;">
-      <a href="/logout"><span>({{ auth.user.username }})</span> Logout</a>
-    </p>
-    @else
-    <p style="margin:0;">
-      <a href="/login" class="ui__btn">Login</a>
-    </p>
-    <p style="margin:0;">
-      <a href="/register">Sign up</a>
-    </p>
-
-    <!-- DEVNOTE: there is another way of achieving this that removes the need for a dedicated view; using an empty form in situ to perform the  post -->
-    <!-- Laravel sourced example -->
+    <!-- DEVNOTE: there is another way of achieving this that removes the need for a dedicated view; using an empty form in situ to perform the post; Laravel sourced example -->
     {{--
     <a href="{{ url('/logout') }}" class="btn btn-light" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">({{ auth.user.username }}) Log Out </a>
     <form action="{{ url('/logout') }}" method="POST" style="...">{{ csrfField() }}</form>
     --}}
-    @endloggedIn
   </nav>
 </div>

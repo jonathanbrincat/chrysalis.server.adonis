@@ -25,9 +25,9 @@ Route.on('/login').render('auth.login')
 Route.post('/login', 'UserController.login').validator('LoginUser')
 Route.get('/logout', 'UserController.logout')
 
-Route.get('/', 'PostController.getPosts').as('blog.index')
-Route.get('/post/:id', 'PostController.getPost').as('blog.post')
-Route.get('/post/:id/like', 'PostController.setLike').as('blog.post.like')
+Route.get('/', 'PostController.getPosts').as('posts.index')
+Route.get('/post/:id', 'PostController.getPost').as('posts.post')
+Route.get('/post/:id/like', 'PostController.setLike').as('posts.post.like')
 Route.get('/post/:id/favourite', 'PostController.getFavourite')
 
 Route.get('/profile', 'ProfileController.index')
@@ -44,7 +44,7 @@ Route.post('/search', async ({request, response, view}) => {
     // const posts = await Database.select('*').from('posts').where('title', 'LIKE', '%'+q+'%') //raw + sql
     console.log(posts.toJSON());
 
-    return view.render('blog.search', {
+    return view.render('posts.search', {
       posts: posts.toJSON()
     })
 
@@ -53,7 +53,7 @@ Route.post('/search', async ({request, response, view}) => {
     // })
   }
 
-  return view.render('blog.search', {
+  return view.render('posts.search', {
     posts: []
   })
 
