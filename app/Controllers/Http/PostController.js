@@ -9,17 +9,6 @@ const { validate } = use('Validator')
 
 //DEVNOTE: if(request.format() === 'json') route format would facilitate adonis to run headless and non-headless at the same time.
 
-/*
-Route.get('posts', 'PostController.index').as('posts.index')
-Route.post('posts', 'PostController.store').as('posts.store')
-Route.get('posts/create', 'PostController.create').as('posts.create')
-Route.get('posts/:id', 'PostController.show').as('posts.show')
-Route.put('posts/:id', 'PostController.update').as('posts.update')
-Route.patch('posts/:id', 'PostController.update')
-Route.get('posts/:id/edit', 'PostController.edit').as('posts.edit')
-Route.delete('posts/:id', 'PostController.destroy').as('posts.destroy')
-*/
-
 class PostController {
   async index({ request, response, view, auth }) {
     // const posts = await PostModel.all()
@@ -52,13 +41,22 @@ class PostController {
     })
   }
 
-  async show({ request, response, view, params }) {
+  async show({ request, response, view, params, auth }) {
     // const post = await PostModel.find(params.id)
     const post = await PostModel.query().where('id', '=', params.id).withCount('likes').first() //equivalent to find; find is the shorthand; note '=' can be omitted as equality assumed to be default comparison
     // const post = await PostModel.query().where('id', '=', params.id).with('likes').withCount('likes').first() //with('likes') provisions the relationship in one sql request. this is eager loading as oppose to the lazy loading(executing sql queries as and when needed which can be taxing/wasteful with expensive operations i.e. for loops)
 
+    // NOTE! user has to be logged in other auth.user will be null
+    let currentUserFavouritesWithPosts = []
+    if(auth.user) {
+      // const currentUserFavouritesWithPosts = await auth.user.favouritePosts().fetch()
+      currentUserFavouritesWithPosts = await auth.user.favouritePosts().ids() // will return the current user's favourited post in an array containing their ids
+      // return currentUserFavouritesWithPosts
+    }
+
     return view.render('posts.show', {
-      post: post.toJSON()
+      post: post.toJSON(),
+      favourites: Array.from(currentUserFavouritesWithPosts)
     })
   }
 
@@ -66,21 +64,6 @@ class PostController {
     const tags = await TagModel.all()
 
     return view.render('posts.create', { tags: tags.toJSON() })
-  }
-
-  async edit({ request, response, view, params }) {
-    const post = await PostModel.find(params.id)
-
-    const postTags = await post.tags().fetch()
-
-    const tagsModel = await TagModel.all()
-
-    return view.render('posts.edit', {
-      post: post.toJSON(),
-      postId: params.id,
-      postTagsId: postTags.toJSON().map( ({ id }) => id ),
-      tags: tagsModel.toJSON()
-    })
   }
 
   async store({ request, response, view, session, auth }) {
@@ -119,6 +102,21 @@ class PostController {
     session.flash({ notification: 'Your post has been created'})
 
     return response.redirect('/dashboard')
+  }
+
+  async edit({ request, response, view, params }) {
+    const post = await PostModel.find(params.id)
+
+    const postTags = await post.tags().fetch()
+
+    const tagsModel = await TagModel.all()
+
+    return view.render('posts.edit', {
+      post: post.toJSON(),
+      postId: params.id,
+      postTagsId: postTags.toJSON().map( ({ id }) => id ),
+      tags: tagsModel.toJSON()
+    })
   }
 
   async update({ request, response, view, session, params }) {
