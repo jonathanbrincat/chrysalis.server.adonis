@@ -4,10 +4,10 @@ const UserModel = use('App/Models/User')
 
 class ProfileController {
   async index({ request, response, view }) {
-    const user = await UserModel.find(1) //1 = id
+    const user = await UserModel.first()
     const profile = await user.profile().fetch()
 
-    return view.render('profile', {
+    return view.render('profile.index', {
       profile: profile.toJSON()
     });
   }

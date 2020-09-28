@@ -8,8 +8,8 @@ class PivotPostUserSchema extends Schema {
     this.create('pivot_post_user', (table) => {
       table.increments()
       table.timestamps()
-      table.integer('post_id')
-      table.integer('user_id')
+      table.integer('post_id').unsigned()
+      table.integer('user_id').unsigned()
     })
   }
 

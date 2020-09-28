@@ -1,45 +1,7 @@
 @layout('_layout/master')
 
 @section('content')
-<div style="width:100%; max-width: 800px; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);">
-  @loggedIn
-  <h1>Welcome to your rider's Perks</h1>
-  @else
-  <h1>Rider Login</h1>
-
-  @if(flashMessage('loginError'))
-    <span>{{ flashMessage('LoginError') }}</span>
-  @endif
-
-  <div style="display:flex; align-items:flex-end; margin: 20px -20px;">
-    <div style="width:60%; padding:0 20px; flex:1 1 60%;">
-      <form action="{{ route('UserController.login') }}" method="POST">
-        {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
-
-        <div class="field form-group">
-          <label for="email">Email</label>
-          <input type="text" class="form-control" name="email" value="{{ old('email', '') }}" />
-          @if(hasErrorFor('email'))
-            <span>{{ getErrorFor('email')}}</span>
-          @endif
-        </div>
-
-        <div class="field form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" name="password" value="{{ old('password', '') }}" />
-          @if(hasErrorFor('password'))
-            <span>{{ getErrorFor('password')}}</span>
-          @endif
-        </div>
-
-        <button type="submit" class="btn btn-primary">Login</button>
-      </form>
-    </div>
-
-    <div style="width:40%; padding:0 20px; flex:1 1 40%;">
-      <a href="/register" class="btn btn-secondary">Sign Up</a>
-    </div>
-  </div>
-   @endloggedIn
+<div style="width:100%; max-width: 800px; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align: center;">
+  <h1>Welcome to Adonis</h1>
 </div>
 @endsection

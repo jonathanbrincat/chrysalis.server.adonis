@@ -1,71 +1,62 @@
 'use strict'
 
-// const Database = use('Database')
-const PostModel = use('App/Models/Post')
+/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
+const Route = use('Route')
 
 /*
 |--------------------------------------------------------------------------
 | Routes
 |--------------------------------------------------------------------------
-|
-| Http routes are entry points to your web application. You can create
-| routes for different URL's and bind Controller actions to them.
-|
-| A complete guide on routing is available here.
-| http://adonisjs.com/docs/4.1/routing
-|
 */
 
-/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+Route.group(() => {
+  Route.on('/register').render('user.register')
+    Route.post('/register', 'UserController.create').validator('CreateUser')
 
-Route.on('/register').render('auth.register')
-Route.post('/register', 'UserController.create').validator('CreateUser')
-Route.on('/login').render('auth.login')
-Route.post('/login', 'UserController.login').validator('LoginUser')
-Route.get('/logout', 'UserController.logout')
+  Route.on('/login').render('user.login')
+    Route.post('/login', 'UserController.login').validator('LoginUser')
 
-Route.get('/', 'PostController.getPosts').as('posts.index')
-Route.get('/post/:id', 'PostController.getPost').as('posts.post')
-Route.get('/post/:id/like', 'PostController.setLike').as('posts.post.like')
+  Route.get('/logout', 'UserController.logout')
+
+  Route.get('/', 'PageController.index').as('page.index')
+})
+
+Route.post('/search', 'SearchController.index').as('pages.search')
+
+Route.get('/post', 'PostController.getPosts').as('posts.index')
+
+Route.get('/post/:id/like', 'PostController.setLike').as('post.like')
 Route.get('/post/:id/favourite', 'PostController.getFavourite')
 
-Route.get('/profile', 'ProfileController.index')
+/*
+* Post
+**/
+Route.group(() => {
+  Route.get('create', 'PostController.getAdminCreate').as('post.create')
+    Route.post('create', 'PostController.postAdminCreate').as('post.create')
 
-Route.post('/search', async ({request, response, view}) => {
-  const q = request.input('q')
-  console.log('search endpoint hit :: ', q && q.length);
+  Route.get('update/:id', 'PostController.getAdminEdit').as('post.update')
+    Route.post('update/:id', 'PostController.postAdminUpdate').as('post.update')
+    // Route.put(':id', 'PostController.postAdminUpdate').as('post.update')
 
-  if(q && q.length > 0) {
-    console.log('search endpoint hit :: ', q);
+  Route.get('delete/:id', 'PostController.getAdminDelete').as('post.delete')
+  // Route.delete(':id', 'PostController.getAdminDelete').as('post.delete')
 
-    const posts = await PostModel.query().where('title', 'LIKE', '%'+q+'%').fetch() //lucid ORM / knex.js
-    // const posts = await PostModel.query().whereRaw('title like %?%', [q]).fetch() //lucid ORM / knex.js
-    // const posts = await Database.select('*').from('posts').where('title', 'LIKE', '%'+q+'%') //raw + sql
-    console.log(posts.toJSON());
+  Route.get(':id', 'PostController.index').as('post.index')
+}).prefix('/post/')
 
-    return view.render('posts.search', {
-      posts: posts.toJSON()
-    })
+/*
+* Dashboard
+**/
+Route.group(() => {
+  Route.get('', 'DashboardController.index').as('dashboard.index')
+}).prefix('/dashboard/').middleware(["auth"])  //.auth() // DEVNOTE: you can chain and add middleware. in this instance calling auth will restrict access to these routes
 
-    // return response.status(200).json({
-    //   posts: posts
-    // })
-  }
+/*
+* Profile
+**/
+Route.group(() => {
+  Route.get('', 'ProfileController.index').as('profile.index')
+}).prefix('/profile/').middleware(["auth"])
 
-  return view.render('posts.search', {
-    posts: []
-  })
 
-}).as('search')
-
-Route.group( () => {
-  Route.get('', 'PostController.getAdminPosts').as('admin.index')
-  Route.get('create', 'PostController.getAdminCreate').as('admin.create')
-  Route.post('create', 'PostController.postAdminCreate').as('admin.create')
-  Route.get('delete/:id', 'PostController.getAdminDelete').as('admin.delete')
-  // Route.delete('delete/:id', 'PostController.getAdminDelete')
-  Route.get('edit/:id', 'PostController.getAdminEdit').as('admin.edit')
-  Route.post('edit/:id', 'PostController.postAdminUpdate').as('admin.update')
-  // Route.put('/edit/:id', 'PostController.postAdminUpdate')
-}).prefix('/admin/')//.auth() //.middleware(["auth"]) // DEVNOTE: you can chain and add middleware. in this instance calling auth will restrict access to these routes

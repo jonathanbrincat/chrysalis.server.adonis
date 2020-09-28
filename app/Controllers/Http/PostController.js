@@ -8,6 +8,8 @@ const TagModel = use('App/Models/Tag')
 const { validate } = use('Validator')
 
 class PostController {
+
+  // INDEX
   async getPosts({ request, response, view, auth }) {
     // const posts = await PostModel.all()
     // const posts = await PostModel.query().orderBy('created_at', 'desc').withCount('likes').fetch()
@@ -39,41 +41,25 @@ class PostController {
     })
   }
 
-  async getAdminPosts({ request, response, view, auth }) {
-    // const posts = await PostModel.all()
-    const posts = await PostModel.query().orderBy('title', 'asc').fetch()
-    const userPosts = await auth.user.posts().fetch()
-
-    //get current user favourite posts
-    const currentUserFavouritesWithPosts = await auth.user.favouritePosts().fetch()
-    // return currentUserFavouritesWithPosts
-
-    //get users who have favourited current post
-    //has current user favourited current post //get current post favourite user
-
-    return view.render('admin.index', {
-      posts: posts.toJSON(),
-      userPosts: userPosts.toJSON(),
-      favouritePosts: currentUserFavouritesWithPosts.toJSON()
-    })
-  }
-
-  async getPost({ request, response, view, params }) {
+  // POST DETAILS
+  async index({ request, response, view, params }) {
     // const post = await PostModel.find(params.id)
     const post = await PostModel.query().where('id', '=', params.id).withCount('likes').first() //equivalent to find; find is the shorthand; note '=' can be omitted as equality assumed to be default comparison
     // const post = await PostModel.query().where('id', '=', params.id).with('likes').withCount('likes').first() //with('likes') provisions the relationship in one sql request. this is eager loading as oppose to the lazy loading(executing sql queries as and when needed which can be taxing/wasteful with expensive operations i.e. for loops)
 
-    return view.render('posts.post', {
+    return view.render('post.index', {
       post: post.toJSON()
     })
   }
 
+  // POST CREATE
   async getAdminCreate({ view }) {
     const tags = await TagModel.all()
 
-    return view.render('admin.create', { tags: tags.toJSON() })
+    return view.render('post.create', { tags: tags.toJSON() })
   }
 
+  // POST EDIT
   async getAdminEdit({ request, response, view, params }) {
     const post = await PostModel.find(params.id)
 
@@ -82,7 +68,7 @@ class PostController {
 
     const tagsModel = await TagModel.all()
 
-    return view.render('admin.edit', {
+    return view.render('post.edit', {
       post: post.toJSON(),
       postId: params.id,
       // postTags: postTags.toJSON(),
@@ -91,6 +77,7 @@ class PostController {
     })
   }
 
+  // POST CREATE
   async postAdminCreate({ request, response, view, session, auth }) {
     // TEMP prevent post if not logged in
     // if(!auth.getUser()) {
@@ -126,9 +113,10 @@ class PostController {
 
     session.flash({ notification: 'Your post has been created'})
 
-    return response.redirect('/admin')
+    return response.redirect('/dashboard')
   }
 
+  //POST EDIT
   async postAdminUpdate({ request, response, view, session, params }) {
     const validation = await validate(request.all(), {
       title: 'required|min:5|max:255',
@@ -156,7 +144,7 @@ class PostController {
 
     session.flash({ notification: 'Your post has been updated'})
 
-    return response.redirect('/admin')
+    return response.redirect('/dashboard')
   }
 
   async getAdminDelete({ request, response, view, session, params }) {
@@ -196,7 +184,7 @@ class PostController {
     // return userFavourites
 
     return user
-    return view.render('admin.favourites', { foo: user })
+    return view.render('favourites', { foo: user })
   }
 
   // A User can have MANY favourite posts

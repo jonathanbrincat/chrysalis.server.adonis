@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-12">
         <p>
-          <a href="/admin">Go back</a>
+          <a href="{{ route('dashboard.index') }}">Go back</a>
         </p>
 
         <hr>
@@ -20,16 +20,16 @@
 
     <div class="row">
       <div class="col-12">
-        {{-- <form action="/create" method="POST"> --}} <!--DEVNOTE: don't have to call paths /create /edit /delete etc. use http RESTful vocabulary-->
-        <form action="{{ route('admin.create') }}" method="post">
-          {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
+        {{-- <form action="{{ route('PostController.postAdminUpdate', { id: post.id }) }}" method="post"> --}}
+        {{-- <form action="{{ '/update/' + post.id + '?_method=PUT' }}" method="POST"> --}}
+        <form action="{{ route('post.update', { id: post.id }) }}" method="post">
+          {{ csrfField() }}
 
           <div class="form-group">
             <p class="form__field">
               <label class="form__control">
-                <span>Title</span>
-                {{-- <input type="text" name="title" value="{{ old('title', '') }}" /> --}}
-                <input type="text" name="title" />
+                <span class="form__label">Title</span>
+                <input type="text" name="title" value="{{ post.title }}" />
               </label>
               {{-- {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }} --}}
 
@@ -42,9 +42,8 @@
           <div class="form-group">
             <p class="form__field">
               <label class="form__control">
-                <span>Content</span>
-                {{-- <textarea name="content">{{ old('body', '') }}</textarea> --}}
-                <textarea name="content" ></textarea>
+                <span class="form__label">Content</span>
+                <textarea name="content">{{ post.content }}</textarea>
               </label>
               {{-- {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }} --}}
 
@@ -55,15 +54,28 @@
           </div>
 
           @each(tag in tags)
+          {{-- <pre>{{ json(tags) }}</pre> --}}
+
           <div class="checkbox">
-            <label>
-              <input type="checkbox"  name="tags[]" value="{{ tag.id }}" />
-              {{ tag.name }}
-            </label>
+            <p class="form__field">
+              <label class="form__control">
+                <input type="checkbox" name="tags[]" value="{{ tag.id }}" {{ postTagsId.includes(tag.id) ? 'checked' : '' }} />
+
+                {{--
+                <span>post_id={{ post.id }}</span>
+                <span>tag={{ tag.id }}</span>
+                <span>{{ postTagsId.includes(tag.id) }}</span>
+                --}}
+
+                <span>{{ tag.name }}</span>
+              </label>
+            </p>
           </div>
           @endeach
 
           <p class="form__field">
+            <!-- used to pass the id to the controller but unneccesary as we pass and can grab from uri params -->
+            <!-- <input type="hidden" name="id" value={{ postId }} /> -->
             <button type="submit" class="ui__btn btn__primary">Submit</button>
           </p>
         </form>
