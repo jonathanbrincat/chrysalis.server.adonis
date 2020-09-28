@@ -15,7 +15,7 @@
         <header class='ui__toolbar'>
           <h2>Hello {{ auth.user.username }}</h2>
           <p class="ui__field">
-            <a class="ui__btn btn__primary" href="{{ route('post.create') }}" >New Post</a>
+            <a class="ui__btn btn__primary" href="{{ route('posts.create') }}" >New Post</a>
           </p>
         </header>
 
@@ -26,7 +26,7 @@
 
           <div class="ui__controlbar">
             <p class="ui__field">
-              <a class="ui__btn" href="{{ route('post.delete', { id: post.id }) }}">Remove</a>
+              <a class="ui__btn" href="#">Remove</a>
             </p>
           </div>
         </article>
@@ -39,10 +39,14 @@
 
           <div class="ui__controlbar">
             <p class="ui__field">
-              <a class="ui__btn" href="{{ route('post.update', { id: post.id}) }}">Edit</a>
+              <a class="ui__btn" href="{{ route('posts.edit', { id: post.id}) }}">Edit</a>
             </p>
             <p class="ui__field">
-              <a class="ui__btn" href="{{ route('post.delete', { id: post.id }) }}">Delete</a>
+              <form action="{{ route('posts.destroy', { id: post.id }) }}?_method=DELETE" method="POST">
+                {{ csrfField() }}
+                <button type="submit" class="ui__btn">Delete</button>
+              </form>
+              {{-- <a class="ui__btn" href="{{ route('posts.destroy', { id: post.id }, { query: {_method: 'DELETE'} }) }}">Delete</a> --}}
             </p>
           </div>
         </article>
@@ -56,12 +60,13 @@
 
           <div class="ui__controlbar">
             <p class="ui__field">
-              <a class="ui__btn" href="{{ route('post.update', { id: post.id }) }}">Edit</a>
+              <a class="ui__btn" href="{{ route('posts.edit', { id: post.id }) }}">Edit</a>
             </p>
             <p class="ui__field">
-              {{-- <a href="{{ route('PostController.getAdminDelete', { id: post.id }) }}" class="ui__btn">Delete</a> --}}
-              <!--{{-- <form action="{{ '/delete/' + post.id + '?_method=DELETE' }}" method="POST">{{ csrfField() }}<button type="submit" class="ui__btn">Delete</button></form> --}}-->
-              <a class="ui__btn" href="{{ route('post.delete', { id: post.id }) }}">Delete</a>
+              <form action="{{ route('posts.destroy', { id: post.id }) }}?_method=DELETE" method="POST">
+                {{ csrfField() }}
+                <button type="submit" class="ui__btn">Delete</button>
+              </form>
             </p>
           </div>
         </article>

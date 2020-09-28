@@ -10,10 +10,6 @@ const { validate } = use('Validator')
 //DEVNOTE: if(request.format() === 'json') route format would facilitate adonis to run headless and non-headless at the same time.
 
 /*
-// This...
-Route.resource('posts', 'PostController')
-
-// ...equates to this:
 Route.get('posts', 'PostController.index').as('posts.index')
 Route.post('posts', 'PostController.store').as('posts.store')
 Route.get('posts/create', 'PostController.create').as('posts.create')
@@ -25,7 +21,7 @@ Route.delete('posts/:id', 'PostController.destroy').as('posts.destroy')
 */
 
 class PostController {
-  async getPosts({ request, response, view, auth }) {
+  async index({ request, response, view, auth }) {
     // const posts = await PostModel.all()
     // const posts = await PostModel.query().orderBy('created_at', 'desc').withCount('likes').fetch()
     const index = request.get().page || 1 //take from querystring param if it exists
@@ -56,30 +52,30 @@ class PostController {
     })
   }
 
-  async read({ request, response, view, params }) {
+  async show({ request, response, view, params }) {
     // const post = await PostModel.find(params.id)
     const post = await PostModel.query().where('id', '=', params.id).withCount('likes').first() //equivalent to find; find is the shorthand; note '=' can be omitted as equality assumed to be default comparison
     // const post = await PostModel.query().where('id', '=', params.id).with('likes').withCount('likes').first() //with('likes') provisions the relationship in one sql request. this is eager loading as oppose to the lazy loading(executing sql queries as and when needed which can be taxing/wasteful with expensive operations i.e. for loops)
 
-    return view.render('post.index', {
+    return view.render('posts.show', {
       post: post.toJSON()
     })
   }
 
-  async getCreate({ view }) {
+  async create({ view }) {
     const tags = await TagModel.all()
 
-    return view.render('post.create', { tags: tags.toJSON() })
+    return view.render('posts.create', { tags: tags.toJSON() })
   }
 
-  async getUpdate({ request, response, view, params }) {
+  async edit({ request, response, view, params }) {
     const post = await PostModel.find(params.id)
 
     const postTags = await post.tags().fetch()
 
     const tagsModel = await TagModel.all()
 
-    return view.render('post.edit', {
+    return view.render('posts.edit', {
       post: post.toJSON(),
       postId: params.id,
       postTagsId: postTags.toJSON().map( ({ id }) => id ),
@@ -87,7 +83,7 @@ class PostController {
     })
   }
 
-  async create({ request, response, view, session, auth }) {
+  async store({ request, response, view, session, auth }) {
     // TEMP prevent post if not logged in
     // if(!auth.getUser()) {
     // if(!auth.check()) {
@@ -155,7 +151,7 @@ class PostController {
     return response.redirect('/dashboard')
   }
 
-  async delete({ request, response, view, session, params }) {
+  async destroy({ request, response, view, session, params }) {
     const post = await PostModel.find(params.id)
 
     await post.likes().delete() // delete any relational entries alongside operation as they are linked to something that no longer exists

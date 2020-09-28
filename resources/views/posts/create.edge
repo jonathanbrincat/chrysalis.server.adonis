@@ -20,16 +20,15 @@
 
     <div class="row">
       <div class="col-12">
-        {{-- <form action="{{ route('PostController.postAdminUpdate', { id: post.id }) }}" method="post"> --}}
-        {{-- <form action="{{ '/update/' + post.id + '?_method=PUT' }}" method="POST"> --}}
-        <form action="{{ route('post.update', { id: post.id }) }}" method="post">
-          {{ csrfField() }}
+        <form action="{{ route('posts.store') }}" method="POST">
+          {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
 
           <div class="form-group">
             <p class="form__field">
               <label class="form__control">
-                <span class="form__label">Title</span>
-                <input type="text" name="title" value="{{ post.title }}" />
+                <span>Title</span>
+                {{-- <input type="text" name="title" value="{{ old('title', '') }}" /> --}}
+                <input type="text" name="title" />
               </label>
               {{-- {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }} --}}
 
@@ -42,8 +41,9 @@
           <div class="form-group">
             <p class="form__field">
               <label class="form__control">
-                <span class="form__label">Content</span>
-                <textarea name="content">{{ post.content }}</textarea>
+                <span>Content</span>
+                {{-- <textarea name="content">{{ old('body', '') }}</textarea> --}}
+                <textarea name="content" ></textarea>
               </label>
               {{-- {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }} --}}
 
@@ -54,28 +54,15 @@
           </div>
 
           @each(tag in tags)
-          {{-- <pre>{{ json(tags) }}</pre> --}}
-
           <div class="checkbox">
-            <p class="form__field">
-              <label class="form__control">
-                <input type="checkbox" name="tags[]" value="{{ tag.id }}" {{ postTagsId.includes(tag.id) ? 'checked' : '' }} />
-
-                {{--
-                <span>post_id={{ post.id }}</span>
-                <span>tag={{ tag.id }}</span>
-                <span>{{ postTagsId.includes(tag.id) }}</span>
-                --}}
-
-                <span>{{ tag.name }}</span>
-              </label>
-            </p>
+            <label>
+              <input type="checkbox"  name="tags[]" value="{{ tag.id }}" />
+              {{ tag.name }}
+            </label>
           </div>
           @endeach
 
           <p class="form__field">
-            <!-- used to pass the id to the controller but unneccesary as we pass and can grab from uri params -->
-            <!-- <input type="hidden" name="id" value={{ postId }} /> -->
             <button type="submit" class="ui__btn btn__primary">Submit</button>
           </p>
         </form>

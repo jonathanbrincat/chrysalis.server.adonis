@@ -23,29 +23,27 @@ Route.group(() => {
 
 Route.post('/search', 'SearchController.index').as('pages.search')
 
-Route.get('/post/:id/like', 'LikeController.setLike').as('post.like')
+Route.get('/post/:id/like', 'LikeController.setLike').as('posts.like')
 Route.get('/post/:id/favourite', 'SaveController.getSaved')
 
 /*
 * Post
 **/
-//Route.resource('posts', 'PostController')
+Route.resource('posts', 'PostController')
 
-Route.group(() => {
-  Route.get('', 'PostController.getPosts').as('posts.index')
+/*Route.group(() => {
+  Route.get('', 'PostController.index').as('posts.index')
 
-  Route.get('create', 'PostController.getCreate').as('post.create')
-    Route.post('create', 'PostController.create').as('post.create')
+  Route.get('create', 'PostController.create').as('posts.create')
+    Route.post('', 'PostController.store').as('posts.store')
 
-  Route.get('update/:id', 'PostController.getUpdate').as('post.update')
-    Route.post('update/:id', 'PostController.update').as('post.update')
-    // Route.put(':id', 'PostController.update').as('post.update')
+  Route.get(':id/edit', 'PostController.edit').as('posts.edit')
+    Route.put(':id', 'PostController.update').as('posts.update')
 
-  Route.get('delete/:id', 'PostController.delete').as('post.delete')
-  // Route.delete(':id', 'PostController.delete').as('post.delete')
+  Route.delete(':id', 'PostController.destroy').as('posts.destroy')
 
-  Route.get(':id', 'PostController.read').as('post.index')
-}).prefix('/post/')
+  Route.get(':id', 'PostController.show').as('posts.show')
+}).prefix('/posts/')*/
 
 /*
 * Dashboard
