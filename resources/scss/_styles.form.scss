@@ -64,7 +64,7 @@ label {
 }
 
 button, input, select, option, textarea {
-  &:focus {   outline-color: $theme__primary;}
+  &:focus {   outline-color: $swatch__primary;}
 }
 
 input {
@@ -106,8 +106,8 @@ input[type="file"] {
 }
 
 input[type="submit"] {
-  background-color: $theme__primary;
-  border-color: $theme__primary;
+  background-color: $swatch__primary;
+  border-color: $swatch__primary;
   color: $color__white;
   font-weight: 700;
   margin: 0 auto;

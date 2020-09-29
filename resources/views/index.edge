@@ -1,7 +1,49 @@
 @layout('_layout/master')
 
 @section('content')
-<div style="width:100%; max-width: 800px; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align: center;">
-  <h1>Welcome to Adonis</h1>
+<div class="ui__hero" style="background-image: url(https://picsum.photos/id/237/1380/640)">
+  <div class="hero__panel">
+    <div class="container">
+      <h1>Find your perfect pal</h1>
+      <form>
+        <p class="form__field">
+          <label class="form__control">
+            <span>Animal Category</span>
+            <select name="" id="">
+              <option value="">Any</option>
+              <option value="">Cat</option>
+              <option value="">Dog</option>
+              <option value="">Rabbit</option>
+              <option value="">Hamster</option>
+            </select>
+          </label>
+        </p>
+
+        <p class="form__field">
+          <label class="form__control">
+            <span>Animal Breed</span>
+            <select name="" id="">
+              <option value="">Any</option>
+              <option value="">Cat</option>
+              <option value="">Dog</option>
+              <option value="">Rabbit</option>
+              <option value="">Hamster</option>
+            </select>
+          </label>
+        </p>
+
+        <p class="form__field">
+          <label class="form__control">
+            <span>Location</span>
+            <input type="text" placeholder="Town or postcode" />
+          </label>
+        </p>
+
+        <p class="form__field">
+          <input type="submit" value="Search" />
+        </p>
+      </form>
+    </div>
+  </div>
 </div>
 @endsection

@@ -23,8 +23,11 @@ Route.group(() => {
 
 Route.post('/search', 'SearchController.index').as('pages.search')
 
-Route.get('/post/:id/like', 'LikeController.setLike').as('posts.like')
-Route.get('/post/:id/favourite', 'SaveController.getSaved')
+Route.get('/posts/:id/like', 'LikeController.setLike').as('posts.like')
+
+Route.get('/posts/:id/saved', 'SavedController.index').as('saved.index')
+Route.post('/posts/:id/saved', 'SavedController.store').as('saved.store')
+Route.delete('/posts/:id/saved', 'SavedController.destroy').as('saved.destroy')
 
 /*
 * Post
@@ -44,6 +47,12 @@ Route.resource('posts', 'PostController')
 
   Route.get(':id', 'PostController.show').as('posts.show')
 }).prefix('/posts/')*/
+
+
+/*
+* Tags
+**/
+Route.get('/tags/:id', 'TagController.index').as('tags.index')
 
 /*
 * Dashboard

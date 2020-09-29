@@ -6,7 +6,8 @@
       <div class="col">
         <p>{{ _('toUpper', 'This response will be mutated by adonis and the sentence will appear uppercase') }}</p>
       </div>
-    </div> --}} -->
+    </div> --}}-->
+
     <div class="row">
       <div class="col-12">
         <form action="{{ route('search') }}" method="post" role="search">
@@ -24,19 +25,33 @@
     </div>
 
     <div class="row">
+      <div class="col-2">
+        <aside>
+          <h3>Category</h3>
+          <ul>
+          @each(tag in tags)
+          <li><a href="{{ route('tags.index', { id: tag.id }) }}">{{ tag.name }}</a></li>
+          @endeach
+          </ul>
+        </aside>
+      </div>
+
       @if(posts.data.length)
-      <div class="col-12">
+      <div class="col-10">
+
+        @if(tag)
+        <h2>{{ tag.name }}s</h2>
+        @endif
 
         @if(posts.lastPage > 1)
         @!component('../components/pagination', pagination = posts, request = request, presenter = 'PaginationPresenter')
         @endif
 
-        {{-- @each(post in posts) --}}
         @each(post in posts.data)
         <article class="ui__card">
           <header class="card__header">
             <picture>
-              <a href="{{ route('posts.show', { id: post.id }) }}"><img src="https://picsum.photos/seed/picsum/300/200" alt="" /></a>
+              <a href="{{ route('posts.show', { id: post.id }) }}"><img src="https://picsum.photos/300/200" alt="" /></a>
             </picture>
           </header>
 

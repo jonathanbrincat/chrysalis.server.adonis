@@ -1,12 +1,19 @@
 html, body {
   font-family: Montserrat, Helvetica, arial, sans-serif;
   background-color: whitesmoke;
-  min-height: 100%;
+  // min-height: 100%;
+}
+
+html {
+  height: 100vh;
+  overflow: hidden;
 }
 
 body {
   display: flex;
   flex-direction: column;
+
+  overflow-y: auto;
 }
 
 #app__body {
@@ -14,25 +21,18 @@ body {
 }
 
 /**/
-.ui__brand {
-  color: #93FFE8;
-  margin: 0;
-
-  svg {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.brand__link {
-  display: block;
-  width: 160px;
-}
-
 #app__footer {
   background-color: #394149;
   color: $color__white;
   padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  @include font-size(1.2rem);
+  display: flex;
+  align-items: flex-end;
 
   & > .container {
     display: flex;
@@ -45,18 +45,61 @@ body {
 }
 
 #app__masthead {
-  background-color: #00ccbc;
+  background-color: $swatch__primary;
+  color: $color__white;
   color: #394149;
 
-  a:hover,
-  a:focus {
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $color__white;
+    }
+  }
+
+  .ui__brand {
     color: $color__white;
+  }
+
+  .ui__brand {
+    color: #93FFE8;
+    display: block;
+    margin: 0;
+    width: 160px;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .ui__navigation {
+    margin: -12px;
+    li {
+      margin: 0;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .navbar-header {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
-.btn {
-  border-width: 0;
-  border-radius: 1px;
+#app__body {
+  background-color: rgb(244,244,244);
+  margin-bottom: 100px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  min-height: 100%;
 }
 
 /**/

@@ -34,10 +34,13 @@ class PostController {
       // return currentUserFavouritesWithPosts
     }
 
+    const tagsModel = await TagModel.all()
+
     return view.render('posts.index', {
       posts: posts.toJSON(),
       // posts: posts // DEVNOTE: is a mixed object with page JSON + vanillaSerializer collection('rows' property). each row is already serialized data. I think that's how it works
-      favourites: Array.from(currentUserFavouritesWithPosts)
+      favourites: Array.from(currentUserFavouritesWithPosts),
+      tags: tagsModel.toJSON()
     })
   }
 
@@ -83,15 +86,15 @@ class PostController {
       return response.redirect('back')
     }
 
-    const Post = new PostModel()
+    const post = new PostModel()
 
-    Post.title = request.input('title')
-    Post.content = request.input('content')
+    post.title = request.input('title')
+    post.content = request.input('content')
 
-    await Post.save() // commented because we now save with a relationship
-    // await auth.user.posts().save(Post)
+    await post.save() // commented because we now save with a relationship
+    // await auth.user.posts().save(post)
 
-    await Post.tags().attach(request.input('tags') === null ? [] : request.input('tags'))
+    await post.tags().attach(request.input('tags') === null ? [] : request.input('tags'))
 
     const userPost = request.all();
     await auth.user.posts().create({
