@@ -3,16 +3,26 @@
   background-position: 50% 50%;
   background-size: cover;
   width: auto;
-  // min-height: 100%;
+  min-height: 50vh;
   overflow: hidden; //counter margin collapse
+  display: flex;
+  align-items: flex-end;
+
+  h1 {
+    color: $color__white;
+    text-shadow: 2px 2px 1px rgba($color__black, 1);
+    margin: 0.25em 0;
+  }
 }
 
 .hero__panel {
-  color: $color__white;
+  // color: $color__white;
+  width: 100%;
 }
 
 .hero__panel form {
   background: rgba(0,0,0, 0.6);
+  background: rgba(245,245,245, 0.4);
   padding: 10px 20px;
   border-radius: 1px;
 }
