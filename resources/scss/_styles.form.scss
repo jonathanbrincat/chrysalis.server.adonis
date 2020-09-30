@@ -69,10 +69,10 @@ button, input, select, option, textarea {
 
 input {
   border: 1px solid $swatch__tr-silver;
-  border-radius: 5px; //$borderRadius;
+  border-radius: 4px;
   color: $color__grey;
   width: 100%;
-  padding: 15px;
+  padding: 12px;
 }
 
 /* bootstrap 5
@@ -93,15 +93,15 @@ input[type="checkbox"] {
 
 textarea {
   border: 1px solid $swatch__tr-silver;
-  border-radius: 5px;
+  border-radius: 4px;
   width: 100%;
   min-height: 10em;
-  padding: 10px;
+  padding: 6px;
 }
 
 input[type="file"] {
   border: 1px solid $swatch__tr-silver;
-  border-radius: 5px;
+  border-radius: 4px;
   width: 100%;
 }
 
@@ -109,6 +109,7 @@ input[type="submit"] {
   background-color: $swatch__primary;
   border-color: $swatch__primary;
   color: $color__white;
+  color: #003147;
   font-weight: 700;
   margin: 0 auto;
   display: block;
@@ -116,5 +117,7 @@ input[type="submit"] {
 }
 
 select {
+  border-radius: 4px;
   width: 100%;
+  padding: 12px;
 }

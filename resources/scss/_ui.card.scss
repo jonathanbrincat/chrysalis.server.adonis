@@ -41,3 +41,20 @@
   font-size: 12px;
   margin: 0;
 }
+
+// designing this on the fly things are going to have to get messy before they get better
+.ui__card2 {
+  border-radius: 2px;
+    border: 1px solid #dcdcdc;
+    // box-shadow: 0 2px 16px 0 rgba($color__black, 0.08);
+    background-color: $color__white;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+    "header"
+    "body"
+    "footer";
+    height: 100%;
+}

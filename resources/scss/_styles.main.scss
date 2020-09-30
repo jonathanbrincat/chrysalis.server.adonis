@@ -46,8 +46,8 @@ body {
 
 #app__masthead {
   background-color: $swatch__primary;
-  color: $color__white;
   color: #394149;
+  color: #003147;
 
   a {
     color: inherit;
@@ -61,10 +61,6 @@ body {
 
   .ui__brand {
     color: $color__white;
-  }
-
-  .ui__brand {
-    color: #93FFE8;
     display: block;
     margin: 0;
     width: 160px;
@@ -72,6 +68,7 @@ body {
     svg {
       width: 100%;
       height: auto;
+      fill: #003147;
     }
   }
 
@@ -94,12 +91,12 @@ body {
 }
 
 #app__body {
-  background-color: rgb(244,244,244);
+  background-color: whitesmoke;
   margin-bottom: 100px;
   position: relative;
   z-index: 1;
-  overflow: hidden;
-  min-height: 100%;
+  // overflow: hidden;
+  // min-height: 100%;
 }
 
 /**/

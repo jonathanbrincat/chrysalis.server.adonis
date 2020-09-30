@@ -5,7 +5,25 @@
   <div class="row">
     <div class="col-12">
       <h1>Profile</h1>
-      <p>{{ profile.first_name }} {{ profile.last_name }}</p>
+
+      <p>Avatar</p>
+      <picture style="width: 260px; border-radius: 50%; display: block; overflow: hidden;">
+        <img src="https://picsum.photos/480/480" alt="" />
+        {{-- <span>JB</span> --}}
+      </picture>
+      <p><span>Name</span>: {{ profile.first_name }} {{ profile.last_name }}</p>
+      <p><apan>Address</apan>:</p>
+      <p><apan>Phone</apan>:</p>
+      <p><span>Email</span>: <button>Change</button></p>
+
+      <div class="ui__well">
+        <p>Change password</p>
+      </div>
+
+      <div class="ui__well">
+        <p>Danger zone</p>
+        <button>Delete account</button>
+      </div>
     </div>
   </div>
 </div>
