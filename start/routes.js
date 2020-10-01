@@ -68,4 +68,9 @@ Route.group(() => {
   Route.get('', 'ProfileController.index').as('profile.index')
 }).prefix('/profile/').middleware(["auth"])
 
-
+/*
+* Chat
+**/
+Route.group(() => {
+  Route.get('', 'ChatController.index').as('chat.index')
+}).prefix('/chat/').middleware(["auth"])

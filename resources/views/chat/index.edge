@@ -1,0 +1,97 @@
+@layout('_layout/master')
+
+@section('content')
+  <div class="container">
+    <div class="conversation">
+      <!-- <h2>Conversations</h2> -->
+
+      <aside class="conversation__aside">
+        <ul class="conversation__listing">
+          <li class="conversation__recipient">
+            <div class="conversation__toolbar">
+              <button type="button" class="ui__btn">Delete</button>
+            </div>
+            <h3>Advert title 1</h3>
+            <p>Jess</p>
+            <p>Avatar</p>
+          </li>
+          <li class="conversation__recipient">
+            <div class="conversation__toolbar">
+              <button type="button" class="ui__btn">Delete</button>
+            </div>
+            <h3>Advert title 2</h3>
+            <p>Jim</p>
+          </li>
+          <li class="conversation__recipient">
+            <div class="conversation__toolbar">
+              <button type="button" class="ui__btn">Delete</button>
+            </div>
+            <h3>Advert title 2</h3>
+            <p>Sally</p>
+          </li>
+        </ul>
+      </aside>
+
+      <header class="conversation__header">
+        <h3>Advert title</h3>
+      </header>
+
+      <main class="conversation__transcript">
+        <ul class="conversation__chat">
+          <li class="chat__message chat__sender">
+            <p class="message__signature">
+              <span class="user__avatar"></span>
+              <span class="user__name">You</span>
+            </p>
+            <p class="message__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ducimus quasi autem laborum illo aut nihil iure fugit cumque ex ullam deserunt delectus, sapiente possimus alias, enim molestias assumenda voluptates?</p>
+            <p class="message__meta"><span>9:12pm</span><span>Read</span></p>
+          </li>
+          <li class="chat__message chat__sender">
+            <p class="message__body">Magnam excepturi nemo saepe odit!</p>
+            <p class="message__meta"><span>9:12pm</span><span>Read</span></p>
+          </li>
+          <li class="chat__message chat__recipient">
+            <p class="message__signature">
+              <span class="user__avatar">SB</span>
+              <span class="user__name">Jess</span>
+            </p>
+            <p class="message__body">Lorem ipsum dolor.</p>
+            <p class="message__meta"><span>9:15pm</span><span>Read</span></p>
+          </li>
+          <li class="chat__message chat__recipient">
+            <p class="message__body">Fugit nobis cum, placeat perferendis cumque suscipit hic architecto enim.</p>
+            <p class="message__meta"><span>9:15pm</span><span>Read</span></p>
+          </li>
+          <li class="chat__message chat__sender">
+            <p class="message__body">Voluptatem ut libero dicta corrupti error unde quasi accusamus nesciunt.</p>
+            <p class="message__meta">You <span>9:13pm</span><span>Read</span></p>
+          </li>
+          <li class="chat__message chat__recipient">
+            <p class="message__body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis impedit molestias ex eius quos quaerat fugit nobis cum, placeat perferendis cumque suscipit hic architecto enim.</p>
+            <p class="message__meta">Jess <span>9:53pm</span><span>Read</span></p>
+          </li>
+          <li class="chat__message chat__sender">
+            <p class="message__body">Fugit hic, commodi voluptatibus ipsa a modi sunt doloribus, ex.</p>
+            <p class="message__meta">You <span>10:12pm</span><span>Sent</span></p>
+          </li>
+          <li class="chat__message chat__sender">
+            <p class="message__body">Lorem ipsum dolor sit amet consectetur adipisicing, elit. Placeat obcaecati nisi dignissimos necessitatibus in labore neque ratione, ipsa fugit animi cumque dolor possimus voluptas quis, eos pariatur nesciunt ducimus. Qui.</p>
+            <p class="message__meta">You <span>10:13pm</span><span>Sent</span></p>
+          </li>
+          <li class="chat__message chat__sender">
+            <p class="message__body">:)</p>
+            <p class="message__meta">You <span>10:13pm</span><span>Sent</span></p>
+          </li>
+        </ul>
+      </main>
+
+      <footer class="conversation__footer">
+        <form>
+          <button class="ui__btn">Attach</button>
+          <input type="text" placeholder="Enter Message" />
+          <button class="ui__btn">Send</button>
+        </form>
+      </footer>
+    </div>
+  </div>
+@endsection

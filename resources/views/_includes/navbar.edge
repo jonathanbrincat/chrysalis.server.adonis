@@ -14,15 +14,14 @@
 
     <div id="app__navigation" class="collapse navbar-collapse justify-content-between">
       <ul class="ui__navigation navigation__primary navbar-nav">
-        @loggedIn
         <li><a href="{{ route('posts.index') }}">Posts</a></li>
-        <li><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
-        <li><a href="{{ route('profile.index') }}">My Profile</a></li>
-        @endloggedIn
       </ul>
 
       <ul class="ui__navigation navigation__secondary navbar-nav">
         @loggedIn
+        <li><a href="/chat">Conversations</a></li>
+        <li><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
+        <li><a href="{{ route('profile.index') }}">My Profile</a></li>
         <li><a href="/logout">(<span>{{ auth.user.username }}</span>) Logout</a></li>
         @else
         <li><a href="/login" class="ui__btn">Login</a></li>

@@ -170,13 +170,13 @@ p.ui__btn, li.ui__btn {
 }
 
 .btn__primary {
-	background-color: $color__mint;
-	border-color: $color__mint;
+	background-color: $swatch__primary;
+	border-color: $swatch__primary;
 	color: $color__white;
 
 	&:hover {
-		background-color: darken($color__mint, 5%);
-		border-color: darken($color__mint, 5%);
+		background-color: darken($swatch__primary, 5%);
+		border-color: darken($swatch__primary, 5%);
     color: $color__white;
 	}
 

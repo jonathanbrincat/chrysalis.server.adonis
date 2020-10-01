@@ -8,6 +8,8 @@
   display: flex;
   align-items: flex-end;
 
+  mask: url('../assets/svg/hero-clip-mask.svg') bottom center/cover;
+
   h1 {
     color: $color__white;
     text-shadow: 2px 2px 1px rgba($color__black, 1);
