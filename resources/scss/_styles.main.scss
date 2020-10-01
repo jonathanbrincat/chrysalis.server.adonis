@@ -109,12 +109,6 @@ body {
   margin: 0;
 }
 
-.post__synopsis {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
 .admin__post {
   background-color: $color__white;
   display: flex;
@@ -151,5 +145,25 @@ body {
 
   &:before {
     content: "#";
+  }
+}
+
+.ui__directory {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0;
+
+  dt {
+    border-bottom: 1px solid $swatch__primary;
+    padding-bottom: 20px;
+    width: 100%;
+    display: block;
+    flex: 1 1 100%;
+  }
+
+  dd {
+    width: 50%;
+    display: block;
+    flex: 1 1 50%;
   }
 }

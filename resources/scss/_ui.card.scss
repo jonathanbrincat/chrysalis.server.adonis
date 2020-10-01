@@ -5,15 +5,37 @@
     background-color: $color__white;
     margin: 24px 0;
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 25% 1fr 60px;
     grid-template-rows: 1fr auto;
     grid-template-areas:
-    "header body"
-    "header footer";
+    "header body save"
+    "header footer footer";
+
+    p {
+      margin: 0.5em 0;
+    }
+
+    p {
+      @include font-size(1.4rem);
+    }
+
+    a {
+      text-decoration: none;
+    }
 }
 
 .card__header {
   grid-area: header;
+  position: relative;
+  background-color: #dcdcdc;
+
+  picture {
+    min-height: 100%;
+
+    &, a {
+      display: block;
+    }
+  }
 }
 
 .card__body {
@@ -27,17 +49,67 @@
   display: flex;
   justify-content: space-between;
 
-  dl, p {
+  dl, p,
+  form {
     margin: 0;
   }
 }
 
-.card__title {
-  font-size: 28px;
+.likes {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  color: $color__white;
+  display: flex;
+  align-items: flex-end;
+  text-shadow: 2px 2px 1px rgba($color__black, 1);
+
+  .icon {
+    width: 26px;
+    height: 26px;
+    margin-right: 8px;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.save {
+  grid-area: save;
+
+  button {
+    border: 0 none;
+    background: transparent none;
+    padding: 0;
+    width: 26px;
+    height: 26px;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.post__title {
+  @include font-size(2.2rem);
   margin: 0;
 }
 
-.card__curation {
+.post__location {
+  @include font-size(1.8rem);
+  margin: 0;
+}
+
+.post__synopsis {
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+  // overflow: hidden;
+}
+
+.post__meta {
   font-size: 12px;
   margin: 0;
 }
@@ -57,4 +129,8 @@
     "body"
     "footer";
     height: 100%;
+
+    a {
+      text-decoration: none;
+    }
 }

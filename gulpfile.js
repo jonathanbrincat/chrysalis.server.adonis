@@ -18,7 +18,8 @@ task('styles', () => {
   const options = {
     //outputStyle: 'compressed'         //nested | expanded | compact | compressed
     includePaths: [
-      './node_modules/bootstrap/scss'
+      './node_modules/bootstrap/scss',
+      './node_modules/@fortawesome/fontawesome-free/scss'
     ]
   }
 

@@ -3,18 +3,17 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <h1>Profile</h1>
-
-      <p>Avatar</p>
+    <div class="col-4">
       <picture style="width: 260px; border-radius: 50%; display: block; overflow: hidden;">
         <img src="https://picsum.photos/480/480" alt="" />
         {{-- <span>JB</span> --}}
       </picture>
+    </div>
+    <div class="col-8">
       <p><span>Name</span>: {{ profile.first_name }} {{ profile.last_name }}</p>
       <p><apan>Address</apan>:</p>
       <p><apan>Phone</apan>:</p>
-      <p><span>Email</span>: <button>Change</button></p>
+      <p><span>Email</span>: <button type="button" class="ui__btn">Change</button></p>
 
       <div class="ui__well">
         <p>Change password</p>
@@ -22,7 +21,7 @@
 
       <div class="ui__well">
         <p>Danger zone</p>
-        <button>Delete account</button>
+        <button type="button" class="ui__btn">Delete account</button>
       </div>
     </div>
   </div>

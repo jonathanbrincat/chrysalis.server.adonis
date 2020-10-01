@@ -1,9 +1,7 @@
 .ui__tags {
   @include list-unstyled;
   display: flex;
-}
-
-.tags__title {
+  align-items: center;
   margin: 0;
 }
 

@@ -66,6 +66,7 @@ class Post extends Model {
   // MUTATOR(setter) - is for intercepting and acting upon data before storing it in the database. this is a one-way operation. can not be reversed once the change is made.
   // NOTE: it is the naming schema that defines this as a mutator in a Model. 'set' followed by the 'property'/field you want to change(camel-case) i.e. setXXX. and return the mutation
   // the call is infered. It will be automatically called whenever the property is set/assigned. no need to call(effectively a setter in a getter/setter pattern)
+  /*
   setTitle(value) {
     //overide property - fyi you can override any property but this would be a bad practise as it obscures/distorts functionality
     // (effectively a getter in a getter/setter pattern)
@@ -76,6 +77,7 @@ class Post extends Model {
   getTitle(value) {
     return value.toUpperCase()
   }
+  */
 
   // COMPUTED EXAMPLE
   static get computed () {
