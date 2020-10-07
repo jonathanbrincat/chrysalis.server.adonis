@@ -1,10 +1,53 @@
 @layout('_layout/master')
 
+<!-- TODO: Adware layout -->
+
 @section('content')
   <div class="container">
-    <p>
-      <a href="{{ route('posts.index') }}">Go back</a>
-    </p>
+    <div style="display: flex; justify-content: space-between;">
+      <p>
+        <a href="{{ route('posts.index') }}">
+          <svg class="ui__icon icon__svg">
+            <use xlink:href="/assets/svg/fontawesome/solid.svg#arrow-left"></use>
+          </svg>
+          <span>Go back</span>
+
+          <span>Animal</span>
+          /
+          <span>Breed</span>
+          /<span>Location</span>
+        </a>
+      </p>
+
+      @if(favourites.includes(post.id))
+      {{-- UNSAVE --}}
+      <div style="display: flex; align-items: center;">
+        <p>Saved</p>
+        <form class="save" action="{{ route('saved.destroy', { id: post.id }) }}?_method=DELETE" method="POST" style="margin-left: 8px;">
+          {{ csrfField() }}
+          <button type="submit">
+            <svg class="ui__icon icon__svg">
+              <use xlink:href="/assets/svg/fontawesome/solid.svg#star"></use>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      @else
+      {{-- SAVE --}}
+      <div style="display: flex; align-items: center;">
+        <p>Save</p>
+        <form class="save" action="{{ route('saved.store', { id: post.id }) }}" method="POST" style="margin-left: 8px;">
+          {{ csrfField() }}
+          <button type="submit">
+            <svg class="ui__icon icon__svg">
+              <use xlink:href="/assets/svg/fontawesome/regular.svg#star"></use>
+            </svg>
+          </button>
+        </form>
+      </div>
+      @endif
+    </div>
 
     <hr>
 
@@ -16,55 +59,60 @@
       <div class="col-4">
         <div style="display: flex; justify-content: flex-end; align-items: flex-end;">
           <div>
-            <button type="button" class="ui__btn btn__primary">Message seller</button>
+            <button type="button" class="ui__btn btn__primary">Message seller
+              <svg class="ui__icon icon__svg">
+                <use xlink:href="/assets/svg/fontawesome/regular.svg#comments"></use>
+              </svg>
+            </button>
           </div>
           <div>
             <figure class="user__avatar" style="background-color: orange; border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">JB</figure>
             <p style="margin: 0; text-align: center;">Jess</p>
+            <p>Posting for 1+ year</p>
           </div>
+          <!-- Feedback/Reputation -->
+          <!-- Save seller/breeder -->
+          <!-- See other listings -->
+          <!-- External website -->
+          <!-- Facebook -->
+          <!-- Report/Flag ad -->
+          <!-- Ad Number/ID -->
         </div>
       </div>
 
       <div class="col-4">
         <p>{{ post.__meta__.likes_count }} Likes
-          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hand-thumbs-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16v-1c.563 0 .901-.272 1.066-.56a.865.865 0 0 0 .121-.416c0-.12-.035-.165-.04-.17l-.354-.354.353-.354c.202-.201.407-.511.505-.804.104-.312.043-.441-.005-.488l-.353-.354.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315L12.793 9l.353-.354c.353-.352.373-.713.267-1.02-.122-.35-.396-.593-.571-.652-.653-.217-1.447-.224-2.11-.164a8.907 8.907 0 0 0-1.094.171l-.014.003-.003.001a.5.5 0 0 1-.595-.643 8.34 8.34 0 0 0 .145-4.726c-.03-.111-.128-.215-.288-.255l-.262-.065c-.306-.077-.642.156-.667.518-.075 1.082-.239 2.15-.482 2.85-.174.502-.603 1.268-1.238 1.977-.637.712-1.519 1.41-2.614 1.708-.394.108-.62.396-.62.65v4.002c0 .26.22.515.553.55 1.293.137 1.936.53 2.491.868l.04.025c.27.164.495.296.776.393.277.095.63.163 1.14.163h3.5v1H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+          <svg class="ui__icon icon__svg">
+            <use xlink:href="/assets/svg/fontawesome/regular.svg#thumbs-up"></use>
           </svg>
           |
           <a class="btn btn__primary" href="{{ route('posts.like', { id: post.id }) }}">
             Like
           </a>
-        </p>
 
-        <p>
-          @if(favourites.includes(post.id))
-          {{-- UNSAVE --}}
-          <form action="{{ route('saved.destroy', { id: post.id }) }}?_method=DELETE" method="POST">
-            {{ csrfField() }}
-            <button type="submit" class="ui__btn">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          <!-- Location -->
+          <!-- male / female breakdown with gfx goes here to replace likes -->
+          <ul>
+            <li>
+              <svg class="ui__icon icon__svg">
+                <use xlink:href="/assets/svg/fontawesome/solid.svg#cat"></use>
               </svg>
-            </button>
-          </form>
-
-          @else
-          {{-- SAVE --}}
-          <form action="{{ route('saved.store', { id: post.id }) }}" method="POST">
-            {{ csrfField() }}
-            <button type="submit" class="ui__btn">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+              <span>2</span>
+            </li>
+            <li>
+              <svg class="ui__icon icon__svg">
+                <use xlink:href="/assets/svg/fontawesome/solid.svg#cat"></use>
               </svg>
-            </button>
-          </form>
-
-          @endif
+              <span>2</span>
+            </li>
+          </ul>
         </p>
       </div>
 
       <div class="col-8">
-        <p>{{ post.content }}</p>
+        <!-- IF Edited:datetimestamp -->
+        <!-- View revisions -->
+        <p>{{ post.body }}</p>
 
         <!--
         Replace with gfx summary at the top in the header. cat heads with a number. blue for boy. pink for girl - problably offend somebody oh well - ghosted/opacity when they are reserved.
@@ -99,108 +147,250 @@
         -->
       </div>
 
-      <hr>
+      <!-- <hr> -->
 
       <div class="col-12">
-        <h2>Kitten 1</h2>
+        <!-- <h2>Kitten 1</h2> -->
+        <br>
         <div class="row align-items-end">
-          <div class="col-9">
-            <img src="https://picsum.photos/seed/picsum/1200/800" alt="" />
+          <div class="col-8">
+            <picture class="gallery">
+              <img src="https://picsum.photos/1200/800" alt="" />
+            </picture>
           </div>
 
-          <div class="col-2">
-            <table>
+          <div class="col-4">
+            <div class="gallery__thumbnails">
+              <ul>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+              </ul>
+            </div>
+
+            <table class="reserve">
               <tr>
-                <td>Kitten 1</td>
-                <td>Male(icon)</td>
-                <td>Price</td>
-                <td><button type="button" class="ui__btn btn__primary">Reserve</button></td>
+                <th colspan="2">Kitten 1</th>
+              </tr>
+              <tr>
+                <td colspan="2">Snow sepia rosetted</td>
+              </tr>
+              <tr>
+                <td>
+                  <span>Male</span>
+                  <svg class="ui__icon icon__svg">
+                    <use xlink:href="/assets/svg/fontawesome/solid.svg#mars"></use>
+                  </svg>
+                </td>
+                <td class="price">£950.<small>00</small></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align: right;">
+                  <button type="button" class="ui__btn btn__primary">
+                    <span>Reserve</span>
+                    <svg class="ui__icon icon__svg">
+                      <use xlink:href="/assets/svg/fontawesome/solid.svg#bullseye"></use>
+                      {{-- <use xlink:href="/assets/svg/fontawesome/solid.svg#crosshairs"></use> --}}
+                      {{-- <use xlink:href="/assets/svg/fontawesome/regular.svg#handshake"></use> --}}
+                    </svg>
+                  </button>
+                </td>
               </tr>
             </table>
           </div>
         </div>
       </div>
       <div class="offset-4 col-8">
-        <p>{{ post.content }}</p>
+        <!-- IF Edited:datetimestamp -->
+        <!-- View revisions -->
+        <p>{{ post.body }}</p>
       </div>
 
       <hr>
 
       <div class="col-12">
-        <h2>Kitten 2</h2>
+        <!-- <h2>Kitten 2</h2> -->
+        <br>
         <div class="row align-items-end">
-          <div class="col-9">
-            <img src="https://picsum.photos/seed/picsum/1200/800" alt="" />
+          <div class="col-8">
+            <img src="https://picsum.photos/1200/800" alt="" />
           </div>
 
-          <div class="col-2">
-            <table>
+          <div class="col-4">
+            <div class="gallery__thumbnails">
+              <ul>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+              </ul>
+            </div>
+
+            <table class="reserve">
               <tr>
-                <td>Kitten 2</td>
-                <td>Male(icon)</td>
-                <td>Price</td>
-                <td><button type="button" class="ui__btn btn__primary" disabled="">Unavailable</button></td>
+                <th colspan="2">Kitten 2</th>
+              </tr>
+              <tr>
+                <td colspan="2">Brown rosetted</td>
+              </tr>
+              <tr>
+                <td>
+                  <span>Male</span>
+                  <svg class="ui__icon icon__svg">
+                    <use xlink:href="/assets/svg/fontawesome/solid.svg#mars"></use>
+                  </svg>
+                </td>
+                <td class="price">£850.<small>00</small></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align: right;">
+                  <button type="button" class="ui__btn btn__primary" disabled="">
+                    <span>Unavailable</span>
+                    <svg class="ui__icon icon__svg">
+                      <use xlink:href="/assets/svg/fontawesome/solid.svg#lock"></use>
+                    </svg>
+                  </button>
+                </td>
               </tr>
             </table>
           </div>
         </div>
         </div>
       <div class="offset-4 col-8">
-        <p>{{ post.content }}</p>
+        <!-- IF Edited:datetimestamp -->
+        <!-- View revisions -->
+        <p>{{ post.body }}</p>
 
-        <p>{{ post.content }}</p>
+        <p>{{ post.body }}</p>
       </div>
 
       <hr>
 
       <div class="col-12">
-        <h2>Kitten 3</h2>
+        <!-- <h2>Kitten 3</h2> -->
+        <br>
         <div class="row align-items-end">
-          <div class="col-9">
-            <img src="https://picsum.photos/seed/picsum/1200/800" alt="" />
+          <div class="col-8">
+            <img src="https://picsum.photos/1200/800" alt="" />
           </div>
 
-          <div class="col-2">
-            <table>
+          <div class="col-4">
+            <div class="gallery__thumbnails">
+              <ul>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+              </ul>
+            </div>
+
+            <table class="reserve">
               <tr>
-                <td>Kitten 3</td>
-                <td>Female(icon)</td>
-                <td>Price</td>
-                <td><button type="button" class="ui__btn btn__primary" disabled="">Unavailable</button></td>
+                <th colspan="2">Kitten 3</th>
+              </tr>
+              <tr>
+                <td colspan="2">Snow spotted</td>
+              </tr>
+              <tr>
+                <td>
+                  <span>Female</span>
+                  <svg class="ui__icon icon__svg">
+                    <use xlink:href="/assets/svg/fontawesome/solid.svg#venus"></use>
+                  </svg>
+                </td>
+                <td class="price">£900.<small>00</small></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align: right;">
+                  <button type="button" class="ui__btn btn__primary" disabled="">
+                    <span>Unavailable</span>
+                    <svg class="ui__icon icon__svg">
+                      <use xlink:href="/assets/svg/fontawesome/solid.svg#lock"></use>
+                    </svg>
+                  </button>
+                </td>
               </tr>
             </table>
           </div>
         </div>
       </div>
       <div class="offset-4 col-8">
-        <p>{{ post.content }}</p>
+        <!-- IF Edited:datetimestamp -->
+        <!-- View revisions -->
+        <p>{{ post.body }}</p>
 
-        <p>{{ post.content }}</p>
+        <p>{{ post.body }}</p>
       </div>
 
       <hr>
 
       <div class="col-12">
-        <h2>Kitten 4</h2>
+        <!-- <h2>Kitten 4</h2> -->
+        <br>
         <div class="row align-items-end">
-          <div class="col-9">
-            <img src="https://picsum.photos/seed/picsum/1200/800" alt="" />
+          <div class="col-8">
+            <img src="https://picsum.photos/1200/800" alt="" />
           </div>
 
-          <div class="col-2">
-            <table>
+          <div class="col-4">
+            <div class="gallery__thumbnails">
+              <ul>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+                <li><img src="https://picsum.photos/120/120" alt="" /></li>
+              </ul>
+            </div>
+
+            <table class="reserve">
               <tr>
-                <td>Kitten 4</td>
-                <td>Female(icon)</td>
-                <td>Price</td>
-                <td><button type="button" class="ui__btn btn__primary">Reserve</button></td>
+                <th colspan="2">Kitten 4</th>
+              </tr>
+              <tr>
+                <td colspan="2">Snow marble</td>
+              </tr>
+              <tr>
+                <td>
+                  <span>Female</span>
+                  <svg class="ui__icon icon__svg">
+                    <use xlink:href="/assets/svg/fontawesome/solid.svg#venus"></use>
+                  </svg>
+                </td>
+                <td class="price">£850.<small>00</small></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align: right;">
+                  <button type="button" class="ui__btn btn__primary">
+                    <span>Reserve</span>
+                    <svg class="ui__icon icon__svg">
+                      <use xlink:href="/assets/svg/fontawesome/solid.svg#bullseye"></use>
+                      {{-- <use xlink:href="/assets/svg/fontawesome/solid.svg#crosshairs"></use> --}}
+                      {{-- <use xlink:href="/assets/svg/fontawesome/regular.svg#handshake"></use> --}}
+                    </svg>
+                  </button>
+                </td>
               </tr>
             </table>
           </div>
         </div>
       </div>
       <div class="offset-4 col-8">
-        <p>{{ post.content }}</p>
+        <!-- IF Edited:datetimestamp -->
+        <!-- View revisions -->
+        <p>{{ post.body }}</p>
+      </div>
+
+      <div class="col-12">
+        <h2>Location</h2>
+
+        <!-- Google Maps -->
+      </div>
+
+      <div class="col-12">
+        <h3>Terms &amp; Conditions</h3>
+
+        <!-- Google Maps -->
       </div>
     </div>
   </div>

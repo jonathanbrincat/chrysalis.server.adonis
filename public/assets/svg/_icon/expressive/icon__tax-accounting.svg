@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon__tax-accounting" stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" transform="translate(2.000000, 1.000000)">
+    <path d="M0,18.1363636 L16,18.1363636" id="Shape" stroke="#FF8000"></path>
+    <path d="M8.88888889,9.5 L5.33333333,6.04545455 L10.6666667,0.863636364 C11.6444444,-0.0863636364 13.2444444,-0.0863636364 14.2222222,0.863636364 L14.2222222,0.863636364 C15.2,1.81363636 15.2,3.36818182 14.2222222,4.31818182 L8.88888889,9.5 Z" id="Shape" stroke="#4D4D4D"></path>
+    <path d="M6.22222222,6.90909091 L0.888888889,12.0909091 C0.355555556,12.6090909 0.355555556,13.3 0.888888889,13.8181818 C1.42222222,14.3363636 2.13333333,14.3363636 2.66666667,13.8181818 L8,8.63636364" id="Shape" stroke="#4D4D4D"></path>
+    <path d="M0.888888889,13.8181818 L0,14.6818182" id="Shape" stroke="#4D4D4D"></path>
+    <polyline id="Shape" stroke="#4D4D4D" points="14.2222222 4.31818182 16 6.04545455 12.4444444 9.5"></polyline>
+  </g>
+</svg>

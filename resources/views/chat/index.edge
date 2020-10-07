@@ -64,7 +64,7 @@
             <div class="message__body">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ducimus quasi autem laborum illo aut nihil iure fugit cumque ex ullam deserunt delectus, sapiente possimus alias, enim molestias assumenda voluptates?</p>
             </div>
-            <p class="message__meta"><span>9:12pm</span> <span>Read</span></p>
+            <p class="message__meta"><span>9:12pm</span> <span title="Read"><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#check-circle"></use></svg></span></p>
           </li>
 
           <li class="chat__message chat__sender">
@@ -75,7 +75,7 @@
             <div class="message__body">
               <p>Magnam excepturi nemo saepe odit!</p>
             </div>
-            <p class="message__meta"><span>9:12pm</span> <span>Read</span></p>
+            <p class="message__meta"><span>9:12pm</span> <span title="Read"><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#check-circle"></use></svg></span></p>
           </li>
 
           <li class="chat__message chat__recipient">
@@ -86,7 +86,7 @@
             <div class="message__body">
               <p>Lorem ipsum dolor.</p>
             </div>
-            <p class="message__meta"><span>9:15pm</span> <span>Read</span></p>
+            <p class="message__meta"><span>9:15pm</span> <span title="Read"><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#check-circle"></use></svg></span></p>
           </li>
 
           <li class="chat__message chat__recipient">
@@ -97,7 +97,7 @@
             <div class="message__body">
               <p>Fugit nobis cum, placeat perferendis cumque suscipit hic architecto enim.</p>
             </div>
-            <p class="message__meta"><span>9:15pm</span> <span>Read</span></p>
+            <p class="message__meta"><span>9:15pm</span> <span title="Read"><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#check-circle"></use></svg></span></p>
           </li>
 
           <li class="chat__message chat__sender">
@@ -108,7 +108,7 @@
             <div class="message__body">
               <p>Voluptatem ut libero dicta corrupti error unde quasi accusamus nesciunt.</p>
             </div>
-            <p class="message__meta"><span>9:13pm</span> <span>Read</span></p>
+            <p class="message__meta"><span>9:13pm</span> <span title="Read"><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#check-circle"></use></svg></span></p>
           </li>
 
           <li class="chat__message chat__recipient">
@@ -119,7 +119,7 @@
             <div class="message__body">
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis impedit molestias ex eius quos quaerat fugit nobis cum, placeat perferendis cumque suscipit hic architecto enim.</p>
             </div>
-            <p class="message__meta"><span>9:53pm</span> <span>Read</span></p>
+            <p class="message__meta"><span>9:53pm</span> <span title="Read"><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#check-circle"></use></svg></span></p>
           </li>
 
           <li class="chat__message chat__sender">
@@ -130,7 +130,7 @@
             <div class="message__body">
               <p>Fugit hic, commodi voluptatibus ipsa a modi sunt doloribus, ex.</p>
             </div>
-            <p class="message__meta"><span>10:12pm</span> <span>Sent</span></p>
+            <p class="message__meta"><span>10:12pm</span> <span title="Delivered"><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/regular.svg#check-circle"></use></svg></span></p>
           </li>
 
           <li class="chat__message chat__sender">
@@ -139,7 +139,7 @@
               <span class="user__name">You</span>
             </div>
             <p class="message__body">Lorem ipsum dolor sit amet consectetur adipisicing, elit. Placeat obcaecati nisi dignissimos necessitatibus in labore neque ratione, ipsa fugit animi cumque dolor possimus voluptas quis, eos pariatur nesciunt ducimus. Qui.</p>
-            <p class="message__meta"><span>10:13pm</span> <span>Sent</span></p>
+            <p class="message__meta"><span>10:13pm</span> <span title="Delivered"><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/regular.svg#check-circle"></use></svg></span></p>
           </li>
 
           <li class="chat__message chat__sender">
@@ -150,16 +150,41 @@
             <div class="message__body">
               <p>:)</p>
             </div>
-            <p class="message__meta"><span>10:13pm</span> <span>Sent</span></p>
+            <p class="message__meta"><span>10:13pm</span> <span title="Sent" style="font-size: 1rem;"><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#check"></use></svg></span></p>
+          </li>
+
+          <li class="chat__message chat__sender">
+            <div class="message__signature">
+              <figure class="user__avatar" style="background-color: #6DBEC5;"></figure>
+              <span class="user__name">You</span>
+            </div>
+            <div class="message__body">
+              <p>Quas optio neque temporibus!</p>
+            </div>
+            <p class="message__meta">
+              <span>10:47pm</span> <span title="Failure"><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#ban"></use></svg></span>
+              <span style="display: block; margin-top:0; color: rgb(160, 160, 160);"><a href="">Retry</a></span>
+            </p>
           </li>
         </ul>
       </main>
 
       <footer class="conversation__footer">
         <form>
-          <button class="ui__btn">Attach</button>
+          {{ csrfField() }}
+          <button class="ui__btn" title='Attach'>
+            <svg class="ui__icon icon__svg">
+              <use xlink:href="/assets/svg/fontawesome/solid.svg#paperclip"></use>
+              <!-- comment / comment-alt / comment-dots / location arrow -->
+            </svg>
+          </button>
           <input type="text" placeholder="Enter Message" />
-          <button class="ui__btn btn__primary">Send</button>
+          <button class="ui__btn btn__primary">
+            <span>Send</span>
+            <svg class="ui__icon icon__svg">
+              <use xlink:href="/assets/svg/fontawesome/solid.svg#reply"></use>
+            </svg>
+          </button>
         </form>
       </footer>
     </div>

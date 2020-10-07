@@ -1,0 +1,92 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_ui.tooldrawer.scss (partial)
+* 	@project:	mytr
+* 	@author: 	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+*
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	UI Dataset: Tooldrawer
+	========================================================================== */
+//.dataset__toolbench {}
+.ui__toolbench {
+	//background-color: $color__light-grey;
+	@include font-size(1.3rem);
+	line-height: 20px;
+	width: 260px;
+	padding-right: 30px;
+	flex-shrink: 0;
+	position: relative;
+	display: none;
+
+	@include breakpoint($screen-md-min) {
+		display: block;
+	}
+
+	#app--main & {
+		form {
+			display: flex;
+			flex-direction: columns;
+		}
+
+		.form__field {
+			margin-bottom: 0;
+			border-bottom: 1px solid $color__tr-silver;
+		}
+
+		.form__field > .form__control {
+			border-top: 1px solid $color__tr-silver;
+			float: none;
+			width: auto;
+			padding: 30px 0;
+			padding-left: 15px + 26px;
+
+			/* &:last-of-type {
+				border-bottom: 1px solid $color__tr-silver;
+			} */
+		}
+
+		.form__control {
+			position: relative;
+		}
+
+		.form__field > label {
+			float: none;
+			width: auto;
+			display: block;
+		}
+
+		input[type="radio"],
+		input[type="checkbox"] {
+			position: absolute;
+			top: 15px;
+			left: 0;
+
+			& ~ label {
+				&:before {
+					position: absolute;
+					top: 25px;
+					left: 0;
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	.control__radio > label,
+	.control__checkbox > label {
+		border-width: 0;
+		border-radius: 0;
+		font-weight: 400;
+		display: inline-block;
+		position: static;
+		width: auto;
+		margin: 0;
+		padding: 0;
+	}
+}

@@ -1,0 +1,164 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_ui.listing.scss (partial)
+* 	@project: 	mytr
+* 	@author:	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	UI listing
+	========================================================================== */
+.ui__listing {
+	list-style: none;
+	padding: 0;
+
+	background-color: $color__white;
+	box-shadow: 0px 0px 8px -2px rgba($theme__secondary, 0.10);
+
+	li {
+		overflow: hidden;
+		box-shadow: 0px 3px 6px -2px rgba($theme__secondary, 0.10);
+		padding: 0 20px;
+		margin: 0;
+		position: relative;
+
+		@include breakpoint($screen-md-min) {
+			padding: 0 40px;
+		}
+
+		&:last-child {
+			box-shadow: none;
+		}
+
+		//DEVNOTE: use traffic light system state-green, state-amber, state-red
+		/* &.state__status-highlight {
+			border-left: 4px solid orange;
+		} */
+
+		&.state__status-green,
+		&.state__status-positive,
+		&.state__status-red,
+		&.state__status-negative {
+			position: relative;
+
+			&:before {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				width: 5px;
+			}
+		}
+
+		&.state__status-green,
+		&.state__status-positive {
+			&:before {
+				background-color: $color__cyan;
+			}
+
+			& {
+				background-color: rgba($color__cyan, 0.1)
+			}
+
+			span {
+				color: $color__cyan;
+			}
+		}
+
+		&.state__status-red,
+		&.state__status-negative {
+			&:before {
+				background-color: $color__red;
+			}
+
+			& {
+				background-color: rgba($color__red, 0.1)
+			}
+
+			span {
+				color: $color__red;
+			}
+		}
+
+		&.state__status-orange {
+			font-weight: 500;
+		}
+	}
+}
+
+.listing__icon-left li,
+.listing__icon-right li {
+
+	.resource__icon {
+		@include font-size(1.2rem);
+		position: absolute;
+		top: 5px;
+		text-align: center;
+
+		.ui__icon {
+			@include font-size(3.0rem);
+		}
+
+		span {
+			color: inherit;
+			display: block;
+			text-transform: uppercase;
+		}
+	}
+}
+
+.listing__icon-left li {
+	padding-left: 70px;
+
+	@include breakpoint($screen-md-min) {
+		padding-left: 110px;
+	}
+
+	.resource__icon {
+		left: 20px;
+
+		@include breakpoint($screen-md-min) {
+			left: 40px;
+		}
+	}
+}
+
+.listing__icon-right li {
+	padding-right: 70px;
+
+	@include breakpoint($screen-md-min) {
+		padding-right: 110px;
+	}
+
+	.resource__icon {
+		right: 20px;
+
+		@include breakpoint($screen-md-min) {
+			right: 40px;
+		}
+	}
+}
+
+//from mya-757
+.products__list {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: -20px;
+	margin-right: -20px;
+	align-items: stretch;
+
+	li {
+		flex-grow: 0;
+		flex-shrink: 0;
+		width: 33.333%;
+		margin: 20px 0;
+		padding: 0 20px;
+	}
+}

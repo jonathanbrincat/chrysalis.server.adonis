@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--doc-training" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(0.000000, 1.000000)">
+    <path d="M3.94018437,17.8958903 L9.65146563,8.88892258" id="Stroke-1" stroke="#4D4D4D" stroke-width="1.5"></path>
+    <path d="M15.3628656,17.8958903 L9.65158437,8.88892258" id="Stroke-3" stroke="#4D4D4D" stroke-width="1.5"></path>
+    <path d="M9.651525,-5.80645161e-05 L9.651525,17.8960065" id="Stroke-5" stroke="#4D4D4D" stroke-width="1.5"></path>
+    <polygon id="Fill-8" fill="#FFFFFF" points="0.44590625 13.5653806 18.8848125 13.5653806 18.8848125 2.12028387 0.44590625 2.12028387"></polygon>
+    <polygon id="Stroke-9" stroke="#4D4D4D" stroke-width="1.5" points="0.4453125 13.5653806 18.8842187 13.5653806 18.8842187 2.12028387 0.4453125 2.12028387"></polygon>
+    <polygon id="Fill-11" fill="#FFFFFF" points="1.9130625 12.2699613 17.4164687 12.2699613 17.4164687 3.41628387 1.9130625 3.41628387"></polygon>
+    <polygon id="Stroke-12" stroke="#4D4D4D" points="1.9130625 12.2699613 17.4164687 12.2699613 17.4164687 3.41628387 1.9130625 3.41628387"></polygon>
+  </g>
+</svg>

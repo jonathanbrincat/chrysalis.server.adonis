@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--brochure" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(3.000000, 1.000000)">
+    <polygon id="Stroke-5" stroke="#FF8000" stroke-width="1.19999993" stroke-linecap="round" stroke-linejoin="round" points="2.4975 6.49818493 6.327 6.49818493 6.327 3.06236301 2.4975 3.06236301"></polygon>
+    <polygon id="Stroke-3" stroke="#4D4D4D" stroke-width="1.19999993" stroke-linecap="round" stroke-linejoin="round" points="14.319 12.8469863 8.991 12.8469863 8.991 17.6272603"></polygon>
+    <path d="M14.319,12.8469863 L8.991,17.6272603 L1.155843,17.6272603 C0.702963,17.6272603 0.333,17.2881596 0.333,16.8734708 L0.333,1.05195904 C0.333,0.637867808 0.702963,0.298767123 1.155843,0.298767123 L13.496157,0.298767123 C13.949037,0.298767123 14.319,0.637867808 14.319,1.05195904 L14.319,12.8469863 Z" id="Stroke-1" stroke="#4D4D4D" stroke-width="1.19999993" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M8.71407993,6.72226027 L11.8594666,6.72226027" id="Stroke-8" stroke="#4D4D4D" stroke-width="1.19999993" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M8.71407993,3.73458904 L11.8594666,3.73458904" id="Stroke-9" stroke="#4D4D4D" stroke-width="1.19999993" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M2.4975,9.70993151 L12.0296248,9.70993151" id="Stroke-10" stroke="#4D4D4D" stroke-width="1.19999993" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M2.4975,12.8469863 L7.00132487,12.8469863" id="Stroke-11" stroke="#4D4D4D" stroke-width="1.19999993" stroke-linecap="round" stroke-linejoin="round"></path>
+  </g>
+</svg>

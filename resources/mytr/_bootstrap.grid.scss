@@ -1,0 +1,101 @@
+/*
+* Compressed and generated using gulp.js sass/compress build tools
+*
+*   @title:   	_core.grid.scss (partial)
+*   @project:   mytr
+*   @author:  	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+**/
+
+@charset "UTF-8";
+
+
+//
+// Grid system
+// --------------------------------------------------
+//DEVNOTE: bootstrap rip of grid.scss;
+
+//vars
+$container-sm:                 (720px + $grid-gutter-width) !default;
+$container-md:                 (940px + $grid-gutter-width) !default;
+$container-lg:                 (1140px + $grid-gutter-width) !default;
+
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+.container {
+	@include container-fixed;
+
+	@media (min-width: $screen-sm-min) {
+	  width: $container-sm;
+	}
+	@media (min-width: $screen-md-min) {
+	  width: $container-md;
+	}
+	@media (min-width: $screen-lg-min) {
+	  width: $container-lg;
+	}
+}
+
+
+// Fluid container
+//
+// Utilizes the mixin meant for fixed width containers, but without any defined
+// width for fluid, full width layouts.
+
+.container-fluid {
+	@include container-fixed;
+}
+
+
+// Row
+//
+// Rows contain and clear the floats of your columns.
+
+.row {
+	@include make-row;
+}
+
+
+// Columns
+//
+// Common styles for small and large grid columns
+
+@include make-grid-columns;
+
+
+// Extra small grid
+//
+// Columns, offsets, pushes, and pulls for extra small devices like
+// smartphones.
+
+@include make-grid(xs);
+
+
+// Small grid
+//
+// Columns, offsets, pushes, and pulls for the small device range, from phones
+// to tablets.
+
+@media (min-width: $screen-sm-min) {
+	@include make-grid(sm);
+}
+
+
+// Medium grid
+//
+// Columns, offsets, pushes, and pulls for the desktop device range.
+
+@media (min-width: $screen-md-min) {
+	@include make-grid(md);
+}
+
+
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+
+@media (min-width: $screen-lg-min) {
+	@include make-grid(lg);
+}

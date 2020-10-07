@@ -1,0 +1,91 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_ui.tile.scss (partial)
+* 	@project: 	mytr
+* 	@author:	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	UI tile
+	========================================================================== */
+
+//DEVNOTE: these need to work with flex layout as will be child flex elements for equal heights
+.ui__tile {
+	//border: 2px solid $theme__border;
+	//border: 2px solid rgba(133,146,158, 1);
+	border-radius: 1px;
+	background-color: $color__white;
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	position: relative;
+	min-height: 260px;
+	padding: 20px 20px 0;
+	margin: 20px 0;
+
+	box-shadow: 0px 0px 12px 1px rgba($theme__secondary, 0.10);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	width:100%;
+	height:100%;
+
+	h2, h3 {
+		@extend h3;
+		line-height: 30px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+
+		//DEVNOTE: webkit only; can't have both. not without needless browser sniffing
+		// display: -webkit-box;
+		// -webkit-line-clamp: 3;
+		// -webkit-box-orient: vertical;
+		// max-height: 30px * 3;
+	}
+
+	.typeface__eyebrows {
+		margin-bottom: -15px;
+	}
+
+	&.state__highlight {
+		border-left: 4px solid blue;
+	}
+
+	figure img {
+		display: block;
+		// width: 100%;
+		// height: 100%;
+		// object-fit: cover;
+	}
+}
+
+.tile__overlay {
+	width:100%;
+	height:100%;
+	padding-top:60px;
+
+	&:before {
+		content: "";
+		background-color: rgba(255,0,0, 0.4);
+		background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.7) 100%);
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+}
+
+.article__wrapper {
+	position: relative;
+
+	.tile__overlay & {
+		color: $color__white;
+	}
+}

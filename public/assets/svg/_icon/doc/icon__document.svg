@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--doc-document" stroke="#4D4D4D" stroke-width="1.5" fill="none" fill-rule="evenodd" transform="translate(3.000000, 1.000000)">
+    <polyline id="Shape" transform="translate(12.477718, 2.812449) scale(-1, 1) rotate(-180.000000) translate(-12.477718, -2.812449) " points="9.98217469 5.21048321 9.98217469 0.414414414 14.973262 0.414414414"></polyline>
+    <path d="M2.85947712,8.38288288 L12.0098039,8.38288288" id="Line" stroke-linecap="square" transform="translate(7.434641, 8.382883) scale(-1, 1) rotate(-180.000000) translate(-7.434641, -8.382883) "></path>
+    <path d="M2.85947712,11.6801802 L12.0098039,11.6801802" id="Line" stroke-linecap="square" transform="translate(7.434641, 11.680180) scale(-1, 1) rotate(-180.000000) translate(-7.434641, -11.680180) "></path>
+    <polygon id="Shape" stroke-linecap="square" transform="translate(7.486631, 9.207207) scale(-1, 1) rotate(-180.000000) translate(-7.486631, -9.207207) " points="9.98217469 18 0 18 0 14.003276 0 2.81244881 0 0.414414414 14.973262 0.414414414 14.973262 13.2039312"></polygon>
+  </g>
+</svg>

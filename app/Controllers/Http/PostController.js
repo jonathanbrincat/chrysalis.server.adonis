@@ -78,7 +78,7 @@ class PostController {
 
     const validation = await validate(request.all(), {
       title: 'required|min:5|max:255',
-      content: 'required|min:3',
+      body: 'required|min:3',
     })
 
     if(validation.fails()) {
@@ -89,7 +89,7 @@ class PostController {
     const post = new PostModel()
 
     post.title = request.input('title')
-    post.content = request.input('content')
+    post.body = request.input('body')
 
     await post.save() // commented because we now save with a relationship
     // await auth.user.posts().save(post)
@@ -99,7 +99,7 @@ class PostController {
     const userPost = request.all();
     await auth.user.posts().create({
       title: userPost.title,
-      content: userPost.content,
+      body: userPost.body,
     })
 
     session.flash({ notification: 'Your post has been created'})
@@ -125,7 +125,7 @@ class PostController {
   async update({ request, response, view, session, params }) {
     const validation = await validate(request.all(), {
       title: 'required|min:5|max:255',
-      content: 'required|min:3',
+      body: 'required|min:3',
     })
 
     if(validation.fails()) {
@@ -136,7 +136,7 @@ class PostController {
     const post = await PostModel.find(params.id)
 
     post.title = request.all().title //request.input('title')
-    post.content = request.all().content //request.input('content')
+    post.body = request.all().body //request.input('body')
 
     await post.save()
 

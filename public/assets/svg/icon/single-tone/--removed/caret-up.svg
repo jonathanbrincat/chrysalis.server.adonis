@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/dark/caret-up</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/dark/caret-up" fill="#4D4D4D" stroke="#4D4D4D" stroke-width="0.5">
+            <polygon id="caret" transform="translate(10.000000, 10.000000) rotate(-180.000000) translate(-10.000000, -10.000000) " points="13.9181359 7.5 9.9999518 11.3551023 6.08186414 7.5 5.5 8.07249628 9.9999518 12.5 14.5 8.07249628"></polygon>
+        </g>
+    </g>
+</svg>

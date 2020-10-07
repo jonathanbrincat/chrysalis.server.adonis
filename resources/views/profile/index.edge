@@ -5,23 +5,49 @@
   <div class="row">
     <div class="col-4">
       <picture style="width: 260px; border-radius: 50%; display: block; overflow: hidden;">
-        <img src="https://picsum.photos/480/480" alt="" />
-        {{-- <span>JB</span> --}}
+        {{-- <img src="https://picsum.photos/480/480" alt="" /> --}}
+        <span style="width: 260px; height: 260px; background-color: skyblue; color: white; font-size: 9.2rem; border-radius: 50%; display: flex; overflow: hidden; align-items: center; justify-content: center;">JB</span>
       </picture>
     </div>
     <div class="col-8">
-      <p><span>Name</span>: {{ profile.first_name }} {{ profile.last_name }}</p>
-      <p><apan>Address</apan>:</p>
-      <p><apan>Phone</apan>:</p>
-      <p><span>Email</span>: <button type="button" class="ui__btn">Change</button></p>
+      <p>
+        <span>Name</span>: {{ profile.first_name }} {{ profile.last_name }}
+        <a href=""><span>Edit</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#pencil-alt"></use></svg></a>
+        <span style="display: block;">Note: We value your privacy. Your personal information will be withheld from public display.</span>
+      </p>
+      <p><span>Display name</span>: {{ auth.user.username }}</p>
+      <p><apan>Address</apan>: {{ profile.address }}</p>
+      <p><apan>Contact number</apan>:</p>
+      <p style="background-color: silver; padding: 6px; border-radius: 1px;">
+        <span>(Primary)Email</span>: {{ auth.user.email }} <button type="button" class="ui__btn"><span>Change</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#pencil-alt"></use></svg></button>
+        <span style="display: block;">Important: The primary email will be used to identify your account when logging in</span>
+      </p>
+      <dl>
+        <dt><span>Additional emails</span>: <button type="button" class="ui__btn"><span>Add</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use></svg></button></dt>
+        <dd></dd>
+      </dl>
+
+      <hr>
 
       <div class="ui__well">
         <p>Change password</p>
       </div>
 
+      <hr>
+
       <div class="ui__well">
-        <p>Danger zone</p>
-        <button type="button" class="ui__btn">Delete account</button>
+        <p>
+          <span>Danger zone</span>
+          <svg class="ui__icon icon__svg">
+            <use xlink:href="/assets/svg/fontawesome/solid.svg#exclamation-triangle"></use>
+          </svg>
+        </p>
+        <button type="button" class="ui__btn">
+          <span>Deactivate account</span>
+          <svg class="ui__icon icon__svg">
+            <use xlink:href="/assets/svg/fontawesome/solid.svg#skull-crossbones"></use>
+          </svg>
+        </button>
       </div>
     </div>
   </div>

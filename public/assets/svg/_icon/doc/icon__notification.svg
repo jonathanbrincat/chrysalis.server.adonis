@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--doc-notification" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(3.000000, 1.000000)">
+    <polygon id="Shape" stroke="#4D4D4D" stroke-width="1.5" stroke-linecap="square" transform="translate(6.000000, 10.500000) scale(-1, 1) rotate(-180.000000) translate(-6.000000, -10.500000) " points="8 18 0 18 0 14.5909091 0 5.04545455 0 3 12 3 12 13.9090909"></polygon>
+    <path d="M2.44444444,10 L9.55555556,10" id="Line" stroke="#4D4D4D" stroke-width="1.5" stroke-linecap="square" transform="translate(6.000000, 10.000000) scale(-1, 1) rotate(-180.000000) translate(-6.000000, -10.000000) "></path>
+    <path d="M2.44444444,13 L9.55555556,13" id="Line" stroke="#4D4D4D" stroke-width="1.5" stroke-linecap="square" transform="translate(6.000000, 13.000000) scale(-1, 1) rotate(-180.000000) translate(-6.000000, -13.000000) "></path>
+    <circle id="Oval-2" stroke="#4D4D4D" fill="#4D4D4D" cx="11.5" cy="3.5" r="3.5"></circle>
+    <text id="1" font-family="Knowledge2017-Medium, Knowledge2017" font-size="6" font-weight="400" letter-spacing="1.80000007" fill="#FFFFFF">
+        <tspan x="10" y="5">1</tspan>
+    </text>
+  </g>
+</svg>

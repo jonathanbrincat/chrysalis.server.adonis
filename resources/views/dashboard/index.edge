@@ -7,24 +7,29 @@
         <header class='ui__toolbar'>
           <h2>Hello {{ auth.user.username }}</h2>
           <p class="ui__field">
-            <a class="ui__btn btn__primary" href="{{ route('posts.create') }}" >New Post</a>
+            <a class="ui__btn btn__primary" href="{{ route('posts.create') }}" >
+              <span>New Post</span>
+              <svg class="ui__icon icon__svg">
+                <use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use>
+              </svg>
+            </a>
           </p>
         </header>
 
         <h2>Saved Posts</h2>
         @each(post in favouritePosts)
         <article class="admin__post">
-          <p>{{ post.title }}</p>
+          <p><a href="{{ route('posts.show', { id: post.id }) }}">{{ post.title }}</a></p>
 
           <div class="ui__controlbar">
             <p class="ui__field">
               <form action="{{ route('saved.destroy', { id: post.id }) }}?_method=DELETE" method="POST">
                 {{ csrfField() }}
                 <button type="submit" class="ui__btn">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                  </svg>
                   <span>Remove</span>
+                  <svg class="ui__icon icon__svg">
+                    <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
+                  </svg>
                 </button>
               </form>
             </p>
@@ -35,16 +40,24 @@
         <h2>My Posts</h2>
         @each(post in userPosts)
         <article class="admin__post">
-          <p>{{ post.title }}</p>
+          <p><a href="{{ route('posts.show', { id: post.id }) }}">{{ post.title }}</a></p>
 
           <div class="ui__controlbar">
             <p class="ui__field">
-              <a class="ui__btn" href="{{ route('posts.edit', { id: post.id}) }}">Edit</a>
+              <a class="ui__btn" href="{{ route('posts.edit', { id: post.id}) }}">
+                <svg class="ui__icon icon__svg">
+                  <use xlink:href="/assets/svg/fontawesome/solid.svg#edit"></use>
+                </svg>
+              </a>
             </p>
             <p class="ui__field">
               <form action="{{ route('posts.destroy', { id: post.id }) }}?_method=DELETE" method="POST">
                 {{ csrfField() }}
-                <button type="submit" class="ui__btn">Delete</button>
+                <button type="submit" class="ui__btn">
+                  <svg class="ui__icon icon__svg">
+                    <use xlink:href="/assets/svg/fontawesome/solid.svg#trash"></use>
+                  </svg>
+                </button>
               </form>
               {{-- <a class="ui__btn" href="{{ route('posts.destroy', { id: post.id }, { query: {_method: 'DELETE'} }) }}">Delete</a> --}}
             </p>
@@ -56,16 +69,24 @@
 
         @each(post in posts)
         <article class="admin__post">
-          <p>{{ post.title }}</p>
+          <p><a href="{{ route('posts.show', { id: post.id }) }}">{{ post.title }}</a></p>
 
           <div class="ui__controlbar">
             <p class="ui__field">
-              <a class="ui__btn" href="{{ route('posts.edit', { id: post.id }) }}">Edit</a>
+              <a class="ui__btn" href="{{ route('posts.edit', { id: post.id }) }}">
+                <svg class="ui__icon icon__svg">
+                  <use xlink:href="/assets/svg/fontawesome/regular.svg#edit"></use>
+                </svg>
+              </a>
             </p>
             <p class="ui__field">
               <form action="{{ route('posts.destroy', { id: post.id }) }}?_method=DELETE" method="POST">
                 {{ csrfField() }}
-                <button type="submit" class="ui__btn">Delete</button>
+                <button type="submit" class="ui__btn">
+                  <svg class="ui__icon icon__svg">
+                    <use xlink:href="/assets/svg/fontawesome/regular.svg#trash-alt"></use>
+                  </svg>
+                </button>
               </form>
             </p>
           </div>

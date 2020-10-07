@@ -1,0 +1,126 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_ui.cta.scss (partial)
+* 	@project: 	mytr
+* 	@author:	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+**/
+
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	UI cta
+	========================================================================== */
+.ui__cta {
+	font-weight: 700;
+	
+	a {
+		color: inherit;
+		text-decoration: none;
+
+		&:after {
+			@extend .ui__icon;
+			@extend .icon__svg;
+			@extend .icon__right;
+			//@extend .svg__arrow-right;
+			//@extend .svg__arrow-right($color__tr-orange);
+			content: url(/svg/icon/generic/grey/icon__arrow.svg);
+		}
+
+		/* @extend .ui__icon;
+		@extend .icon__svg;
+		@extend .icon__right;
+		
+		&:before {
+		//&:after {
+			//@extend .svg__arrow-right;
+			content: url(/svg/huge/primary/util/icon__util.arrow-right.svg);
+		}
+ */
+		&:hover,
+		&:focus {
+			color: $color__dark-grey;
+			text-decoration: underline;
+		}
+	}
+
+	&.state__hover,
+	&.state__focus {
+
+		a{
+			color: $color__dark-grey;
+			text-decoration: underline;
+		}
+	}
+}
+
+/* =============================================================================
+	UI cta THEMES
+	========================================================================== */
+.ui__cta {
+	a:after {
+		color: $color__tr-orange;
+
+		.module__primary-nav & {
+			color: $color__white;
+		}
+	}
+}
+
+.cta__primary {
+	a {
+		&:after {
+			color: $color__tr-orange;
+
+			.module__primary-nav & {
+				color: $color__white;
+			}
+		}
+	}
+}
+
+.cta__secondary {
+	a {
+		&:after {
+			color: $color__tr-light-grey;
+			content: url(/svg/huge/dark/util/icon__util.arrow-right.svg);
+
+			.module__primary-nav & {
+				color: $color__white;
+			}
+		}
+	}
+}
+
+.cta__play {
+	a {
+		&:before {
+			
+			//@extend .ui__icon;
+			//@extend .icon__svg;
+			//@extend .icon__left;
+
+			//content: url(/svg/huge/dark/util/icon__util.arrow-right.svg);
+
+			content: "";
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			//border-right: 0 solid green;
+			border-left: 12px solid $color__tr-light-grey;
+			border-top: 6px dotted transparent;
+			border-bottom: 6px dotted transparent;
+			margin-right: 10px;
+
+			.module__primary-nav & {
+				color: $color__white;
+			}
+		}
+
+		&:after {
+			content: none;
+		}
+	}
+}

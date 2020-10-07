@@ -229,5 +229,9 @@
 
   form {
     display: flex;
+
+    & > input {
+      flex: 1;
+    }
   }
 }

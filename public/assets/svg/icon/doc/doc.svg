@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/doctype/doc</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/doctype/doc">
+            <g id="Group" transform="translate(1.000000, 1.000000)">
+                <rect id="Rectangle-3" fill="#2A5699" x="0" y="0" width="18" height="18" rx="2"></rect>
+                <path d="M12.13125,14 L10.3575,14 L9.17125,7.58625 C9.1125,7.2525 9.0775,6.87875 9.065,6.4675 L9.04125,6.4675 C9.0175,6.9175 8.97125,7.29 8.9125,7.58625 L7.70125,14 L5.85625,14 L4,4 L5.73875,4 L6.7375,10.6575 C6.785,10.94 6.82,11.32625 6.83125,11.80125 L6.86625,11.80125 C6.8775,11.45375 6.925,11.05625 7.0075,10.63125 L8.30125,4 L10.005,4 L11.16875,10.7225 C11.21625,10.96625 11.25125,11.32625 11.28625,11.79 L11.31,11.79 C11.32125,11.43 11.3575,11.0575 11.40375,10.67125 L12.39,4 L14,4 L12.13125,14 Z" id="Path" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

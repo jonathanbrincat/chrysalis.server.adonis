@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--doc-download" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(3.000000, 1.000000)">
+    <polyline stroke="#4D4D4D" stroke-width="1.5" transform="translate(12.121212, 2.812449) scale(-1, 1) rotate(-180.000000) translate(-12.121212, -2.812449) " points="9.6969697 5.21048321 9.6969697 0.414414414 14.5454545 0.414414414"></polyline>
+    <polygon stroke="#4D4D4D" stroke-width="1.5" stroke-linecap="square" transform="translate(7.272727, 9.207207) scale(-1, 1) rotate(-180.000000) translate(-7.272727, -9.207207) " points="9.6969697 18 0 18 0 14.003276 0 2.81244881 0 0.414414414 14.5454545 0.414414414 14.5454545 13.2039312"></polygon>
+    <g transform="translate(4.133333, 7.066667)"></g>
+    <polygon stroke="#4D4D4D" stroke-width="1.2" stroke-linejoin="round" transform="translate(7.399711, 9.542857) rotate(-270.000000) translate(-7.399711, -9.542857) " points="7.94686041 8.01904762 7.85345388 8.10827842 9.28008091 9.47098475 5.25714286 9.47098475 5.25714286 9.61444262 9.28038125 9.61444262 7.85345388 10.9774359 7.94686041 11.0666667 9.54227994 9.5430006"></polygon>
+    <polyline stroke="#4D4D4D" stroke-width="1.5" points="4.13333333 11.7333333 4.13333333 13.765635 10.5333333 13.765635 10.5333333 11.7333333"></polyline>
+  </g>
+</svg>

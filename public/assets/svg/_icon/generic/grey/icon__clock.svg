@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--clock" stroke="#4D4D4D" stroke-width="1" fill="none" fill-rule="evenodd">
+    <path d="M18,10 C18,14.4184 14.4184,18 10,18 C5.5816,18 2,14.4184 2,10 C2,5.5816 5.5816,2 10,2 C14.4184,2 18,5.5816 18,10" id="Path" stroke-width="1.2"></path>
+    <polyline id="Line" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="10 5.5 10 10.5 13 12.5"></polyline>
+  </g>
+</svg>

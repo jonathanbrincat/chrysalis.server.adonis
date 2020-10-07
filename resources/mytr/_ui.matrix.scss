@@ -1,0 +1,66 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_ui.matrix.scss (partial)
+* 	@project:	mytr
+* 	@author: 	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+*
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	UI matrix
+	========================================================================== */
+.ui__matrix {
+	list-style: none;
+	padding: 0;
+	margin: -15px;
+
+	//display: flex;
+
+	&.row {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.ui__tile,
+	.ui__card {
+		margin: 0;
+	}
+
+	li {
+		margin: 0;
+		padding: 0;
+	}
+
+	.matrix__hbox {
+		display: inline-block;
+
+		@include breakpoint($screen-md-min) {
+			display: flex;
+			flex-direction: row;
+			align-items: stretch;
+		}
+	}
+
+	.matrix__vbox {
+		display: inline-block;
+
+		@include breakpoint($screen-md-min) {
+			display: flex;
+			flex-direction: column;
+			align-items: stretch;
+		}
+	}
+
+	article {
+		float: left;
+		display: inline-block;
+
+		@include breakpoint($screen-md-min) {
+
+		}
+	}
+}

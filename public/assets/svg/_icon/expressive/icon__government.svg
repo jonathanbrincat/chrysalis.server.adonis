@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--government" stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.000000, 2.000000)">
+    <path d="M7.36363636,17.1818182 L7.36363636,7.36363636" id="Shape" stroke="#FF8000"></path>
+    <path d="M10.6363636,7.36363636 L10.6363636,17.1818182" id="Shape" stroke="#FF8000"></path>
+    <path d="M1.63636364,17.1818182 L1.63636364,7.36363636" id="Shape" stroke="#FF8000"></path>
+    <path d="M4.90909091,7.36363636 L4.90909091,17.1818182" id="Shape" stroke="#FF8000"></path>
+    <path d="M13.0909091,17.1818182 L13.0909091,7.36363636" id="Shape" stroke="#FF8000"></path>
+    <path d="M16.3636364,7.36363636 L16.3636364,17.1818182" id="Shape" stroke="#FF8000"></path>
+    <polygon id="Shape" stroke="#4D4D4D" points="9 0 0 4.90909091 0 7.36363636 18 7.36363636 18 4.90909091"></polygon>
+    <path d="M0,17.1818182 L18,17.1818182" id="Shape" stroke="#4D4D4D"></path>
+    <circle id="Oval" stroke="#4D4D4D" cx="9" cy="4.09090909" r="1"></circle>
+  </g>
+</svg>

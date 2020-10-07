@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="120px" height="75px" viewBox="0 0 120 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--trust" stroke="none" stroke-width="2.25" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" transform="translate(34.000000, 1.000000)">
+    <path d="M26.5844094,0.24137931 L26.5001453,0.24137931 C26.5001453,0.24137931 38.8492019,11.8275862 51.9246736,11.8275862 C51.9246736,11.8275862 54.830334,71.2068966 26.5001453,71.2068966 C-1.8300434,71.2068966 1.07561698,11.8275862 1.07561698,11.8275862 C14.1510887,11.8275862 26.5001453,0.24137931 26.5001453,0.24137931 L26.4158811,0.24137931" id="Stroke-1" stroke="#262626"></path>
+    <polyline id="Stroke-3" stroke="#FF8000" points="36.9015547 29.5689655 23.0996679 41.8793103 18.0147623 36.0862069"></polyline>
+    <path d="M25.75,0.965517241 L25.75,29.5043803" id="Stroke-5" stroke="#262626"></path>
+    <path d="M25.75,47.4947279 L25.75,71.2068966" id="Stroke-7" stroke="#262626"></path>
+    <path d="M50.4716981,34.75 L40.4874724,34.75" id="Stroke-9" stroke="#262626"></path>
+    <path d="M12.6981132,35 L2.52830189,35" id="Stroke-11" stroke="#262626"></path>
+  </g>
+</svg>

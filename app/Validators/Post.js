@@ -5,7 +5,7 @@ class Post {
     return {
       // validation rules
       title: 'required',
-      content: 'required',
+      body: 'required',
     }
   }
 

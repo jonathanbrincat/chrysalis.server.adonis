@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="currentColor" fill="currentColor" transform="translate(3.000000, 3.000000)">
+        <rect x="6.25" y="0" width="1.5" height="14"></rect>
+        <rect transform="translate(7.000000, 7.000000) rotate(-90.000000) translate(-7.000000, -7.000000) " x="6.25" y="0" width="1.5" height="14"></rect>
+    </g>
+</svg>

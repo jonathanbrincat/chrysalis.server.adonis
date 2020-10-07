@@ -1,0 +1,150 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_ui.pagination.scss (partial)
+* 	@project: 	mytr
+* 	@author:	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	UI pagination
+	========================================================================== */
+.ui__pagination {
+	color: $color__tr-light-grey;
+	font-weight: 500;
+
+	a {
+		color: $color__tr-dark-grey;
+		text-decoration: none;
+	}
+
+	ul, ol {
+		list-style: none;
+		padding: 0;
+		display: inline-block;
+	}
+
+	& > ul, & > ol {
+		display: flex;
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+
+	li, p {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 10px;
+
+		&.state__disabled {
+			color: $color__tr-light-grey;
+		}
+	}
+
+	.pagination__index {
+		color: $color__tr-dark-grey;
+		text-align: center;
+		margin: 0 20px;
+		padding-bottom: 5px;
+		flex-grow: 1;
+
+		& > p:first-child {
+			text-align: right;
+			position: relative;
+			padding-right: 30px;
+
+			&:after {
+				content: '\2026';
+				color: inherit;
+				text-align: left;
+				position: absolute;
+				width: 1em;
+				top: 0;
+				right: 0;				
+			}
+		}
+
+		& > p:last-child {
+			position: relative;
+			padding-left: 30px;
+
+			&:before {
+				content: '\2026';
+				color: inherit;
+				text-align: left;
+				position: absolute;
+				width: 1em;
+				top: 0;
+				left: 0;
+			}
+		}
+
+		a {
+			display: block;
+			min-width: 1.2em;
+		}
+
+		ul, ol, p {
+			display: none;
+
+			@include breakpoint($screen-md-min) {
+				display: inline-block;
+			}
+		}
+		
+		ul, ol {
+			margin: 0;
+		}
+
+
+		li {
+			a {
+				text-align: center;
+			}
+
+			&.state__active {
+				position: relative;
+
+				&:after {
+					content: '\020';
+					border-bottom: 2px solid $color__tr-orange;
+					position: absolute;
+					top: 100%;
+					left: 0;
+					right: 0;
+					margin-top: 5px;
+				}
+			}
+		}
+	}
+
+	& > * > li:first-child {
+
+
+
+		a {
+
+		//&:before {
+			// @extend .ui__icon;
+			// @extend .icon__svg;
+			// @extend .icon__left;
+			// @extend .svg__dashboard;
+
+			// background-color: red;
+		}
+	}
+
+	& > * > li:last-child {		
+		a {
+
+		//&:after {
+			// @extend .icon__svg;
+			// @extend .icon__right;
+			// @extend .svg__dashboard;
+
+			//background-color: blue;
+		}
+	}
+}

@@ -1,0 +1,245 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_styles.table.scss (partial)
+* 	@project: 	mytr
+* 	@author:	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	Table
+	========================================================================== */
+table {
+	background-color: $color__white;
+	box-shadow: 0px 0px 12px 1px rgba($theme__secondary, 0.10);
+	color: $color__tr-dark-grey;
+	width: 100%;
+	margin: $app__margin 0;
+}
+
+thead {}
+
+tbody {}
+
+tr {
+	@include breakpoint($screen-md-min) {
+		& > :first-child {
+			padding-left: 30px;
+		}
+
+		& > :last-child {
+			padding-right: 30px;
+		}
+
+		&.state__status-green,
+		&.state__status-positive,
+		&.state__status-orange,
+		&.state__status-red,
+		&.state__status-negative {
+
+			& > :first-child {
+				position: relative;
+
+				&:before {
+					content: '\020';
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					width: 5px;
+				}
+			}
+		}
+
+		&.state__status-green,
+		&.state__status-positive {
+
+			& > :first-child {
+				&:before {
+					background-color: $color__cyan;
+				}
+			}
+
+			td {
+				background-color: rgba($color__cyan, 0.1)
+			}
+
+			span {
+				color: $color__cyan;
+			}
+		}
+
+		&.state__status-red,
+		&.state__status-negative {
+
+			:first-child {
+				&:before {
+					background-color: $color__red;
+				}
+			}
+
+			td {
+				background-color: rgba($color__red, 0.1)
+			}
+
+			span {
+				color: $color__red;
+			}
+		}
+
+		&.state__status-orange {
+			font-weight: 500;
+
+			:first-child {
+				&:before {
+					background-color: $color__light-blue;
+				}
+			}
+
+			span {
+				color: $color__light-blue;
+			}
+		}
+	}
+}
+
+th, td {
+	padding: 20px 15px;
+}
+
+th {
+	@include font-size(1.1rem);
+	font-weight: 500;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: left;
+}
+
+td {
+	border-top: 1px solid $color__light-grey;
+}
+
+table ~ footer {}
+
+/* =============================================================================
+	Table - responsive layout
+	========================================================================== */
+table.ui__table {
+
+	&,
+	thead, tbody,
+	tr, th, td {
+
+		//DEVNOTE: Not small to large; to avoid having to individually re-declare table display properties(and anything else!); breakpoint assumes min-width so we dispense with it
+		@media (max-width: $screen-md-min - 1) {
+			background-color: transparent;
+			box-shadow: none;
+			display: block;
+			border-width: 0;
+		}
+	}
+
+	tr {
+		@media (max-width: $screen-md-min - 1) {
+			background-color: $color__white;
+			box-shadow: 0px 0px 12px 1px rgba($theme__secondary, 0.10);
+			margin: 20px 0;
+			padding-left: 15px;
+			padding-right: 15px;
+			overflow: hidden; /*clearfix*/
+
+			&.state__status-green,
+			&.state__status-positive,
+			&.state__status-red,
+			&.state__status-negative {
+				position: relative;
+
+				&:before {
+					content: '\020';
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					width: 5px;
+				}
+			}
+
+			&.state__status-green,
+			&.state__status-positive {
+				background-color: rgba($color__cyan, 0.1);
+
+				&:before {
+					background-color: $color__cyan;
+				}
+			}
+
+			&.state__status-red,
+			&.state__status-negative {
+				background-color: rgba($color__red, 0.1);
+
+				&:before {
+					background-color: $color__red;
+				}
+			}
+		}
+	}
+
+	th {
+		@media (max-width: $screen-md-min - 1) {
+			display: none;
+		}
+	}
+
+	td {
+		@media (max-width: $screen-md-min - 1) {
+			padding-left: 5px;
+			padding-right: 5px;
+
+			//DEVNOTE: important these must be declared before the 'data describing' classes
+			&:nth-child(odd) {
+				float: left;
+				width: 50%;
+				padding-right: 5px;
+			}
+
+			&:nth-child(even) {
+				float: right;
+				width: 50%;
+				text-align: right;
+				padding-left: 5px;
+			}
+
+			&.cell__label {
+				@include font-size(1.3rem);
+				color: $color__tr-light-grey;
+			}
+			
+			&.cell__primary,
+			&.cell__secondary {
+				float: none;
+				width: auto;
+				clear: both;
+				text-align: left;
+				padding-top: 5px;
+				padding-bottom: 5px;
+			}
+
+			&.cell__primary {
+				@include font-size(1.8rem);
+			}
+
+			&.cell__primary ~ td,
+			&.cell__secondary ~ td {
+				float: none;
+				width: auto;
+				clear: both;
+				text-align: left;
+			}
+		}
+	}
+}
+
+

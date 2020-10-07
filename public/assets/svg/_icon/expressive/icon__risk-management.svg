@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--risk-management" stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" transform="translate(2.000000, 1.000000)">
+    <path d="M0,9.81818182 L5.83333333,9.81818182" id="Shape" stroke="#FF8000"></path>
+    <path d="M0,3.27272727 L5.83333333,3.27272727" id="Shape" stroke="#FF8000"></path>
+    <polyline id="Shape" stroke="#FF8000" points="0 0 0 16.3636364 5.83333333 16.3636364"></polyline>
+    <rect id="Rectangle-path" stroke="#4D4D4D" x="5.83333333" y="1.63636364" width="9.16666667" height="3.27272727"></rect>
+    <rect id="Rectangle-path" stroke="#4D4D4D" x="5.83333333" y="14.7272727" width="9.16666667" height="3.27272727"></rect>
+    <rect id="Rectangle-path" stroke="#4D4D4D" x="5.83333333" y="8.18181818" width="9.16666667" height="3.27272727"></rect>
+  </g>
+</svg>

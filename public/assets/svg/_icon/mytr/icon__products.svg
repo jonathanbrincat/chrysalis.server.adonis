@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--products" stroke="none" fill="none" fill-rule="evenodd" stroke-linejoin="round" stroke-width="1.2" transform="translate(2.000000, 2.000000)">
+    <path d="M2,7 L14,7" id="Stroke-4" stroke="#FF8000"></path>
+    <path d="M2,10 L11,10" id="Stroke-4" stroke="#FF8000"></path>
+    <path d="M13,13 L2,13" id="Stroke-4" stroke="#FF8000"></path>
+    <path d="M-0.6,16.6 L-0.6,-0.6 L16.6,-0.6 L16.6,16.6 L-0.6,16.6 Z" id="Stroke-1" stroke="#FFFFFF" stroke-linecap="round"></path>
+    <path d="M0.125,4 L15.875,4" id="Stroke-3" stroke="#FFFFFF" stroke-linecap="round"></path>
+  </g>
+</svg>

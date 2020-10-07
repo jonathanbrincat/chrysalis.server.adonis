@@ -11,6 +11,8 @@ class ProfilesSchema extends Schema {
       table.integer('user_id').unsigned()
       table.string('first_name')
       table.string('last_name')
+      table.text('address')
+      table.string('post_code')
       table.string('avatar')
     })
   }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--chat" stroke="#4D4D4D" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square" transform="translate(-1.000000, -1.000000)">
+    <g id="group" transform="translate(2.750000, 3.300000)">
+        <polyline id="Shape" points="13.475 4.125 16.775 4.125 16.775 12.375 14.575 12.375 14.575 15.125 10.725 12.375 7.425 12.375"></polyline>
+        <polygon id="Shape" points="13.475 0.275 0.275 0.275 0.275 9.625 3.025 9.625 3.025 13.475 7.425 9.625 13.475 9.625"></polygon>
+    </g>
+  </g>
+</svg>

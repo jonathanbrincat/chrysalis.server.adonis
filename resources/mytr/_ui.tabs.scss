@@ -1,0 +1,120 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_ui.tabs.scss (partial)
+* 	@project:	mytr
+* 	@author: 	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+*
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	UI tabs
+	========================================================================== */
+//mfy rip
+#app--main {
+	.ui__tabs {
+
+		@extend .clearfix;
+		//@include background-image(linear-gradient(to bottom right, $color__dark-orange 40%, rgba($theme__secondary, 0.8) 92%));
+		background-color: $color__tr-orange;
+
+		margin: 20px 0;
+
+		.collapsible__header,
+		.collapsible__pane {
+			margin: 0;
+
+			&:first-child {
+				display: table;
+				width: 100%;
+			}
+		}
+		
+		.ui__tab {
+			//@include background-image(linear-gradient(to bottom, $color__dark-orange 5%, rgba($theme__secondary, 0.8) 92%));
+			background-color: $theme__secondary;
+			border-left: 1px solid $theme__secondary;
+			color: $color__white;
+			position: relative;
+			padding: 10px (20px + 15 + 30) 10px 20px;
+			//display: table-column;
+			display: table-cell;
+
+			&:after {
+				content: "\00A0";
+				position: absolute;
+				top: 13px;
+				right: 30px;
+				width: 15px;
+				height: 15px;
+				border-top: 2px solid $color__white;
+				border-right: 2px solid $color__white;
+
+				transform: rotate(135deg);
+				transition: transform 500ms;
+			}
+
+			&:first-child {
+				border-left: 0;
+			}
+
+			&.active {
+				//@include background-image(linear-gradient(to bottom, $theme__secondary 5%, rgba($color__dark-orange, 0.8) 92%));
+				background-color: $color__tr-orange;
+
+				&:after {
+					transform: rotate(-45deg);
+				}
+
+				& + .collapsible__pane,
+				& + dd {
+					//display: block;
+				}
+			}
+
+			p {
+				font-weight: 700;
+				margin: 0;
+
+				a {
+					text-decoration: none;
+				}
+			}
+
+			a {
+				color: $color__white;
+			}
+		}
+
+		.ui__pane {
+			overflow: hidden; /*clearfix + margin-collapse*/
+			//@include clearfix;
+			background-color: $color__white;
+			margin: 0 2px 2px;
+			padding: 0 20px;
+			display: none;
+
+			&.active {
+				display: block;
+			}
+		}
+
+		.ui__animate {
+			transition: all 500ms;
+		}
+
+		.v-enter-active, .v-leave-active {
+			transition: opacity 500ms;
+		}
+		.v-enter, .v-leave-active {
+			opacity: 0
+		}
+
+		.v-move {
+			transition: transform 1s;
+		}
+	}
+}

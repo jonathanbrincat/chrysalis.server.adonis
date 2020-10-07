@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+      <path d="M15.8878998,3.6 C15.7047907,6.09517015 14.4772899,7.58207069 11.4667443,9.781 C14.6493436,12.1055988 15.8392711,13.634458 15.9091985,16.4 L16.875,16.4 L16.875,17.6 L4,17.6 L4,16.4 L4.96580149,16.4 C5.03572887,13.634458 6.22565644,12.1055988 9.40825572,9.781 C6.39771011,7.58207069 5.17020931,6.09517015 4.98710016,3.6 L4,3.6 L4,2.4 L16.875,2.4 L16.875,3.6 L15.8878998,3.6 Z M14.6817681,3.6 L6.19323194,3.6 C6.38627825,5.67985829 7.5189946,6.95134425 10.4375,9.04463744 C13.3560054,6.95134425 14.4887217,5.67985829 14.6817681,3.6 Z M14.7084426,16.4 C14.6351217,14.0519948 13.5553414,12.7536292 10.4375,10.5173626 C7.31965858,12.7536292 6.23987825,14.0519948 6.16655739,16.4 L14.7084426,16.4 Z" id="path-1"></path>
+  </defs>
+
+  <g id="icon--timer" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <mask id="mask-2" fill="white">
+      <use xlink:href="#path-1"></use>
+    </mask>
+
+    <use id="Combined-Shape" fill="#4D4D4D" fill-rule="nonzero" xlink:href="#path-1"></use>
+
+    <g id="bg/grey" mask="url(#mask-2)" fill-rule="evenodd" fill="#4D4D4D">
+      <rect id="Orange" x="0" y="0" width="20" height="20"></rect>
+    </g>
+  </g>
+</svg>

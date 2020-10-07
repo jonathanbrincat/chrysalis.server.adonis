@@ -1,0 +1,823 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_styles.main.scss (partial)
+* 	@project: 	mytr
+* 	@author: 	Jonathan Brincat@pix8.co.uk, <jonathan@pix8.co.uk>
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	Core
+	========================================================================== */
+html, body {
+	height: 100vh;
+}
+
+html {}
+
+body {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.app__viewport{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	height: 100vh;
+	//height: 100%;
+	overflow: hidden;
+
+	@include breakpoint($screen-md-min) {
+		flex-direction: row;
+	}
+
+	&.state__open {
+		padding-top: 75px;
+	}
+}
+
+/* =============================================================================
+	Masthead
+	========================================================================== */
+#app--masthead {
+
+	//XS
+	background-color: $color__tr-dark-grey;
+	@include font-size(1.3rem); 				//DEVNOTE: assert for inheritance
+	line-height: 2rem;							//20px
+	color: $color__white; 						//DEVNOTE: assert for inheritance
+	min-width: 260px;
+	position: relative;
+	//z-index: 1;								//DEVNOTE: needed to sit above the 'fixed' app--footer
+	display: flex;
+	flex-direction: column;
+	flex-grow: 0;
+	flex-shrink: 0;
+	overflow-y: auto;
+	
+	@include breakpoint($screen-md-min) {
+		width: 260px;
+		height: auto;
+		position: relative;
+	}
+
+	@include breakpoint($screen-xl-min) {
+		padding-top: 0;
+	}
+
+	&.state__open {
+		position: static;
+		height: 100%;
+		margin-top: 68px;
+		padding-bottom: 68px;
+		flex-grow: 1;
+
+		@include breakpoint($screen-md-min) {
+			position: relative;
+			height: auto;
+			margin-top: 0;
+			padding-bottom: 0;
+			flex-grow: 0;
+		}
+	}
+
+	a {
+		&,
+		:hover {
+			color:$color__white; 				//DEVNOTE: assert for inheritance
+			text-decoration: none; 				//DEVNOTE: assert for inheritance
+		}
+	}
+
+	//DEVNOTE: so we can selectively target and control overflow-y auto scroll on this region only
+	.nav__viewport {
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		order: 1;
+
+		@include breakpoint($screen-md-min) {
+			overflow: visible;
+			display: block;
+		}
+
+		@include breakpoint($screen-xl-min) {
+			display: flex;
+		}
+	}
+}
+
+	nav {
+		ul, ol {
+			@extend .list-unstyled;
+		}
+	}
+
+	/* ========================================= Primary navigation */
+	.module__primary-nav {
+		color: darken($color__white, 10%);
+		clear: both;
+		flex-grow: 1;
+		order: 0;
+
+		@include breakpoint($screen-md-min) {
+			order: 2;
+		}
+
+		nav {
+			@extend .clearfix;
+
+			ul, ol, dl {
+				@extend .list-unstyled;
+				margin: 0;
+
+				ul, ol, dl {
+					background-color: darken($color__tr-dark-grey, 10%);
+					margin: 0 -25px;
+				}
+			}
+
+			.ui__collapsible > p,
+			li, dt, dd {
+				@extend .clearfix;
+				margin: 0;
+
+				& > a {
+					position: relative;
+					display: block;
+					padding: 20px 25px;
+
+					transition-property: background-color;
+					transition-duration: 250ms;
+					transition-timing-function: ease;
+
+					@include breakpoint($screen-md-min) {
+						padding-left: 20px;
+						padding-right: 20px;
+					}
+
+					@include breakpoint($screen-xl-min) {
+						padding-left: 25px;
+						padding-right: 25px;
+					}
+
+					&:hover {
+						background-color: darken($color__tr-dark-grey, 5%);
+
+						transition-property: none;
+
+						///* @include breakpoint($screen-md-min) {
+						/* @include breakpoint(720px) {
+							&:after {
+								content: attr(title);
+								background-color: darken($color__tr-dark-grey, 5%);
+								position: absolute;
+								top: 0;
+								left: 60px;
+								z-index: 9;
+								padding: 20px 25px;
+							}
+						}
+
+						@include breakpoint($screen-xl-min) {
+							&:after {
+								content: none;
+							}
+						}
+
+						.state__open & {
+							//@include breakpoint($screen-md-min) {
+							@include breakpoint(720px) {
+								&:after {
+									content: none;
+								}
+							}
+						} */
+					}
+
+					&.state__active {
+						background-color: darken($color__tr-dark-grey, 5%);
+
+						&:before {
+							content: '\020';
+							background-color: $theme__primary;
+							width: 5px;
+							position: absolute;
+							top: 0;
+							bottom: 0;
+							left: 0;
+						}
+					}
+
+					span {
+						@include breakpoint($screen-md-min) {
+							opacity: 0;
+
+							.state__open & {
+								opacity: 1;
+
+								transition-property: opacity;
+								transition-duration: 250ms;
+								transition-timing-function: linear; //ease;
+							}
+						}
+
+						@include breakpoint($screen-xl-min) {
+							opacity: 1;
+						}
+					}
+				}
+			}
+
+			dd {
+				padding: 0 25px;
+			}
+
+			.ui__collapsible dt a:before {
+				content: none;
+			}
+
+			.active .collapsible__header {
+				border-left: 5px solid $theme__primary;
+			}
+
+			.ui__pane {
+				.collapsible__pane {
+					padding-left: 30px;
+				}
+
+				.active {
+					background-color: darken($color__tr-dark-grey, 5%);
+
+					a {
+						padding-left: 20px;
+					}
+				}
+			}
+
+			.primary-nav__viewport {
+				background-color: $color__tr-dark-grey;
+				z-index: 1;
+				bottom: 0;
+				left: 0;
+				right: 0;
+
+				@include breakpoint($screen-md-min) {
+					position: static;
+					display: block !important;
+				}
+			}
+		}
+	}
+
+	/* ========================================= Primary navigation toggle */
+	.nav__toggle {
+		position: absolute;
+		top: 18px;
+		right: 25px;
+		z-index: 1;
+
+		transition-property: left;
+		transition-duration: 250ms;
+		transition-timing-function: linear; //ease;
+
+		@include breakpoint($screen-md-min) {
+			background-color: $color__dark-grey;
+			width: 100%;
+			top: 0;
+			left: 0;
+			z-index: auto;
+			padding: 6px 20px 7px;
+		}
+
+		@include breakpoint($screen-xl-min) {
+			display: none;
+		}
+
+		.state__open & {
+			display: block;
+
+			@include breakpoint($screen-md-min) {
+				//display: none;
+				left: -60px;
+			}
+		}
+
+		button {
+			width: 40px;
+			margin: 0;
+			display: block;
+
+			// Normalize (<button>)
+			border: 0;
+			background-color: transparent;
+			margin: 0;
+			padding: 5px;
+
+			@include breakpoint($screen-md-min) {
+				width: 30px;
+				margin-left: -5px;
+			}
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		span {
+			position: relative;
+			display: block;
+			padding: 9px 0;
+
+			@include breakpoint($screen-md-min) {
+				padding: 5px 0;
+			}
+
+			i {
+				display: block;
+				width: 100%;
+				height: 3px;
+				clear: both;
+
+				@include breakpoint($screen-md-min) {
+					width: 50%;
+					height: 2px;
+				}
+
+				&,
+				&:before,
+				&:after {
+					background-color: inherit;
+					background-color: $color__silver;
+					border-radius: 5px;
+				}
+
+				&:before,
+				&:after {
+					content: '\020';
+					position: absolute;
+					height: 3px;
+					left: 0;
+					right: 0;
+					top: 0;
+
+					@include breakpoint($screen-md-min) {
+						height: 2px;
+						width: 100%;
+					}
+				}
+
+				&:after {
+					top: auto;
+					bottom: 0;
+
+					@include breakpoint($screen-md-min) {
+						width: 80%;
+					}
+				}
+			}
+		}
+	}
+
+/* =============================================================================
+	App Body
+	========================================================================== */
+#app--body {
+	position: static;
+	//position: relative; //DEVNOTE: can't have it relative if I want to reposition the app--header for mobile layout
+
+	//- mod.discover - START
+	flex-grow: 1;
+	//- mod.discover - END
+
+	@include breakpoint($screen-md-min) {
+		left: -200px;
+		margin-right: -200px;
+
+		//dev trial 1
+		position: relative;
+	}
+
+	@include breakpoint($screen-xl-min) {
+		left: 0px;
+		margin-right: 0;
+	}
+}
+	.state__open ~ #app--body {
+		overflow: hidden;
+		display: none;
+
+		@include breakpoint($screen-md-min) {
+			overflow: visible;
+			display: block;
+			left: 0px;
+		}
+
+		@include breakpoint($screen-xl-min) {
+			margin-right: 0;
+		}
+	}
+
+	.state__transition ~ #app--body {
+		transition-property: left;
+		transition-duration: 250ms;
+		transition-timing-function: linear; //ease;
+	}
+
+.body__viewport { //DEVNOTE: rename to a .viewport class as we effectively use this wrapper to target overflow-y scroll
+	background-color: $color__white;
+	//flex-grow: 1;
+	overflow-y: auto;
+
+	//- mod.discover - START
+	height: 100vh;
+	//- mod.discover - END
+
+	@include breakpoint($screen-md-min) {
+		position: relative;
+	}
+}
+	.state__open ~ #app--body .body__viewport {
+		//prevent clash of overflow scrollbars at mobile/single column layout (as overlayed)
+		overflow-y: hidden;
+
+		@include breakpoint($screen-md-min) {
+			overflow-y: auto;
+		}
+	}
+
+.ui__body-modal {
+	display: none;
+	//pointer-events: initial;
+
+	/* transition-property: opacity;
+	transition-duration: 250ms;
+	transition-timing-function: ease; //linear; */
+	
+	@include breakpoint($screen-md-min) {
+		background-color: rgba(0, 0, 0, 0.54);
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 9;
+	}
+
+	@include breakpoint($screen-xl-min) {
+		display: none;
+	}
+
+	&.state__active {
+		opacity: 1;
+		display: block;
+	}
+}
+
+.state__open ~ #app--body .ui__body-modal {
+	display: none;
+
+	@include breakpoint($screen-md-min) {
+		opacity: 1;
+		display: block;
+	}
+
+	@include breakpoint($screen-xl-min) {
+		display: none;
+	}
+}
+
+/* =============================================================================
+	App Header
+	========================================================================== */
+#app--header {
+
+	@include breakpoint($screen-md-min) {
+		display: flex;
+		position: relative;
+
+		//DEVNOTE: Needed to counteract the app-footer which has introduced a 'layering'
+		z-index: 2;
+	}
+
+	/* &.state__active {
+		min-height: 100vh;
+
+		@include breakpoint($screen-sm-min) {
+			min-height: 0;
+		}
+
+		& ~ #app--main {
+			display: none;
+		}
+	} */
+}
+	/* ========================================= Auxilary navigation */
+	.module__auxilary-nav {
+		position: absolute;
+		top: 0;
+		left: 50px + 44px + 35px;
+		right: 50px + 30px;
+		//height: 3.4rem; //DEVNOTE: parity with #app--logo
+		//margin: 20px 0;
+		overflow: hidden;
+
+		flex-grow: 1;
+		order: 1;
+
+		//dev trial 1
+		//background-color: red;
+		//position: static;
+		//height: auto;
+		//margin: 0;
+
+		//dev trial2
+		left: 95px;
+		right: 90px;
+		z-index: 2;
+		
+		@include breakpoint($screen-md-min) {
+			position: static;
+			height: auto;
+			margin: 0;
+			overflow: visible;
+		}
+
+		nav {
+			text-align: right;
+
+			ul, ol, dl {
+				@extend .list-unstyled;
+				color: $color__white; 					//inheritance
+				margin: 0;
+
+				//dev trial2
+				min-width: 120px;
+				height: 68px;
+				margin: 0 -10px;
+				display: flex;
+				flex-wrap: nowrap;
+				align-items: center;
+				justify-content: flex-end;
+
+				@include breakpoint($screen-md-min) {
+					color: inherit;
+
+					//dev trial2
+					display: block;
+					min-width: 0;
+					margin: 0;
+				}
+			}
+
+			li {
+				text-align: left;
+				display: inline-block;
+				margin: 0px 10px;
+
+				@include breakpoint($screen-md-min) {
+					margin-top: 20px;
+					margin-bottom: 20px;
+				}
+			}
+
+			.ui__btn {
+				// Supress user agent focus states on this instance
+				outline-style: none;
+				box-shadow: none;
+
+				//DEVNOTE: reverse breakpoint so we don't override our generic styles and have to redeclare them
+				//@media (max-width: $screen-md-min - 1) {
+				@include breakpoint(max-width $screen-md-min - 1) {
+					border-width: 0;
+					background: transparent none;
+					color: inherit;
+					min-width: 0;
+					padding: 8px 10px;
+					display: inline-block;
+
+					// Reinstate user agent focus states on this instance
+					outline-style: inherit;
+					box-shadow: inherit;
+					border-color: inherit;
+				}
+
+				&.btn__round {
+					//dev trial2
+					border-radius: 0;
+					width: 40px;
+					height: 40px;
+
+					@include breakpoint($screen-md-min) {
+						//dev trial2
+						border-radius: 50%;
+						width: 3.333em;
+						height: 3.333em;
+					}
+				}
+
+				.ui__icon {
+					vertical-align: middle;
+					text-align: center;
+					top: auto;
+
+					@include breakpoint($screen-md-min) {
+						border-width: 1px;
+					}
+				}
+			}
+		}
+
+		.app__search-toggle {
+			@include breakpoint($screen-md-min) {
+				display: none;
+			}
+
+			//DEVNOTE: temp answer to colour approach
+			.ui__icon {
+				@extend .svg__search-white;
+			}
+
+			//DEVNOTE: temp answer to colour approach
+			&.state__active {
+				.ui__icon {
+					@extend .svg__cross-white;
+				}
+			}
+		}
+
+		.app__notification-toggle {
+
+			//DEVNOTE: temp answer to colour approach
+			.ui__btn {
+				&:hover {
+					@include breakpoint($screen-md-min) {
+						.ui__icon {
+							&, &:before { content: url(../svg/icon/generic/white/icon__bell.svg); }
+						}
+					}
+				}
+			}
+
+			//DEVNOTE: temp answer to colour approach
+			.ui__icon {
+				//DEVNOTE: Not small to large; to avoid having to individually re-declare properties(and anything else!); breakpoint assumes min-width so we dispense with it
+				//@media (max-width: $screen-md-min - 1) {
+				@include breakpoint (max-width $screen-md-min - 1) {
+					&, &:before { content: url(../svg/icon/generic/white/icon__bell.svg); }
+				}
+			}
+
+			//DEVNOTE: temp answer to colour approach
+			&.state__active {
+				.ui__icon {
+					//DEVNOTE: Not small to large; to avoid having to individually re-declare properties(and anything else!); breakpoint assumes min-width so we dispense with it
+					///@media (max-width: $screen-md-min - 1) {
+					@include breakpoint (max-width $screen-md-min - 1) {
+						&, &:before { content: url(../svg/icon/generic/white/icon__cross.svg); }
+					}
+				}
+			}
+		}
+
+		.app__support {
+			display: none;
+
+			@include breakpoint($screen-md-min) {
+				display: inline-block;
+			}
+		}
+	}	
+
+/* =============================================================================
+	App Footer
+	========================================================================== */
+#app--footer {
+	background-color: $color__tr-silver;
+	padding: 15px 40px;
+	//padding: 15px 40px 15px 40px+260px;
+	//width: 100%;
+	height: 120px;
+	//position: fixed;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	@include breakpoint($screen-md-min) {
+		//width: auto;
+		height: 100px;
+		flex-direction: row;
+	}
+
+	@include breakpoint($screen-xl-min) {}
+
+	.tr__signature {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		flex-basis: 50%;
+	}
+
+	nav {
+		flex-basis: 50%;
+
+		ol, ul {
+			text-align: right;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		li {
+			border-left: 1px solid $color__grey;
+			line-height: 12px;
+			text-align: left;
+			display: inline-block;
+			margin: 0;
+			padding: 0 5px;
+
+			&:first-child {
+				border-left-width: 0;
+			}
+		}
+	}
+}
+
+/* =============================================================================
+	App Main
+	========================================================================== */
+#app--main {
+	//DEVNOTE: for fixed app--footer - START
+	background-color: $color__white;
+	box-shadow: 0px 10px 18px 2px rgba($color__grey, 0.1);
+	position: relative;
+	z-index: 1;
+	margin-bottom: 185px;
+	min-height: 100%;
+
+	@include breakpoint($screen-md-min) {
+		margin-bottom: 100px;
+	}
+	// - END
+
+	& > section:first-of-type {
+		& > * > header:first-of-type {
+			h1 {
+				font-weight: 800;
+			}
+		}
+	}
+
+	& > section {
+		& > * > header:first-of-type {
+			padding: 50px 0;
+		}
+	}
+
+	header h1 ~ p {
+
+		@include font-size(2.4rem);
+
+		@include breakpoint($screen-md-min) {
+			@include font-size(2.8rem);
+		}
+	}
+}
+
+.ui__main-modal {
+	//pointer-events: initial;
+
+	background-color: rgba(0, 0, 0, 0.54);
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	bottom: -120px;
+	left: 0;
+	right: 0;
+	z-index: 9;
+	display: none;
+
+	/* transition-property: opacity;
+	transition-duration: 250ms;
+	transition-timing-function: ease; //linear; */
+	
+	@include breakpoint($screen-md-min) {
+		bottom: -100px;
+	}
+
+	&.state__active {
+		opacity: 1;
+		display: block;
+	}
+}

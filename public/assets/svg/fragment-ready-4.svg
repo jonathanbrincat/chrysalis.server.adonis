@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32" height="32" viewBox="0 0 32 96" enable-background="new 0 0 32 96" xml:space="preserve"> -->
+<svg version="1.1" id="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32" height="32" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+
+<defs>
+	<style>
+		.icon {
+			display: none;
+		}
+		.icon:target {
+			display: inline;
+		}
+		rect, line {
+			shape-rendering: crispEdges;
+		}
+	</style>
+</defs>
+
+<!-- METHOD 1 :  wouldn't do it this way as it will render all the svg groups -->
+
+<!-- <view id="icon-clock-view" viewBox="0 0 32 32" />
+<view id="icon-heart-view" viewBox="0 32 32 32" />
+<view id="icon-arrow-right-view" viewBox="0 64 32 32" />
+
+<g id="icon-clock">
+	<path d="M20.6,23.3L14,16.7V7.9h4v7.2l5.4,5.4L20.6,23.3z M16-0.1c-8.8,0-16,7.2-16,16s7.2,16,16,16s16-7.2,16-16S24.8-0.1,16-0.1z
+		 M16,27.9c-6.6,0-12-5.4-12-12s5.4-12,12-12s12,5.4,12,12S22.6,27.9,16,27.9z"/>
+</g>
+<g id="icon-heart">
+	<path d="M32,43.2c0,2.7-1.2,5.1-3,6.8l0,0l-10,10c-1,1-2,2-3,2s-2-1-3-2l-10-10c-1.9-1.7-3-4.1-3-6.8c0-5.1,4.1-9.2,9.2-9.2
+		c2.7,0,5.1,1.2,6.8,3c1.7-1.9,4.1-3,6.8-3C27.9,33.9,32,38.1,32,43.2z"/>
+</g>
+<g id="icon-arrow-right">
+	<path d="M32,80.1l-16-16v10H0v12h16v10L32,80.1z"/>
+</g> -->
+
+
+<!-- METHOD 2 : still rendering the svg groups this :/ -->
+<g id="icon-clock1" class="icon" fill="red" stroke="red">
+	<path d="M20.6,23.3L14,16.7V7.9h4v7.2l5.4,5.4L20.6,23.3z M16-0.1c-8.8,0-16,7.2-16,16s7.2,16,16,16s16-7.2,16-16S24.8-0.1,16-0.1z
+		 M16,27.9c-6.6,0-12-5.4-12-12s5.4-12,12-12s12,5.4,12,12S22.6,27.9,16,27.9z"/>
+</g>
+<g id="icon-heart1" class="icon" fill="red" stroke="red">
+	<path d="M32,11.2c0,2.7-1.2,5.1-3,6.8l0,0L19,28c-1,1-2,2-3,2s-2-1-3-2L3,18c-1.9-1.7-3-4.1-3-6.8C0,6.1,4.1,2,9.2,2
+		c2.7,0,5.1,1.2,6.8,3c1.7-1.9,4.1-3,6.8-3C27.9,1.9,32,6.1,32,11.2z"/>
+</g>
+<g id="icon-arrow-right1" class="icon" fill="red" stroke="red">
+	<path d="M32,15.9l-16-16v10H0v12h16v10L32,15.9z"/>
+</g>
+
+<!-- METHOD 3 -->
+<defs>
+	<g id="icon-clock2" class="icon" fill="blue" stroke="blue">
+	<!-- <g id="icon-clock2"> --> <!-- using class won't work on css as :target doesn't scan -->
+		<path d="M20.6,23.3L14,16.7V7.9h4v7.2l5.4,5.4L20.6,23.3z M16-0.1c-8.8,0-16,7.2-16,16s7.2,16,16,16s16-7.2,16-16S24.8-0.1,16-0.1z
+			 M16,27.9c-6.6,0-12-5.4-12-12s5.4-12,12-12s12,5.4,12,12S22.6,27.9,16,27.9z"/>
+	</g>
+	<g id="icon-heart2" class="icon" fill="blue" stroke="blue">
+		<path d="M32,11.2c0,2.7-1.2,5.1-3,6.8l0,0L19,28c-1,1-2,2-3,2s-2-1-3-2L3,18c-1.9-1.7-3-4.1-3-6.8C0,6.1,4.1,2,9.2,2
+			c2.7,0,5.1,1.2,6.8,3c1.7-1.9,4.1-3,6.8-3C27.9,1.9,32,6.1,32,11.2z"/>
+	</g>
+	<g id="icon-arrow-right2" class="icon" fill="blue" stroke="blue">
+		<path d="M32,15.9l-16-16v10H0v12h16v10L32,15.9z"/>
+	</g>
+</defs>
+
+<use id="icon-clock2-test" xlink:href="#icon-clock2"></use>
+<use id="icon-heart2-test" xlink:href="#icon-heart2"></use>
+<use id="icon-icon-arrow-right2-test" xlink:href="#icon-arrow-right2"></use>
+
+<!-- <view id="icon-clock2-view" viewBox="0 0 32 32" />
+<view id="icon-heart2-view" viewBox="0 0 32 32">
+	<use href="#icon-heart2"></use>
+</view>
+<view href="#icon-arrow-right2" viewBox="0 0 32 32" /> -->
+
+<!-- METHOD 4 -->
+<symbol id="icon-clock3">
+	<title>Clock</title>
+	<g fill="green" stroke="green">
+	<!-- <g class="icon"> --> <!-- using .icon class won't work on css as :target doesn't scan -->
+		<path d="M20.6,23.3L14,16.7V7.9h4v7.2l5.4,5.4L20.6,23.3z M16-0.1c-8.8,0-16,7.2-16,16s7.2,16,16,16s16-7.2,16-16S24.8-0.1,16-0.1z
+			 M16,27.9c-6.6,0-12-5.4-12-12s5.4-12,12-12s12,5.4,12,12S22.6,27.9,16,27.9z"/>
+	</g>
+</symbol>
+<symbol id="icon-heart3">
+	<title>Heart</title>
+	<g fill="green" stroke="green">
+		<path d="M32,43.2c0,2.7-1.2,5.1-3,6.8l0,0l-10,10c-1,1-2,2-3,2s-2-1-3-2l-10-10c-1.9-1.7-3-4.1-3-6.8c0-5.1,4.1-9.2,9.2-9.2
+		c2.7,0,5.1,1.2,6.8,3c1.7-1.9,4.1-3,6.8-3C27.9,33.9,32,38.1,32,43.2z"/>
+	</g>
+</symbol>
+<symbol id="icon-arrow-right3">
+	<title>Arrow right</title>
+	<g fill="green" stroke="green">
+		<path d="M32,80.1l-16-16v10H0v12h16v10L32,80.1z"/>
+	</g>
+</symbol>
+
+<!-- <use id="icon-clock3-test" xlink:href="#icon-clock3" width="35" height="35" x="0" y="0"></use>
+<use id="icon-heart3-test" xlink:href="#icon-heart3" width="35" height="35" x="0" y="0"></use>
+<use id="icon-arrow-right3-test" xlink:href="#icon-arrow-right3" width="35" height="35" x="0" y="0"></use>
+
+<view id="icon-clock3-view" viewBox="0 0 32 32" />
+<view id="icon-heart3-view" viewBox="0 0 32 32" />
+<view id="icon-arrow3-right-view" viewBox="0 0 32 32" /> -->
+
+<!-- <view id="icon-clock3-view" viewBox="0 0 32 32">
+	<use id="icon-clock3-test1" xlink:href="#icon-clock3"></use>
+</view>
+<view id="icon-heart3-view" viewBox="0 32 32 32">
+	<use id="icon-heart3-test1" xlink:href="#icon-heart3"></use>
+</view>
+<view id="icon-arrow3-right-view" viewBox="0 64 32 32">
+	<use id="icon-arrow3-right-test1" xlink:href="#icon-arrow3-right"></use>
+</view> -->
+
+<!-- <symbol viewBox="0 0 18 17" id="shape-admin">
+	<title>admin</title>
+	<g>
+		<circle fill=" #2683b4" cx="6.8" cy="3.7" r="3.7"/>
+		<path fill=" #2683b4" d="M0,11.2c0-2.4,3-4.3,6.7-4.3c3.7,0,6.7,1.9,6.7,4.3H0z"/>
+		<path fill=" #2683b4" d="M17.6,5.1l-1.7,1.7l-1.4-1.4l1.7-1.7c-0.8-0.3-1.7-0.1-2.4,0.5C13,5,12.9,6.1,13.3,7l-5.3,5.3
+			c-0.9-0.5-2-0.3-2.7,0.4c-0.6,0.7-0.8,1.6-0.5,2.4l1.7-1.7L8,14.7l-1.7,1.7C7,16.7,8,16.6,8.6,15.9c0.7-0.7,0.9-1.8,0.4-2.6L14.4,8
+			c0.9,0.4,1.9,0.3,2.6-0.4C17.7,6.9,17.9,5.9,17.6,5.1z"/>
+	</g>
+</symbol>
+
+<symbol viewBox="0 0 18 18" id="shape-apis">
+	<title>apis</title> 
+	<g>
+		<path fill="#2683b4" d="M10.1,10.5l2.1,0.5l0.4-1.6l0.8-0.2l1,1.5l1.8-1.2l-1-1.5l0.5-0.7l1.7,0.4l0.5-2.1l-1.7-0.4L16,4.4
+						l1.5-1l-1.2-1.8l-1.5,1l-0.7-0.5l0.4-1.6L12.4,0L12,1.6l-0.9,0.1l-0.9-1.5L8.4,1.5l0.9,1.5L8.9,3.6L7.3,3.3L6.8,5.4l1.6,0.3
+						l0.2,0.9L7.1,7.5l1.2,1.8l1.5-0.9l0.7,0.5L10.1,10.5z M10.3,5c0.2-1.1,1.3-1.8,2.4-1.5c1.1,0.2,1.8,1.3,1.5,2.4
+						c-0.2,1.1-1.3,1.8-2.4,1.5C10.7,7.2,10.1,6.1,10.3,5z"/>
+
+		<path fill="#2683b4" d="M3.3,17.2l2.1,0.4L5.7,16l0.8-0.2l1,1.5l1.8-1.2l-1-1.5L8.8,14l1.7,0.4l0.5-2.1l-1.7-0.4l-0.1-0.8
+						l1.5-1L9.5,8.3L8,9.3L7.3,8.8l0.4-1.6L5.6,6.7L5.2,8.3L4.4,8.5L3.4,7L1.6,8.2l0.9,1.5L2,10.3L0.5,10L0,12.1l1.6,0.3l0.2,0.9
+						l-1.5,0.9L1.5,16l1.5-0.9l0.7,0.5L3.3,17.2z M3.5,11.7c0.2-1.1,1.3-1.8,2.4-1.5c1.1,0.2,1.8,1.3,1.5,2.4
+						c-0.2,1.1-1.3,1.8-2.4,1.5C3.9,13.9,3.2,12.8,3.5,11.7z"/>
+	</g>
+</symbol>
+
+<view id="shape-apis-view" viewBox="0 0 35 35" />
+<view id="shape-admin-view" viewBox="0 0 35 35" />
+
+<use xlink:href="#shape-apis" width="35" height="35" x="0" y="0" id="apis"></use>
+<use xlink:href="#shape-admin" width="35" height="35" x="0" y="36" id="admin"></use> -->
+
+<!-- MY SUGGESTED IMPLEMENTATION -->
+<symbol viewBox="0 0 32 32" id="shape-admin">
+	<title>Clock</title>
+	<g fill="purple" stroke="purple">
+		<path d="M20.6,23.3L14,16.7V7.9h4v7.2l5.4,5.4L20.6,23.3z M16-0.1c-8.8,0-16,7.2-16,16s7.2,16,16,16s16-7.2,16-16S24.8-0.1,16-0.1z
+			 M16,27.9c-6.6,0-12-5.4-12-12s5.4-12,12-12s12,5.4,12,12S22.6,27.9,16,27.9z"/>
+	</g>
+</symbol>
+
+<symbol viewBox="0 0 32 32" id="shape-apis">
+	<title>Clock</title>
+	<g fill="orange" stroke="orange">
+		<path d="M20.6,23.3L14,16.7V7.9h4v7.2l5.4,5.4L20.6,23.3z M16-0.1c-8.8,0-16,7.2-16,16s7.2,16,16,16s16-7.2,16-16S24.8-0.1,16-0.1z
+			 M16,27.9c-6.6,0-12-5.4-12-12s5.4-12,12-12s12,5.4,12,12S22.6,27.9,16,27.9z"/>
+	</g>
+</symbol>
+
+<use id="shape-apis-test" xlink:href="#shape-apis" class="icon"></use>
+<use id="shape-admin-test" xlink:href="#shape-admin" class="icon"></use>
+
+</svg>

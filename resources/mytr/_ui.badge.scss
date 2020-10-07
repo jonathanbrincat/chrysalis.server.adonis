@@ -1,0 +1,37 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_ui.badge.scss (partial)
+* 	@project: 	mytr
+* 	@author:	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+**/
+
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	UI badge
+	========================================================================== */
+.ui__badge {
+	background-color: $color__tr-orange;
+	border-radius: 999px;
+	@include font-size(1.3rem);
+	color: $color__white;
+	line-height: 1;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+	white-space: nowrap;
+	min-width: 2em;
+	min-height: 2em;
+	padding: 0.5em;
+
+	.btn__primary & {
+
+	}
+
+	.btn__secondary & {
+
+	}
+}

@@ -26,6 +26,27 @@ class TagController {
       tag: tag
     })
   }
+
+  async index2({ request, response, view }) {
+    // console.log('jb :1: ', request.all().category)
+    // console.log('jb :2: ', request.input('category'))
+
+    const id = request.input('category')
+    const tag = await TagModel.find(id)
+
+    const index = request.get().page || 1 //take from querystring param if it exists
+    const posts = await tag.posts().withCount('likes').paginate(index, 5)
+
+    const tagsModel = await TagModel.all()
+
+    // return response.status(200).json(posts)
+    return view.render('posts.index', {
+      posts: posts.toJSON(),
+      // favourites:
+      tags: tagsModel.toJSON(),
+      tag: tag
+    })
+  }
 }
 
 module.exports = TagController

@@ -21,7 +21,7 @@ Route.group(() => {
   Route.get('/', 'PageController.index').as('page.index')
 })
 
-Route.post('/search', 'SearchController.index').as('pages.search')
+Route.post('/search', 'SearchController.index').as('search')
 
 Route.get('/posts/:id/like', 'LikeController.setLike').as('posts.like')
 
@@ -53,6 +53,8 @@ Route.resource('posts', 'PostController')
 * Tags
 **/
 Route.get('/tags/:id', 'TagController.index').as('tags.index')
+Route.get('/tags', 'TagController.index2').as('tags.index2')
+Route.post('/tags', 'TagController.index2').as('tags.index2')
 
 /*
 * Dashboard
@@ -74,3 +76,11 @@ Route.group(() => {
 Route.group(() => {
   Route.get('', 'ChatController.index').as('chat.index')
 }).prefix('/chat/').middleware(["auth"])
+
+/*
+* Guide
+**/
+Route.group(() => {
+  Route.get('', 'GuideController.index').as('guides.index')
+  Route.get(':id', 'GuideController.show').as('guides.show')
+}).prefix('/guides/')

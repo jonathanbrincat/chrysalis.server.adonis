@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g fill="none" stroke="none" stroke-width="1" >
+        <path stroke="currentColor" d="M9.98228126,5 C7.31443335,5 4.65367293,6.66666667 2,10 C4.65367293,13.3333333 7.31443335,15 9.98228126,15 C12.6501292,15 15.3227021,13.3333333 18,10 C15.3227021,6.66666667 12.6501292,5 9.98228126,5 Z" stroke-width="1.5" stroke-linecap="square"></path>
+        <circle fill="currentColor" cx="10" cy="10" r="2"></circle>
+    </g>
+</svg>

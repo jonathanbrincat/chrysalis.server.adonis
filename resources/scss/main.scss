@@ -2,6 +2,7 @@
     Vendor
     ============================================================================= */
 @import 'bootstrap';
+@import 'fontawesome';
 
 // /*  =============================================================================
 //     Framework
@@ -16,7 +17,8 @@
 //     ============================================================================= */
 @import 'app.typography';
 @import 'app.reboot';
-// @import 'app.iconology';
+@import 'app.iconology';
+@import 'lib.iconology';
 
 // @import 'core.utils';
 // @import 'bootstrap.grid';

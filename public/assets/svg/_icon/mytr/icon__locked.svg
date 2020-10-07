@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--unlocked" stroke="#FFFFFF" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(3.000000, 1.000000)">
+    <path d="M3,6.55 L3,3.25 C3,1.45795 5.3458,0 7,0 C8.6542,0 11,1.45795 11,3.25 L11,6.55" id="Combined-Shape" stroke-width="1.2"></path>
+    <path d="M14,18 L0,18 L0,9.73833333 C0,8.36083333 0.796153846,7.10833333 1.98230769,6.62166667 C3.04153846,6.18583333 4.83615385,5.66666667 7,5.66666667 C9.16384615,5.66666667 10.9584615,6.18583333 12.0176923,6.62166667 C13.2030769,7.1075 14,8.35916667 14,9.73833333 L14,18 Z" id="Combined-Shape" stroke-width="1.2"></path>
+    <path d="M7,11 L7,14" id="Line" stroke-width="2" stroke-linecap="round"></path>
+  </g>
+</svg>

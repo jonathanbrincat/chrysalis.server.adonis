@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/doctype/xls</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/doctype/xls">
+            <g id="logo-connector-excel" transform="translate(1.000000, 1.000000)">
+                <g id="Group">
+                    <rect id="Rectangle-3" fill="#20744B" x="0" y="0" width="18" height="18" rx="2"></rect>
+                    <path d="M10.72875,14 L9.105,10.74 C9.04375,10.625 8.97125,10.39375 8.91125,10.0725 L8.8875,10.0725 C8.85125,10.22625 8.77875,10.4575 8.66875,10.76625 L7.0325,14 L4.5,14 L7.505,8.99375 L4.755,4 L7.34875,4 L8.69375,6.99125 C8.8025,7.235 8.8875,7.5175 8.9725,7.83875 L9.00875,7.83875 C9.0575,7.64625 9.15375,7.35125 9.3,6.96625 L10.8025,4 L13.16625,4 L10.3425,8.955 L13.25,14 L10.72875,14 Z" id="Path" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

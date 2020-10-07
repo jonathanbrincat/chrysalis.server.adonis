@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+
+<style>
+	.svg__icon {
+		display: none;
+	}
+	.svg__icon:target {
+		display: inline;
+	}
+</style>
+
+<!-- Dual-tone icon set -->
+<use id="icon--dashboard-test" xlink:href="/svg/sprite__icon.svg#icon--dashboard" class="svg__icon"></use>
+<use id="icon--product-test" xlink:href="/sprite__icon.svg#icon--product" class="svg__icon"></use>
+<use id="icon--billing-test" xlink:href="sprite__icon.svg#icon--billing" class="svg__icon"></use>
+<use id="icon--policy-test" xlink:href="sprite__icon.svg#icon--policy" class="svg__icon"></use>
+<use id="icon--notification-test" xlink:href="sprite__icon.svg#icon--notification" class="svg__icon"></use>
+<use id="icon--buoy-test" xlink:href="sprite__icon.svg#icon--buoy" class="svg__icon"></use>
+<use id="icon--wrench-test" xlink:href="sprite__icon.svg#icon--wrench" class="svg__icon"></use>
+<use id="icon--contact-test" xlink:href="sprite__icon.svg#icon--contact" class="svg__icon"></use>
+<use id="icon--profile-test" xlink:href="sprite__icon.svg#icon--profile" class="svg__icon"></use>
+<use id="icon--padlock-test" xlink:href="sprite__icon.svg#icon--padlock" class="svg__icon"></use>
+<use id="icon--clipboard-test" xlink:href="sprite__icon.svg#icon--clipboard" class="svg__icon"></use>
+<use id="icon--license-test" xlink:href="sprite__icon.svg#icon--license" class="svg__icon"></use>
+<use id="icon--order-test" xlink:href="sprite__icon.svg#icon--order" class="svg__icon"></use>
+<use id="icon--preferences-test" xlink:href="sprite__icon.svg#icon--preferences" class="svg__icon"></use>
+<use id="icon--report-test" xlink:href="sprite__icon.svg#icon--report" class="svg__icon"></use>
+<use id="icon--results-test" xlink:href="sprite__icon.svg#icon--results" class="svg__icon"></use>
+<use id="icon--profile-test" xlink:href="sprite__icon.svg#icon--profile" class="svg__icon"></use>
+
+<use id="icon--activity-log-dual-test" xlink:href="sprite__icon.svg#icon--activity-log-dual" class="svg__icon"></use>
+<use id="icon--chat-dual-test" xlink:href="sprite__icon.svg#icon--chat-dual" class="svg__icon"></use>
+<use id="icon--expand-dual-test" xlink:href="sprite__icon.svg#icon--expand-dual" class="svg__icon"></use>
+
+
+<!-- Mono-tone icon set -->
+<!-- SET 1 -->
+<use id="icon--chat-test" xlink:href="sprite__icon.svg#icon--chat" class="svg__icon"></use>
+<use id="icon--external-2-test" xlink:href="sprite__icon.svg#icon--external-2" class="svg__icon"></use>
+<use id="icon--search-1-test" xlink:href="sprite__icon.svg#icon--search-1" class="svg__icon"></use>
+<use id="icon--settings-test" xlink:href="sprite__icon.svg#icon--settings" class="svg__icon"></use>
+
+
+<!-- SET 2 -->
+<use id="icon--add-test" xlink:href="sprite__icon.svg#icon--add" class="svg__icon"></use>
+<use id="icon--arrow-right-test" xlink:href="sprite__icon.svg#icon--arrow-right" class="svg__icon"></use>
+<use id="icon--arrow-left-test" xlink:href="sprite__icon.svg#icon--arrow-right" class="svg__icon" transform="rotate(180 6 6)"></use> <!-- DEVNOTE: have to work out the origin for transformation -->
+<use id="icon--caret-down-test" xlink:href="sprite__icon.svg#icon--caret-down" class="svg__icon"></use>
+<use id="icon--caret-up-test" xlink:href="sprite__icon.svg#icon--caret-down" class="svg__icon" transform="rotate(180 6 6)"></use> <!-- DEVNOTE: have to work out the origin for transformation -->
+<use id="icon--tick-1-test" xlink:href="sprite__icon.svg#icon--tick-1" class="svg__icon"></use>
+<use id="icon--tick-2-test" xlink:href="sprite__icon.svg#icon--tick-2" class="svg__icon"></use>
+<use id="icon--cross-test" xlink:href="sprite__icon.svg#icon--cross" class="svg__icon"></use>
+<use id="icon--bell-test" xlink:href="sprite__icon.svg#icon--bell" class="svg__icon"></use>
+<use id="icon--clock-test" xlink:href="sprite__icon.svg#icon--clock" class="svg__icon"></use>
+<use id="icon--cross-in-circle-test" xlink:href="sprite__icon.svg#icon--cross-in-circle" class="svg__icon"></use>
+<use id="icon--cross-in-solid-circle-test" xlink:href="sprite__icon.svg#icon--cross-in-solid-circle" class="svg__icon"></use>
+<use id="icon--download-test" xlink:href="sprite__icon.svg#icon--download" class="svg__icon"></use>
+<use id="icon--expand-test" xlink:href="sprite__icon.svg#icon--expand" class="svg__icon"></use>
+<use id="icon--external-1-test" xlink:href="sprite__icon.svg#icon--external-1" class="svg__icon"></use>
+<use id="icon--sort-test" xlink:href="sprite__icon.svg#icon--sort" class="svg__icon"></use>
+<use id="icon--list-test" xlink:href="sprite__icon.svg#icon--list" class="svg__icon"></use>
+<use id="icon--mail-test" xlink:href="sprite__icon.svg#icon--mail" class="svg__icon"></use>
+<use id="icon--paper-test" xlink:href="sprite__icon.svg#icon--paper" class="svg__icon"></use>
+<use id="icon--paperclip-test" xlink:href="sprite__icon.svg#icon--paperclip" class="svg__icon"></use>
+<use id="icon--play-test" xlink:href="sprite__icon.svg#icon--play" class="svg__icon"></use>
+<use id="icon--question-test" xlink:href="sprite__icon.svg#icon--question" class="svg__icon"></use>
+<use id="icon--timer-test" xlink:href="sprite__icon.svg#icon--timer" class="svg__icon"></use>
+<use id="icon--user-2-test" xlink:href="sprite__icon.svg#icon--user-2" class="svg__icon"></use>
+<use id="icon--visibility-test" xlink:href="sprite__icon.svg#icon--visibility" class="svg__icon"></use>
+<use id="icon--user-1-test" xlink:href="sprite__icon.svg#icon--user-1" class="svg__icon"></use>
+<use id="icon--padlock-test" xlink:href="sprite__icon.svg#icon--padlock" class="svg__icon"></use>
+<use id="icon--calendar-test" xlink:href="sprite__icon.svg#icon--calendar" class="svg__icon"></use>
+<use id="icon--document-test" xlink:href="sprite__icon.svg#icon--document" class="svg__icon"></use>
+<use id="icon--filter-test" xlink:href="sprite__icon.svg#icon--filter" class="svg__icon"></use>
+<use id="icon--globe-test" xlink:href="sprite__icon.svg#icon--globe" class="svg__icon"></use>
+<use id="icon--menu-test" xlink:href="sprite__icon.svg#icon--menu" class="svg__icon"></use>
+<use id="icon--exclamation-test" xlink:href="sprite__icon.svg#icon--exclamation" class="svg__icon"></use>
+<use id="icon--currency-test" xlink:href="sprite__icon.svg#icon--currency" class="svg__icon"></use>
+<use id="icon--tag-test" xlink:href="sprite__icon.svg#icon--tag" class="svg__icon"></use>
+<use id="icon--trash-test" xlink:href="sprite__icon.svg#icon--trash" class="svg__icon"></use>
+<use id="icon--sign-out-test" xlink:href="sprite__icon.svg#icon--sign-out" class="svg__icon"></use>
+<use id="icon--bullet-test" xlink:href="sprite__icon.svg#icon--bullet" class="svg__icon"></use>
+<use id="icon--options-test" xlink:href="sprite__icon.svg#icon--options" class="svg__icon"></use>
+<use id="icon--search-2-test" xlink:href="sprite__icon.svg#icon--search-2" class="svg__icon"></use>
+<use id="icon--activity-log-test" xlink:href="sprite__icon.svg#icon--activity-log" class="svg__icon"></use>
+
+</svg>

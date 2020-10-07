@@ -7,7 +7,12 @@
     <div class="row">
       <div class="col-12">
         <p>
-          <a href="{{ route('dashboard.index') }}">Go back</a>
+          <a href="{{ route('posts.index') }}">
+            <svg class="ui__icon icon__svg">
+              <use xlink:href="/assets/svg/fontawesome/solid.svg#arrow-left"></use>
+            </svg>
+            <span>Go back</span>
+          </a>
         </p>
 
         <hr>
@@ -38,12 +43,12 @@
             <p class="form__field">
               <label class="form__control">
                 <span class="form__label">Content</span>
-                <textarea id="editor" name="content">{{ post.content }}</textarea>
+                <textarea id="editor" name="body">{{ post.body }}</textarea>
               </label>
               {{-- {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }} --}}
 
-              @if(hasErrorFor('content'))
-                <span>{{ getErrorFor('content')}}</span>
+              @if(hasErrorFor('body'))
+                <span>{{ getErrorFor('body')}}</span>
               @endif
             </p>
           </div>

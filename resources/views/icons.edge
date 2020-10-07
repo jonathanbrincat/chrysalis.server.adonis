@@ -1,0 +1,149 @@
+@layout('_layout/master')
+
+@section('content')
+<div class="ui__hero" style="background-image: url(https://picsum.photos/id/237/1380/640)">
+  <div class="hero__panel">
+  </div>
+</div>
+
+<div class="container">
+  <style>
+    #iconology {
+      background-color: green;
+    }
+
+    #iconology .ui__icon {
+      font-size: 100px;
+    }
+
+    #iconology .foo::before {
+      display: inline-block;
+      content: url("data:image/svg+xml,<svg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' clip-rule='evenodd'/></svg>");
+      /*background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' clip-rule='evenodd'/></svg>");*/
+      background-repeat: no-repeat;
+      /*background-size: 1rem 1rem;*/
+      width: 100%;
+      height: 100%;
+      color: pink;
+      fill: yellow;
+    }
+
+    #fa svg {
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+    }
+  </style>
+
+  <div id="iconology" class="row">
+    <!-- to get around the shadow dom problem; try without using a psuedo element; trying a content embed i.e. data:image/svg+xml,<svg viewBox='0 0.... both explicit and with fragment identifier. try as a background image embed too. explicit and fragment identifier -->
+    <!-- server side rendering is also an option with font awesome core -->
+
+    <!-- mytr icons -->
+    <div class="col-4">
+      <svg class="ui__icon icon__svg">
+        <use xlink:href="/assets/svg/icon/sprite__icon.svg#icon--dashboard-test" />
+      </svg>
+    </div>
+
+    <div class="col-4">
+      <span class="ui__icon svg__dashboard" />
+    </div>
+
+    <div class="col-4">
+      <span class="ui__icon svg2__dashboard" />
+    </div>
+
+    <!-- bootstrap icons -->
+    <div class="col-4">
+      <svg class="bi" width="32" height="32" fill="currentColor">
+        <use xlink:href="/assets/svg/bootstrap/bootstrap-icons.svg#shop"/>
+      </svg>
+    </div>
+
+    <div class="col-4">
+      <div style="width: 100px; height: 100px; color: purple;" class="foo"></div>
+    </div>
+
+    <!-- fontawesome -->
+    <div class="col-4">
+      <i class="fas fa-camera"></i> <!-- css is webfont; in absence of js to replace with inline svg -->
+    </div>
+
+    <div class="col-4" id="fa">
+      <div style="border:1px solid black; width: 100px; height: 100px;">
+        <svg>
+          <use xlink:href="/assets/svg/fontawesome/brands.svg#facebook"></use>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Recently views / Watch items / Frequently viewed / Suggested ads / Code of Conduct / Featured Breeder / Assured Breeder scheme -->
+    <div class="col-12">
+      <h2>Promoted adverts</h2>
+    </div>
+    <div class="col-4">
+      <article class="ui__card2">
+        <header class="card__header">
+          <a href=""><img src="https://picsum.photos/380/260" alt="" /></a>
+        </header>
+
+        <div class="card__body">
+          <h3><a href="">Lorem ipsum dolor elit</a></h3>
+        </div>
+
+        <footer class="card__footer"></footer>
+      </article>
+    </div>
+
+    <div class="col-4">
+      <article class="ui__card2">
+        <header class="card__header">
+          <a href=""><img src="https://picsum.photos/380/260" alt="" /></a>
+        </header>
+
+        <div class="card__body">
+          <h3><a href="">Dolore velit sapiente ipsa</a></h3>
+        </div>
+
+        <footer class="card__footer"></footer>
+      </article>
+    </div>
+
+    <div class="col-4">
+      <article class="ui__card2">
+        <header class="card__header">
+          <a href=""><img src="https://picsum.photos/380/260" alt="" /></a>
+        </header>
+
+        <div class="card__body">
+          <h3><a href="">Modi consequuntur atque</a></h3>
+        </div>
+
+        <footer class="card__footer"></footer>
+      </article>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h2>Latest adverts</h2>
+    </div>
+    <div class="col-3">
+      <article class="ui__card2">
+        <header class="card__header">
+          <a href=""><img src="https://picsum.photos/380/240" alt="" /></a>
+        </header>
+
+        <div class="card__body">
+          <h3><a href="">Architecto velit ipsa totam</a></h3>
+        </div>
+
+        <footer class="card__footer"></footer>
+      </article>
+    </div>
+</div>
+</div>
+@endsection

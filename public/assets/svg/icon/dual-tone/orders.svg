@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/white/orders</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="icon/white/orders">
+            <path d="M17.8473605,8.43898183 C17.947491,8.9439454 18,9.46591397 18,10 C18,14.4137931 14.4137931,18 10,18 C5.5862069,18 2,14.4137931 2,10 C2,5.5862069 5.5862069,2 10,2 C11.0840517,2 12.1181818,2.21632734 13.06152,2.60811188" id="circle" stroke="#4D4D4D" stroke-width="1.2"></path>
+            <polyline id="tick" stroke="#FF8000" stroke-width="2" stroke-linejoin="round" points="7 8.28269383 9.75687811 11.0395719 16.7964501 4"></polyline>
+        </g>
+    </g>
+</svg>

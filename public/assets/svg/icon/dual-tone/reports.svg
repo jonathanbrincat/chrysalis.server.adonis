@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/white/reports</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/white/reports">
+            <g id="chart" transform="translate(1.000000, 1.000000)">
+                <path d="M16,0.6 L2,0.6 C1.22637085,0.6 0.6,1.22637085 0.6,2 L0.6,16 C0.6,16.7736292 1.22637085,17.4 2,17.4 L16,17.4 C16.7736292,17.4 17.4,16.7736292 17.4,16 L17.4,2 C17.4,1.22637085 16.7736292,0.6 16,0.6 Z" id="Shape" stroke="#4D4D4D" stroke-width="1.2" fill-rule="nonzero"></path>
+                <polygon id="Path" fill="#FF8000" points="6 14 4 14 4 7 6 7"></polygon>
+                <polygon id="Path" fill="#FF8000" points="10 14 8 14 8 4 10 4"></polygon>
+                <polygon id="Path" fill="#FF8000" points="14 14 12 14 12 10 14 10"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

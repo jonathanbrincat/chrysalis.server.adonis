@@ -1,0 +1,98 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+/* =============================================================================
+	Config
+	========================================================================== */
+@import 'app.iconology';
+@import 'app.normalize';
+
+/* =============================================================================
+	00. Core styles
+	========================================================================== */
+@import 'core.reset';
+@import 'core.utils';
+@import 'bootstrap.grid';
+@import 'core.responsive';
+@import 'core.print';
+
+/* =============================================================================
+	01. Generic/Global styles
+	========================================================================== */
+@import 'bootstrap.forms';
+@import 'styles.form';
+@import 'styles.table';
+@import 'styles.main';
+
+/* =============================================================================
+	UI Component styles (modular constructs)
+	========================================================================== */
+//Static Components
+@import 'ui.btn';
+@import 'ui.cta';
+@import 'ui.badge';
+@import 'ui.matrix';
+	@import 'ui.card';
+	@import 'ui.tile';
+@import 'ui.listing';
+@import 'ui.pagination';
+
+//Functional Components
+@import 'ui.collapsible';
+@import 'ui.accordion';
+@import 'ui.tabs';
+
+//filter dataset (functional)component styles
+@import 'ui.toolbar';
+@import 'ui.toolbench';
+
+/* =============================================================================
+	App modules/widgets
+	========================================================================== */
+@import 'mod.banner';
+@import 'mod.cookie';
+@import 'mod.discover';
+
+/* html, body {
+	min-width: $screen-xs-min;
+
+	@media (max-width: $screen-xs-min - 1) {
+	//@include breakpoint(max-width $screen-xs-min - 1) {
+		font-size: calc(10px + 0.5vw);
+		font-size: calc(50% + 0.5vw);
+	}
+}
+
+body,
+.app__viewport,
+#app--body,
+.body__viewport,
+#app--header, #app--main {
+
+	@media (max-width: $screen-xs-min - 1) {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		height: auto;
+		flex-grow: 1;
+		flex-shrink: 0;
+		flex-basis: auto;
+	}
+}
+
+.body__viewport {
+	flex-direction: row;
+}
+
+body,
+.app__viewport {
+	overflow: auto;
+	//overflow-x: hidden;
+}
+
+#app--header {
+	@media (max-width: $screen-xs-min - 1) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+} */

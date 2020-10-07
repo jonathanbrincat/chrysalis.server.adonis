@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--financial" stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.000000, 2.000000)">
+    <path d="M11.2285714,11.9 L15.4285714,11.9 C17.4857143,11.9 18,13.6 18,13.6 L8.91428571,16.83 C8.22857143,17 7.45714286,17 6.77142857,16.745 L2.57142857,14.875" id="Shape" stroke="#4D4D4D"></path>
+    <path d="M2.57142857,9.35 L3.42857143,9.35 C4.8,9.35 6.08571429,9.945 6.85714286,11.05 L9.42857143,11.05 C10.7142857,11.05 12,12.325 12,13.6 L6,13.6" id="Shape" stroke="#4D4D4D"></path>
+    <ellipse id="Oval" stroke="#FF8000" cx="13.2857143" cy="6.375" rx="2.14285714" ry="2.125"></ellipse>
+    <ellipse id="Oval" stroke="#FF8000" cx="7.28571429" cy="2.125" rx="2.14285714" ry="2.125"></ellipse>
+    <rect id="Rectangle-path" stroke="#4D4D4D" x="0" y="8.5" width="2.57142857" height="6.8"></rect>
+  </g>
+</svg>

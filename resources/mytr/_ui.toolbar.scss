@@ -1,0 +1,207 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_ui.toolbar.scss (partial)
+* 	@project:	mytr
+* 	@author: 	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+*
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	UI Dataset: Toolbar
+	========================================================================== */
+//.data__toolbar {}
+.ui__toolbar {
+	@include font-size(1.3rem);
+	line-height: 20px;
+	position: relative;
+	display: none;
+
+	@include breakpoint($screen-md-min) {
+		display: block;
+	}
+
+	#app--main & {
+		p {
+			display: inline-block;
+		}
+
+		label {
+			margin: 0;
+		}
+
+		form {
+			display: flex;
+		}
+
+		.form__field {
+			margin-bottom: 0;
+			margin: 20px 0;
+			position: relative;
+		}
+
+		.form__field > .form__control {
+			float: none;
+			width: auto;
+			padding: 0;
+			display: inline-block;
+			//white-space: nowrap;
+			position: relative;
+			margin-left: 15px;
+			margin-right: 15px;
+			
+		}
+
+		.form__field > .control__radio,
+		.form__field > .control__checkbox {
+			//padding-top: 15px;
+			padding-bottom: 15px;
+		}
+
+		.form__field > .checkbox__toggle {
+			padding: 0;
+		}
+
+		.form__control {
+			position: relative;
+		}
+
+		.form__field > label {
+			float: none;
+			width: auto;
+			display: inline-block;
+		}
+
+		input[type="radio"],
+		input[type="checkbox"] {
+			position: absolute;
+			left: -9999em;
+			opacity: 0;
+			appearance: none; //DEVNOTE: not w3c standard but loosely supported by modern browsers
+
+			&:checked ~ label {
+				font-weight: 500;
+
+				&:after {
+					content: '\020';
+					background-color: $color__tr-orange;
+					height: 4px;
+					width: 100%;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+				}
+			}
+		}
+	}
+
+	.control__radio > label,
+	.control__checkbox > label {
+		border-width: 0;
+		border-radius: 0;
+		font-weight: 400;
+		display: inline-block;
+		position: static;
+		width: auto;
+		margin: 0;
+		padding: 0;
+	}
+
+	.control__checkbox.checkbox__toggle > label {
+		width: 50px;
+	}
+
+	ul, ol {
+		list-style: none;
+		padding: 0;
+		overflow: hidden;
+	}
+
+	li {
+		display: inline-block;
+		white-space: nowrap;
+		position: relative;
+		margin-left: 15px;
+		margin-right: 15px;
+		padding-bottom: 15px;
+
+		&.state__active {
+
+			&:after {
+				content: '\020';
+				background-color: $color__tr-orange;
+				height: 4px;
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+
+			a {
+				font-weight: 500;
+			}
+		}
+
+		a {
+			text-decoration: none;
+		}
+	}
+
+	#app--main & {
+		.ui__tabs {
+			background-color: transparent;
+
+			.collapsible__header {
+				display: block;
+			}
+
+			.ui__tab {
+				background-color: transparent;
+				border-width: 0;
+				color: $color__tr-dark-grey;
+				padding: 15px;
+
+				&:after {
+					content: none;
+					border-width: 0;
+					background-color: $color__tr-orange;
+					height: 4px;
+					width: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: auto;
+					transition: none;
+					transform: none;
+				}
+
+				&.active {
+					background-color: $color__white;
+
+					&:after {
+						content: '\020';
+					}
+
+					p {
+						font-weight: 500;
+					}
+				}
+
+				p {
+					font-weight: 400;
+				}
+
+				a {
+					color: inherit;
+				}
+
+				.ui__icon {
+					display: none;
+				}
+			}
+		}
+	}
+}

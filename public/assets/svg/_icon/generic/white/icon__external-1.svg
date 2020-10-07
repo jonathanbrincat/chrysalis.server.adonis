@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--external-1" stroke="#FFFFFF" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(4.000000, 1.000000)">
+    <polygon id="long-arrow-left" stroke-width="1.2" stroke-linejoin="round" transform="translate(8.355868, 6.655868) rotate(-45.000000) translate(-8.355868, -6.655868) " points="9.83471894 2.7572401 9.59430269 2.99765634 13.0737154 6.47617448 2.98309858 6.44290282 2.98309858 6.8015475 13.0786164 6.83896932 9.59121562 10.3263701 9.82978047 10.5544956 13.7286375 6.65563862"></polygon>
+    <polyline id="Path-2" stroke-width="1.5" points="5 5 0 5 0 15 10 15 10 10"></polyline>
+  </g>
+</svg>

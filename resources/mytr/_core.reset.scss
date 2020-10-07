@@ -1,0 +1,296 @@
+/*
+*	Compressed and generated using gulp.js sass/compass build tools
+*
+*	@title: 	_core.reset.scss (partial)
+* 	@project: 	pix8 reset
+* 	@author: 	Jonathan Brincat@pix8.co.uk, <jonathan@pix8.co.uk>
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	PATCH
+	========================================================================== */
+// Box model reset the box-sizing
+//
+// Heads up! This reset may cause conflicts with some third-party widgets.
+// For recommendations on resolving such conflicts, see
+// http://getbootstrap.com/getting-started/#third-box-sizing
+* {
+  @include box-sizing(border-box); //BOOTSTRAP MIXIN
+}
+
+*:before,
+*:after {
+  @include box-sizing(border-box); //BOOTSTRAP MIXIN
+}
+
+// Suppress the focus outline on elements that cannot be accessed via keyboard.
+[tabindex="-1"]:focus {
+	outline: none !important;
+}
+
+
+/* =============================================================================
+	Root
+	========================================================================== */
+html {
+	background-color: #FFF;
+	font: 62.5%/1 $font__regular;
+	overflow-y:scroll;
+	
+	-webkit-font-smoothing: antialiased;
+	-ms-overflow-style: scrollbar;					// Fix IE11 & Edge Scrollbar Overlap
+	-webkit-tap-highlight-color: rgba(0,0,0,0); 	// Hide tap highlight in iOS
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	font-family: $font__knowledge;
+	@include font-size($app__text-size);
+	line-height: 1;
+	color: $color__tr-dark-grey;
+}
+
+
+/* =============================================================================
+	Headings
+	========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+	line-height: inherit;
+	font-weight: 300;
+	margin: $app__margin 0;
+
+	// span {
+	// 	display:block;
+
+	// 	&[class]{display:inline;}
+	// }
+}
+	h1 {
+		line-height: 50px;
+	}
+	h2 {
+		line-height: 40px;
+	}
+	h3 {
+		line-height: 35px;
+	}
+	h4 {
+		line-height: 30px;
+	}
+
+h1{		@include font-size(3.8rem);} 					//60px/35
+h2{ 	@include font-size(2.8rem);} 					//38px/50
+h3{ 	@include font-size(2.4rem);} 					//38px/50
+h4{ 	@include font-size(2.2rem);} 					//28px/40
+h5{ 	@include font-size(1.8rem);} 					//24px/35
+h6{ 	@include font-size($app__text-size);} 			//22px/30
+
+// @media screen and (min-width: $screen-md-min) {
+// 	h1{		@include font-size(3.8rem);} 				//70px/75
+// 	h2{ 	@include font-size(2.8rem);} 				//60px/65
+// 	h3{ 	@include font-size(2.4rem);} 				//38px/50
+// 	h4{ 	@include font-size(2.2rem);} 				//28px/40
+// 	h5{ 	@include font-size(1.8rem);} 				//24px/35
+// 	h6{ 	@include font-size($app__text-size);} 		//22px/30
+// }
+
+/* =============================================================================
+	Core Elements
+	========================================================================== */
+a {
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+
+	&:hover,
+	&:focus {
+		color: $color__dark-grey;
+		outline-color: $theme__primary;
+	}
+
+	&:focus {
+		@include tab-focus; //BOOTSTRAP mixin
+	}
+}
+
+img {
+	vertical-align: middle;
+	max-width:100%;
+	height:auto;
+
+	a {border:0 none;}
+}
+
+p {
+	a {
+		text-decoration: underline;
+
+		//&:link {}
+		//&:visited {}
+		&:hover {}
+		&:focus {}
+		//&:active {}
+	}
+}
+
+p, li, dd {
+	line-height: $app__text-line-height; //24px
+	margin: $app__margin 0;
+	word-break: break-word;
+	hypens: auto;
+
+	a {
+		text-decoration: underline;
+
+		//&:link {}
+		//&:visited {}
+		&:hover {}
+		&:focus {}
+		//&:active {}
+
+		nav & {
+			text-decoration: none;
+
+			//&:link {}
+			//&:visited {}
+			&:hover {}
+			&:focus {}
+			//&:active {}
+		}
+	}
+}
+
+ul, ol, dl {
+	margin: $app__margin 0;
+
+	p,
+	//label, button, input, select, textarea,
+	table{
+		font-size: 1em;
+	}
+}
+
+ul, ol {}
+
+ul {
+	list-style-type:disc;
+}
+
+ol {}
+
+dl {}
+
+li ul,
+li ol {
+	font-size: 1em;
+	line-height: 1;
+}
+
+li, dt, dd {}
+
+dt,dd {margin: $app__margin 0;}
+
+dt {
+	font-weight: 500;
+	line-height: $app__text-line-height;
+}
+
+dd {}
+
+
+input,
+button,
+select,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+button {}
+
+hr {
+	margin: $app__margin 0;
+	border: 0;
+	border-top: 1px solid $color__tr-silver;
+}
+
+b, strong, .strong {
+	font-weight: 700;
+}
+
+i {}
+
+span {}
+
+address, figure, figcaption,
+blockquote, q, .quote,
+cite {
+}
+
+blockquote, q,
+.quote {
+	quotes: initial;
+	display: block;
+	margin: $app__margin 0;
+}
+
+figure {
+	margin: $app__margin 0;
+}
+
+cite {
+	display: block;
+	margin-bottom: $app__margin/2;
+}
+
+address {
+}
+
+pre {
+	margin: $app__margin 0;
+}
+
+code {
+	background-color: $color__light-grey;
+	display: inline-block;
+	padding: 0 $app__margin;
+
+	p & {
+		padding: 0;
+	}
+}
+
+video {
+	display:block;
+}
+
+// iOS "clickable elements" fix for role="button"
+//
+// Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
+// for traditionally non-focusable elements with role="button"
+// see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+[role="button"] {
+	cursor: pointer;
+}
+
+/* =============================================================================
+	Layout
+	========================================================================== */
+div {}
+article {}
+section {position:relative;}
+aside {}
+
+
+/* =============================================================================
+	Table
+	========================================================================== */
+
+
+/* =============================================================================
+	Form
+	========================================================================== */

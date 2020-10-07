@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+// Catchall baseclass
+.ui__icon {
+    /* Lets the icon inherit the text color. */
+    color: inherit;
+    display: inline-block;
+
+    /* Inherit the text’s size too. Also allows sizing
+    the icon by changing its font-size. */
+    width: 1em;
+    height: 1em;
+
+    line-height: inherit;
+    line-height: 1;
+
+    vertical-align: middle;
+
+    /* Nice visual alignment for icons alongside text.
+    (I got a few questions about this and: with most
+    fonts and styles, this works better than just
+    vertical-align:middle. Try it and see what you
+    like best. */
+    vertical-align: -0.15em;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon__glyph {
+    //font-family: 'Glyphicons Halflings';
+    position: relative;
+    top: 1px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.icon__svg {
+    /* Lets the icon inherit the text color. */
+    /*fill: currentColor;
+    stroke: currentColor;*/
+
+    /*fill: $theme__primary;
+    stroke: $theme__primary;*/
+
+    /* Paths and strokes that overflow the viewBox can
+    show in IE. If you use normalize.css, it already
+    sets this. */
+    overflow: hidden;
+}
+
+//DEVNOTE: could probably  control this with first child/last child association
+//and or direction: rtl; direction: ltr; for the :before or :after problem
+.icon__left                             { &, &:before { margin-right: 10px; } }
+.icon__right                            { &, &:before { margin-left: 10px;} }
+.icon__top                              { &, &:before { margin-bottom: 10px;} }
+.icon__bottom                           { &, &:before { margin-top: 10px;} }
+
+/* Dual-tone icon set */
+/*icon__dual*/
+.svg2__dashboard                         { &, &:before{ background: url(../assets/svg/icon/sprite__icon.svg#icon--dashboard-test) no-repeat;} }
+.svg2__product                           { background: url(../assets/svg/icon/sprite__icon.svg#icon--product-test) no-repeat;}
+.svg2__billing                           { background: url(../assets/svg/icon/sprite__icon.svg#icon--billing-test) no-repeat;}
+.svg2__policy                            { background: url(../assets/svg/icon/sprite__icon.svg#icon--policy-test) no-repeat;}
+.svg2__notification                      { background: url(../assets/svg/icon/sprite__icon.svg#icon--notification-test) no-repeat;}
+.svg2__buoy                              { background: url(../assets/svg/icon/sprite__icon.svg#icon--buoy-test) no-repeat;}
+.svg2__wrench                            { background: url(../assets/svg/icon/sprite__icon.svg#icon--wrench-test) no-repeat;}
+.svg2__contact                           { background: url(../assets/svg/icon/sprite__icon.svg#icon--contact-test) no-repeat;}
+.svg2__padlock                           { background: url(../assets/svg/icon/sprite__icon.svg#icon--padlock-test) no-repeat;}
+.svg2__clipboard                         { background: url(../assets/svg/icon/sprite__icon.svg#icon--clipboard-test) no-repeat;}
+.svg2__license                           { background: url(../assets/svg/icon/sprite__icon.svg#icon--license-test) no-repeat;}
+.svg2__order                             { background: url(../assets/svg/icon/sprite__icon.svg#icon--order-test) no-repeat;}
+.svg2__preferences                       { background: url(../assets/svg/icon/sprite__icon.svg#icon--preferences-test) no-repeat;}
+.svg2__report                            { background: url(../assets/svg/icon/sprite__icon.svg#icon--report-test) no-repeat;}
+.svg2__results                           { background: url(../assets/svg/icon/sprite__icon.svg#icon--results-test) no-repeat;}
+.svg2__profile                           { background: url(../assets/svg/icon/sprite__icon.svg#icon--profile-test) no-repeat;}
+
+.svg2__activity-log-dual                 { background: url(../assets/svg/icon/sprite__icon.svg#icon--activity-log-dual-test) no-repeat;}
+.svg2__chat-dual                         { background: url(../assets/svg/icon/sprite__icon.svg#icon--chat-dual-test) no-repeat;}
+.svg2__expand-dual                       { background: url(../assets/svg/icon/sprite__icon.svg#icon--expand-dual-test) no-repeat;}
+
+/* Mono-tone icon set */
+/* .icon__mono */
+/* SET 1 */
+.svg2__chat                              { background: url(../assets/svg/icon/sprite__icon.svg#icon--chat-test) no-repeat;}
+.svg2__external-1                        { background: url(../assets/svg/icon/sprite__icon.svg#icon--external-1-test) no-repeat;}
+.svg2__search-1                          { background: url(../assets/svg/icon/sprite__icon.svg#icon--search-1-test) no-repeat;}
+.svg2__settings                          { background: url(../assets/svg/icon/sprite__icon.svg#icon--settings-test) no-repeat;}
+
+/* SET 2 */
+.svg2__add                               { background: url(../assets/svg/icon/sprite__icon.svg#icon--add-test) no-repeat;}
+.svg2__arrow-right                       { background: url(../assets/svg/icon/sprite__icon.svg#icon--arrow-right-test) no-repeat;}
+.svg2__arrow-left                        { background: url(../assets/svg/icon/sprite__icon.svg#icon--arrow-left-test) no-repeat; }
+//.svg2__arrow-left                      { @extend .svg2__arrow-right; transform: rotate(180deg); }
+.svg2__caret-down                        { background: url(../assets/svg/icon/sprite__icon.svg#icon--caret-down-test) no-repeat;}
+.svg2__caret-up                          { background: url(../assets/svg/icon/sprite__icon.svg#icon--caret-up-test) no-repeat; }
+//.svg2__caret-up                            { @extend .svg2__caret-down; transform: rotate(180deg); }
+.svg2__tick-1                            { background: url(../assets/svg/icon/sprite__icon.svg#icon--tick-1-test) no-repeat;}
+.svg2__tick-2                            { background: url(../assets/svg/icon/sprite__icon.svg#icon--tick-2-test) no-repeat;}
+.svg2__cross                             { background: url(../assets/svg/icon/sprite__icon.svg#icon--cross-test) no-repeat;}
+.svg2__bell                              { background: url(../assets/svg/icon/sprite__icon.svg#icon--bell-test) no-repeat;}
+.svg2__clock                             { background: url(../assets/svg/icon/sprite__icon.svg#icon--clock-test) no-repeat;}
+.svg2__cross-in-circle                   { background: url(../assets/svg/icon/sprite__icon.svg#icon--cross-in-circle-test) no-repeat;}
+.svg2__cross-in-solid-circle             { background: url(../assets/svg/icon/sprite__icon.svg#icon--cross-in-solid-circle-test) no-repeat;}
+.svg2__download                          { background: url(../assets/svg/icon/sprite__icon.svg#icon--download-test) no-repeat;}
+.svg2__expand                            { background: url(../assets/svg/icon/sprite__icon.svg#icon--expand-test) no-repeat;}
+.svg2__external-2                        { background: url(../assets/svg/icon/sprite__icon.svg#icon--external-2-test) no-repeat;}
+.svg2__sort                              { background: url(../assets/svg/icon/sprite__icon.svg#icon--sort-test) no-repeat;}
+.svg2__list                              { background: url(../assets/svg/icon/sprite__icon.svg#icon--list-test) no-repeat;}
+.svg2__mail                              { background: url(../assets/svg/icon/sprite__icon.svg#icon--mail-test) no-repeat;}
+.svg2__paper                             { background: url(../assets/svg/icon/sprite__icon.svg#icon--paper-test) no-repeat;}
+.svg2__paperclip                         { background: url(../assets/svg/icon/sprite__icon.svg#icon--paperclip-test) no-repeat;}
+.svg2__play                              { background: url(../assets/svg/icon/sprite__icon.svg#icon--play-test) no-repeat;}
+.svg2__question                          { background: url(../assets/svg/icon/sprite__icon.svg#icon--question-test) no-repeat;}
+.svg2__timer                             { background: url(../assets/svg/icon/sprite__icon.svg#icon--timer-test) no-repeat;}
+.svg2__visibility                        { background: url(../assets/svg/icon/sprite__icon.svg#icon--visibility-test) no-repeat;}
+.svg2__user-1                            { background: url(../assets/svg/icon/sprite__icon.svg#icon--user-1-test) no-repeat;}
+.svg2__user-2                            { background: url(../assets/svg/icon/sprite__icon.svg#icon--user-2-test) no-repeat;}
+.svg2__padlock                           { background: url(../assets/svg/icon/sprite__icon.svg#icon--padlock-test) no-repeat;}
+.svg2__calendar                          { background: url(../assets/svg/icon/sprite__icon.svg#icon--calendar-test) no-repeat;}
+.svg2__document                          { background: url(../assets/svg/icon/sprite__icon.svg#icon--document-test) no-repeat;}
+.svg2__filter                            { background: url(../assets/svg/icon/sprite__icon.svg#icon--filter-test) no-repeat;}
+.svg2__globe                             { background: url(../assets/svg/icon/sprite__icon.svg#icon--globe-test) no-repeat;}
+.svg2__menu                              { background: url(../assets/svg/icon/sprite__icon.svg#icon--menu-test) no-repeat;}
+.svg2__exclamation                       { background: url(../assets/svg/icon/sprite__icon.svg#icon--exclamation-test) no-repeat;}
+.svg2__currency                          { background: url(../assets/svg/icon/sprite__icon.svg#icon--currency-test) no-repeat;}
+.svg2__tag                               { background: url(../assets/svg/icon/sprite__icon.svg#icon--tag-test) no-repeat;}
+.svg2__sign-out                          { background: url(../assets/svg/icon/sprite__icon.svg#icon--sign-out-test) no-repeat;}
+.svg2__bullet                            { background: url(../assets/svg/icon/sprite__icon.svg#icon--bullet-test) no-repeat;}
+.svg2__options                           { background: url(../assets/svg/icon/sprite__icon.svg#icon--options-test) no-repeat;}
+.svg2__search-2                          { background: url(../assets/svg/icon/sprite__icon.svg#icon--search-2-test) no-repeat;}
+.svg2__activity-log                      { background: url(../assets/svg/icon/sprite__icon.svg#icon--activity-log-test) no-repeat;}
+
+//Expressive
+.svg2__financial                         { &, &:before { content: url(../assets/svg/icon/expressive/icon__financial.svg); } }
+.svg2__government                        { &, &:before { content: url(../assets/svg/icon/expressive/icon__government.svg); } }
+.svg2__legal                             { &, &:before { content: url(../assets/svg/icon/expressive/icon__legal.svg); } }
+.svg2__reuters-news                      { &, &:before { content: url(../assets/svg/icon/expressive/icon__reuters-news.svg); } }
+.svg2__risk-management                   { &, &:before { content: url(../assets/svg/icon/expressive/icon__risk-management.svg); } }
+.svg2__tax-accounting                    { &, &:before { content: url(../assets/svg/icon/expressive/icon__tax-accounting.svg); } }
+
+//Expressive/Values
+.svg2__innovation                        { &, &:before { content: url(../assets/svg/icon/expressive/values/icon__innovation.svg); } }
+.svg2__performance                       { &, &:before { content: url(../assets/svg/icon/expressive/values/icon__performance.svg); } }
+.svg2__partnership                       { &, &:before { content: url(../assets/svg/icon/expressive/values/icon__partnership.svg); } }
+.svg2__trust                             { &, &:before { content: url(../assets/svg/icon/expressive/values/icon__trust.svg); } }

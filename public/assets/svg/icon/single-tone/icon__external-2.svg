@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="currentColor" stroke-width="0.5" fill="none" stroke-linecap="round">
+        <g transform="translate(3.000000, 2.258621)">
+            <polyline points="6.25 2.06896552 0.25 2.06896552 0.25 14.4827586 12.25 14.4827586 12.25 8.27586207"></polyline>
+            <polyline points="8.25 0 14.75 0 14.75 6.72413793"></polyline>
+            <path d="M5.75,9.82758621 L14.6906804,0.0647742509"></path>
+        </g>
+    </g>
+</svg>

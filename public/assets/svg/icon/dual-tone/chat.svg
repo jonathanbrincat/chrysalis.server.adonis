@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/dark/chat</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/dark/chat">
+            <g id="icon:-chat" transform="translate(1.000000, 1.000000)">
+                <path d="M16.64025,18 L11.27925,15.6800443 C10.6005,15.8675235 9.86775,15.9552798 9,15.9552798 C4.03725,15.9552798 0,12.3764211 0,7.97744044 C0,3.57845983 4.03725,0.000398891967 9,0.000398891967 C13.96275,0.000398891967 18,3.57845983 18,7.97744044 C18,9.74772299 17.33925,11.4366316 16.08525,12.886205 L16.64025,18 Z" id="Path" stroke="#4D4D4D" stroke-width="1.2"></path>
+                <polygon id="Path" fill="#FF8000" points="5.25 7.17965651 12.75 7.17965651 12.75 5.58408864 5.25 5.58408864"></polygon>
+                <polygon id="Path" fill="#FF8000" points="5.25 10.3707922 10.5 10.3707922 10.5 8.77522438 5.25 8.77522438"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

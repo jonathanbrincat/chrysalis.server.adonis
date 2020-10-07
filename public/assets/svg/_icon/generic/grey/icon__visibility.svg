@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--visibility" stroke="none" stroke-width="1" fill="#4D4D4D" fill-rule="nonzero" transform="translate(2.000000, 4.000000)">
+    <path d="M8,12 C12.707,12 15.744,6.716 15.871,6.492 C16.042,6.188 16.043,5.816 15.872,5.512 C15.746,5.287 12.731,0 8,0 C3.245,0 0.251,5.289 0.126,5.514 C-0.043,5.817 -0.042,6.186 0.128,6.489 C0.254,6.713 3.269,12 8,12 Z M8,2 C10.839,2 13.036,4.835 13.818,6 C13.034,7.166 10.837,10 8,10 C5.159,10 2.962,7.162 2.181,5.999 C2.958,4.835 5.146,2 8,2 Z" id="Shape"></path>
+    <circle id="Oval" cx="8" cy="6" r="2"></circle>
+  </g>
+</svg>

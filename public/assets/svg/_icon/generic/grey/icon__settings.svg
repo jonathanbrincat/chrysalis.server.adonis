@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Icons" stroke="#4D4D4D" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square" transform="translate(3.000000, 3.000000)">
+    <path d="M8,2.32258065 L15,2.32258065" id="Shape"></path>
+    <path d="M0,2.32258065 L3.5,2.32258065" id="Shape"></path>
+    <rect id="Rectangle-path" x="3.75" y="0.258064516" width="2.5" height="4.12903226"></rect>
+    <path d="M8,13.6774194 L15,13.6774194" id="Shape"></path>
+    <path d="M0,13.6774194 L3.5,13.6774194" id="Shape"></path>
+    <rect id="Rectangle-path" x="3.75" y="11.6129032" width="2.5" height="4.12903226"></rect>
+    <path d="M13.5,8 L15,8" id="Shape"></path>
+    <path d="M0,8 L9,8" id="Shape"></path>
+    <rect id="Rectangle-path" x="9.25" y="5.93548387" width="2.5" height="4.12903226"></rect>
+  </g>
+</svg>

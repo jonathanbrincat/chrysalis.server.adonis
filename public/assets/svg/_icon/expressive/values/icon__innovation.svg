@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="120px" height="75px" viewBox="0 0 120 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--innovation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(8.000000, 8.000000)">
+    <polyline id="Stroke-1" stroke="#262626" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" points="51.75 52.5 51.75 12.5 91.75 52.5 11.75 52.5"></polyline>
+    <g id="Group-10" transform="translate(0.000000, 0.500000)">
+        <path d="M59.75,52 C59.75,56.418 56.168,60 51.75,60 C47.332,60 43.75,56.418 43.75,52 C43.75,47.582 47.332,44 51.75,44 C56.168,44 59.75,47.582 59.75,52" id="Fill-2" fill="#FF8000"></path>
+        <path d="M57.5,6.25 C57.5,9.426 54.926,12 51.75,12 C48.574,12 46,9.426 46,6.25 C46,3.074 48.574,0.5 51.75,0.5 C54.926,0.5 57.5,3.074 57.5,6.25" id="Fill-4" stroke="#262626" stroke-width="2.25"></path>
+        <path d="M103.5,52.25 C103.5,55.426 100.926,58 97.75,58 C94.574,58 92,55.426 92,52.25 C92,49.074 94.574,46.5 97.75,46.5 C100.926,46.5 103.5,49.074 103.5,52.25" id="Fill-6" stroke="#262626" stroke-width="2.25"></path>
+        <path d="M11.5,52.25 C11.5,55.426 8.926,58 5.75,58 C2.574,58 0,55.426 0,52.25 C0,49.074 2.574,46.5 5.75,46.5 C8.926,46.5 11.5,49.074 11.5,52.25" id="Fill-8" stroke="#262626" stroke-width="2.25"></path>
+    </g>
+  </g>
+</svg>

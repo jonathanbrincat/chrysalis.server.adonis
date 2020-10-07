@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="ui__icon-svg" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="icon--legal" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.000000, 1.000000)">
+    <rect id="Rectangle-path" stroke="#4D4D4D" stroke-width="1.99998082" transform="translate(11.541039, 4.780534) rotate(-45.000000) translate(-11.541039, -4.780534) " x="6.69822787" y="2.96691489" width="9.6856214" height="3.62723794"></rect>
+    <polyline id="Shape" stroke="#4D4D4D" stroke-width="2" points="13.7142857 5.18181818 18 9.5 16.2857143 11.2272727 12 6.90909091"></polyline>
+    <polyline id="Shape" stroke="#4D4D4D" stroke-width="2" points="1.71428571 18.1363636 1.71428571 15.5454545 11.1428571 15.5454545 11.1428571 18.1363636"></polyline>
+    <path d="M3.42857143,12.0909091 L0.857142857,12.0909091" id="Shape" stroke="#FF8000" stroke-width="2"></path>
+    <path d="M4.71428571,9.06818182 L2.82857143,7.16818182" id="Shape" stroke="#FF8000" stroke-width="2"></path>
+    <path d="M0,18.1363636 L12.8571429,18.1363636" id="Shape" stroke="#4D4D4D" stroke-width="2"></path>
+  </g>
+</svg>

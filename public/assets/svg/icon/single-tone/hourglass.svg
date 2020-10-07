@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/grey/hourglass</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M15.0799843,3.18421053 C14.9093195,5.64654949 13.7652411,7.11388555 10.9592956,9.28388158 C13.9256018,11.5778936 15.0346605,13.0866361 15.0998355,15.8157895 L16,15.8157895 L16,17 L4,17 L4,15.8157895 L4.9001645,15.8157895 C4.96533953,13.0866361 6.07439823,11.5778936 9.04070436,9.28388158 C6.23475893,7.11388555 5.09068052,5.64654949 4.92001568,3.18421053 L4,3.18421053 L4,2 L16,2 L16,3.18421053 L15.0799843,3.18421053 Z M13.9558227,3.18421053 L6.04417734,3.18421053 C6.224104,5.23670226 7.27983963,6.49145814 10,8.557208 C12.7201604,6.49145814 13.775896,5.23670226 13.9558227,3.18421053 Z M13.9806844,15.8157895 C13.9123465,13.4986791 12.9059493,12.2173972 10,10.0105552 C7.09405072,12.2173972 6.08765352,13.4986791 6.01931563,15.8157895 L13.9806844,15.8157895 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/grey/hourglass">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Combined-Shape" fill="#4D4D4D" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g id="colour-fills/grey-light" fill="#4D4D4D">
+                <polygon id="#4D4D4D" points="0 0 20 0 20 20 0 20"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

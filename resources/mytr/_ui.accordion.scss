@@ -1,0 +1,86 @@
+/*
+*	Compressed and generated using gulp.js sass/compress build tools
+*
+*	@title: 	_ui.accordion.scss (partial)
+* 	@project:	mytr
+* 	@author: 	Jonathan Brincat@pix8.co.uk <jonathan@pix8.co.uk>
+*
+**/
+
+@charset "UTF-8";
+
+
+/* =============================================================================
+	UI accordion / UI collapsible
+	========================================================================== */
+//mfy rip
+#app--main {
+	.ui__accordion {
+		//overflow: hidden; /*clearfix + margin-collapse*/
+		@extend .clearfix;
+		//@include background-image(linear-gradient(to bottom right, $theme__primary 40%, rgba($theme__secondary, 0.8) 92%));
+		background-color: $theme__primary;
+
+		.collapsible__header,
+		.collapsible__pane,
+		dt, dd {
+			display: block;
+			margin: 0;
+		}
+
+		.collapsible__header,
+		dt {
+			color: $color__white;
+			position: relative;
+			//padding: 12px (20px + 15 + 30) 13px 20px;
+			border-top: 4px solid $color__white;
+
+			&:after {
+				content: "\00A0";
+				position: absolute;
+				top: 15px;
+				right: 30px;
+				width: 15px;
+				height: 15px;
+				border-top: 2px solid $color__white;
+				border-right: 2px solid $color__white;
+
+				transform: rotate(135deg);
+				transition: transform 500ms;
+			}
+
+			&:first-child {
+				border-top: 0;
+			}
+
+			&.active,
+			&.state__active {
+				&:after {
+					transform: rotate(-45deg);
+				}
+
+				& + .collapsible__pane,
+				& + dd {
+					display: block;
+				}
+			}
+
+			a {
+				color: $color__white;
+			}
+		}
+
+		.collapsible__pane,
+		dd {
+			overflow: hidden; /*clearfix + margin-collapse*/
+			//@include clearfix;
+			background-color: $color__white;
+			margin: 0 2px 2px;
+			padding: 0 20px;
+			display: none;
+		}
+	}
+}
+
+
+.ui__accordion {}
