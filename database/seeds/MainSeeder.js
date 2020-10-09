@@ -20,6 +20,12 @@ const PostSeeder = require('./partials/PostSeeder')
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
 
+// DEVNOTE: when you run adonis migration:run --seed
+// the order of the seeding is not definable. I thought seed files would be executed in respects to their migrations but they are not. I think the sequence is in alphabetical order(console.logs confirm this suspicion)
+// this means something like the UserSeeder gets called at the end rather than the beginning.
+// when relationships are asserted this is a problem as the data hasn't been seeded it doesn't exist
+// the workaround is to use individual commands when seeding i.e. adonis seed --files=UserSeeder.js
+
 class MainSeeder {
   async run () {
     console.log('MAIN SEEDER')

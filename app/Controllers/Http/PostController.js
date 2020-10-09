@@ -95,7 +95,7 @@ class PostController {
     post.title = request.input('title')
     post.body = request.input('body')
 
-    await post.save() // commented because we now save with a relationship
+    // await post.save() // commented because we now save with a relationship. NOTE: do not confuse this with the same operation when seeding via Factory as you may need to save first to generate th primary key; if you later assert a relationship and save. it will not duplicate the operation.
     // await auth.user.posts().save(post)
 
     await post.tags().attach(request.input('tags') === null ? [] : request.input('tags'))

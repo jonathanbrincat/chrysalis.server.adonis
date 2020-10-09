@@ -10,7 +10,7 @@
 |
 */
 
-
+// DEVNOTE: migrations are performed async including the sql queries/table curation so unless explicitly set there is no assertion of sequential order on the primary key. i.e. expect primary key to be assigned randomly.
 const mock = [
   {
     'id': 1,
@@ -67,7 +67,7 @@ const mock = [
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
 // const Database = use('Database')
-// const PostModel = use('App/Models/Post')
+const PostModel = use('App/Models/Post')
 
 class PostSeeder {
   static async run () {
@@ -96,10 +96,10 @@ class PostSeeder {
     }*/
 
     //test 1 - working
-    /*for(const foo of mock) {
+    /*for(const post of mock) {
       await Factory
         .model('App/Models/Post')
-        .create(foo)
+        .create(post)
     }*/
 
     //test 3 - working
@@ -115,21 +115,9 @@ class PostSeeder {
       // await post.user().save($user)
     }*/
 
-    /*const $user = await Factory.model('App/Models/User').create()
-    const $post = await Factory.model('App/Models/Post').make()
-
-    await $user.posts().save($post)
-    await $post.tags().attach([1])*/
-
-    // DEVNOTE: when you run adonis migration:run --seed
-    // the order of the seeding is not definable. I thought seed files would be executed in respects to their migrations but they are not. I think the sequence is in alphabetical order(console.logs confirm this suspicion)
-    // this means something like the UserSeeder gets called at the end rather than the beginning.
-    // when relationships are asserted this is a problem as the data hasn't been seeded it doesn't exist
-    // the workaround is to use individual commands when seeding i.e. adonis seed --files=UserSeeder.js
-
-    //create post
+    /*//create post
     const $post1 = await Factory.model('App/Models/Post').create()
-    //attach to tags
+    //attach tags
     await $post1.tags().attach([1])
     //associate to user
     const User1 = use('App/Models/User')
@@ -146,8 +134,73 @@ class PostSeeder {
     await $post3.tags().attach([2])
     const User3 = use('App/Models/User')
     const $user3 = await User3.find(1)
-    await $post3.user().associate($user3)
+    await $post3.user().associate($user3)*/
+
+    //DEVNOTE: I have noticed that migration -> factory -> seeding operations can be very flakey. often if you have declared everything correctlyu and use the right syntax it will fail. when you cut and paste in and save. it miraculously starts working.
+    for(const post of mock) {
+      //create post
+      let $post = await Factory
+        .model('App/Models/Post')
+        .create(post)
+
+      //attach tags
+      await $post.tags().attach([1]) //can be random allocation
+
+      //associate to user
+      let User = use('App/Models/User')
+      let $user = await User.find(1)  //can be random allocation
+      await $user.posts().save($post)
+    }
   }
 }
 
 module.exports = PostSeeder
+
+/*
+CHEATSHEET
+
+.create()          .make()
+.createMany(n)     .makeMany(n)
+
+//hasOne
+.create()  //Accepts a normal javascript object and returns the related model instance.
+.save()    //The save method expects an instance of the related model.
+.update()
+.delete()
+.sync()? //deprecated?
+
+//hasMany
+.create()      //Accepts a normal javascript object and returns the related model instance.
+.createMany()  //Accepts an Array of normal javascript object.
+.save()        //The save method expects an instance of the related model.
+.saveMany()    //Accepts an Array of model instances.
+.update()
+.delete()
+.sync()? //deprecated?
+
+
+//belongsTo
+.associate() //associates two model instances together. Expects a model instance
+.dissociate()
+.update()
+.delete()
+.sync()? //deprecated?
+
+
+//belongsToMany
+.create()  //Accepts a normal javascript object and returns the related model instance.
+.createMany()  //Accepts an Array of normal javascript object.
+.save()    //The save method expects an instance of the related model.
+.saveMany()    //Accepts an Array of model instances.
+.attach() //Expects an array of identifiers, accepts an optional callback, which receives the pivotModel instance, so that you can add extra attributes inside the pivot table if required.
+.detach()
+.update()
+.delete()
+.sync()? //deprecated?
+
+
+//manyThrough
+
+
+*/
+

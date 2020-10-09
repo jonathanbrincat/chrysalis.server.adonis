@@ -18,8 +18,10 @@ const Hash = use('Hash')
 // User blueprint
 Factory.blueprint('App/Models/User', async (faker, i, data) => {
   return {
-    username: data[i].username, //faker.username(), //DENOTE: should be on profile model
-    email: data[i].email, //faker.email(),
+    // username: data[i].username, //DENOTE: should be on profile model
+    username: faker.username(),
+    // email: data[i].email,
+    email: faker.email(),
     password: '12345' //faker.password()
     // password: await Hash.make(faker.password())
   }
@@ -27,9 +29,10 @@ Factory.blueprint('App/Models/User', async (faker, i, data) => {
 
 // Post blueprint
 Factory.blueprint('App/Models/Post', async (faker, i, data) => {
+  console.log(i, ':: ', data)
   return {
-    title: faker.sentence({ words: faker.natural({ min: 2, max: 6 }) }),
-    // title: data.title,
+    // title: faker.sentence({ words: faker.natural({ min: 2, max: 6 }) }),
+    title: data.title,
     // title: data[i].title,
     body: faker.paragraph(),
     // user_id: faker.natural({ min: 1, max: 5 })
