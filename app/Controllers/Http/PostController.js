@@ -46,7 +46,7 @@ class PostController {
 
   async show({ request, response, view, params, auth }) {
     // const post = await PostModel.find(params.id)
-    const post = await PostModel.query().where('id', '=', params.id).withCount('likes').first() //equivalent to find; find is the shorthand; note '=' can be omitted as equality assumed to be default comparison
+    const post = await PostModel.query().where('id', params.id).withCount('likes').first() //equivalent to find; find is the shorthand; note '=' can be omitted as equality assumed to be default comparison
     // const post = await PostModel.query().where('id', '=', params.id).with('likes').withCount('likes').first() //with('likes') provisions the relationship in one sql request. this is eager loading as oppose to the lazy loading(executing sql queries as and when needed which can be taxing/wasteful with expensive operations i.e. for loops)
 
     const foo = await post.entries().fetch();
