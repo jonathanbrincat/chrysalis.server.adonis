@@ -33,14 +33,15 @@ const MOCK = [
 const Factory = use('Factory')
 
 class UserSeeder {
-  static async run () {
-    console.log('1 --> USER SEEDER')
+  async run () {
+    console.log('1 --> foo USER SEEDER')
 
     /*await Factory
       .model('App/Models/User')
       .createMany(MOCK.length, MOCK)*/
 
     for(const user of MOCK) {
+      console.log('jb >> ', user)
       //create user
       let $user = await Factory
         .model('App/Models/User')
@@ -48,6 +49,8 @@ class UserSeeder {
 
       //associate to profile
       let $profile = await Factory.model('App/Models/Profile').create()
+      console.log('profile >> ', $profile.toJSON())
+
       $user.profile().save($profile)
     }
 

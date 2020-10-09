@@ -16,6 +16,8 @@
 const UserSeeder = require('./partials/UserSeeder')
 const TagSeeder = require('./partials/TagSeeder')
 const PostSeeder = require('./partials/PostSeeder')
+const ProfileSeeder = require('./partials/ProfileSeeder')
+const EntrySeeder = require('./partials/EntrySeeder')
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
@@ -32,8 +34,10 @@ class MainSeeder {
 
     // Declare seeders in sequential order. Note: run() exposed as Class method via static type
     await UserSeeder.run()
+    await ProfileSeeder.run()
     await TagSeeder.run()
     await PostSeeder.run()
+    await EntrySeeder.run()
   }
 }
 

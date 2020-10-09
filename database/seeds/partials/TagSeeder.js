@@ -13,35 +13,22 @@
 
 // DEVNOTE: migrations are performed async including the sql queries/table curation so unless explicitly set there is no assertion of sequential order on the primary key. i.e. expect primary key to be assigned randomly.
 //turtle, newt, frog, tortoise, snake, spider, lizard, horse, pony, parrot, budgie, ferrets, mink, Chinchilla, mouse, rat, chipmunk
-const mock = ['cat', 'dog', 'rabbit', 'hamster', 'gerbil', 'guinea pig', 'rodent', 'aviary', 'fowl', 'fish', 'reptile', 'amphibians'].map( (entry) => ({'name': entry}) )
+const MOCK = ['cat', 'dog', 'rabbit', 'hamster', 'gerbil', 'guinea pig', 'rodent', 'aviary', 'fowl', 'fish', 'reptile', 'amphibians'].map( (entry) => ({'name': entry}) )
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
-// const Database = use('Database')
-// const TagModel = use('App/Models/Tag')
 
 class TagSeeder {
   static async run () {
     console.log('2 --> TAG SEEDER')
 
-    //test 1 - working
-    /*for(const item of mock) {
-      const $foo = new TagModel()
-      $foo.name = item
-
-      await $foo.save()
-
-      // await Database.table('tags').insert({name: item})
-    }*/
-
-    //test 2 - working
     await Factory
       .model("App/Models/Tag")
-      .createMany(mock.length, mock)
+      .createMany(MOCK.length, MOCK)
 
     // await Database
       // .table('tags')
-      // .createMany(mock.length, mock);
+      // .createMany(MOCK.length, MOCK);
   }
 }
 

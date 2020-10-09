@@ -85,16 +85,6 @@ class PostSeeder {
   static async run () {
     console.log('3 --> POST SEEDER')
 
-    //ref example 1
-    /*await Database.table('posts').insert(MOCK)*/
-
-    //ref example 2
-    /*MOCK.forEach( (entry) => {
-      //.insert(entry)
-      //OR using Lucid
-      //.model("App/Models/Post").create()
-    })*/
-
     //ref example 3
     /*Database.table('posts').delete()
     $json = File::get('database/data/data.json')
