@@ -10,11 +10,10 @@ class PostsSchema extends Schema {
       table.timestamps()
       table.string('title')
       table.text('body')
-      table.string('image') //all curated images will go into an sepatate images table, the relationship between post_id and gallery_id/article_id
       // table.boolean('isPromoted') // for mock up purposes this can be allowed to fly however do not do this. decouple and treat state like a microservice. we will make a request to a self-contained service with for instance a userid or postid(optional) asking if that entity is promoted and get promoted ids as a response
       // table.boolean('isActive') //see above. although is perhaps a stronger arguement to keep this coupled
       table.integer('user_id').unsigned()
-      table.foreign('user_id').references('users.id').onDelete('cascade') //when delete a user. the posts associated with that user are deleted too
+      // table.foreign('user_id').references('users.id').onDelete('cascade') //when delete a user. the posts associated with that user are deleted too
     })
   }
 

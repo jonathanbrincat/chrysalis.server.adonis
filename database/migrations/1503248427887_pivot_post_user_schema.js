@@ -1,5 +1,7 @@
 'use strict'
 
+// DEVNOTE: this is the user/post relationship for saving to favourites
+
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 

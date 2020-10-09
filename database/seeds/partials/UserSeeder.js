@@ -1,5 +1,24 @@
 'use strict'
 
+const mock = [
+  {
+    'username': 'jon',
+    'email': 'jon@local.host'
+  },
+  {
+    'username': 'bob',
+    'email': 'bob@local.host'
+  },
+  {
+    'username': 'mary',
+    'email': 'mary@local.host'
+  },
+  {
+    'username': 'sue',
+    'email': 'sue@local.host'
+  }
+]
+
 /*
 |--------------------------------------------------------------------------
 | UserSeeder
@@ -15,13 +34,15 @@ const Factory = use('Factory')
 // const Database = use('Database')
 
 class UserSeeder {
-  async run () {
-    // const users = await Database.table('users')
-    // console.log(users);
+  static async run () {
+    console.log('1 --> USER SEEDER')
 
-    const user = await Factory
+    // const $users = await Database.table('users')
+    // console.log($users);
+
+    await Factory
       .model('App/Models/User')
-      .createMany(10)
+      .createMany(mock.length, mock)
   }
 }
 

@@ -147,6 +147,21 @@
         -->
       </div>
 
+      @each(entry in foo)
+      <div class="col-12">
+        <div class="col-8">
+        </div>
+
+        <div class="col-4">
+
+        </div>
+      </div>
+      <div class="offset-4 col-8">
+        <h2>Testing 123</h2>
+        <p>{{ entry.name }}</p>
+      </div>
+      @endeach
+
       <!-- <hr> -->
 
       <div class="col-12">

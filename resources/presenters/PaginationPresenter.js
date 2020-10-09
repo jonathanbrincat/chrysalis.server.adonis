@@ -1,6 +1,15 @@
 const url = require('url')
 const { BasePresenter } = require('edge.js')
 
+// DEVNOTE: pagination algorithm. it's not really a bug(it's the correct behaviour) however it makes operation clunky and awkward and can be considered a ux shortcoming
+// if the total number of pages is 6 and the range is 5 you get the ellipsis which looks strange. you also get this clunky jump after the midpoint were the ellipsis swaps ends which is disorientating.
+// [1],2,3,4,5,...,6
+// 1,[2],3,4,5,...,6
+// 1,2,[3],4,5,...,6
+// 1,..,2,3,[4],5,6
+// 1,..,2,3,4,[5],6
+// 1,..,2,3,4,5,[6]
+
 class PaginationPresenter extends BasePresenter {
   isFirst(pagination) {
     return pagination.page == 1

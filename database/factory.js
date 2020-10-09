@@ -15,26 +15,43 @@
 const Factory = use('Factory')
 const Hash = use('Hash')
 
-// Factory.blueprint('App/Models/User', (faker) => {
-//   return {
-//     username: faker.username()
-//   }
-// })
-
 // User blueprint
-Factory.blueprint('App/Models/User', async (faker) => {
+Factory.blueprint('App/Models/User', async (faker, i, data) => {
   return {
-    username: faker.username(),
-    email: faker.email(),
-    password: await Hash.make(faker.password())
+    username: data[i].username, //faker.username(), //DENOTE: should be on profile model
+    email: data[i].email, //faker.email(),
+    password: '12345' //faker.password()
+    // password: await Hash.make(faker.password())
   }
 })
 
 // Post blueprint
-Factory.blueprint('App/Models/Post', (faker) => {
+Factory.blueprint('App/Models/Post', async (faker, i, data) => {
   return {
     title: faker.sentence({ words: faker.natural({ min: 2, max: 6 }) }),
-    content: faker.paragraph(),
-    user_id: faker.natural({ min: 1, max: 10 })
+    // title: data.title,
+    // title: data[i].title,
+    body: faker.paragraph(),
+    // user_id: faker.natural({ min: 1, max: 5 })
   }
 })
+
+Factory.blueprint('App/Models/Tag', (faker, i, data) => {
+  return {
+    name: data[i].name
+  }
+})
+
+/*Factory.blueprint('App/Models/Entry', (faker) => {
+  return {
+    username: faker.username()
+  }
+})*/
+
+/*Factory.blueprint('App/Models/Profile', (faker) => {
+  return {
+    username: faker.username()
+  }
+})*/
+
+//faker.randomElement(["house", "flat", "apartment", "room", "shop", "lot", "garage"])

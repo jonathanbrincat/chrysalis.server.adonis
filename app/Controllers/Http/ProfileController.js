@@ -6,13 +6,16 @@ class ProfileController {
   async index({ request, response, view, auth }) {
 
     if(auth.user) {
-      console.log('current user >> ', auth.user.id )
+      // console.log('current user >> ', auth.user.id )
     }
+
+    const bar = await auth.user.profile().fetch();
+    console.log('bar ', bar.toJSON())
 
     const user = await UserModel.find(auth.user.id)
     const profile = await user.profile().fetch()
 
-    console.log('jb >> ', profile.toJSON());
+    // console.log('jb >> ', profile.toJSON());
 
     return view.render('profile.index', {
       profile: profile.toJSON(),
