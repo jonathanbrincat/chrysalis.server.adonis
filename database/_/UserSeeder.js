@@ -48,7 +48,9 @@ class UserSeeder {
         .create(user)
 
       //associate to profile
-      let $profile = await Factory.model('App/Models/Profile').create()
+      let $profile = await Factory
+        .model('App/Models/Profile')
+        .create()
       console.log('profile >> ', $profile.toJSON())
 
       $user.profile().save($profile)

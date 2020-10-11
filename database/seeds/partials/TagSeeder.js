@@ -20,7 +20,7 @@ const Factory = use('Factory')
 
 class TagSeeder {
   static async run () {
-    console.log('2 --> TAG SEEDER')
+    console.log('3 --> TAG SEEDER')
 
     await Factory
       .model("App/Models/Tag")

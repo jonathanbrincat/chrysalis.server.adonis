@@ -13,61 +13,51 @@
 // DEVNOTE: migrations are performed async including the sql queries/table curation so unless explicitly set there is no assertion of sequential order on the primary key. i.e. expect primary key to be assigned randomly.
 const MOCK = [
   {
-    'id': 1,
     'title': 'Stunning Silver Point kittens',
     'body': 'Simply gorgeous blue-eyed and sprightly litter of silver British Shorthair kittens. Available end of October. Parents are TICA registered. Kittens are actively engaged in family life, raised on wet and dry food and will be litter trained. Kittens will be health-checked, vaccinated and treated for fleas & worms prior to release. They will also be microchipped.',
     '_tag': 'cat'
   },
   {
-    'id': 2,
     'title': 'TICA registered Bengal cat',
     'body': 'Handsome Bengal cat in need of rehoming owing to a change in circumstances that means I simply can not afford him the loving time and devotion he deserves.',
     '_tag': 'cat'
   },
   {
-    'id': 3,
     'title': 'Adorable brood of tabby kittens',
     'body': 'Lineage is unknown. My little Lottie was very naughty and had a night of passion with one of the local Tommies and these fuzzballs are the result.',
     '_tag': 'cat'
   },
   {
-    'id': 4,
     'title': 'French Bulldog pup',
     'body': 'some text 4',
     '_tag': 'dog'
   },
   {
-    'id': 5,
     'title': 'German Shepherd',
     'body': 'some text 5',
     '_tag': 'dog'
   },
   {
-    'id': 6,
     'title': 'Mini Lop bucks',
     'body': 'I have a couple of male Mini Lop available to a good home.',
     '_tag': 'rabbit'
   },
   {
-    'id': 7,
     'title': 'Netherland Dwarf',
     'body': 'Beautiful Netherland Dwarf baby bunnies available to reserve.',
     '_tag': 'rabbit'
   },
   {
-    'id': 8,
     'title': 'Chocolate And black Lab puppies',
     'body': 'Our amazing girl has given birth to a healthy litter of 5. 1 female and 4 male. All still available to reserve. Pups will be ready to leave from 15th November. Not KC registered.',
     '_tag': 'dog'
   },
   {
-    'id': 9,
     'title': 'Blue British Shorthair',
     'body': 'We have beautiful British Shorthair kittens who are looking for forever loving pet homes. Two boys and one girl.',
     '_tag': 'cat'
   },
   {
-    'id': 10,
     'title': 'Cross Maine Coon and Bengal kittens',
     'body': 'Boy and girl.',
     '_tag': 'cat'
@@ -83,7 +73,7 @@ const PostModel = use('App/Models/Post')
 
 class PostSeeder {
   static async run () {
-    console.log('3 --> POST SEEDER')
+    console.log('4 --> POST SEEDER')
 
     //ref example 3
     /*Database.table('posts').delete()
@@ -144,17 +134,17 @@ class PostSeeder {
     const count = await use('App/Models/User').getCount()
     for(const post of MOCK) {
       //create post
-      let $post = await Factory
+      const $post = await Factory
         .model('App/Models/Post')
         .create(post)
 
       //attach tags
-      let tag_id = await use('App/Models/Tag').query().where('name', post._tag).ids()
+      const tag_id = await use('App/Models/Tag').query().where('name', post._tag).ids()
       await $post.tags().attach( tag_id )
 
       //associate to user
-      let User = use('App/Models/User')
-      let $user = await User.find(Math.ceil(Math.random() * count))
+      const User = use('App/Models/User')
+      const $user = await User.find(Math.ceil(Math.random() * count))
       await $user.posts().save($post)
     }
   }

@@ -43,17 +43,23 @@ Factory.blueprint('App/Models/Tag', (faker, i, data) => {
   }
 })
 
-Factory.blueprint('App/Models/Entry', (faker) => {
+Factory.blueprint('App/Models/Entry', (faker, i, data) => {
+  // console.log('factory >> ', data)
+
   return {
-    name: '',
-    sex: '',
-    age: '',
-    colour: '',
+    title: data.title,
+    body: data.body,
+    name: data.name,
+    sex: data.sex,
+    age: data.age,
+    colour: data.colour,
+    type: data.type,
+    is_registered: data.is_registered,
+    is_available: data.is_available,
   }
 })
 
 Factory.blueprint('App/Models/Profile', (faker) => {
-  console.log('hi there');
   return {
     username: faker.username(),
     firstname: 'Joe',

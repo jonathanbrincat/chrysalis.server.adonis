@@ -92,6 +92,9 @@
 
           <!-- Location -->
           <!-- male / female breakdown with gfx goes here to replace likes -->
+          <!--
+          gfx summary at the top in the header. cat heads with a number. blue for boy. pink for girl - problably offend somebody oh well - ghosted/opacity when they are reserved.
+          -->
           <ul>
             <li>
               <svg class="ui__icon icon__svg">
@@ -113,56 +116,10 @@
         <!-- IF Edited:datetimestamp -->
         <!-- View revisions -->
         <p>{{ post.body }}</p>
-
-        <!--
-        Replace with gfx summary at the top in the header. cat heads with a number. blue for boy. pink for girl - problably offend somebody oh well - ghosted/opacity when they are reserved.
-        <div class="ui__well">
-          <table>
-            <tr>
-              <td>Kitten 1</td>
-              <td>Male(icon)</td>
-              <td>Price</td>
-              <td><button>Reserve</button></td>
-            </tr>
-            <tr>
-              <td>Kitten 2</td>
-              <td>Male(icon)</td>
-              <td>Price</td>
-              <td><button disabled>Unavailable</button></td>
-            </tr>
-            <tr>
-              <td>Kitten 3</td>
-              <td>Female(icon)</td>
-              <td>Price</td>
-              <td><button disabled>Unavailable</button></td>
-            </tr>
-            <tr>
-              <td>Kitten 4</td>
-              <td>Female(icon)</td>
-              <td>Price</td>
-              <td><button>Reserve</button></td>
-            </tr>
-          </table>
-        </div>
-        -->
       </div>
 
       @each(entry in foo)
-      <div class="col-12">
-        <div class="col-8">
-        </div>
-
-        <div class="col-4">
-
-        </div>
-      </div>
-      <div class="offset-4 col-8">
-        <h2>Testing 123</h2>
-        <p>{{ entry.name }}</p>
-      </div>
-      @endeach
-
-      <!-- <hr> -->
+      <hr>
 
       <div class="col-12">
         <!-- <h2>Kitten 1</h2> -->
@@ -187,22 +144,31 @@
 
             <table class="reserve">
               <tr>
-                <th colspan="2">Kitten 1</th>
+                <th colspan="2">{{ entry.title }}</th>
               </tr>
               <tr>
                 <td colspan="2">Snow sepia rosetted</td>
               </tr>
               <tr>
                 <td>
+                  @if(entry.sex === 'm')
                   <span>Male</span>
                   <svg class="ui__icon icon__svg">
                     <use xlink:href="/assets/svg/fontawesome/solid.svg#mars"></use>
                   </svg>
+
+                  @elseif(entry.sex === 'f')
+                  <span>Female</span>
+                  <svg class="ui__icon icon__svg">
+                    <use xlink:href="/assets/svg/fontawesome/solid.svg#venus"></use>
+                  </svg>
+                  @endif
                 </td>
                 <td class="price">£950.<small>00</small></td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: right;">
+                  @if(entry.is_available)
                   <button type="button" class="ui__btn btn__primary">
                     <span>Reserve</span>
                     <svg class="ui__icon icon__svg">
@@ -211,190 +177,29 @@
                       {{-- <use xlink:href="/assets/svg/fontawesome/regular.svg#handshake"></use> --}}
                     </svg>
                   </button>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="offset-4 col-8">
-        <!-- IF Edited:datetimestamp -->
-        <!-- View revisions -->
-        <p>{{ post.body }}</p>
-      </div>
 
-      <hr>
-
-      <div class="col-12">
-        <!-- <h2>Kitten 2</h2> -->
-        <br>
-        <div class="row align-items-end">
-          <div class="col-8">
-            <img src="https://picsum.photos/1200/800" alt="" />
-          </div>
-
-          <div class="col-4">
-            <div class="gallery__thumbnails">
-              <ul>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-              </ul>
-            </div>
-
-            <table class="reserve">
-              <tr>
-                <th colspan="2">Kitten 2</th>
-              </tr>
-              <tr>
-                <td colspan="2">Brown rosetted</td>
-              </tr>
-              <tr>
-                <td>
-                  <span>Male</span>
-                  <svg class="ui__icon icon__svg">
-                    <use xlink:href="/assets/svg/fontawesome/solid.svg#mars"></use>
-                  </svg>
-                </td>
-                <td class="price">£850.<small>00</small></td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: right;">
+                  @else
                   <button type="button" class="ui__btn btn__primary" disabled="">
                     <span>Unavailable</span>
                     <svg class="ui__icon icon__svg">
                       <use xlink:href="/assets/svg/fontawesome/solid.svg#lock"></use>
                     </svg>
                   </button>
+                  @endif
                 </td>
               </tr>
             </table>
           </div>
         </div>
-        </div>
+      </div>
       <div class="offset-4 col-8">
         <!-- IF Edited:datetimestamp -->
         <!-- View revisions -->
-        <p>{{ post.body }}</p>
-
-        <p>{{ post.body }}</p>
+        <p>{{ entry.body }}</p>
       </div>
+      @endeach
 
       <hr>
-
-      <div class="col-12">
-        <!-- <h2>Kitten 3</h2> -->
-        <br>
-        <div class="row align-items-end">
-          <div class="col-8">
-            <img src="https://picsum.photos/1200/800" alt="" />
-          </div>
-
-          <div class="col-4">
-            <div class="gallery__thumbnails">
-              <ul>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-              </ul>
-            </div>
-
-            <table class="reserve">
-              <tr>
-                <th colspan="2">Kitten 3</th>
-              </tr>
-              <tr>
-                <td colspan="2">Snow spotted</td>
-              </tr>
-              <tr>
-                <td>
-                  <span>Female</span>
-                  <svg class="ui__icon icon__svg">
-                    <use xlink:href="/assets/svg/fontawesome/solid.svg#venus"></use>
-                  </svg>
-                </td>
-                <td class="price">£900.<small>00</small></td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: right;">
-                  <button type="button" class="ui__btn btn__primary" disabled="">
-                    <span>Unavailable</span>
-                    <svg class="ui__icon icon__svg">
-                      <use xlink:href="/assets/svg/fontawesome/solid.svg#lock"></use>
-                    </svg>
-                  </button>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="offset-4 col-8">
-        <!-- IF Edited:datetimestamp -->
-        <!-- View revisions -->
-        <p>{{ post.body }}</p>
-
-        <p>{{ post.body }}</p>
-      </div>
-
-      <hr>
-
-      <div class="col-12">
-        <!-- <h2>Kitten 4</h2> -->
-        <br>
-        <div class="row align-items-end">
-          <div class="col-8">
-            <img src="https://picsum.photos/1200/800" alt="" />
-          </div>
-
-          <div class="col-4">
-            <div class="gallery__thumbnails">
-              <ul>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-              </ul>
-            </div>
-
-            <table class="reserve">
-              <tr>
-                <th colspan="2">Kitten 4</th>
-              </tr>
-              <tr>
-                <td colspan="2">Snow marble</td>
-              </tr>
-              <tr>
-                <td>
-                  <span>Female</span>
-                  <svg class="ui__icon icon__svg">
-                    <use xlink:href="/assets/svg/fontawesome/solid.svg#venus"></use>
-                  </svg>
-                </td>
-                <td class="price">£850.<small>00</small></td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: right;">
-                  <button type="button" class="ui__btn btn__primary">
-                    <span>Reserve</span>
-                    <svg class="ui__icon icon__svg">
-                      <use xlink:href="/assets/svg/fontawesome/solid.svg#bullseye"></use>
-                      {{-- <use xlink:href="/assets/svg/fontawesome/solid.svg#crosshairs"></use> --}}
-                      {{-- <use xlink:href="/assets/svg/fontawesome/regular.svg#handshake"></use> --}}
-                    </svg>
-                  </button>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="offset-4 col-8">
-        <!-- IF Edited:datetimestamp -->
-        <!-- View revisions -->
-        <p>{{ post.body }}</p>
-      </div>
 
       <div class="col-12">
         <h2>Location</h2>

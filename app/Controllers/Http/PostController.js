@@ -50,7 +50,7 @@ class PostController {
     // const post = await PostModel.query().where('id', '=', params.id).with('likes').withCount('likes').first() //with('likes') provisions the relationship in one sql request. this is eager loading as oppose to the lazy loading(executing sql queries as and when needed which can be taxing/wasteful with expensive operations i.e. for loops)
 
     const foo = await post.entries().fetch();
-    console.log('foo ', foo.toJSON());
+    // console.log('foo ', foo.toJSON());
 
     // NOTE! user has to be logged in other auth.user will be null
     let currentUserFavouritesWithPosts = []
