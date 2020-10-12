@@ -53,38 +53,6 @@ class PostController {
     const $entries = await $post.entries().with('resources').fetch()
     // console.log('$entries ', $entries.toJSON() )
 
-
-
-    const entry_id = await $post.entries().ids()
-    // console.log('entries ids >> ', entry_id)
-
-    const $foo = entry_id.map(async (id) => {
-      const $entry = await use('App/Models/Entry').find(id)
-      const $resource = await $entry.resources().fetch()
-      // console.log(id, 'resources >> ',  $resource.toJSON() )
-
-      return $resource
-    })
-
-    // console.log('jb >> ', $foo);
-
-
-    const foo = await use('App/Models/Entry').query().where('post_id', params.id).fetch()
-    // const $entries = await $post.entries().fetch()
-    // ALL IMAGES FOR THE ENTRY IN THE FIRST ROW
-    // console.log(await foo.first().resources().fetch());
-    // console.log(await $entries.first().resources().fetch());
-
-    // const bar = await use('App/Models/Resource').query().where('entry_id', foo.id).fetch()
-    // console.log(bar);
-    // console.log(await foo.resources().fetch());
-
-    //TRY!!
-    //.with('resources')!!!
-    const foobar = await $post.entries().with('resources').fetch()
-    console.log(foobar.toJSON())
-
-
     // NOTE! user has to be logged in other auth.user will be null
     let currentUserFavouritesWithPosts = []
     if(auth.user) {
@@ -96,7 +64,6 @@ class PostController {
     return view.render('posts.show', {
       post: $post.toJSON(),
       foo: $entries.toJSON(),
-      bar: $entries,
       favourites: Array.from(currentUserFavouritesWithPosts)
     })
   }
