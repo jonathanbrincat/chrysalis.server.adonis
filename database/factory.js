@@ -21,8 +21,26 @@ Factory.blueprint('App/Models/User', async (faker, i, data) => {
     username: faker.username(),
     // email: data[i].email,
     email: faker.email(),
-    password: '12345'
+    password: await Hash.make('12345')
     // password: await Hash.make(faker.password())
+  }
+})
+
+Factory.blueprint('App/Models/Profile', (faker) => {
+  return {
+    username: faker.username(),
+    firstname: 'Joe',
+    lastname: 'Bloggs',
+    address: '',
+    postcode: '1ABAB1',
+    country: 'GB',
+    avatar: ''
+  }
+})
+
+Factory.blueprint('App/Models/Tag', (faker, i, data) => {
+  return {
+    name: data[i].name
   }
 })
 
@@ -37,14 +55,8 @@ Factory.blueprint('App/Models/Post', async (faker, i, data) => {
   }
 })
 
-Factory.blueprint('App/Models/Tag', (faker, i, data) => {
-  return {
-    name: data[i].name
-  }
-})
-
 Factory.blueprint('App/Models/Entry', (faker, i, data) => {
-  // console.log('factory >> ', data)
+  // console.log('Entry factory >> ', data)
 
   return {
     title: data.title,
@@ -55,19 +67,19 @@ Factory.blueprint('App/Models/Entry', (faker, i, data) => {
     colour: data.colour,
     type: data.type,
     is_registered: data.is_registered,
-    is_available: data.is_available,
+    is_available: data.is_available
   }
 })
 
-Factory.blueprint('App/Models/Profile', (faker) => {
+Factory.blueprint('App/Models/Resource', (faker, i, data) => {
+  // console.log('Resource factory >> ', data)
+
   return {
-    username: faker.username(),
-    firstname: 'Joe',
-    lastname: 'Bloggs',
-    address: '',
-    postcode: '1ABAB1',
-    country: 'GB',
-    avatar: ''
+    filename: data.filename,
+    description: data.description,
+    contenttype: data.contenttype,
+    dimensions: data.dimensions,
+    filesize: data.filesize
   }
 })
 

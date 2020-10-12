@@ -9,7 +9,7 @@ class ProfilesSchema extends Schema {
       table.increments()
       table.timestamps()
       table.integer('user_id').unsigned()
-      table.string('username')
+      table.string('username', 80).notNullable().unique()
       table.string('firstname')
       table.string('lastname')
       table.text('address')

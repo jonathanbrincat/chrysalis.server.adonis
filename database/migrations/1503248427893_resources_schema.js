@@ -8,6 +8,13 @@ class ResourcesSchema extends Schema {
     this.create('resources', (table) => {
       table.increments()
       table.timestamps()
+      table.string('filename')
+      table.string('description')
+      table.string('contenttype')
+      table.string('dimensions')
+      table.string('filesize')
+      table.integer('entry_id').unsigned()
+      table.integer('user_id').unsigned()
     })
   }
 

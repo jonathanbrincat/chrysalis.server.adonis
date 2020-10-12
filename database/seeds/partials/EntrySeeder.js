@@ -19,6 +19,7 @@ const MOCK = [
     "age": 21, //in days
     "colour": "Silver",
     "type": "Solid",
+    "value": 850.00,
     "is_registered": false,
     "is_available": true,
     "_post_id": 1
@@ -31,6 +32,7 @@ const MOCK = [
     "age": 21,
     "colour": "Silver",
     "type": "Solid",
+    "value": 850.00,
     "is_registered": false,
     "is_available": true,
     "_post_id": 1
@@ -43,6 +45,7 @@ const MOCK = [
     "age": 3,
     "colour": "",
     "type": "Marble",
+    "value": 850.00,
     "is_registered": true,
     "is_available": true,
     "_post_id": 2
@@ -55,6 +58,7 @@ const MOCK = [
     "age": 3,
     "colour": "",
     "type": "Rosette",
+    "value": 850.00,
     "is_registered": true,
     "is_available": true,
     "_post_id": 2
@@ -67,6 +71,7 @@ const MOCK = [
     "age": 3,
     "colour": "",
     "type": "Spotted",
+    "value": 850.00,
     "is_registered": true,
     "is_available": false,
     "_post_id": 2
@@ -79,6 +84,7 @@ const MOCK = [
     "age": 10,
     "colour": "",
     "type": "Tabby",
+    "value": 850.00,
     "is_registered": false,
     "is_available": true,
     "_post_id": 3
@@ -91,6 +97,7 @@ const MOCK = [
     "age": 3,
     "colour": "",
     "type": "solid",
+    "value": 850.00,
     "is_registered": false,
     "is_available": true,
     "_post_id": 4
@@ -103,6 +110,7 @@ const MOCK = [
     "age": 3,
     "colour": "",
     "type": "",
+    "value": 850.00,
     "is_registered": false,
     "is_available": true,
     "_post_id": 5
@@ -115,6 +123,7 @@ const MOCK = [
     "age": 3,
     "colour": "",
     "type": "",
+    "value": 850.00,
     "is_registered": false,
     "is_available": true,
     "_post_id": 6
@@ -127,6 +136,7 @@ const MOCK = [
     "age": 3,
     "colour": "",
     "type": "",
+    "value": 850.00,
     "is_registered": false,
     "is_available": true,
     "_post_id": 7
@@ -139,6 +149,7 @@ const MOCK = [
     "age": 3,
     "colour": "brown",
     "type": "solid",
+    "value": 850.00,
     "is_registered": false,
     "is_available": true,
     "_post_id": 8
@@ -151,6 +162,7 @@ const MOCK = [
     "age": 3,
     "colour": "",
     "type": "",
+    "value": 850.00,
     "is_registered": false,
     "is_available": true,
     "_post_id": 10
@@ -165,15 +177,12 @@ class EntrySeeder {
     console.log('5 --> ENTRY SEEDER')
 
     for(const [i, entry] of MOCK.entries()) {
-      // console.log(i, ' :: ', entry)
-
       const $entry = await Factory
         .model('App/Models/Entry')
         .create(entry)
 
       // const $post = await use('App/Models/Post').query().where('id', entry._post_id).fetch() // DEVNOTE: doesn't seem to return Lucid object as methods missing
       const $post = await use('App/Models/Post').findOrFail(entry._post_id) //status method
-      // console.log(i, ' >> ', $post)
       // await $entry.post().associate($post) //belongsTo
 
       await $post.entries().save($entry) //hasMany

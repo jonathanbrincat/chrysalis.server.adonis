@@ -45,6 +45,10 @@ class User extends Model {
     return this.hasOne('App/Models/Profile') //every user can have one profile
   }
 
+  resources() {
+    return this.hasMany('App/Models/Resource')
+  }
+
   // a user hasMany Favourite Posts
   favouritePosts() {
     return this.belongsToMany('App/Models/Post').pivotTable('pivot_post_user').withTimestamps()

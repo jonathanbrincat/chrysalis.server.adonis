@@ -46,11 +46,44 @@ class PostController {
 
   async show({ request, response, view, params, auth }) {
     // const post = await PostModel.find(params.id)
-    const post = await PostModel.query().where('id', params.id).withCount('likes').first() //equivalent to find; find is the shorthand; note '=' can be omitted as equality assumed to be default comparison
+    // const $post = await use('App/Models/Post').findOrFail(params.id)
+    const $post = await PostModel.query().where('id', params.id).withCount('likes').first() //equivalent to find; find is the shorthand; note '=' can be omitted as equality assumed to be default comparison
     // const post = await PostModel.query().where('id', '=', params.id).with('likes').withCount('likes').first() //with('likes') provisions the relationship in one sql request. this is eager loading as oppose to the lazy loading(executing sql queries as and when needed which can be taxing/wasteful with expensive operations i.e. for loops)
 
-    const foo = await post.entries().fetch();
-    // console.log('foo ', foo.toJSON());
+    const $entries = await $post.entries().with('resources').fetch()
+    // console.log('$entries ', $entries.toJSON() )
+
+
+
+    const entry_id = await $post.entries().ids()
+    // console.log('entries ids >> ', entry_id)
+
+    const $foo = entry_id.map(async (id) => {
+      const $entry = await use('App/Models/Entry').find(id)
+      const $resource = await $entry.resources().fetch()
+      // console.log(id, 'resources >> ',  $resource.toJSON() )
+
+      return $resource
+    })
+
+    // console.log('jb >> ', $foo);
+
+
+    const foo = await use('App/Models/Entry').query().where('post_id', params.id).fetch()
+    // const $entries = await $post.entries().fetch()
+    // ALL IMAGES FOR THE ENTRY IN THE FIRST ROW
+    // console.log(await foo.first().resources().fetch());
+    // console.log(await $entries.first().resources().fetch());
+
+    // const bar = await use('App/Models/Resource').query().where('entry_id', foo.id).fetch()
+    // console.log(bar);
+    // console.log(await foo.resources().fetch());
+
+    //TRY!!
+    //.with('resources')!!!
+    const foobar = await $post.entries().with('resources').fetch()
+    console.log(foobar.toJSON())
+
 
     // NOTE! user has to be logged in other auth.user will be null
     let currentUserFavouritesWithPosts = []
@@ -61,8 +94,9 @@ class PostController {
     }
 
     return view.render('posts.show', {
-      post: post.toJSON(),
-      foo: foo.toJSON(),
+      post: $post.toJSON(),
+      foo: $entries.toJSON(),
+      bar: $entries,
       favourites: Array.from(currentUserFavouritesWithPosts)
     })
   }

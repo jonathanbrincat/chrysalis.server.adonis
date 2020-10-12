@@ -7,6 +7,10 @@ class Resource extends Model {
   entry() {
     return this.belongsTo('App/Models/Entry')
   }
+
+  user() {
+    return this.belongsTo('App/Models/User')
+  }
 }
 
 module.exports = Resource

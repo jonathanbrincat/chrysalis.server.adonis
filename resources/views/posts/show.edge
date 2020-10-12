@@ -4,6 +4,10 @@
 
 @section('content')
   <div class="container">
+    <div>
+      <p>jon wos here</p>
+    </div>
+
     <div style="display: flex; justify-content: space-between;">
       <p>
         <a href="{{ route('posts.index') }}">
@@ -77,6 +81,9 @@
           <!-- Facebook -->
           <!-- Report/Flag ad -->
           <!-- Ad Number/ID -->
+          <div class="meta">
+            Ad ID: {{ post.id }}
+          </div>
         </div>
       </div>
 
@@ -122,7 +129,6 @@
       <hr>
 
       <div class="col-12">
-        <!-- <h2>Kitten 1</h2> -->
         <br>
         <div class="row align-items-end">
           <div class="col-8">
