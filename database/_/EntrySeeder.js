@@ -4,74 +4,8 @@
 |--------------------------------------------------------------------------
 | EntrySeeder
 |--------------------------------------------------------------------------
-|
-| Make use of the Factory instance to seed database with dummy data or
-| make use of Lucid models directly.
-|
 */
-
-const MOCK = [
-  {
-    'title': 'Kitten 1',
-    'body': '',
-    'name': '',
-    'sex': '',
-    'age': 21, //in days
-    'colour': '',
-    'type': '',
-    'is_registered': false,
-    'is_available': true,
-    '_post_id': 1
-  },
-  {
-    'title': 'Kitten 2',
-    'body': '',
-    'name': '',
-    'sex': '',
-    'age': 21,
-    'colour': '',
-    'type': '',
-    'is_registered': false,
-    'is_available': true,
-    '_post_id': 1
-  },
-  {
-    'title': 'Kitten 1',
-    'body': '',
-    'name': '',
-    'sex': '',
-    'age': 3,
-    'colour': '',
-    'type': '',
-    'is_registered': false,
-    'is_available': true,
-    '_post_id': 2
-  },
-  {
-    'title': 'Kitten 2',
-    'body': '',
-    'name': '',
-    'sex': '',
-    'age': 3,
-    'colour': '',
-    'type': '',
-    'is_registered': false,
-    'is_available': true,
-    '_post_id': 2
-  },
-  {
-    'title': 'Kitten 3',
-    'body': '',
-    'name': '',
-    'sex': '',
-    'age': 3,
-    'colour': '',
-    'type': '',
-    'is_registered': false,
-    'is_available': true,
-    '_post_id': 2
-  },
-]
+const MOCK = require('./mocks/entryMock')
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')

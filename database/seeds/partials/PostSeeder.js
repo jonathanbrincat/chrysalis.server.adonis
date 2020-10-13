@@ -4,67 +4,10 @@
 |--------------------------------------------------------------------------
 | PostSeeder
 |--------------------------------------------------------------------------
-|
-| Make use of the Factory instance to seed database with dummy data or
-| make use of Lucid models directly.
-|
 */
-
 // DEVNOTE: migrations are performed async including the sql queries/table curation so unless explicitly set there is no assertion of sequential order on the primary key. i.e. expect primary key to be assigned randomly.
-const MOCK = [
-  {
-    'title': 'Stunning Silver Point kittens',
-    'body': 'Simply gorgeous blue-eyed and sprightly litter of silver British Shorthair kittens. Available end of October. Parents are TICA registered. Kittens are actively engaged in family life, raised on wet and dry food and will be litter trained. Kittens will be health-checked, vaccinated and treated for fleas & worms prior to release. They will also be microchipped.',
-    '_tag': 'cat'
-  },
-  {
-    'title': 'TICA registered Bengal cat',
-    'body': 'Handsome Bengal cat in need of rehoming owing to a change in circumstances that means I simply can not afford him the loving time and devotion he deserves.',
-    '_tag': 'cat'
-  },
-  {
-    'title': 'Adorable brood of tabby kittens',
-    'body': 'Lineage is unknown. My little Lottie was very naughty and had a night of passion with one of the local Tommies and these fuzzballs are the result.',
-    '_tag': 'cat'
-  },
-  {
-    'title': 'French Bulldog pup',
-    'body': 'some text 4',
-    '_tag': 'dog'
-  },
-  {
-    'title': 'German Shepherd',
-    'body': 'some text 5',
-    '_tag': 'dog'
-  },
-  {
-    'title': 'Mini Lop bucks',
-    'body': 'I have a couple of male Mini Lop available to a good home.',
-    '_tag': 'rabbit'
-  },
-  {
-    'title': 'Netherland Dwarf',
-    'body': 'Beautiful Netherland Dwarf baby bunnies available to reserve.',
-    '_tag': 'rabbit'
-  },
-  {
-    'title': 'Chocolate And black Lab puppies',
-    'body': 'Our amazing girl has given birth to a healthy litter of 5. 1 female and 4 male. All still available to reserve. Pups will be ready to leave from 15th November. Not KC registered.',
-    '_tag': 'dog'
-  },
-  {
-    'title': 'Blue British Shorthair',
-    'body': 'We have beautiful British Shorthair kittens who are looking for forever loving pet homes. Two boys and one girl.',
-    '_tag': 'cat'
-  },
-  {
-    'title': 'Cross Maine Coon and Bengal kittens',
-    'body': 'Boy and girl.',
-    '_tag': 'cat'
-  },
-]
-
-const TAGS = ['cat', 'dog', 'rabbit', 'hamster', 'gerbil', 'guinea pig', 'rodent', 'aviary', 'fowl', 'fish', 'reptile', 'amphibians']
+const MOCK = require('../mocks/postMock')
+const TAGS = require('../mocks/tagMock')
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')

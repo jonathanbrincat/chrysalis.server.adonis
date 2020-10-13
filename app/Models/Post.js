@@ -3,6 +3,12 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 
+//hasOne
+//hasMany
+//belongsTo
+//belongsToMany
+//manyThrough
+
 class Post extends Model {
 
   //DEVNOTE: mocking a database source with framework's built-in session service
@@ -45,18 +51,11 @@ class Post extends Model {
     return this.belongsTo('App/Models/User')
   }
 
-  //hasOne
-  //hasMany
-  //belongsTo
-  //belongsToMany
-  //manyThrough
-
   // A Post belongsToMany user favourites
   // A Post hasOne user favourite
   // userFavourite() {
   favouriteToUser() {
     return this.belongsToMany('App/Models/User').pivotTable('pivot_post_user').withTimestamps()
-
 
     //
     // return this.hasMany('App/Models/User')//.pivotTable('pivot_post_user').withTimestamps()

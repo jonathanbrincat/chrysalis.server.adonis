@@ -1,33 +1,11 @@
 'use strict'
 
-const MOCK = [
-  {
-    'username': 'jon',
-    'email': 'jon@local.host'
-  },
-  {
-    'username': 'bob',
-    'email': 'bob@local.host'
-  },
-  {
-    'username': 'mary',
-    'email': 'mary@local.host'
-  },
-  {
-    'username': 'sue',
-    'email': 'sue@local.host'
-  }
-]
-
 /*
 |--------------------------------------------------------------------------
 | UserSeeder
 |--------------------------------------------------------------------------
-|
-| Make use of the Factory instance to seed database with dummy data or
-| make use of Lucid models directly.
-|
 */
+const MOCK = require('../mocks/userMock')
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
