@@ -12,8 +12,8 @@
 
 const MOCK = [
   {
-    'filename': 'kitten-1_image-1.jpg',
-    'description': 'British Shorthair Kitten 1',
+    'filename': 'id/101',
+    'description': 'British Shorthair Kitten 1 - Image 1',
     'contenttype': 'jpg',
     'dimensions': '',
     'filesize': '',
@@ -21,8 +21,8 @@ const MOCK = [
     '_user_id': 2 //DEVNOTE: PostSeeder assigns this with random number generator
   },
   {
-    'filename': 'kitten-1_image-2.jpg',
-    'description': 'British Shorthair Kitten 1',
+    'filename': 'id/102',
+    'description': 'British Shorthair Kitten 1 - Image 2',
     'contenttype': 'jpg',
     'dimensions': '',
     'filesize': '',
@@ -30,8 +30,8 @@ const MOCK = [
     '_user_id': 2
   },
   {
-    'filename': 'kitten-1_image-3.jpg',
-    'description': 'British Shorthair Kitten 1',
+    'filename': 'id/103',
+    'description': 'British Shorthair Kitten 1 - Image 3',
     'contenttype': 'jpg',
     'dimensions': '',
     'filesize': '',
@@ -39,8 +39,8 @@ const MOCK = [
     '_user_id': 2
   },
   {
-    'filename': 'kitten-1_image-4.jpg',
-    'description': 'British Shorthair Kitten 1',
+    'filename': 'id/104',
+    'description': 'British Shorthair Kitten 1 - Image 4',
     'contenttype': 'jpg',
     'dimensions': '',
     'filesize': '',
@@ -48,8 +48,8 @@ const MOCK = [
     '_user_id': 2
   },
   {
-    'filename': 'kitten-1_image-5.jpg',
-    'description': 'British Shorthair Kitten 1',
+    'filename': 'id/106',
+    'description': 'British Shorthair Kitten 1 - Image 5',
     'contenttype': 'jpg',
     'dimensions': '',
     'filesize': '',
@@ -57,8 +57,8 @@ const MOCK = [
     '_user_id': 2
   },
   {
-    'filename': 'kitten-2_image-1.png',
-    'description': 'British Shorthair  Kitten 2',
+    'filename': 'id/111',
+    'description': 'British Shorthair  Kitten 2 - Image 1',
     'contenttype': 'png',
     'dimensions': '',
     'filesize': '',
@@ -66,8 +66,8 @@ const MOCK = [
     '_user_id': 2
   },
   {
-    'filename': 'kitten-2_image-2.png',
-    'description': 'British Shorthair  Kitten 2',
+    'filename': 'id/112',
+    'description': 'British Shorthair  Kitten 2 - Image 2',
     'contenttype': 'png',
     'dimensions': '',
     'filesize': '',
@@ -75,8 +75,8 @@ const MOCK = [
     '_user_id': 2
   },
   {
-    'filename': 'kitten-2_image-3.png',
-    'description': 'British Shorthair  Kitten 2',
+    'filename': 'id/113',
+    'description': 'British Shorthair  Kitten 2 - Image 3',
     'contenttype': 'png',
     'dimensions': '',
     'filesize': '',
@@ -84,8 +84,8 @@ const MOCK = [
     '_user_id': 2
   },
   {
-    'filename': 'kitten-1_image-1.jpeg',
-    'description': 'Marble Bengal Kitten 1',
+    'filename': 'id/201',
+    'description': 'Marble Bengal Kitten 1 - Image 1',
     'contenttype': 'jpg',
     'dimensions': '',
     'filesize': '',
@@ -93,8 +93,8 @@ const MOCK = [
     '_user_id': 4
   },
   {
-    'filename': 'kitten-1_image-2.jpeg',
-    'description': 'Marble Bengal Kitten 1',
+    'filename': 'id/202',
+    'description': 'Marble Bengal Kitten 1 - Image 2',
     'contenttype': 'jpg',
     'dimensions': '',
     'filesize': '',
@@ -102,8 +102,8 @@ const MOCK = [
     '_user_id': 4
   },
   {
-    'filename': 'kitten-2_image-1.jpeg',
-    'description': 'Spotted Bengal Kitten 2',
+    'filename': 'id/211',
+    'description': 'Spotted Bengal Kitten 2 - Image 1',
     'contenttype': 'jpg',
     'dimensions': '',
     'filesize': '',
@@ -111,8 +111,8 @@ const MOCK = [
     '_user_id': 4
   },
   {
-    'filename': 'kitten-3_image-1.jpeg',
-    'description': 'Rosette Bengal Kitten 3',
+    'filename': 'id/221',
+    'description': 'Rosette Bengal Kitten 3 - Image 1',
     'contenttype': 'jpg',
     'dimensions': '',
     'filesize': '',
@@ -120,8 +120,8 @@ const MOCK = [
     '_user_id': 4
   },
   {
-    'filename': 'kitten-3_image-2.jpeg',
-    'description': 'Rosette Bengal Kitten 3',
+    'filename': 'id/222',
+    'description': 'Rosette Bengal Kitten 3 - Image 2',
     'contenttype': 'jpg',
     'dimensions': '',
     'filesize': '',

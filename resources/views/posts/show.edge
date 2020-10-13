@@ -121,7 +121,7 @@
         <p>{{ post.body }}</p>
       </div>
 
-      @each(entry in foo)
+      @each(entry in entries)
       <hr>
 
       <div class="col-12">
@@ -129,12 +129,24 @@
         <div class="row align-items-end">
           <div class="col-8">
             <picture class="gallery">
+              @if(entry.resources.length)
+              <img src="https://picsum.photos/{{entry.resources[0].filename}}/1200/800" alt="{{ entry.resources[0].description }}" />
+              @else
               <img src="https://picsum.photos/1200/800" alt="" />
+              @endif
             </picture>
           </div>
 
           <div class="col-4">
             <div class="gallery__thumbnails">
+              @if(entry.resources.length)
+              <ul>
+                @each(resource in entry.resources)
+                <li><img src="https://picsum.photos/{{resource.filename}}/120/120" alt="{{ resource.description }}" /></li>
+                @endeach
+              </ul>
+
+              @else
               <ul>
                 <li><img src="https://picsum.photos/120/120" alt="" /></li>
                 <li><img src="https://picsum.photos/120/120" alt="" /></li>
@@ -142,6 +154,7 @@
                 <li><img src="https://picsum.photos/120/120" alt="" /></li>
                 <li><img src="https://picsum.photos/120/120" alt="" /></li>
               </ul>
+              @endif
             </div>
 
             <table class="reserve">

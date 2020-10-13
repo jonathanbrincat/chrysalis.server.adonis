@@ -6,6 +6,41 @@ Knowing the overarching objectives the complete absence of any client-side javas
 
 Of course once things gets close to the MVP that's in my head and starts to resembles something of value this source code will get moved to a private repo. However as a mule for my own self-development and a proof of concept I am happy for this repo to remain publically visible in the interim. Similarly if anything of value emerges that is worth sharing I will separate into a package and publish it to NPM.
 
+## Getting Started
+
+```bash
+# create supporting adonis .env configuration including your database credentials - consult the https://adonisjs.com/ documentation for an example
+# HOST=127.0.0.1
+# PORT=3333
+# NODE_ENV=development
+# DB_CONNECTION=mysql
+# DB_USER={YOUR_USER}
+# DB_PASSWORD={YOUR_PASSWORD}
+# DB_DATABASE=adonis
+# HASH_DRIVER=bcrypt
+
+# Ensure you have MariaDB(or similar) installed on your local system
+# Log into MariaDB
+# MariaDB> create database adonis;
+# MariaDB> exit;
+
+# Activate an instance of MariaDB/MySQL server
+mysql.server start
+
+# globally install the adonis command line tool
+# note: alternatively you can consume this with npx concatenated to adonis commands
+npm install @adonisjs/cli -g
+
+# install dependencies
+npm install
+
+# database migration and data seeding
+adonis migration:run --seed
+
+# run local server
+npm start
+```
+
 ## Tasklist/Roadmap
 
 1. Incorporate an icon library; either font-awesome or bootstrap-icons will do - preference for implementation is a SVG sprite using the technique I evolved on MyTR - if possible, maintain the integrity of the npm dependency so this is consumed as a library and not copy and pasted as a static resource(iirc I again cracked this on MyTR so need to reference the old source). This will remove a design bottleneck because it's difficult to visualise and craft something coherent in their absence.

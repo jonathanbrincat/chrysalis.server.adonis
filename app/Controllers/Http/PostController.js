@@ -26,7 +26,7 @@ class PostController {
     // const userFavouritesWithPosts = await UserModel.query().select('*').with('favouritePosts').fetch()
     // return userFavouritesWithPosts
 
-    // NOTE! user has to be logged in other auth.user will be null
+    // DEVNOTE: user has to be logged in other auth.user will be null
     let currentUserFavouritesWithPosts = []
     if(auth.user) {
       // const currentUserFavouritesWithPosts = await auth.user.favouritePosts().fetch()
@@ -45,25 +45,19 @@ class PostController {
   }
 
   async show({ request, response, view, params, auth }) {
-    // const post = await PostModel.find(params.id)
-    // const $post = await use('App/Models/Post').findOrFail(params.id)
-    const $post = await PostModel.query().where('id', params.id).withCount('likes').first() //equivalent to find; find is the shorthand; note '=' can be omitted as equality assumed to be default comparison
-    // const post = await PostModel.query().where('id', '=', params.id).with('likes').withCount('likes').first() //with('likes') provisions the relationship in one sql request. this is eager loading as oppose to the lazy loading(executing sql queries as and when needed which can be taxing/wasteful with expensive operations i.e. for loops)
-
+    const $post = await PostModel.query().where('id', params.id).withCount('likes').first() //equivalent to find() being shorthand method - need to expand so fully qualified query() used and chained; note '=' can be omitted as equality assumed to be default comparison //with('likes') provisions the relationship in one sql request. this is eager loading as oppose to the lazy loading(executing sql queries as and when needed which can be taxing/wasteful with expensive operations i.e. for loops)
     const $entries = await $post.entries().with('resources').fetch()
-    // console.log('$entries ', $entries.toJSON() )
+    console.log('jb >> ', $post)
 
-    // NOTE! user has to be logged in other auth.user will be null
+    // DEVNOTE: user has to be logged in other auth.user will be null
     let currentUserFavouritesWithPosts = []
     if(auth.user) {
-      // const currentUserFavouritesWithPosts = await auth.user.favouritePosts().fetch()
-      currentUserFavouritesWithPosts = await auth.user.favouritePosts().ids() // will return the current user's favourited post in an array containing their ids
-      // return currentUserFavouritesWithPosts
+      currentUserFavouritesWithPosts = await auth.user.favouritePosts().ids() // convenience method; will return the current user's favourited post in an array containing their ids
     }
 
     return view.render('posts.show', {
       post: $post.toJSON(),
-      foo: $entries.toJSON(),
+      entries: $entries.toJSON(),
       favourites: Array.from(currentUserFavouritesWithPosts)
     })
   }
