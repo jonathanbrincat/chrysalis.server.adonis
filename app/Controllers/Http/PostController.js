@@ -61,7 +61,6 @@ class PostController {
   }
 
   async store({ request, response, view, session, auth }) {
-
     // console.log('jb :: ', request.all() )
 
     if(!auth.user) {
@@ -125,7 +124,7 @@ class PostController {
     const post = await Post
       .query()
       .where('id', params.id)
-      .with('entries')
+      .with('entries.resources')
       .with('tags')
       .first()
 

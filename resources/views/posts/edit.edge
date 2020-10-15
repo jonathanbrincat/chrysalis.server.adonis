@@ -71,6 +71,11 @@
             <p>{{ entry.colour }}</p>
             <p>{{ entry.value }}</p>
           </fieldset>
+
+            @each(resource in entry.resources)
+              <p>{{ resource.filename }}</p>
+              <p>{{ resource.description }}</p>
+            @endeach
           @endeach
 
           @each(tag in tags)
