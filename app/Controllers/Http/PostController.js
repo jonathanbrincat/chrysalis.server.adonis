@@ -61,19 +61,22 @@ class PostController {
   }
 
   async store({ request, response, view, session, auth }) {
+
+    // console.log('jb :: ', request.all() )
+
     if(!auth.user) {
       return response.redirect('back')
     }
 
-    const validation = await validate(request.all(), {
-      title: 'required|min:5|max:255',
-      body: 'required|min:3',
-    })
+    // const validation = await validate(request.all(), {
+    //   title: 'required|min:5|max:255',
+    //   body: 'required|min:3',
+    // })
 
-    if(validation.fails()) {
-      session.withErrors(validation.messages()).flashAll()
-      return response.redirect('back')
-    }
+    // if(validation.fails()) {
+    //   session.withErrors(validation.messages()).flashAll()
+    //   return response.redirect('back')
+    // }
 
     const { title, body } = request.all();
 
@@ -90,18 +93,28 @@ class PostController {
     const $post = await auth.user.posts().create({title, body})
     await $post.tags().attach(request.input('tags') === null ? [] : request.input('tags'))  //DEVNOTE: you can't not attach tags until the post is persisted(saved) to the DB as the post ID needs to be generated for the pivot table
 
-    //for each
-    const $entry = await $post.entries().create({
-      'title': 'foo',
-      'body': 'bar'
-    })
+    for(const [i, entry] of (request.all().entry_title).entries() ) {
+      // console.log(i, " :: ", entry )
 
-    //for each
-    await $entry.resources().create({
-      'filename': 'id/555',
-      'description': 'test 1234',
-      'contenttype': 'jpg'
-    })
+      let $entry = await $post.entries().create({
+        'title': entry, //request.input('entry_title'),
+        'body': 'bar'
+      })
+
+      for(const [j,  resource] of request.input('entry_image')[i].entries() ) {
+        // console.log(j, " :: ", resource )
+
+        await $entry.resources().create({
+          'filename': `id/10${j}`,
+          'description': resource,
+          'contenttype': 'jpg'
+        })
+      }
+    }
+
+    // for(const [i, resource] of (request.all().entry_image).entries() ) {
+    //   console.log(i, " :: ", resource )
+    // }
 
     session.flash({ notification: 'Your post has been created'})
 
@@ -109,22 +122,17 @@ class PostController {
   }
 
   async edit({ request, response, view, params }) {
-    // const $post = await Post.find(params.id) //lucid object
-    // const tag_ids = await $post.tags().ids() //array
-
     const post = await Post
       .query()
       .where('id', params.id)
       .with('entries')
       .with('tags')
-      .first() //serialised
+      .first()
 
     const payload = post.toJSON()
     payload.tags = payload.tags.map( ({ id }) => id )
 
     return view.render('posts.edit', {
-      // post: post.toJSON(),
-      // postTagsId: tag_ids,
       post: payload,
       tags: await Tag.all().then( (data) => data.toJSON())
     })

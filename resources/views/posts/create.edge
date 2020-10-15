@@ -61,28 +61,87 @@
           @each(tag in tags)
           <div class="checkbox">
             <label>
-              <input type="checkbox"  name="tags[]" value="{{ tag.id }}" />
+              <input type="checkbox" name="tags[]" value="{{ tag.id }}" />
               {{ tag.name }}
             </label>
           </div>
           @endeach
 
           <fieldset>
-            <legend>Entry</legend>
+            <legend>Entry 1</legend>
             <p class="form__field">
               <label class="form__control">
                 <span>Title</span>
-                <input type="text" name="entry_title" />
+                <input type="text" name="entry_title[]" />
               </label>
             </p>
 
             <p class="form__field">
               <label class="form__control">
-                <span>Image</span>
-                <input type="text" name="entry_image" />
+                <span>Image 1</span>
+                <input type="text" name="entry_image[0][]" />
+              </label>
+            </p>
+
+            <p class="form__field">
+              <label class="form__control">
+                <span>Image 2</span>
+                <input type="text" name="entry_image[0][]" />
               </label>
             </p>
           </fieldset>
+
+          <fieldset>
+            <legend>Entry 2</legend>
+            <p class="form__field">
+              <label class="form__control">
+                <span>Title</span>
+                <input type="text" name="entry_title[]" />
+              </label>
+            </p>
+
+            <p class="form__field">
+              <label class="form__control">
+                <span>Image 1</span>
+                <input type="text" name="entry_image[1][]" />
+              </label>
+            </p>
+          </fieldset>
+
+          <fieldset>
+            <legend>Entry 3</legend>
+            <p class="form__field">
+              <label class="form__control">
+                <span>Title</span>
+                <input type="text" name="entry_title[]" />
+              </label>
+            </p>
+
+            <p class="form__field">
+              <label class="form__control">
+                <span>Image 1</span>
+                <input type="text" name="entry_image[2][]" />
+              </label>
+            </p>
+
+            <p class="form__field">
+              <label class="form__control">
+                <span>Image 2</span>
+                <input type="text" name="entry_image[2][]" />
+              </label>
+            </p>
+
+            <p class="form__field">
+              <label class="form__control">
+                <span>Image 3</span>
+                <input type="text" name="entry_image[2][]" />
+              </label>
+            </p>
+          </fieldset>
+
+          <p>
+            <button type="button" class="ui__btn">Add</button>
+          </p>
 
           <p class="form__field">
             <button type="submit" class="ui__btn btn__primary">Submit</button>
