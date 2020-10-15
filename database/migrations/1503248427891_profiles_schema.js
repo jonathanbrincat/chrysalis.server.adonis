@@ -16,7 +16,7 @@ class ProfilesSchema extends Schema {
       table.string('postcode')
       table.string('country')
       table.string('avatar')
-      table.tinyint('is_breeder').unsigned()
+      table.boolean('is_breeder')
     })
   }
 

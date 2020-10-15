@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-12">
         <p>
-          <a href="{{ route('posts.index') }}">
+          <a href="{{ route('dashboard.index') }}">
             <svg class="ui__icon icon__svg">
               <use xlink:href="/assets/svg/fontawesome/solid.svg#arrow-left"></use>
             </svg>
@@ -43,13 +43,13 @@
             <p class="form__field">
               <label class="form__control">
                 <span>Content</span>
-                {{-- <textarea name="content">{{ old('body', '') }}</textarea> --}}
-                <textarea name="content" ></textarea>
+                {{-- <textarea name="body">{{ old('body', '') }}</textarea> --}}
+                <textarea name="body" ></textarea>
               </label>
               {{-- {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }} --}}
 
-              @if(hasErrorFor('content'))
-                <span>{{ getErrorFor('content')}}</span>
+              @if(hasErrorFor('body'))
+                <span>{{ getErrorFor('body')}}</span>
               @endif
             </p>
           </div>
@@ -66,6 +66,23 @@
             </label>
           </div>
           @endeach
+
+          <fieldset>
+            <legend>Entry</legend>
+            <p class="form__field">
+              <label class="form__control">
+                <span>Title</span>
+                <input type="text" name="entry_title" />
+              </label>
+            </p>
+
+            <p class="form__field">
+              <label class="form__control">
+                <span>Image</span>
+                <input type="text" name="entry_image" />
+              </label>
+            </p>
+          </fieldset>
 
           <p class="form__field">
             <button type="submit" class="ui__btn btn__primary">Submit</button>

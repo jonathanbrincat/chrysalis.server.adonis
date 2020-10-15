@@ -4,22 +4,20 @@ const UserModel = use('App/Models/User')
 
 class ProfileController {
   async index({ request, response, view, auth }) {
+    const $foo = await auth.user.profile().fetch()
+    const $bar = await auth.user.profile().with('user').fetch()
+    const $user = await UserModel.find(auth.user.id)
+    const $profile = await $user.profile().fetch()
 
-    if(auth.user) {
-      // console.log('current user >> ', auth.user.id )
-    }
-
-    const bar = await auth.user.profile().fetch();
-    console.log('bar ', bar.toJSON())
-
-    const user = await UserModel.find(auth.user.id)
-    const profile = await user.profile().fetch()
-
-    // console.log('jb >> ', profile.toJSON());
+    // return $foo.toJSON()
+    // return $bar.toJSON()
+    // return $user.toJSON()
+    // return $profile.toJSON()
 
     return view.render('profile.index', {
-      profile: profile.toJSON(),
-      user: user.toJSON()
+      profile: $profile.toJSON(),
+      user: $user.toJSON(),
+      bar: $bar.toJSON()
     });
   }
 }

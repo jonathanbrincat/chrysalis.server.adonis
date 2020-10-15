@@ -25,7 +25,7 @@ Route.post('/search', 'SearchController.index').as('search')
 
 Route.get('/posts/:id/like', 'LikeController.setLike').as('posts.like')
 
-Route.get('/posts/:id/saved', 'SavedController.index').as('saved.index')
+Route.get('/posts/saved', 'SavedController.index').as('saved.index')
 Route.post('/posts/:id/saved', 'SavedController.store').as('saved.store')
 Route.delete('/posts/:id/saved', 'SavedController.destroy').as('saved.destroy')
 

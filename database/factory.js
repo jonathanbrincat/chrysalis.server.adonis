@@ -17,17 +17,16 @@ const Hash = use('Hash')
 
 Factory.blueprint('App/Models/User', async (faker, i, data) => {
   return {
-    // username: data[i].username, //DENOTE: should be on profile model
-    username: faker.username(),
     // email: data[i].email,
     email: faker.email(),
-    password: await Hash.make('12345')
+    password: '12345'
     // password: await Hash.make(faker.password())
   }
 })
 
 Factory.blueprint('App/Models/Profile', (faker) => {
   return {
+    // username: data[i].username,
     username: faker.username(),
     firstname: 'Joe',
     lastname: 'Bloggs',
@@ -56,8 +55,6 @@ Factory.blueprint('App/Models/Post', async (faker, i, data) => {
 })
 
 Factory.blueprint('App/Models/Entry', (faker, i, data) => {
-  // console.log('Entry factory >> ', data)
-
   return {
     title: data.title,
     body: data.body,
@@ -72,8 +69,6 @@ Factory.blueprint('App/Models/Entry', (faker, i, data) => {
 })
 
 Factory.blueprint('App/Models/Resource', (faker, i, data) => {
-  // console.log('Resource factory >> ', data)
-
   return {
     filename: data.filename,
     description: data.description,

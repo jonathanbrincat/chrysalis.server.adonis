@@ -1,9 +1,10 @@
 'use strict'
 
-const UserModel = use('App/Models/User')
-const PostModel = use('App/Models/Post')
-const LikeModel = use('App/Models/Like')
-const TagModel = use('App/Models/Tag')
+const Database = use('Database')
+
+const Post = use('App/Models/Post')
+const Entry = use('App/Models/Entry')
+const Tag = use('App/Models/Tag')
 
 const { validate } = use('Validator')
 
@@ -11,48 +12,39 @@ const { validate } = use('Validator')
 
 class PostController {
   async index({ request, response, view, auth }) {
-    // const posts = await PostModel.all()
-    // const posts = await PostModel.query().orderBy('created_at', 'desc').withCount('likes').fetch()
+    const ordering = ['created_at', 'desc']
+    const resultsPerPage = 5
+
     const index = request.get().page || 1 //take from querystring param if it exists
-    const posts = await PostModel.query().orderBy('created_at', 'desc').with('user').with('tags').withCount('likes').paginate(index, 5)
-
-    //all posts with user favourites
-    // const postsWithUserFavourites = await PostModel.query().orderBy('created_at', 'desc').with('user').with('favouriteToUser').paginate(index, 5)
-    // return postsWithUserFavourites
-
-    //all user favourites with posts
-    // const userFavouritesWithPosts = await UserModel.all()
-    // const userFavouritesWithPosts = await UserModel.ids()
-    // const userFavouritesWithPosts = await UserModel.query().select('*').with('favouritePosts').fetch()
-    // return userFavouritesWithPosts
+    const $posts = await Post.query()
+      .orderBy(...ordering)
+      .with('user')
+      .with('tags')
+      .withCount('likes')
+      .paginate(index, resultsPerPage)
 
     // DEVNOTE: user has to be logged in other auth.user will be null
-    let currentUserFavouritesWithPosts = []
+    let favourites_id = []
     if(auth.user) {
-      // const currentUserFavouritesWithPosts = await auth.user.favouritePosts().fetch()
-      currentUserFavouritesWithPosts = await auth.user.favouritePosts().ids() // will return the current user's favourited post in an array containing their ids
-      // return currentUserFavouritesWithPosts
+      favourites_id = await auth.user.favourites().ids() // will return the current user's favourited post in an array containing their ids
     }
 
-    const tagsModel = await TagModel.all()
+    const $tags = await Tag.all()
 
     return view.render('posts.index', {
-      posts: posts.toJSON(),
-      // posts: posts // DEVNOTE: is a mixed object with page JSON + vanillaSerializer collection('rows' property). each row is already serialized data. I think that's how it works
-      favourites: Array.from(currentUserFavouritesWithPosts),
-      tags: tagsModel.toJSON()
+      posts: $posts.toJSON(), // DEVNOTE: is a mixed object with page JSON + vanillaSerializer collection('rows' property). each row is already serialized data. I think that's how it works
+      tags: $tags.toJSON(),
+      favourites: Array.from(favourites_id)
     })
   }
 
   async show({ request, response, view, params, auth }) {
-    const $post = await PostModel.query().where('id', params.id).withCount('likes').first() //equivalent to find() being shorthand method - need to expand so fully qualified query() used and chained; note '=' can be omitted as equality assumed to be default comparison //with('likes') provisions the relationship in one sql request. this is eager loading as oppose to the lazy loading(executing sql queries as and when needed which can be taxing/wasteful with expensive operations i.e. for loops)
+    const $post = await Post.query().where('id', params.id).withCount('likes').first() //equivalent to find() being shorthand method - need to expand so fully qualified query() used and chained; note '=' can be omitted as equality assumed to be default comparison //with('likes') provisions the relationship in one sql request. this is eager loading as oppose to the lazy loading(executing sql queries as and when needed which can be taxing/wasteful with expensive operations i.e. for loops)
     const $entries = await $post.entries().with('resources').fetch()
-    console.log('jb >> ', $post)
 
-    // DEVNOTE: user has to be logged in other auth.user will be null
     let currentUserFavouritesWithPosts = []
     if(auth.user) {
-      currentUserFavouritesWithPosts = await auth.user.favouritePosts().ids() // convenience method; will return the current user's favourited post in an array containing their ids
+      currentUserFavouritesWithPosts = await auth.user.favourites().ids() // convenience method; will return the current user's favourited post in an array containing their ids
     }
 
     return view.render('posts.show', {
@@ -63,17 +55,15 @@ class PostController {
   }
 
   async create({ view }) {
-    const tags = await TagModel.all()
-
-    return view.render('posts.create', { tags: tags.toJSON() })
+    return view.render('posts.create', {
+      tags: await Tag.all().then( (data) => data.toJSON() )
+    })
   }
 
   async store({ request, response, view, session, auth }) {
-    // TEMP prevent post if not logged in
-    // if(!auth.getUser()) {
-    // if(!auth.check()) {
-    //   return response.redirect('back')
-    // }
+    if(!auth.user) {
+      return response.redirect('back')
+    }
 
     const validation = await validate(request.all(), {
       title: 'required|min:5|max:255',
@@ -85,39 +75,58 @@ class PostController {
       return response.redirect('back')
     }
 
-    const post = new PostModel()
+    const { title, body } = request.all();
 
-    post.title = request.input('title')
-    post.body = request.input('body')
+    /*
+    // METHOD 1
+    const $post = new Post()
+    $post.title = request.input('title')
+    $post.body = request.input('body')
+    await auth.user.posts().save($post)
+    await $post.tags().attach(request.input('tags') === null ? [] : request.input('tags')) //DEVNOTE: you can't not attach tags until the post is persisted(saved) to the DB as the post ID needs to be generated for the pivot table
+    */
 
-    // await post.save() // commented because we now save with a relationship. NOTE: do not confuse this with the same operation when seeding via Factory as you may need to save first to generate th primary key; if you later assert a relationship and save. it will not duplicate the operation.
-    // await auth.user.posts().save(post)
+    // METHOD 2
+    const $post = await auth.user.posts().create({title, body})
+    await $post.tags().attach(request.input('tags') === null ? [] : request.input('tags'))  //DEVNOTE: you can't not attach tags until the post is persisted(saved) to the DB as the post ID needs to be generated for the pivot table
 
-    await post.tags().attach(request.input('tags') === null ? [] : request.input('tags'))
+    //for each
+    const $entry = await $post.entries().create({
+      'title': 'foo',
+      'body': 'bar'
+    })
 
-    const userPost = request.all();
-    await auth.user.posts().create({
-      title: userPost.title,
-      body: userPost.body,
+    //for each
+    await $entry.resources().create({
+      'filename': 'id/555',
+      'description': 'test 1234',
+      'contenttype': 'jpg'
     })
 
     session.flash({ notification: 'Your post has been created'})
 
-    return response.redirect('/dashboard')
+    return response.redirect('dashboard')
   }
 
   async edit({ request, response, view, params }) {
-    const post = await PostModel.find(params.id)
+    // const $post = await Post.find(params.id) //lucid object
+    // const tag_ids = await $post.tags().ids() //array
 
-    const postTags = await post.tags().fetch()
+    const post = await Post
+      .query()
+      .where('id', params.id)
+      .with('entries')
+      .with('tags')
+      .first() //serialised
 
-    const tagsModel = await TagModel.all()
+    const payload = post.toJSON()
+    payload.tags = payload.tags.map( ({ id }) => id )
 
     return view.render('posts.edit', {
-      post: post.toJSON(),
-      postId: params.id,
-      postTagsId: postTags.toJSON().map( ({ id }) => id ),
-      tags: tagsModel.toJSON()
+      // post: post.toJSON(),
+      // postTagsId: tag_ids,
+      post: payload,
+      tags: await Tag.all().then( (data) => data.toJSON())
     })
   }
 
@@ -132,32 +141,37 @@ class PostController {
       return response.redirect('back')
     }
 
-    const post = await PostModel.find(params.id)
+    const { title, body } = request.all();
 
-    post.title = request.all().title //request.input('title')
-    post.body = request.all().body //request.input('body')
+    const $post = await Post.find(params.id)
 
-    await post.save()
+    $post.title = title   //request.input('title')
+    $post.body = body     //request.input('body')
+
+    await $post.save()
 
     // 1. suboptimal as detaching all relationships is a wasteful operation if no tags were removed
-    // await post.tags().detach()
-    // await post.tags().attach(request.input('tags') === null ? [] : request.input('tags'))
+    // await $post.tags().detach()
+    // await $post.tags().attach(request.input('tags') === null ? [] : request.input('tags'))
 
     // 2. better solution using .sync() - adonis will handle the comparison
-    await post.tags().sync(request.input('tags') === null ? [] : request.input('tags'))
+    await $post.tags().sync(request.input('tags') === null ? [] : request.input('tags'))
+
+    //await $post.entries().sync($entry)
+    //await $post.entries().$resources.sync($resources)
 
     session.flash({ notification: 'Your post has been updated'})
 
-    return response.redirect('/dashboard')
+    return response.redirect('dashboard.index')
   }
 
   async destroy({ request, response, view, session, params }) {
-    const post = await PostModel.find(params.id)
+    const $post = await Post.find(params.id)
 
-    await post.likes().delete() // delete any relational entries alongside operation as they are linked to something that no longer exists
-    await post.tags().detach()
+    await $post.likes().delete() // delete any relational entries alongside operation as they are linked to something that no longer exists
+    await $post.tags().detach()
 
-    await post.delete()
+    await $post.delete()
 
     session.flash({ notification: 'Your post has been deleted'})
 

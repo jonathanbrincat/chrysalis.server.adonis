@@ -4,6 +4,10 @@
 const Model = use('Model')
 
 class Tag extends Model {
+  static get hidden () {
+    return ['created_at', 'updated_at']
+  }
+
   posts() {
     return this.belongsToMany('App/Models/Post').pivotTable('pivot_post_tag').withTimestamps()
   }

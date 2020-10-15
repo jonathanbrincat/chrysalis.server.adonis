@@ -52,14 +52,10 @@ class Post extends Model {
   }
 
   // A Post belongsToMany user favourites
-  // A Post hasOne user favourite
   // userFavourite() {
   favouriteToUser() {
     return this.belongsToMany('App/Models/User').pivotTable('pivot_post_user').withTimestamps()
-
-    //
     // return this.hasMany('App/Models/User')//.pivotTable('pivot_post_user').withTimestamps()
-    // return this.hasOne('App/Models/User').pivotTable('pivot_post_user').withTimestamps()
   }
 
   entries() {
@@ -89,6 +85,10 @@ class Post extends Model {
 
   getTitleAndDate({ title, updated_at }) {
     return `${title} ${updated_at}`
+  }
+
+  getFoobar() {
+    return 'foobar'
   }
 }
 

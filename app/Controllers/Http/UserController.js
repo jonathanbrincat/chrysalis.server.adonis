@@ -4,15 +4,15 @@ const UserModel = use('App/Models/User')
 
 class UserController {
   async create({ request, response, auth }) {
-    const user = await UserModel.create(request.only(['username', 'email', 'password']))
+    const $user = await UserModel.create(request.only(['username', 'email', 'password']))
 
-    await auth.login(user)
+    await auth.login($user)
 
     return response.redirect('/')
   }
 
   async login({ request, response , session, auth}) {
-    const { email, password} = request.all()
+    const { email, password } = request.all()
 
     // DEVNOTE: additional; remember me; has email been confirmed; forgotten password; reset password
     try {

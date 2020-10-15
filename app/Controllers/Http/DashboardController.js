@@ -1,24 +1,19 @@
 'use strict'
 
-const PostModel = use('App/Models/Post')
+const Post = use('App/Models/Post')
 
 class DashboardController {
   async index({ request, response, view, auth }) {
-    // const posts = await PostModel.all()
-    const posts = await PostModel.query().orderBy('title', 'asc').fetch()
-    const userPosts = await auth.user.posts().fetch()
+    const ordering = ['title', 'asc']
 
-    //get current user favourite posts
-    const currentUserFavouritesWithPosts = await auth.user.favouritePosts().fetch()
-    // return currentUserFavouritesWithPosts
-
-    //get users who have favourited current post
-    //has current user favourited current post //get current post favourite user
+    // const $posts = await Post.query().orderBy(...ordering).fetch()
+    const $curated = await auth.user.posts().orderBy(...ordering).fetch()
+    const $favourites = await auth.user.favourites().orderBy(...ordering).fetch()
 
     return view.render('dashboard.index', {
-      posts: posts.toJSON(),
-      userPosts: userPosts.toJSON(),
-      favouritePosts: currentUserFavouritesWithPosts.toJSON()
+      // posts: $posts.toJSON(),
+      curated: $curated.toJSON(),
+      favourites: $favourites.toJSON()
     })
   }
 }

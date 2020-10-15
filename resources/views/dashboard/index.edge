@@ -4,8 +4,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <header class='ui__toolbar'>
-          <h2>Hello {{ auth.user.username }}</h2>
+        <header class='ui__toolbar' style="display: flex; justify-content: space-between;">
+          <h2>Hello {{-- {{ auth.user.username }} --}}</h2>
           <p class="ui__field">
             <a class="ui__btn btn__primary" href="{{ route('posts.create') }}" >
               <span>New Post</span>
@@ -17,7 +17,7 @@
         </header>
 
         <h2>Saved Posts</h2>
-        @each(post in favouritePosts)
+        @each(post in favourites)
         <article class="admin__post">
           <p><a href="{{ route('posts.show', { id: post.id }) }}">{{ post.title }}</a></p>
 
@@ -38,7 +38,7 @@
         @endeach
 
         <h2>My Posts</h2>
-        @each(post in userPosts)
+        @each(post in curated)
         <article class="admin__post">
           <p><a href="{{ route('posts.show', { id: post.id }) }}">{{ post.title }}</a></p>
 
@@ -65,7 +65,8 @@
         </article>
         @endeach
 
-        <h2>All Posts(Admin role)</h2>
+        <!--{{--
+        <h2>All Posts</h2>
 
         @each(post in posts)
         <article class="admin__post">
@@ -92,6 +93,7 @@
           </div>
         </article>
         @endeach
+        --}}-->
       </div>
     </div>
   </div>

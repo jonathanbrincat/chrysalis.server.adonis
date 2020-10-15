@@ -5,19 +5,20 @@
 @section('content')
   <div class="container">
     <div style="display: flex; justify-content: space-between;">
-      <p>
-        <a href="{{ route('posts.index') }}">
-          <svg class="ui__icon icon__svg">
-            <use xlink:href="/assets/svg/fontawesome/solid.svg#arrow-left"></use>
-          </svg>
-          <span>Go back</span>
+      <div>
+        <p>
+          <a href="{{ route('posts.index') }}">
+            <svg class="ui__icon icon__svg">
+              <use xlink:href="/assets/svg/fontawesome/solid.svg#arrow-left"></use>
+            </svg>
+            <span>Go back</span>
+          </a>
+        </p>
 
-          <span>Animal</span>
-          /
-          <span>Breed</span>
-          /<span>Location</span>
-        </a>
-      </p>
+        <p>
+          <span>Animal</span>/<span>Breed</span>/<span>Location</span>
+        </p>
+      </div>
 
       @if(favourites.includes(post.id))
       {{-- UNSAVE --}}
@@ -54,6 +55,7 @@
     <div class="row">
       <div class="col-8">
         <h1>{{ post.title }}</h1>
+        <h2>Location</h2>
       </div>
 
       <div class="col-4">
@@ -93,20 +95,15 @@
             Like
           </a>
 
-          <!-- Location -->
-          <!-- male / female breakdown with gfx goes here to replace likes -->
-          <!--
-          gfx summary at the top in the header. cat heads with a number. blue for boy. pink for girl - problably offend somebody oh well - ghosted/opacity when they are reserved.
-          -->
           <ul>
             <li>
-              <svg class="ui__icon icon__svg">
+              <svg class="ui__icon icon__svg" style="color: blue;">
                 <use xlink:href="/assets/svg/fontawesome/solid.svg#cat"></use>
               </svg>
               <span>2</span>
             </li>
             <li>
-              <svg class="ui__icon icon__svg">
+              <svg class="ui__icon icon__svg" style="color: pink;">
                 <use xlink:href="/assets/svg/fontawesome/solid.svg#cat"></use>
               </svg>
               <span>2</span>
@@ -132,7 +129,8 @@
               @if(entry.resources.length)
               <img src="https://picsum.photos/{{entry.resources[0].filename}}/1200/800" alt="{{ entry.resources[0].description }}" />
               @else
-              <img src="https://picsum.photos/1200/800" alt="" />
+              {{-- <img src="https://picsum.photos/1200/800" alt="" /> --}}
+              <p>Awaiting photography</p>
               @endif
             </picture>
           </div>
@@ -145,15 +143,6 @@
                 <li><img src="https://picsum.photos/{{resource.filename}}/120/120" alt="{{ resource.description }}" /></li>
                 @endeach
               </ul>
-
-              @else
-              <ul>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-                <li><img src="https://picsum.photos/120/120" alt="" /></li>
-              </ul>
               @endif
             </div>
 
@@ -162,7 +151,7 @@
                 <th colspan="2">{{ entry.title }}</th>
               </tr>
               <tr>
-                <td colspan="2">Snow sepia rosetted</td>
+                <td colspan="2">{{ entry.colour }} {{ entry.type }}</td>
               </tr>
               <tr>
                 <td>
@@ -179,7 +168,8 @@
                   </svg>
                   @endif
                 </td>
-                <td class="price">£950.<small>00</small></td>
+                {{-- <td class="price">£950.<small>00</small></td> --}}
+                <td class="price">{{ entry.value }}</td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: right;">

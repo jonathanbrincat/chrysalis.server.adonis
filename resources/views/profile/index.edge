@@ -11,11 +11,11 @@
     </div>
     <div class="col-8">
       <p>
-        <span>Name</span>: {{ profile.first_name }} {{ profile.last_name }}
+        <span>Name</span>: {{ profile.firstname }} {{ profile.lastname }}
         <a href=""><span>Edit</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#pencil-alt"></use></svg></a>
         <span style="display: block;">Note: We value your privacy. Your personal information will be withheld from public display.</span>
       </p>
-      <p><span>Display name</span>: {{ auth.user.username }}</p>
+      <p><span>Display name</span>: {{ profile.username }}</p>
       <p><apan>Address</apan>: {{ profile.address }}</p>
       <p><apan>Contact number</apan>:</p>
       <p style="background-color: silver; padding: 6px; border-radius: 1px;">

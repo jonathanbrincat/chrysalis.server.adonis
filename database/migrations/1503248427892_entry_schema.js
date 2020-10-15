@@ -15,9 +15,9 @@ class EntrySchema extends Schema {
       table.tinyint('age').unsigned()
       table.string('colour')
       table.string('type')
-      table.string('value')
-      table.tinyint('is_registered').unsigned()
-      table.tinyint('is_available').unsigned()
+      table.decimal('value', 2)
+      table.boolean('is_registered')
+      table.boolean('is_available')
       table.integer('post_id').unsigned()
     })
   }

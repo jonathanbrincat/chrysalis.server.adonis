@@ -22,7 +22,7 @@
         <li><a href="/chat">Conversations</a></li>
         <li><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
         <li><a href="{{ route('profile.index') }}">My Profile</a></li>
-        <li><a href="/logout">(<span>{{ auth.user.username }}</span>) Logout</a></li>
+        <li><a href="/logout">{{-- (<span>{{ auth.user.username }}</span>) --}} Logout</a></li>
         @else
         <li><a href="/login" class="ui__btn">Login</a></li>
         <li><a href="/register">Sign up</a></li>

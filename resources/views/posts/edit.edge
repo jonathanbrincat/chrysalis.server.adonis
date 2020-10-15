@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-12">
         <p>
-          <a href="{{ route('posts.index') }}">
+          <a href="{{ route('dashboard.index') }}">
             <svg class="ui__icon icon__svg">
               <use xlink:href="/assets/svg/fontawesome/solid.svg#arrow-left"></use>
             </svg>
@@ -57,13 +57,29 @@
             <input type="file" name="cover_image" />
           </div>
 
+          <p><button class="ui__btn">Add Entry</button></p>
+
+          @each(entry in post.entries)
+          <fieldset>
+            <legend>{{ entry.title }}</legend>
+            <p><button class="ui__btn">Remove Entry</button></p>
+            <p>{{ entry.body }}</p>
+            <p>{{ entry.name }}</p>
+            <p>{{ entry.sex }}</p>
+            <p>{{ entry.age }}</p>
+            <p>{{ entry.type }}</p>
+            <p>{{ entry.colour }}</p>
+            <p>{{ entry.value }}</p>
+          </fieldset>
+          @endeach
+
           @each(tag in tags)
           {{-- <pre>{{ json(tags) }}</pre> --}}
 
           <div class="checkbox">
             <p class="form__field">
               <label class="form__control">
-                <input type="checkbox" name="tags[]" value="{{ tag.id }}" {{ postTagsId.includes(tag.id) ? 'checked' : '' }} />
+                <input type="checkbox" name="tags[]" value="{{ tag.id }}" {{ post.tags.includes(tag.id) ? 'checked' : '' }} />
 
                 {{--
                 <span>post_id={{ post.id }}</span>
@@ -79,7 +95,7 @@
 
           <p class="form__field">
             <!-- used to pass the id to the controller but unneccesary as we pass and can grab from uri params -->
-            <!-- <input type="hidden" name="id" value={{ postId }} /> -->
+            <!-- <input type="hidden" name="id" value={{ post.id }} /> -->
             <button type="submit" class="ui__btn btn__primary">Submit</button>
           </p>
         </form>

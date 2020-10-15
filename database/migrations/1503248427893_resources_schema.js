@@ -12,7 +12,7 @@ class ResourcesSchema extends Schema {
       table.string('description')
       table.string('contenttype')
       table.string('dimensions')
-      table.string('filesize')
+      table.integer('filesize')
       table.integer('entry_id').unsigned()
       table.integer('user_id').unsigned()
     })

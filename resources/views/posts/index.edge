@@ -116,26 +116,28 @@
 
         <p>{{ posts.total }} entries</p>
 
-        <label>
-          <span>Sort by</span>
-          <select>
-            <option value="">Most recent</option>
-            <option value="">Price(ascending)</option>
-            <option value="">Price(decending)</option>
-            <option value="">Most popular</option>
-          </select>
-        </label>
+        <div style="display: flex; justify-content: space-between;">
+          <label>
+            <span>Sort by</span>
+            <select>
+              <option value="">Most recent</option>
+              <option value="">Price(ascending)</option>
+              <option value="">Price(decending)</option>
+              <option value="">Most popular</option>
+            </select>
+          </label>
 
-        <label>
-          <span>Results per page</span>
-          <select>
-            <option value="10">10</option>
-            <option value="20">25</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-            <option value="">All</option>
-          </select>
-        </label>
+          <label>
+            <span>Results per page</span>
+            <select style="width: auto; display: block;">
+              <option value="10">10</option>
+              <option value="20">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="">All</option>
+            </select>
+          </label>
+        </div>
 
         @if(posts.lastPage > 1)
         @!component('../components/pagination', pagination = posts, request = request, presenter = 'PaginationPresenter')
@@ -184,16 +186,15 @@
           <div class="card__body">
             <h2 class="post__title"><a href="{{ route('posts.show', { id: post.id }) }}">{{ post.title }}</a></h2>
             <h3 class="post__location">Haslemere, Surrey</h3>
+            <p>price / price - range</p>
 
             {{-- <h4>{{ post.titleAndDate }}</h4> --}}
 
             <p class="post__synopsis"><a href="{{ route('posts.show', { id: post.id }) }}">{{ post.body }}</a></p>
-            <!--
             <ul>
               <li>Boy: 1 snow-sepia</li>
               <li>Girl: 4; 2 brown rosetted; 1 silver marble; 1 snow spotted</li>
             </ul>
-            -->
           </div>
 
           <footer class="card__footer">

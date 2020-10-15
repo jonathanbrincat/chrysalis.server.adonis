@@ -21,6 +21,11 @@ class User extends Model {
     })
   }
 
+  // https://adonisjs.com/docs/4.1/lucid#_hiding_fields
+  static get hidden () {
+    return ['password']
+  }
+
   /**
    * A relationship on tokens is required for auth to
    * work. Since features like `refreshTokens` or
@@ -37,12 +42,12 @@ class User extends Model {
 
   // a user hasMany Posts
   posts() {
-    return this.hasMany('App/Models/Post') //every user can have many posts
+    return this.hasMany('App/Models/Post')
   }
 
   // a user hasOne Profile
   profile() {
-    return this.hasOne('App/Models/Profile') //every user can have one profile
+    return this.hasOne('App/Models/Profile')
   }
 
   resources() {
@@ -50,14 +55,9 @@ class User extends Model {
   }
 
   // a user hasMany Favourite Posts
-  favouritePosts() {
+  favourites() {
     return this.belongsToMany('App/Models/Post').pivotTable('pivot_post_user').withTimestamps()
-
-
-    //
     // return this.hasMany('App/Models/Post') //.pivotTable('pivot_post_user').withTimestamps()
-
-    // expected return post_id 4 & 5
   }
 }
 

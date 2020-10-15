@@ -1,18 +1,14 @@
 [
   {
-    "username": "jon",
     "email": "jon@local.host"
   },
   {
-    "username": "bob",
     "email": "bob@local.host"
   },
   {
-    "username": "mary",
     "email": "mary@local.host"
   },
   {
-    "username": "sue",
     "email": "sue@local.host"
   }
 ]
