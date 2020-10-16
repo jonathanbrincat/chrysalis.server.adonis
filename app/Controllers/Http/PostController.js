@@ -67,6 +67,7 @@ class PostController {
       return response.redirect('back')
     }
 
+    // DEVNOTE: temp disable validation
     // const validation = await validate(request.all(), {
     //   title: 'required|min:5|max:255',
     //   body: 'required|min:3',
@@ -111,6 +112,9 @@ class PostController {
       }
     }
 
+    //saveMany
+    //createMany
+
     // for(const [i, resource] of (request.all().entry_image).entries() ) {
     //   console.log(i, " :: ", resource )
     // }
@@ -138,15 +142,18 @@ class PostController {
   }
 
   async update({ request, response, view, session, params }) {
-    const validation = await validate(request.all(), {
-      title: 'required|min:5|max:255',
-      body: 'required|min:3',
-    })
+    console.log('jb :: ', request.all() )
 
-    if(validation.fails()) {
-      session.withErrors(validation.messages()).flashAll()
-      return response.redirect('back')
-    }
+    // DEVNOTE: temp disable validation
+    // const validation = await validate(request.all(), {
+    //   title: 'required|min:5|max:255',
+    //   body: 'required|min:3',
+    // })
+
+    // if(validation.fails()) {
+    //   session.withErrors(validation.messages()).flashAll()
+    //   return response.redirect('back')
+    // }
 
     const { title, body } = request.all();
 
@@ -157,19 +164,80 @@ class PostController {
 
     await $post.save()
 
+    // *belongsToMany only
     // 1. suboptimal as detaching all relationships is a wasteful operation if no tags were removed
     // await $post.tags().detach()
     // await $post.tags().attach(request.input('tags') === null ? [] : request.input('tags'))
 
+    // *belongsToMany only
     // 2. better solution using .sync() - adonis will handle the comparison
+    // according to docs .sync() is convenient shortcut for .detach() .attach()
     await $post.tags().sync(request.input('tags') === null ? [] : request.input('tags'))
 
-    //await $post.entries().sync($entry)
-    //await $post.entries().$resources.sync($resources)
+    //
+    const { entry } = request.only(['entry'])
+    console.log('hello >> ', entry)
+
+    // const $bar = await $post.entries().where('id', 50).fetch() //fetch will return in an array(assuming a collection of data) so can access the lucid object itself via .row[]
+    // console.log('before >> ', $bar.rows[0].title)
+
+    /*const entryData = request.only(['title', 'body'])
+    // save and get instance back
+    const entry = await Entry.create(entryData)*/
+
+    /*const $entry = new Entry()
+    $entry.title = 'Lorem ipsum'
+    await $post.entries().where('id', 50).save($entry)*/
+
+    // method 1
+    /*$bar.rows[0].title = 'Method 1'
+    await $bar.rows[0].save()*/
+
+    // method 2
+    /*$bar.rows[0].merge({ title: 'Method 2' })
+    await $bar.rows[0].save()*/
+
+    // method 3
+    /*await $post.entries().where('id', 50).update({ title: 'Method 3' })*/  //update is for bulk i.e. without calling fetch or first, i think createMany() and .delete() work the same
+
+    // console.log('after >> ', $bar.rows[0].title)
+
+    // console.log(request.input('entry_resource'))
+
+    for(const key in entry) {
+      console.log('entry_id = ', parseInt(key), entry[parseInt(key)])
+      console.log('jb >> ', entry[parseInt(key)].title)
+
+      await $post.entries().where('id', key).update({ title: entry[parseInt(key)].title })
+    }
+
+    return
+
+
+    for(const [i, entry] of (request.all().entry_title).entries() ) {
+      // console.log(i, " :: ", entry )
+
+      // let foo = new Entry()
+      // foo.title = entry;
+
+      // await $post.entries().dissociate()
+      // let $entry = await $post.entries().associate(foo)
+
+      for(const [j,  resource] of request.input('entry_resource')[i].entries() ) {
+        // console.log(j, " :: ", resource )
+
+        /*await $entry.resources().create({
+          'filename': `id/10${j}`,
+          'description': resource,
+          'contenttype': 'jpg'
+        })*/
+      }
+    }
+    return
 
     session.flash({ notification: 'Your post has been updated'})
 
-    return response.redirect('dashboard.index')
+    return response.redirect('dashboard')
   }
 
   async destroy({ request, response, view, session, params }) {

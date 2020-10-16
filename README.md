@@ -53,9 +53,9 @@ npm start
 
 ## Backlog and Epics
 Authenticated routes and controllers. make sure this is water tight.
-Messaging system
-Feedback and reputation system
 User profile - forgotten password, password reset, delete account, contact info, location, feedback, status(active/suspended/banned), enhanced account
+Feedback and reputation system
+Messaging system - note adonis ships with support for websockets 
 Post architecture - multiples, reservation, revision system
 Post authoring - file upload, rich text editor, direct html injection
 Moderation/reporting system

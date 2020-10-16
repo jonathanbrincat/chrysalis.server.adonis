@@ -59,23 +59,63 @@
 
           <p><button class="ui__btn">Add Entry</button></p>
 
+          <pre style="font-size: 8px;">
+            {{ toJSON(post.entries) }}
+          </pre>
+
           @each(entry in post.entries)
-          <fieldset>
+          <fieldset style="background-color: silver; padding: 6px 18px;">
+            <p>Entry ID</p>
+            <p>Iteration = {{ $loop.index }} ID = {{ entry.id }}</p>
+
+            <!--{{--
             <legend>{{ entry.title }}</legend>
             <p><button class="ui__btn">Remove Entry</button></p>
-            <p>{{ entry.body }}</p>
-            <p>{{ entry.name }}</p>
-            <p>{{ entry.sex }}</p>
-            <p>{{ entry.age }}</p>
-            <p>{{ entry.type }}</p>
-            <p>{{ entry.colour }}</p>
-            <p>{{ entry.value }}</p>
-          </fieldset>
+            --}}-->
 
+            <p class="form__field">
+              <label class="form__control">
+                <span class="form__label">Title</span>
+                <input type="text" name="entry[{{ entry.id }}][title]" value="{{ entry.title }}" />
+              </label>
+            </p>
+
+            <p class="form__field">
+              <label class="form__control">
+                <span class="form__label">Body</span>
+                <input type="text" name="entry[{{ entry.id }}][body]" value="{{ entry.body }}" />
+              </label>
+            </p>
+
+            <!--{{--
+            <p>Body: {{ entry.body }}</p>
+            <p>Tag: {{ entry.name }}</p>
+            <p>Gender: {{ entry.sex }}</p>
+            <p>Age: {{ entry.age }}</p>
+            <p>Type: {{ entry.type }}</p>
+            <p>Colour: {{ entry.colour }}</p>
+            <p>Price: £{{ entry.value }}</p>
+            --}}-->
+
+            <p>Resource ID:</p>
             @each(resource in entry.resources)
-              <p>{{ resource.filename }}</p>
-              <p>{{ resource.description }}</p>
+            <!-- Undocumented feature! https://github.com/edge-js/edge/issues/9; you can use $parent to access parent scope in nested loops. Assumed knowledge/Poor documentation strikes again! -->
+            <p>Iteration = {{ $parent.$loop.index }}:{{ $loop.index }} ID = {{ $parent.entry.id }}:{{ resource.id }}</p>
+            <div>
+                <hr>
+                <!--{{--
+                <p>Filename: {{ resource.filename }}</p>
+                --}}-->
+
+                <p class="form__field">
+                  <label class="form__control">
+                    <span class="form__label">Caption</span>
+                    <input type="text" name="entry[{{ $parent.entry.id }}][resource][{{ resource.id }}]" value="{{ resource.description }}" />
+                  </label>
+                </p>
+            </div>
             @endeach
+          </fieldset>
           @endeach
 
           @each(tag in tags)
