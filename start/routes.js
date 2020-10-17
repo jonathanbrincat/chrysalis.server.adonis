@@ -21,10 +21,19 @@ Route.group(() => {
   Route.get('/', 'PageController.index').as('page.index')
 })
 
+/*
+* Search
+**/
 Route.post('/search', 'SearchController.index').as('search')
 
+/*
+* Like - temp
+**/
 Route.get('/posts/:id/like', 'LikeController.setLike').as('posts.like')
 
+/*
+* Save / Favourites / Watch
+**/
 Route.get('/posts/saved', 'SavedController.index').as('saved.index')
 Route.post('/posts/:id/saved', 'SavedController.store').as('saved.store')
 Route.delete('/posts/:id/saved', 'SavedController.destroy').as('saved.destroy')
@@ -38,16 +47,31 @@ Route.resource('posts', 'PostController')
   Route.get('', 'PostController.index').as('posts.index')
 
   Route.get('create', 'PostController.create').as('posts.create')
-    Route.post('', 'PostController.store').as('posts.store')
+  Route.post('', 'PostController.store').as('posts.store')
 
   Route.get(':id/edit', 'PostController.edit').as('posts.edit')
-    Route.put(':id', 'PostController.update').as('posts.update')
+  Route.put(':id', 'PostController.update').as('posts.update')
 
   Route.delete(':id', 'PostController.destroy').as('posts.destroy')
 
   Route.get(':id', 'PostController.show').as('posts.show')
 }).prefix('/posts/')*/
 
+/*
+* Entry
+**/
+Route.group(() => {
+  Route.get('create', 'EntryController.create').as('entry.create')
+  Route.delete(':id', 'EntryController.destroy').as('entry.destroy')
+}).prefix('/entry/')
+
+/*
+* Resource
+**/
+Route.group(() => {
+  Route.get('create', 'ResourceController.create').as('resource.create')
+  Route.delete(':id', 'ResourceController.destroy').as('resource.destroy')
+}).prefix('/resource/')
 
 /*
 * Tags
