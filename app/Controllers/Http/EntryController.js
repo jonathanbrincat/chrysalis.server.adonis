@@ -4,12 +4,28 @@ const Entry = use('App/Models/Entry')
 
 class EntryController {
   // create
-  async create({ request, response, view }) {
-    return 'entry create'
+  async create({ request, response, view, params }) {
+    console.log('entry:create >> ', params.id)
+
+    const $post = await use('App/Models/Post').find(params.id)
+
+    return view.render('entry.create', {
+      post: $post.toJSON()
+    })
   }
 
-  async store({ request, response, view }) {
+  async store({ request, response, view, params, session }) {
+    console.log('entry:store >> ', params.id)
 
+    const $entry = new Entry()
+
+    const $post = await use('App/Models/Post').find(params.id)
+    await $post.entries().save($entry)
+    console.log('jb :: ', $post)
+
+    session.flash({ notification: 'Your entry has been created'})
+
+    return response.redirect(`/posts/${params.id}/edit`)
   }
 
   // delete

@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-12">
         {{-- <form action="{{ route('posts.update', {id:post.id}, {query: { _method: 'PUT'}}) }}" method="POST"> --}}  {{-- DEVNOTE: this breaks; i reckon it's being provoked by the presence of double closing curlys and there's a bug/conlfict with the edge interpolation syntax --}}
-        <form action="{{ route('posts.update', {id:post.id}) }}?_method=PUT" method="POST">
+        <form action="{{ route('posts.update', { id: post.id }) }}?_method=PUT" method="POST">
           {{ csrfField() }}
 
           <div class="form-group">
@@ -89,7 +89,7 @@
             <legend>Entry {{ $loop.index + 1 }} <small style="color: gray;">#{{ entry.id }}</small></legend>
             <!--{{-- <p>Iteration = {{ $loop.index }} ID = {{ entry.id }}</p> --}}-->
 
-            <form id="entry-{{ entry.id }}" action="{{ route('entry.destroy', { id: entry.id}) }}?_method=DELETE" method="POST">
+            <form id="entry-{{ entry.id }}" action="{{ route('entry.destroy', { id: entry.id }) }}?_method=DELETE" method="POST">
               {{ csrfField() }}
 
               <!-- DEVNOTE: temp hack to submit the nested webform -->
@@ -128,7 +128,7 @@
 
             <div style="display: flex; flex-wrap: nowrap;">
               <p>
-                <a class="ui__btn float-right" href="{{ route('resource.create') }}">
+                <a class="ui__btn float-right" href="{{ route('resource.create', { pid: post.id, eid: entry.id }) }}">
                   <span>Add Image</span>
                   <svg class="ui__icon icon__svg">
                     <use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use>
@@ -171,7 +171,7 @@
           @endeach
 
           <p>
-            <a class="ui__btn float-right" href="{{ route('entry.create') }}">
+            <a class="ui__btn float-right" href="{{ route('entry.create', { id: post.id }) }}">
               <span>Add Entry</span>
               <svg class="ui__icon icon__svg">
                 <use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use>
