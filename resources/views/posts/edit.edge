@@ -57,21 +57,48 @@
             <input type="file" name="cover_image" />
           </div>
 
-          <p><button class="ui__btn">Add Entry</button></p>
+          <div class="form-group">
+            <p class="form__label">Tags</p>
+            <div style="column-count: 4; padding: 24px 0;">
+            @each(tag in tags)
+            {{-- <pre>{{ json(tags) }}</pre> --}}
 
-          <pre style="font-size: 8px;">
+            <p class="form__field" style="margin: 0;">
+              <label class="form__control">
+                <input type="checkbox" name="tags[]" value="{{ tag.id }}" {{ post.tags.includes(tag.id) ? 'checked' : '' }} />
+
+                {{--
+                <span>post_id={{ post.id }}</span>
+                <span>tag={{ tag.id }}</span>
+                <span>{{ postTagsId.includes(tag.id) }}</span>
+                --}}
+
+                <span>{{ tag.name }}</span>
+              </label>
+            </p>
+            @endeach
+            </div>
+          </div>
+
+          <!--{{-- <pre style="font-size: 8px;">
             {{ toJSON(post.entries) }}
-          </pre>
+          </pre> --}}-->
 
           @each(entry in post.entries)
-          <fieldset style="background-color: silver; padding: 6px 18px;">
-            <p>Entry ID</p>
-            <p>Iteration = {{ $loop.index }} ID = {{ entry.id }}</p>
+          <fieldset style="background-color: #FFF; padding: 6px 18px;">
+            <legend>Entry {{ $loop.index + 1 }}</legend>
+            <!--{{-- <p>Iteration = {{ $loop.index }} ID = {{ entry.id }}</p> --}}-->
 
-            <!--{{--
-            <legend>{{ entry.title }}</legend>
-            <p><button class="ui__btn">Remove Entry</button></p>
-            --}}-->
+            <p>
+              <button class="ui__btn float-right">
+                <span>Remove Entry</span>
+                <svg class="ui__icon icon__svg">
+                  <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
+                </svg>
+              </button>
+            </p>
+
+            <br>
 
             <p class="form__field">
               <label class="form__control">
@@ -97,48 +124,46 @@
             <p>Price: £{{ entry.value }}</p>
             --}}-->
 
-            <p>Resource ID:</p>
-            @each(resource in entry.resources)
-            <!-- Undocumented feature! https://github.com/edge-js/edge/issues/9; you can use $parent to access parent scope in nested loops. Assumed knowledge/Poor documentation strikes again! -->
-            <p>Iteration = {{ $parent.$loop.index }}:{{ $loop.index }} ID = {{ $parent.entry.id }}:{{ resource.id }}</p>
-            <div>
-                <hr>
-                <!--{{--
-                <p>Filename: {{ resource.filename }}</p>
-                --}}-->
+            <div style="display: flex; flex-wrap: nowrap;">
+              @each(resource in entry.resources)
+              <!-- Undocumented feature! https://github.com/edge-js/edge/issues/9; you can use $parent to access parent scope in nested loops. Assumed knowledge/Poor documentation strikes again! -->
+              <!--{{-- <p>Iteration = {{ $parent.$loop.index }}:{{ $loop.index }} ID = {{ $parent.entry.id }}:{{ resource.id }}</p> --}}-->
 
-                <p class="form__field">
-                  <label class="form__control">
-                    <span class="form__label">Caption</span>
-                    <input type="text" name="entry[{{ $parent.entry.id }}][resource][{{ resource.id }}]" value="{{ resource.description }}" />
-                  </label>
-                </p>
+              <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
+                  <h3>Image {{ $loop.index + 1}}</h3>
+
+                <button class="ui__btn float-right">
+                  <svg class="ui__icon icon__svg">
+                    <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
+                  </svg>
+                </button>
+
+                  <br>
+
+                  <p>Filename: {{ resource.filename }}</p>
+
+                  <p class="form__field">
+                    <label class="form__control">
+                      <span class="form__label">Description</span>
+                      <input type="text" name="entry[{{ $parent.entry.id }}][resource][{{ resource.id }}]" value="{{ resource.description }}" />
+                    </label>
+                  </p>
+              </div>
+              @endeach
             </div>
-            @endeach
           </fieldset>
           @endeach
 
-          @each(tag in tags)
-          {{-- <pre>{{ json(tags) }}</pre> --}}
+          <p>
+            <button class="ui__btn float-right">
+              <span>Add Entry</span>
+              <svg class="ui__icon icon__svg">
+                <use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use>
+              </svg>
+            </button>
+          </p>
 
-          <div class="checkbox">
-            <p class="form__field">
-              <label class="form__control">
-                <input type="checkbox" name="tags[]" value="{{ tag.id }}" {{ post.tags.includes(tag.id) ? 'checked' : '' }} />
-
-                {{--
-                <span>post_id={{ post.id }}</span>
-                <span>tag={{ tag.id }}</span>
-                <span>{{ postTagsId.includes(tag.id) }}</span>
-                --}}
-
-                <span>{{ tag.name }}</span>
-              </label>
-            </p>
-          </div>
-          @endeach
-
-          <p class="form__field">
+          <p class="form__field" style="clear: both;">
             <!-- used to pass the id to the controller but unneccesary as we pass and can grab from uri params -->
             <!-- <input type="hidden" name="id" value={{ post.id }} /> -->
             <button type="submit" class="ui__btn btn__primary">Submit</button>

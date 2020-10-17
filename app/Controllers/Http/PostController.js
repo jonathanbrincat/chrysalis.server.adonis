@@ -121,7 +121,7 @@ class PostController {
 
     session.flash({ notification: 'Your post has been created'})
 
-    return response.redirect('dashboard')
+    return response.redirect('/dashboard')
   }
 
   async edit({ request, response, view, params }) {
@@ -142,7 +142,7 @@ class PostController {
   }
 
   async update({ request, response, view, session, params }) {
-    console.log('jb :: ', request.all() )
+    // console.log('jb :: ', request.all() )
 
     // DEVNOTE: temp disable validation
     // const validation = await validate(request.all(), {
@@ -176,7 +176,7 @@ class PostController {
 
     //
     const { entry } = request.only(['entry'])
-    console.log('hello >> ', entry)
+    // console.log('request >> ', entry)
 
     // const $bar = await $post.entries().where('id', 50).fetch() //fetch will return in an array(assuming a collection of data) so can access the lucid object itself via .row[]
     // console.log('before >> ', $bar.rows[0].title)
@@ -205,39 +205,23 @@ class PostController {
     // console.log(request.input('entry_resource'))
 
     for(const key in entry) {
-      console.log('entry_id = ', parseInt(key), entry[parseInt(key)])
-      console.log('jb >> ', entry[parseInt(key)].title)
+      // console.log('entry_id = ', parseInt(key), '::', entry[parseInt(key)])
+      // console.log('resource >> ', entry[parseInt(key)].resource)
 
-      await $post.entries().where('id', key).update({ title: entry[parseInt(key)].title })
-    }
+      await $post.entries().where('id', parseInt(key)).update({ title: entry[parseInt(key)].title })
 
-    return
+      const $entry = await $post.entries().where('id', key).first()
 
+      for(const hey in entry[parseInt(key)].resource) {
+        // console.log('resource_id = ', parseInt(hey), '::', entry[parseInt(key)].resource[hey])
 
-    for(const [i, entry] of (request.all().entry_title).entries() ) {
-      // console.log(i, " :: ", entry )
-
-      // let foo = new Entry()
-      // foo.title = entry;
-
-      // await $post.entries().dissociate()
-      // let $entry = await $post.entries().associate(foo)
-
-      for(const [j,  resource] of request.input('entry_resource')[i].entries() ) {
-        // console.log(j, " :: ", resource )
-
-        /*await $entry.resources().create({
-          'filename': `id/10${j}`,
-          'description': resource,
-          'contenttype': 'jpg'
-        })*/
+        await $entry.resources().where('id', parseInt(hey)).update({ description: entry[parseInt(key)].resource[hey] })
       }
     }
-    return
 
     session.flash({ notification: 'Your post has been updated'})
 
-    return response.redirect('dashboard')
+    return response.redirect('/dashboard')
   }
 
   async destroy({ request, response, view, session, params }) {
