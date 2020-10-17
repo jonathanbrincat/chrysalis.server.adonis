@@ -156,6 +156,7 @@ class PostController {
     // }
 
     const { title, body } = request.all();
+    // const users = request.collect(['username', 'age']) //https://adonisjs.com/docs/4.1/request
 
     const $post = await Post.find(params.id)
 

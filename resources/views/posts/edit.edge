@@ -86,7 +86,7 @@
 
           @each(entry in post.entries)
           <fieldset style="background-color: #FFF; padding: 6px 18px;">
-            <legend>Entry {{ $loop.index + 1 }}</legend>
+            <legend>Entry {{ $loop.index + 1 }} <small style="color: gray;">#{{ entry.id }}</small></legend>
             <!--{{-- <p>Iteration = {{ $loop.index }} ID = {{ entry.id }}</p> --}}-->
 
             <form id="entry-{{ entry.id }}" action="{{ route('entry.destroy', { id: entry.id}) }}?_method=DELETE" method="POST">
@@ -141,7 +141,7 @@
               <!--{{-- <p>Iteration = {{ $parent.$loop.index }}:{{ $loop.index }} ID = {{ $parent.entry.id }}:{{ resource.id }}</p> --}}-->
 
               <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
-                  <h3>Image {{ $loop.index + 1}}</h3>
+                  <h3>Image {{ $loop.index + 1}} <small style="color: gray;">#{{ resource.id }}</small></h3>
 
                   <form id="resource-{{ resource.id }}" action="{{ route('resource.destroy', { id: resource.id }) }}?_method=DELETE" method="POST">
                     {{ csrfField() }}

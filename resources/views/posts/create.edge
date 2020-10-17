@@ -75,17 +75,17 @@
           <fieldset style="background-color: #FFF; padding: 6px 18px;">
             <legend>Entry 1</legend>
 
-            <form id="entry-1" action="{{ route('entry.destroy', { id: 1 }) }}?_method=DELETE" method="POST">
-              {{ csrfField() }}
+            <!--{{-- <form id="entry-1" action="{{ route('entry.destroy', { id: 1 }) }}?_method=DELETE" method="POST"> --}}-->
+              <!--{{-- {{ csrfField() }} --}}-->
 
               <!-- DEVNOTE: temp hack to submit the nested webform -->
-              <a class="ui__btn" href="javascript:document.getElementById('entry-1').submit()">
-                <span>Remove Entry</span>
+              <a class="ui__btn" href="javascript:fetch('{{ route('entry.destroy', { id: 1 }) }}?_method=DELETE', {method: 'POST'}); return false">
+                <span>Remove Entry 1</span>
                 <svg class="ui__icon icon__svg">
                   <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                 </svg>
               </a>
-            </form>
+            <!--{{-- </form> --}}-->
 
             <br>
 
@@ -120,7 +120,7 @@
                   {{ csrfField() }}
 
                   <!-- DEVNOTE: temp hack to submit the nested webform -->
-                  <a class="ui__btn" href="javascript:document.getElementById('entry-1-resource-1').submit()">
+                  <a class="ui__btn" href="javascript:document.getElementById('entry-1-resource-1').submit(); return false">
                     <svg class="ui__icon icon__svg">
                       <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                     </svg>
@@ -140,16 +140,17 @@
               <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
                 <h3>Image 2</h3>
 
-                <form id="entry-1-resource-2" action="{{ route('resource.destroy', { id: 2 }) }}?_method=DELETE" method="POST">
-                  {{ csrfField() }}
+                <!--{{-- <form id="entry-1-resource-2" action="{{ route('resource.destroy', { id: 2 }) }}?_method=DELETE" method="POST"> --}}-->
+                  <!--{{-- {{ csrfField() }} --}}-->
 
                   <!-- DEVNOTE: temp hack to submit the nested webform -->
-                  <a class="ui__btn" href="javascript:document.getElementById('entry-1-resource-2').submit()">
+                  <!--{{-- <a class="ui__btn" href="javascript:document.getElementById('entry-1-resource-2').submit()"> --}}-->
+                  <a class="ui__btn" href="javascript:fetch('{{ route('resource.destroy', { id: 2 }) }}?_method=DELETE', {method: 'POST'}); return false">
                     <svg class="ui__icon icon__svg">
                       <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                     </svg>
                   </a>
-                </form>
+                <!--{{-- </form> --}}-->
 
                 <br>
 
@@ -171,7 +172,7 @@
 
               <!-- DEVNOTE: temp hack to submit the nested webform -->
               <a class="ui__btn" href="javascript:document.getElementById('entry-2').submit()">
-                <span>Remove Entry bar</span>
+                <span>Remove Entry 2</span>
                 <svg class="ui__icon icon__svg">
                   <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                 </svg>
@@ -233,17 +234,18 @@
           <fieldset style="background-color: #FFF; padding: 6px 18px;">
             <legend>Entry 3</legend>
 
-            <form id="entry-3" action="{{ route('entry.destroy', { id: 3 }) }}?_method=DELETE" method="POST">
-              {{ csrfField() }}
+            <!--{{-- <form id="entry-3" action="{{ route('entry.destroy', { id: 3 }) }}?_method=DELETE" method="POST"> --}}-->
+              <!--{{-- {{ csrfField() }} --}}-->
 
               <!-- DEVNOTE: temp hack to submit the nested webform -->
-              <a class="ui__btn" href="javascript:document.getElementById('entry-3').submit()">
-                <span>Remove Entry</span>
+              <!--{{-- <a class="ui__btn" href="javascript:document.getElementById('entry-3').submit()"> --}}-->
+              <a class="ui__btn" href="javascript:fetch('{{ route('entry.destroy', { id: 3 }) }}?_method=DELETE', {method: 'POST'}); return false">
+                <span>Remove Entry 3</span>
                 <svg class="ui__icon icon__svg">
                   <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                 </svg>
               </a>
-            </form>
+            <!--{{-- </form> --}}-->
 
             <br>
 
@@ -298,16 +300,17 @@
               <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
                 <h3>Image 2</h3>
 
-                <form id="entry-3-resource-2" action="{{ route('resource.destroy', { id: 5 }) }}?_method=DELETE" method="POST">
-                  {{ csrfField() }}
+                <!--{{-- <form id="entry-3-resource-2" action="{{ route('resource.destroy', { id: 5 }) }}?_method=DELETE" method="POST"> --}}-->
+                  <!--{{-- {{ csrfField() }} --}}-->
 
                   <!-- DEVNOTE: temp hack to submit the nested webform -->
-                  <a class="ui__btn" href="javascript:document.getElementById('entry-3-resource-2').submit()">
+                  <!--{{-- <a class="ui__btn" href="javascript:document.getElementById('entry-3-resource-2').submit()"> --}}-->
+                  <a class="ui__btn" href="javascript:fetch('{{ route('resource.destroy', { id: 2 }) }}?_method=DELETE', {method: 'POST'}); return false">
                     <svg class="ui__icon icon__svg">
                       <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                     </svg>
                   </a>
-                </form>
+                <!--{{-- </form> --}}-->
 
                 <br>
 
