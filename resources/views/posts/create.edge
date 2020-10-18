@@ -21,7 +21,7 @@
 
     <div class="row">
       <div class="col-12">
-        <form action="{{ route('posts.store') }}" method="POST">
+        <form id="create-post" action="{{ route('posts.store') }}" method="POST">
           {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
 
           <div class="form-group">
@@ -72,107 +72,15 @@
             </div>
           </div>
 
+          <!--{{--
           <fieldset style="background-color: #FFF; padding: 6px 18px;">
             <legend>Entry 1</legend>
 
-            <!--{{-- <form id="entry-1" action="{{ route('entry.destroy', { id: 1 }) }}?_method=DELETE" method="POST"> --}}-->
-              <!--{{-- {{ csrfField() }} --}}-->
-
-              <!-- DEVNOTE: temp hack to submit the nested webform -->
-              <a class="ui__btn" href="javascript:fetch('{{ route('entry.destroy', { id: 1 }) }}?_method=DELETE', {method: 'POST'}); return false">
-                <span>Remove Entry 1</span>
-                <svg class="ui__icon icon__svg">
-                  <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
-                </svg>
-              </a>
-            <!--{{-- </form> --}}-->
-
-            <br>
-
-            <p class="form__field">
-              <label class="form__control">
-                <span class="form__label">Title</span>
-                <input type="text" name="entry_title[]" />
-              </label>
-            </p>
-
-            <p class="form__field">
-              <label class="form__control">
-                <span class="form__label">Body</span>
-                <input type="text" name="entry_body[]" />
-              </label>
-            </p>
-
-            <div style="display: flex; flex-wrap: nowrap;">
-              <p>
-                <a class="ui__btn float-right" href="{{ route('resource.create') }}">
-                  <span>Add Image</span>
-                  <svg class="ui__icon icon__svg">
-                    <use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use>
-                  </svg>
-                </a>
-              </p>
-
-              <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
-                <h3>Image 1</h3>
-
-                <form id="entry-1-resource-1" action="{{ route('resource.destroy', { id: 1 }) }}?_method=DELETE" method="POST">
-                  {{ csrfField() }}
-
-                  <!-- DEVNOTE: temp hack to submit the nested webform -->
-                  <a class="ui__btn" href="javascript:document.getElementById('entry-1-resource-1').submit(); return false">
-                    <svg class="ui__icon icon__svg">
-                      <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
-                    </svg>
-                  </a>
-                </form>
-
-                <br>
-
-                <p class="form__field">
-                  <label class="form__control">
-                    <span class="form__label">Description</span>
-                    <input type="text" name="entry_image[0][]" />
-                  </label>
-                </p>
-              </div>
-
-              <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
-                <h3>Image 2</h3>
-
-                <!--{{-- <form id="entry-1-resource-2" action="{{ route('resource.destroy', { id: 2 }) }}?_method=DELETE" method="POST"> --}}-->
-                  <!--{{-- {{ csrfField() }} --}}-->
-
-                  <!-- DEVNOTE: temp hack to submit the nested webform -->
-                  <!--{{-- <a class="ui__btn" href="javascript:document.getElementById('entry-1-resource-2').submit()"> --}}-->
-                  <a class="ui__btn" href="javascript:fetch('{{ route('resource.destroy', { id: 2 }) }}?_method=DELETE', {method: 'POST'}); return false">
-                    <svg class="ui__icon icon__svg">
-                      <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
-                    </svg>
-                  </a>
-                <!--{{-- </form> --}}-->
-
-                <br>
-
-                <p class="form__field">
-                  <label class="form__control">
-                    <span class="form__label">Description</span>
-                    <input type="text" name="entry_image[0][]" />
-                  </label>
-                </p>
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset style="background-color: #FFF; padding: 6px 18px;">
-            <legend>Entry 2</legend>
-
-            <form id="entry-2" action="{{ route('entry.destroy', { id: 2 }) }}?_method=DELETE" method="POST">
+            <form id="entry-1" action="{{ route('entry.destroy', { id: 1 }) }}?_method=DELETE" method="POST">
               {{ csrfField() }}
 
-              <!-- DEVNOTE: temp hack to submit the nested webform -->
-              <a class="ui__btn" href="javascript:document.getElementById('entry-2').submit()">
-                <span>Remove Entry 2</span>
+              <a class="ui__btn" href="javascript:document.getElementById('entry-1').submit(); return false">
+                <span>Remove Entry 1</span>
                 <svg class="ui__icon icon__svg">
                   <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                 </svg>
@@ -197,7 +105,7 @@
 
             <div style="display: flex; flex-wrap: nowrap;">
               <p>
-                <a class="ui__btn float-right" href="{{ route('resource.create') }}">
+                <a class="ui__btn float-right" href="{{ route('resource.create', { id: 1, eid: 1}) }}">
                   <span>Add Image</span>
                   <svg class="ui__icon icon__svg">
                     <use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use>
@@ -208,11 +116,10 @@
               <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
                 <h3>Image 1</h3>
 
-                <form id="entry-2-resource-1" action="{{ route('resource.destroy', { id: 3 }) }}?_method=DELETE" method="POST">
+                <form id="entry-1-resource-1" action="{{ route('resource.destroy', { id: 1 }) }}?_method=DELETE" method="POST">
                   {{ csrfField() }}
 
-                  <!-- DEVNOTE: temp hack to submit the nested webform -->
-                  <a class="ui__btn" href="javascript:document.getElementById('entry-2-resource-1').submit()">
+                  <a class="ui__btn" href="javascript:document.getElementById('entry-1-resource-1').submit(); return false">
                     <svg class="ui__icon icon__svg">
                       <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                     </svg>
@@ -224,7 +131,7 @@
                 <p class="form__field">
                   <label class="form__control">
                     <span class="form__label">Description</span>
-                    <input type="text" name="entry_image[1][]" />
+                    <input type="text" name="entry_image[0][]" />
                   </label>
                 </p>
               </div>
@@ -232,20 +139,16 @@
           </fieldset>
 
           <fieldset style="background-color: #FFF; padding: 6px 18px;">
-            <legend>Entry 3</legend>
+            <legend>Entry 2</legend>
 
-            <!--{{-- <form id="entry-3" action="{{ route('entry.destroy', { id: 3 }) }}?_method=DELETE" method="POST"> --}}-->
-              <!--{{-- {{ csrfField() }} --}}-->
-
-              <!-- DEVNOTE: temp hack to submit the nested webform -->
-              <!--{{-- <a class="ui__btn" href="javascript:document.getElementById('entry-3').submit()"> --}}-->
-              <a class="ui__btn" href="javascript:fetch('{{ route('entry.destroy', { id: 3 }) }}?_method=DELETE', {method: 'POST'}); return false">
-                <span>Remove Entry 3</span>
+            <p>
+              <a class="ui__btn" href="javascript:fetch('{{ route('entry.destroy', { id: 2 }) }}?_method=DELETE', {method: 'POST'}); return false">
+                <span>Remove Entry 2</span>
                 <svg class="ui__icon icon__svg">
                   <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                 </svg>
               </a>
-            <!--{{-- </form> --}}-->
+            </p>
 
             <br>
 
@@ -265,7 +168,7 @@
 
             <div style="display: flex; flex-wrap: nowrap;">
               <p>
-                <a class="ui__btn float-right" href="{{ route('resource.create') }}">
+                <a class="ui__btn float-right" href="{{ route('resource.create', { id: 1, eid: 2}) }}">
                   <span>Add Image</span>
                   <svg class="ui__icon icon__svg">
                     <use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use>
@@ -276,16 +179,11 @@
               <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
                 <h3>Image 1</h3>
 
-                <form id="entry-3-resource-1" action="{{ route('resource.destroy', { id: 4 }) }}?_method=DELETE" method="POST">
-                  {{ csrfField() }}
-
-                  <!-- DEVNOTE: temp hack to submit the nested webform -->
-                  <a class="ui__btn" href="javascript:document.getElementById('entry-3-resource-1').submit()">
-                    <svg class="ui__icon icon__svg">
-                      <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
-                    </svg>
-                  </a>
-                </form>
+                <a class="ui__btn" href="javascript:fetch('{{ route('resource.destroy', { id: 3 }) }}?_method=DELETE', {method: 'POST'}); return false">
+                  <svg class="ui__icon icon__svg">
+                    <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
+                  </svg>
+                </a>
 
                 <br>
 
@@ -300,41 +198,11 @@
               <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
                 <h3>Image 2</h3>
 
-                <!--{{-- <form id="entry-3-resource-2" action="{{ route('resource.destroy', { id: 5 }) }}?_method=DELETE" method="POST"> --}}-->
-                  <!--{{-- {{ csrfField() }} --}}-->
-
-                  <!-- DEVNOTE: temp hack to submit the nested webform -->
-                  <!--{{-- <a class="ui__btn" href="javascript:document.getElementById('entry-3-resource-2').submit()"> --}}-->
-                  <a class="ui__btn" href="javascript:fetch('{{ route('resource.destroy', { id: 2 }) }}?_method=DELETE', {method: 'POST'}); return false">
-                    <svg class="ui__icon icon__svg">
-                      <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
-                    </svg>
-                  </a>
-                <!--{{-- </form> --}}-->
-
-                <br>
-
-                <p class="form__field">
-                  <label class="form__control">
-                    <span class="form__label">Description</span>
-                    <input type="text" name="entry_image[2][]" />
-                  </label>
-                </p>
-              </div>
-
-              <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
-                <h3>Image 3</h3>
-
-                <form id="entry-3-resource-3" action="{{ route('resource.destroy', { id: 6 }) }}?_method=DELETE" method="POST">
-                  {{ csrfField() }}
-
-                  <!-- DEVNOTE: temp hack to submit the nested webform -->
-                  <a class="ui__btn" href="javascript:document.getElementById('entry-3-resource-3').submit()">
-                    <svg class="ui__icon icon__svg">
-                      <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
-                    </svg>
-                  </a>
-                </form>
+                <a class="ui__btn" href="javascript:fetch('{{ route('resource.destroy', { id: 4 }) }}', {method: 'DELETE'}); return false">
+                  <svg class="ui__icon icon__svg">
+                    <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
+                  </svg>
+                </a>
 
                 <br>
 
@@ -347,10 +215,24 @@
               </div>
             </div>
           </fieldset>
+          --}}-->
 
+          <!-- DEV: problem there is no post id as this post has not be persisted to the database yet!! -->
+          <!-- the only way to process this without saving to the DB is with javascript! -->
+          <!-- any operation will hard refresh the browser so even if you could persist in memory it would get destroyed and there would be no data to parse and hydrate the UI -->
+          <!-- just use Vue -->
           <p>
             <a class="ui__btn float-right" href="{{ route('entry.create', { id: 1 }) }}">
               <span>Add Entry</span>
+              <svg class="ui__icon icon__svg">
+                <use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use>
+              </svg>
+            </a>
+          </p>
+
+          <p>
+            <a class="ui__btn float-right" href="javascript:void(0)" onclick="addEntryClickHandler(event, this, {{ toJSON(tags) }})">
+              <span>Add Entry Foobar</span>
               <svg class="ui__icon icon__svg">
                 <use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use>
               </svg>
@@ -364,4 +246,104 @@
       </div>
     </div>
   </div>
+
+  <script>
+    const entries = [];
+
+    entries.forEach((entry, i) => {
+      console.log(i, ' >> ', entry);
+
+      //create markup
+    });
+
+    const $form = document.getElementById('create-post');
+
+    function addEntryClickHandler(event, target, tags) {
+      console.log('shit happens', event, target, tags);
+
+      const entry = {
+        id: 'boo',
+        resources: []
+      };
+
+      const $fieldset = document.createElement('fieldset');
+      const $legend = document.createElement('legend');
+      const $p1 = document.createElement('p');
+      const $a1 = document.createElement('a');
+      const $resources = document.createElement('div');
+
+      $legend.innerHTML = 'Entry ' + (entries.length + 1);
+      $fieldset.appendChild($legend);
+
+      $a1.addEventListener('click', removeEntryClickHandler);
+      $a1.className = 'ui__btn'
+      $a1.href = 'javascript:void(0)'
+      $a1.innerHTML = '<span>Remove Entry</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use></svg>'
+      $p1.appendChild($a1);
+      $fieldset.appendChild($p1);
+
+      const $p2 = document.createElement('p');
+      const $a2 = document.createElement('a');
+
+      $a2.addEventListener('click', (event) => addResourceClickHandler(event, $resources, entry));
+      $a2.className = 'ui__btn float-right'
+      $a2.href = 'javascript:void(0)'
+      $a2.innerHTML = '<span>Add Image</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use></svg>';
+      $p2.appendChild($a2);
+      $resources.appendChild($p2);
+
+      $resources.id = 'resource-' + (entries.length + 1);
+      $resources.style.display = 'flex';
+      $resources.style.flexWrap = 'nowrap';
+      $fieldset.appendChild($resources);
+
+      $form.appendChild($fieldset);
+
+      entries.push(entry);
+
+      console.log(entries)
+
+      return false;
+    }
+
+    function removeEntryClickHandler() {
+      alert('hi');
+    }
+
+    function addResourceClickHandler(event, target, entry) {
+      console.log('addResourceClickHandler >> ', target, entry);
+
+      const resource = {
+        id: 'boo-resource'
+      };
+
+      const $resource = document.createElement('div');
+      $resource.style.backgroundColor = 'whitesmoke';
+      $resource.style.padding = '6px 18px';
+      $resource.style.margin = '12px';
+      $resource.style.width = '25%';
+      target.appendChild($resource);
+
+      const $h3 = document.createElement('h3');
+      $h3.innerHTML = 'Image' + (entry.resources.length + 1);;
+      $resource.appendChild($h3);
+
+      const $p1 = document.createElement('p');
+      const $a1 = document.createElement('a');
+      $a1.addEventListener('click', removeResourceClickHandler);
+      $a1.className = 'ui__btn'
+      $a1.href = 'javascript:void(0)'
+      $a1.innerHTML = '<svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use></svg>'
+      $p1.appendChild($a1);
+      $resource.appendChild($p1);
+
+      entry.resources.push(resource);
+
+      console.log(entries)
+    }
+
+    function removeResourceClickHandler() {
+
+    }
+  </script>
 @endsection

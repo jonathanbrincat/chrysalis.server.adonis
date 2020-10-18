@@ -39,11 +39,33 @@ Route.post('/posts/:id/saved', 'SavedController.store').as('saved.store')
 Route.delete('/posts/:id/saved', 'SavedController.destroy').as('saved.destroy')
 
 /*
+* Entry
+**/
+Route.group(() => {
+  // Route.get('create', 'EntryController.create').as('entry.create')
+  // Route.get('store', 'EntryController.store').as('entry.store')
+  Route.delete(':id', 'EntryController.destroy').as('entry.destroy')
+}).prefix('/entry/')
+/*Route.get('/posts/:id/entry/create', 'EntryController.create').as('entry.create')
+Route.post('/posts/:id/entry', 'EntryController.store').as('entry.store')*/
+
+/*
+* Resource
+**/
+Route.group(() => {
+  // Route.get('create', 'ResourceController.create').as('resource.create')
+  // Route.get('store', 'ResourceController.store').as('resource.store')
+  Route.delete(':id', 'ResourceController.destroy').as('resource.destroy')
+}).prefix('/resource/')
+/*Route.get('/posts/:id/entry/:eid/resource/create', 'ResourceController.create').as('resource.create')
+Route.post('/posts/:id/entry/:eid/resource', 'ResourceController.store').as('resource.store')*/
+
+/*
 * Post
 **/
-Route.resource('posts', 'PostController')
+/*Route.resource('posts', 'PostController')*/
 
-/*Route.group(() => {
+Route.group(() => {
   Route.get('', 'PostController.index').as('posts.index')
 
   Route.get('create', 'PostController.create').as('posts.create')
@@ -55,27 +77,13 @@ Route.resource('posts', 'PostController')
   Route.delete(':id', 'PostController.destroy').as('posts.destroy')
 
   Route.get(':id', 'PostController.show').as('posts.show')
-}).prefix('/posts/')*/
 
-/*
-* Entry
-**/
-Route.group(() => {
-  // Route.get('create', 'EntryController.create').as('entry.create')
-  Route.delete(':id', 'EntryController.destroy').as('entry.destroy')
-}).prefix('/entry/')
-Route.get('/posts/:id/entry/create', 'EntryController.create').as('entry.create')
-Route.post('/posts/:id/entry', 'EntryController.store').as('entry.store')
+  Route.get(':id/entry/:eid/resource/create', 'ResourceController.create').as('resource.create')
+  // Route.post(':id/entry/:eid/resource', 'ResourceController.store').as('resource.store')
 
-/*
-* Resource
-**/
-Route.group(() => {
-  // Route.get('create', 'ResourceController.create').as('resource.create')
-  Route.delete(':id', 'ResourceController.destroy').as('resource.destroy')
-}).prefix('/resource/')
-Route.get('/posts/:pid/entry/:eid/resource/create', 'ResourceController.create').as('resource.create')
-Route.post('/posts/:pid/entry/:eid/resource', 'ResourceController.store').as('resource.store')
+  Route.get(':id/entry/create', 'EntryController.create').as('entry.create')
+  // Route.post(':id/entry', 'EntryController.store').as('entry.store')
+}).prefix('/posts/')
 
 /*
 * Tags

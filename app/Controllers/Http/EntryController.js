@@ -3,9 +3,8 @@
 const Entry = use('App/Models/Entry')
 
 class EntryController {
-  // create
   async create({ request, response, view, params }) {
-    console.log('entry:create >> ', params.id)
+    // console.log('entry:create >> ', params.id)
 
     const $post = await use('App/Models/Post').find(params.id)
 
@@ -15,22 +14,20 @@ class EntryController {
   }
 
   async store({ request, response, view, params, session }) {
-    console.log('entry:store >> ', params.id)
+    // console.log('entry:store >> ', params.id)
 
     const $entry = new Entry()
 
     const $post = await use('App/Models/Post').find(params.id)
     await $post.entries().save($entry)
-    console.log('jb :: ', $post)
 
     session.flash({ notification: 'Your entry has been created'})
 
     return response.redirect(`/posts/${params.id}/edit`)
   }
 
-  // delete
   async destroy({ request, response, view, params, session }) {
-    // return 'entry destroy ' + params.id
+    // console.log('entry:destroy >> ', params.id)
 
     const $entry = await Entry.find(params.id)
 

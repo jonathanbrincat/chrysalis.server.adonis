@@ -45,6 +45,10 @@ class User extends Model {
     return this.hasMany('App/Models/Post')
   }
 
+  draft() {
+    return this.hasOne('App/Models/Draft')
+  }
+
   // a user hasOne Profile
   profile() {
     return this.hasOne('App/Models/Profile')

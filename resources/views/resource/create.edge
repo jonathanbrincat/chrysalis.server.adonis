@@ -21,11 +21,11 @@
 
     <div class="row">
       <div class="col-12">
-        <form action="{{ route('resource.store', { pid: post.id, eid: entry.id }) }}" method="POST">
+        <form action="{{ route('resource.store', { id: post.id, eid: entry.id }) }}" method="POST">
           {{ csrfField() }}
 
           <p class="form__field" style="clear: both;">
-            <button type="submit" class="ui__btn btn__primary">Submit</button>
+            <button type="submit" class="ui__btn btn__primary">Save</button>
           </p>
         </form>
       </div>

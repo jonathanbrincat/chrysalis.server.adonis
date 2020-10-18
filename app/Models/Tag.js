@@ -11,6 +11,10 @@ class Tag extends Model {
   posts() {
     return this.belongsToMany('App/Models/Post').pivotTable('pivot_post_tag').withTimestamps()
   }
+
+  drafts() {
+    return this.belongsToMany('App/Models/Drafts').pivotTable('pivot_post_tag').withTimestamps()
+  }
 }
 
 module.exports = Tag

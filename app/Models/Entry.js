@@ -4,6 +4,10 @@
 const Model = use('Model')
 
 class Entry extends Model {
+  draft() {
+    return this.belongsTo('App/Models/Draft')
+  }
+
   post() {
     return this.belongsTo('App/Models/Post')
   }

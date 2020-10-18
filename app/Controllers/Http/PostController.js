@@ -112,13 +112,6 @@ class PostController {
       }
     }
 
-    //saveMany
-    //createMany
-
-    // for(const [i, resource] of (request.all().entry_image).entries() ) {
-    //   console.log(i, " :: ", resource )
-    // }
-
     session.flash({ notification: 'Your post has been created'})
 
     return response.redirect('/dashboard')
