@@ -43,7 +43,7 @@ Route.delete('/posts/:id/saved', 'SavedController.destroy').as('saved.destroy')
 **/
 Route.group(() => {
   // Route.get('create', 'EntryController.create').as('entry.create')
-  // Route.get('store', 'EntryController.store').as('entry.store')
+  // Route.post('store', 'EntryController.store').as('entry.store')
   Route.delete(':id', 'EntryController.destroy').as('entry.destroy')
 }).prefix('/entry/')
 /*Route.get('/posts/:id/entry/create', 'EntryController.create').as('entry.create')
@@ -54,11 +54,20 @@ Route.post('/posts/:id/entry', 'EntryController.store').as('entry.store')*/
 **/
 Route.group(() => {
   // Route.get('create', 'ResourceController.create').as('resource.create')
-  // Route.get('store', 'ResourceController.store').as('resource.store')
+  // Route.post('store', 'ResourceController.store').as('resource.store')
   Route.delete(':id', 'ResourceController.destroy').as('resource.destroy')
 }).prefix('/resource/')
 /*Route.get('/posts/:id/entry/:eid/resource/create', 'ResourceController.create').as('resource.create')
 Route.post('/posts/:id/entry/:eid/resource', 'ResourceController.store').as('resource.store')*/
+
+/*
+* Draft
+**/
+Route.group(() => {
+  Route.get('create', 'DraftController.create').as('draft.create')
+  Route.post('store', 'DraftController.store').as('draft.store')
+  // Route.delete(':id', 'DraftController.destroy').as('draft.destroy')
+}).prefix('/draft/')
 
 /*
 * Post
@@ -79,10 +88,10 @@ Route.group(() => {
   Route.get(':id', 'PostController.show').as('posts.show')
 
   Route.get(':id/entry/:eid/resource/create', 'ResourceController.create').as('resource.create')
-  // Route.post(':id/entry/:eid/resource', 'ResourceController.store').as('resource.store')
+  Route.post(':id/entry/:eid/resource', 'ResourceController.store').as('resource.store')
 
   Route.get(':id/entry/create', 'EntryController.create').as('entry.create')
-  // Route.post(':id/entry', 'EntryController.store').as('entry.store')
+  Route.post(':id/entry', 'EntryController.store').as('entry.store')
 }).prefix('/posts/')
 
 /*

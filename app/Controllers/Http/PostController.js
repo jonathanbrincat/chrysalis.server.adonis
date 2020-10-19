@@ -61,6 +61,7 @@ class PostController {
   }
 
   async store({ request, response, view, session, auth }) {
+    // return 'post store'
     // console.log('jb :: ', request.all() )
 
     if(!auth.user) {

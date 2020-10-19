@@ -21,7 +21,9 @@
 
     <div class="row">
       <div class="col-12">
-        <form action="{{ route('entry.store', { id: post.id }) }}" method="POST">
+        <p>isDraft? {{ isDraft }}</p>
+
+        <form action="{{ route('entry.store', { id: post.id }) }}?isDraft={{ isDraft }}" method="POST">
           {{ csrfField() }}
 
           <p class="form__field" style="clear: both;">

@@ -4,26 +4,41 @@ const Entry = use('App/Models/Entry')
 
 class EntryController {
   async create({ request, response, view, params }) {
-    // console.log('entry:create >> ', params.id)
+    console.log('entry:create >> ', request.input('isDraft'), " :: ", params.id)
 
-    const $post = await use('App/Models/Post').find(params.id)
+    let $post;
+    if(request.input('isDraft') === 'true') {
+      $post = await use('App/Models/Draft').find(params.id)
+    } else {
+      $post = await use('App/Models/Post').find(params.id)
+    }
 
     return view.render('entry.create', {
-      post: $post.toJSON()
+      post: $post.toJSON(),
+      isDraft: (request.input('isDraft') === 'true')
     })
   }
 
   async store({ request, response, view, params, session }) {
-    // console.log('entry:store >> ', params.id)
+    console.log('entry:store >> ', request.input('isDraft'), " :: ", params.id)
 
     const $entry = new Entry()
 
-    const $post = await use('App/Models/Post').find(params.id)
+    let $post;
+    if(request.input('isDraft') === 'true') {
+      $post = await use('App/Models/Draft').find(params.id)
+    } else {
+      $post = await use('App/Models/Post').find(params.id)
+    }
     await $post.entries().save($entry)
 
     session.flash({ notification: 'Your entry has been created'})
 
-    return response.redirect(`/posts/${params.id}/edit`)
+    if(request.input('isDraft') === 'true') {
+      return response.redirect(`/draft/create`)
+    } else {
+      return response.redirect(`/posts/${params.id}/edit`)
+    }
   }
 
   async destroy({ request, response, view, params, session }) {

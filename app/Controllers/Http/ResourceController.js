@@ -7,11 +7,18 @@ class ResourceController {
     // console.log('resource:create >> ', params.id, ' :: ', params.eid)
 
     const $entry = await use('App/Models/Entry').find(params.eid)
-    const $post = await $entry.post().fetch()
+
+    let $post;
+    if(request.input('isDraft') === 'true') {
+      $post = await $entry.draft().fetch()
+    } else {
+      $post = await $entry.post().fetch()
+    }
 
     return view.render('resource.create', {
       post: $post.toJSON(),
-      entry: $entry.toJSON()
+      entry: $entry.toJSON(),
+      isDraft: (request.input('isDraft') === 'true')
     })
   }
 
@@ -25,7 +32,11 @@ class ResourceController {
 
     session.flash({ notification: 'Your resource has been created'})
 
-    return response.redirect(`/posts/${params.id}/edit`)
+    if(request.input('isDraft') === 'true') {
+      return response.redirect(`/draft/create`)
+    } else {
+      return response.redirect(`/posts/${params.id}/edit`)
+    }
   }
 
   async destroy({ request, response, view, params, session }) {
