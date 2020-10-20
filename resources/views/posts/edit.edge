@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-12">
         {{-- <form action="{{ route('posts.update', {id:post.id}, {query: { _method: 'PUT'}}) }}" method="POST"> --}}  {{-- DEVNOTE: this breaks; i reckon it's being provoked by the presence of double closing curlys and there's a bug/conlfict with the edge interpolation syntax --}}
-        <form action="{{ route('posts.update', { id: post.id }) }}?_method=PUT" method="POST">
+        <form id="edit-post" action="{{ route('posts.update', { id: post.id }) }}?_method=PUT" method="POST">
           {{ csrfField() }}
 
           <div class="form-group">
@@ -89,19 +89,14 @@
             <legend>Entry {{ $loop.index + 1 }} <small style="color: gray;">#{{ entry.id }}</small></legend>
             <!--{{-- <p>Iteration = {{ $loop.index }} ID = {{ entry.id }}</p> --}}-->
 
-            <!--{{-- DEVNOTE: interfering with submit button --}-->
-            <!--{{--
-            <form id="entry-{{ entry.id }}" action="{{ route('entry.destroy', { id: entry.id }) }}?_method=DELETE" method="POST">
-              {{ csrfField() }}
-
-              <a class="ui__btn" href="javascript:document.getElementById('entry-{{ entry.id }}').submit()">
+            <p class="form__field">
+              <a class="ui__btn" href="#" onclick="deleteEntryHandler(event, '{{ route('entry.destroy', { id: entry.id }) }}?_method=DELETE', '{{ csrfToken }}')">
                 <span>Remove Entry</span>
                 <svg class="ui__icon icon__svg">
                   <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                 </svg>
               </a>
-            </form>
-            --}}-->
+            </p>
 
             <br>
 
@@ -145,18 +140,13 @@
               <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
                   <h3>Image {{ $loop.index + 1}} <small style="color: gray;">#{{ resource.id }}</small></h3>
 
-                  <!--{{-- DEVNOTE: interfering with submit button --}-->
-                  <!--{{--
-                  <form id="resource-{{ resource.id }}" action="{{ route('resource.destroy', { id: resource.id }) }}?_method=DELETE" method="POST">
-                    {{ csrfField() }}
-
-                    <a class="ui__btn" href="javascript:document.getElementById('resource-{{ resource.id }}').submit()">
+                  <p class="form__field">
+                    <a class="ui__btn" href="" onclick="deleteResourceHandler(event, '{{ route('resource.destroy', { id: resource.id }) }}?_method=DELETE', '{{ csrfToken }}')">
                       <svg class="ui__icon icon__svg">
                         <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                       </svg>
                     </a>
-                  </form>
-                  --}}-->
+                  </p>
 
                   <br>
 
@@ -192,4 +182,36 @@
       </div>
     </div>
   </div>
+
+  <script>
+    async function deleteEntryHandler(event, url, csrf) {
+      event.preventDefault();
+
+      const $form = document.getElementById('edit-post');
+
+      await fetch(url, {
+        method: 'POST',
+        body: new FormData($form)
+      });
+
+      window.location.reload(false);
+
+      return false;
+    }
+
+    async function deleteResourceHandler(event, url, csrf) {
+      event.preventDefault();
+
+      const $form = document.getElementById('edit-post');
+
+      await fetch(url, {
+        method: 'POST',
+        body: new FormData($form)
+      });
+
+      window.location.reload(false);
+
+      return false;
+    }
+  </script>
 @endsection

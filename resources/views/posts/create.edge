@@ -118,7 +118,7 @@
                   <h3>Image {{ $loop.index + 1}} <small style="color: gray;">#{{ resource.id }}</small></h3>
 
                   <p class="form__field">
-                    <a class="ui__btn" href="javascript:fetch('{{ route('resource.destroy', { id: resource.id }) }}?_method=DELETE', { method: 'POST', headers: { 'x-xsrf-token': '{{ csrfToken }}'} })">
+                    <a class="ui__btn" href="" onclick="deleteResourceHandler(event, '{{ route('resource.destroy', { id: resource.id }) }}?_method=DELETE', '{{ csrfToken }}')">
                       <svg class="ui__icon icon__svg">
                         <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                       </svg>
@@ -171,33 +171,54 @@
   </div>
 
   <script>
-    // import cookies from 'browser-cookies';
-    const cookies = require('browser-cookies');
-
     async function deleteEntryHandler(event, url, csrf) {
       event.preventDefault();
 
-      // console.log('deleteEntryHandler ', url, csrf);
+      const $form = document.getElementById('create-post');
 
-      // const foo = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN')).split('=')[1];
-      const bar = cookies.get('XSRF-TOKEN')
+      console.log('deleteEntryHandler ', url, csrf, $form);
 
-      console.log('deleteEntryHandler ', url, bar);
+      const foo = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN')).split('=')[1];
 
-      await fetch('/entry/25?_method=DELETE', {
+      /*var xhr = new XMLHttpRequest();
+      xhr.onload = function(){
+         // console.log(xhr.responseText);
+         window.location.reload(false);
+      }
+      // xhr.open(form.method, form.getAttribute("action"));
+      xhr.open('POST', url);
+      // xhr.setRequestHeader('X-XSRF-TOKEN', foo);
+      // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.send(new FormData($form));*/
+
+      await fetch(url, {
         method: 'POST',
+        body: new FormData($form),
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'x-xsrf-token': bar
+          // 'Accept': 'application/json',
+          // 'Content-Type': 'application/json',
+          // 'X-XSRF-TOKEN': foo
         }
       });
+
+      window.location.reload(false);
 
       return false;
     }
 
-    function deleteResourceHandler() {
-      alert('deleteResourceHandler');
+    async function deleteResourceHandler(event, url, csrf) {
+      event.preventDefault();
+
+      const $form = document.getElementById('create-post');
+
+      await fetch(url, {
+        method: 'POST',
+        body: new FormData($form)
+      });
+
+      window.location.reload(false);
+
+      return false;
     }
   </script>
 @endsection
