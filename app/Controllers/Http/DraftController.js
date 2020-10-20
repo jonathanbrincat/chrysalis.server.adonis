@@ -36,14 +36,12 @@ class DraftController {
   }
 
   async store({ request, response, view, auth, session }) {
-
     const $foobar = await auth.user.draft().fetch()
     // const $foobar = await auth.user.posts().where('id', 4).first()
 
-    await $foobar.tags().attach(request.input('tags') === null ? [] : [6, 7, 8])
-
-    return $foobar.tags().fetch()
-
+    // await $foobar.tags().attach(request.input('tags') === null ? [] : [6, 7, 8])
+    await $foobar.tags().attach(request.input('tags') === null ? [] : request.input('tags'))
+    // return $foobar.tags().fetch()
 
     if(!auth.user) {
       return response.redirect('back')

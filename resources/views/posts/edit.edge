@@ -90,7 +90,7 @@
             <!--{{-- <p>Iteration = {{ $loop.index }} ID = {{ entry.id }}</p> --}}-->
 
             <p class="form__field">
-              <a class="ui__btn" href="#" onclick="deleteEntryHandler(event, '{{ route('entry.destroy', { id: entry.id }) }}?_method=DELETE', '{{ csrfToken }}')">
+              <a class="ui__btn" href="#" onclick="removeEntryHandler(event, '{{ route('entry.destroy', { id: entry.id }) }}?_method=DELETE', '{{ csrfToken }}')">
                 <span>Remove Entry</span>
                 <svg class="ui__icon icon__svg">
                   <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
@@ -125,7 +125,8 @@
 
             <div style="display: flex; flex-wrap: nowrap;">
               <p>
-                <a class="ui__btn float-right" href="{{ route('resource.create', { id: post.id, eid: entry.id }) }}?isDraft=false">
+                <!--{{-- <a class="ui__btn float-right" href="{{ route('resource.create', { id: post.id, eid: entry.id }) }}?isDraft=false"> --}}-->
+                <a class="ui__btn float-right" href="#" onclick="addResourceHandler(event, '{{ route('resource.store', { id: post.id, eid: entry.id }) }}?isDraft=false', '{{ csrfToken }}')">
                   <span>Add Image</span>
                   <svg class="ui__icon icon__svg">
                     <use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use>
@@ -141,7 +142,7 @@
                   <h3>Image {{ $loop.index + 1}} <small style="color: gray;">#{{ resource.id }}</small></h3>
 
                   <p class="form__field">
-                    <a class="ui__btn" href="" onclick="deleteResourceHandler(event, '{{ route('resource.destroy', { id: resource.id }) }}?_method=DELETE', '{{ csrfToken }}')">
+                    <a class="ui__btn" href="" onclick="removeResourceHandler(event, '{{ route('resource.destroy', { id: resource.id }) }}?_method=DELETE', '{{ csrfToken }}')">
                       <svg class="ui__icon icon__svg">
                         <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                       </svg>
@@ -165,7 +166,8 @@
           @endeach
 
           <p>
-            <a class="ui__btn float-right" href="{{ route('entry.create', { id: post.id }) }}?isDraft=false">
+            <!--{{-- <a class="ui__btn float-right" href="{{ route('entry.create', { id: post.id }) }}?isDraft=false"> --}}-->
+            <a class="ui__btn float-right" href="#" onclick="addEntryHandler(event, '{{ route('entry.store', { id: post.id }) }}?isDraft=false', '{{ csrfToken }}')">
               <span>Add Entry</span>
               <svg class="ui__icon icon__svg">
                 <use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use>
@@ -184,7 +186,7 @@
   </div>
 
   <script>
-    async function deleteEntryHandler(event, url, csrf) {
+    async function removeEntryHandler(event, url, csrf) {
       event.preventDefault();
 
       const $form = document.getElementById('edit-post');
@@ -199,7 +201,37 @@
       return false;
     }
 
-    async function deleteResourceHandler(event, url, csrf) {
+    async function removeResourceHandler(event, url, csrf) {
+      event.preventDefault();
+
+      const $form = document.getElementById('edit-post');
+
+      await fetch(url, {
+        method: 'POST',
+        body: new FormData($form)
+      });
+
+      window.location.reload(false);
+
+      return false;
+    }
+
+    async function addEntryHandler(event, url, csrf) {
+      event.preventDefault();
+
+      const $form = document.getElementById('edit-post');
+
+      await fetch(url, {
+        method: 'POST',
+        body: new FormData($form)
+      });
+
+      window.location.reload(false);
+
+      return false;
+    }
+
+    async function addResourceHandler(event, url, csrf) {
       event.preventDefault();
 
       const $form = document.getElementById('edit-post');
