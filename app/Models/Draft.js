@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class Draft extends Model {
   tags() {
-    return this.belongsToMany('App/Models/Tag').pivotTable('pivot_post_tag').withTimestamps()
+    return this.belongsToMany('App/Models/Tag', 'draft_id', 'tag_id').pivotTable('pivot_post_tag').withTimestamps()
   }
 
   user() {

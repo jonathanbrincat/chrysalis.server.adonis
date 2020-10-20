@@ -1,5 +1,14 @@
 'use strict'
 
+// BUG LIST
+// save button doesn't work - CAUSE = nested <form> interfering with submit button
+// publish button doesn't work - CAUSE = nested <form> interfering with submit button
+// tags don't work
+// remove entry on first instance doesn't work
+// missing clause - will break if no entries are made
+// missing clause - will break if no resources are made
+// potential issue with associative arrays if only a single instance exist the entry_id or resource_id is correctly assigned but does not reflect in the request at the server end(given index of 0)
+
 const Database = use('Database')
 
 const Post = use('App/Models/Post')
@@ -62,7 +71,7 @@ class PostController {
 
   async store({ request, response, view, session, auth }) {
     // return 'post store'
-    // console.log('jb :: ', request.all() )
+    console.log('jb :: ', request.all() )
 
     if(!auth.user) {
       return response.redirect('back')
@@ -94,22 +103,29 @@ class PostController {
     const $post = await auth.user.posts().create({title, body})
     await $post.tags().attach(request.input('tags') === null ? [] : request.input('tags'))  //DEVNOTE: you can't not attach tags until the post is persisted(saved) to the DB as the post ID needs to be generated for the pivot table
 
-    for(const [i, entry] of (request.all().entry_title).entries() ) {
+    // for(const [i, entry] of (request.all().entry_title).entries() ) {
       // console.log(i, " :: ", entry )
+    const { entry } = request.only(['entry'])
 
-      let $entry = await $post.entries().create({
+    for(const key in entry) {
+      console.log('entry_id = ', parseInt(key), '::', entry[parseInt(key)])
+      console.log('resource >> ', await entry[parseInt(key)].resource )
+
+      /*let $entry = await $post.entries().create({
         'title': entry, //request.input('entry_title'),
         'body': 'bar'
-      })
+      })*/
 
-      for(const [j,  resource] of request.input('entry_image')[i].entries() ) {
-        // console.log(j, " :: ", resource )
+      // for(const [j,  resource] of request.input('entry_image')[i].entries() ) {
+      //   console.log(j, " :: ", resource )
+      for(const hey in entry[parseInt(key)].resource) {
+        console.log('resource_id = ', parseInt(hey), '::', entry[parseInt(key)].resource[hey])
 
-        await $entry.resources().create({
+        /*await $entry.resources().create({
           'filename': `id/10${j}`,
           'description': resource,
           'contenttype': 'jpg'
-        })
+        })*/
       }
     }
 
@@ -119,14 +135,14 @@ class PostController {
   }
 
   async edit({ request, response, view, params }) {
-    const post = await Post
+    const $post = await Post
       .query()
       .where('id', params.id)
       .with('entries.resources')
       .with('tags')
       .first()
 
-    const payload = post.toJSON()
+    const payload = $post.toJSON()
     payload.tags = payload.tags.map( ({ id }) => id )
 
     return view.render('posts.edit', {
@@ -200,15 +216,15 @@ class PostController {
     // console.log(request.input('entry_resource'))
 
     for(const key in entry) {
-      // console.log('entry_id = ', parseInt(key), '::', entry[parseInt(key)])
-      // console.log('resource >> ', entry[parseInt(key)].resource)
+      console.log('entry_id = ', parseInt(key), '::', entry[parseInt(key)])
+      console.log('resource >> ', await entry[parseInt(key)].resource )
 
       await $post.entries().where('id', parseInt(key)).update({ title: entry[parseInt(key)].title })
 
       const $entry = await $post.entries().where('id', key).first()
 
       for(const hey in entry[parseInt(key)].resource) {
-        // console.log('resource_id = ', parseInt(hey), '::', entry[parseInt(key)].resource[hey])
+        console.log('resource_id = ', parseInt(hey), '::', entry[parseInt(key)].resource[hey])
 
         await $entry.resources().where('id', parseInt(hey)).update({ description: entry[parseInt(key)].resource[hey] })
       }

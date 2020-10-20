@@ -63,12 +63,12 @@
             <p class="form__label">Tags</p>
             <div style="column-count: 4; padding: 24px 0;">
             @each(tag in tags)
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="tags[]" value="{{ tag.id }}" />
-                {{ tag.name }}
+            <p class="form__field" style="margin: 0;">
+              <label class="form__control">
+                <input type="checkbox" name="tags[]" value="{{ tag.id }}" {{ post.tags.includes(tag.id) ? 'checked' : '' }} />
+                <span>{{ tag.name }}</span>
               </label>
-            </div>
+            </p>
             @endeach
             </div>
           </div>
@@ -77,17 +77,15 @@
           <fieldset style="background-color: #FFF; padding: 6px 18px;">
             <legend>Entry {{ $loop.index + 1 }} <small style="color: gray;">#{{ entry.id }}</small></legend>
 
-            <form id="entry-{{ entry.id }}" action="{{ route('entry.destroy', { id: entry.id }) }}?_method=DELETE" method="POST">
-              {{ csrfField() }}
-
-              <!-- DEVNOTE: temp hack to submit the nested webform -->
-              <a class="ui__btn" href="javascript:document.getElementById('entry-{{ entry.id }}').submit()">
+            <p class="form__field">
+              <span>csrf : {{ csrfToken }}</span>
+              <a class="ui__btn" href="#" onclick="deleteEntryHandler(event, '{{ route('entry.destroy', { id: entry.id }) }}?_method=DELETE', '{{ csrfToken }}')">
                 <span>Remove Entry</span>
                 <svg class="ui__icon icon__svg">
                   <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                 </svg>
               </a>
-            </form>
+            </p>
 
             <br>
 
@@ -119,16 +117,13 @@
               <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
                   <h3>Image {{ $loop.index + 1}} <small style="color: gray;">#{{ resource.id }}</small></h3>
 
-                  <form id="resource-{{ resource.id }}" action="{{ route('resource.destroy', { id: resource.id }) }}?_method=DELETE" method="POST">
-                    {{ csrfField() }}
-
-                    <!-- DEVNOTE: temp hack to submit the nested webform -->
-                    <a class="ui__btn" href="javascript:document.getElementById('resource-{{ resource.id }}').submit()">
+                  <p class="form__field">
+                    <a class="ui__btn" href="javascript:fetch('{{ route('resource.destroy', { id: resource.id }) }}?_method=DELETE', { method: 'POST' })">
                       <svg class="ui__icon icon__svg">
                         <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                       </svg>
                     </a>
-                  </form>
+                  </p>
 
                   <br>
 
@@ -137,6 +132,7 @@
                   <p class="form__field">
                     <label class="form__control">
                       <span class="form__label">Description</span>
+                      <span>{{ $parent.entry.id }}</span>:<span>{{ resource.id }}</span>
                       <input type="text" name="entry[{{ $parent.entry.id }}][resource][{{ resource.id }}]" value="{{ resource.description }}" />
                     </label>
                   </p>
@@ -329,7 +325,36 @@
   </div>
 
   <script>
-    const entries = [];
+    // import cookies from 'browser-cookies';
+    const cookies = require('browser-cookies');
+
+    async function deleteEntryHandler(event, url, csrf) {
+      event.preventDefault();
+
+      // console.log('deleteEntryHandler ', url, csrf);
+
+      // const foo = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN')).split('=')[1];
+      const bar = cookies.get('XSRF-TOKEN')
+
+      console.log('deleteEntryHandler ', url, bar);
+
+      await fetch('/entry/25?_method=DELETE', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'x-xsrf-token': bar
+        }
+      });
+
+      return false;
+    }
+
+    function deleteResourceHandler() {
+      alert('deleteResourceHandler');
+    }
+
+    /*const entries = [];
 
     entries.forEach((entry, i) => {
       console.log(i, ' >> ', entry);
@@ -425,6 +450,6 @@
 
     function removeResourceClickHandler() {
 
-    }
+    }*/
   </script>
 @endsection

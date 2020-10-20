@@ -70,7 +70,7 @@
                 {{--
                 <span>post_id={{ post.id }}</span>
                 <span>tag={{ tag.id }}</span>
-                <span>{{ postTagsId.includes(tag.id) }}</span>
+                <span>{{ post.tags.includes(tag.id) }}</span>
                 --}}
 
                 <span>{{ tag.name }}</span>
@@ -89,10 +89,11 @@
             <legend>Entry {{ $loop.index + 1 }} <small style="color: gray;">#{{ entry.id }}</small></legend>
             <!--{{-- <p>Iteration = {{ $loop.index }} ID = {{ entry.id }}</p> --}}-->
 
+            <!--{{-- DEVNOTE: interfering with submit button --}-->
+            <!--{{--
             <form id="entry-{{ entry.id }}" action="{{ route('entry.destroy', { id: entry.id }) }}?_method=DELETE" method="POST">
               {{ csrfField() }}
 
-              <!-- DEVNOTE: temp hack to submit the nested webform -->
               <a class="ui__btn" href="javascript:document.getElementById('entry-{{ entry.id }}').submit()">
                 <span>Remove Entry</span>
                 <svg class="ui__icon icon__svg">
@@ -100,6 +101,7 @@
                 </svg>
               </a>
             </form>
+            --}}-->
 
             <br>
 
@@ -143,16 +145,18 @@
               <div style="background-color: whitesmoke; padding: 6px 18px; margin: 12px; width: 25%;">
                   <h3>Image {{ $loop.index + 1}} <small style="color: gray;">#{{ resource.id }}</small></h3>
 
+                  <!--{{-- DEVNOTE: interfering with submit button --}-->
+                  <!--{{--
                   <form id="resource-{{ resource.id }}" action="{{ route('resource.destroy', { id: resource.id }) }}?_method=DELETE" method="POST">
                     {{ csrfField() }}
 
-                    <!-- DEVNOTE: temp hack to submit the nested webform -->
                     <a class="ui__btn" href="javascript:document.getElementById('resource-{{ resource.id }}').submit()">
                       <svg class="ui__icon icon__svg">
                         <use xlink:href="/assets/svg/fontawesome/solid.svg#times"></use>
                       </svg>
                     </a>
                   </form>
+                  --}}-->
 
                   <br>
 

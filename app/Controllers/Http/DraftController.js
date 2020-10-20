@@ -3,6 +3,10 @@
 const Draft = use('App/Models/Draft')
 
 class DraftController {
+  async index() {}
+
+  async show() {}
+
   async create({ response, request, view, auth }) {
 
     //if draft exists then return it's data else create new
@@ -14,25 +18,32 @@ class DraftController {
     let $draft = await auth.user
       .draft()
       .with('entries.resources')
+      .with('tags')
       .fetch()
-
-    console.log('isDraft :1: ', $draft)
 
     if(!$draft) {
       $draft = new Draft()
       await auth.user.draft().save($draft)
     }
 
-    console.log('isDraft :2: ', $draft)
+    const payload = $draft.toJSON()
+    payload.tags = payload.tags.map( ({ id }) => id )
 
     return view.render('posts.create', {
-      post: $draft.toJSON(),
+      post: payload,
       tags: await use('App/Models/Tag').all().then( (data) => data.toJSON() )
     })
   }
 
   async store({ request, response, view, auth, session }) {
-    // return 'draft store'
+
+    const $foobar = await auth.user.draft().fetch()
+    // const $foobar = await auth.user.posts().where('id', 4).first()
+
+    await $foobar.tags().attach(request.input('tags') === null ? [] : [6, 7, 8])
+
+    return $foobar.tags().fetch()
+
 
     if(!auth.user) {
       return response.redirect('back')
@@ -72,6 +83,12 @@ class DraftController {
 
     session.flash({ notification: 'Your draft post has been saved'})
   }
+
+  async edit() {}
+
+  async update() {}
+
+  async destroy() {}
 }
 
 module.exports = DraftController

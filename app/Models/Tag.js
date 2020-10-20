@@ -13,7 +13,7 @@ class Tag extends Model {
   }
 
   drafts() {
-    return this.belongsToMany('App/Models/Drafts').pivotTable('pivot_post_tag').withTimestamps()
+    return this.belongsToMany('App/Models/Drafts', 'tag_id', 'draft_id').pivotTable('pivot_post_tag').withTimestamps()
   }
 }
 
