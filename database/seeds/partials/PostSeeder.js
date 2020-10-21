@@ -85,7 +85,7 @@ class PostSeeder {
       const tag_id = await use('App/Models/Tag').query().where('name', post._tag).ids()
       await $post.tags().attach( tag_id )
 
-      //associate to user
+      //associate to user(random)
       const User = use('App/Models/User')
       const $user = await User.find(Math.ceil(Math.random() * count))
       await $user.posts().save($post)

@@ -20,6 +20,42 @@ class ProfileController {
       bar: $bar.toJSON()
     });
   }
+
+  async destroy() {
+
+  }
+
+  async updateUsername({ request, response, view, auth }) {
+
+  }
+
+  async updateName({ request, response, view, auth }) {
+    const { firstname, lastname } = request.all()
+
+    const $user = await auth.user.profile().update({ firstname, lastname })
+
+    return response.redirect('back')
+  }
+
+  async updateAddress({ request, response, view, auth }) {
+    const address = request.only(['address_identity', 'address_line_1', 'address_line_2', 'address_location', 'address_region', 'address_postcode'])
+
+    const $user = await auth.user.profile().update(address)
+
+    return response.redirect('back')
+  }
+
+  async updatePhone({ request, response, view, auth }) {
+
+  }
+
+  async updateEmail({ request, response, view, auth }) {
+
+  }
+
+  async updatePassword({ request, response, view, auth }) {
+
+  }
 }
 
 module.exports = ProfileController

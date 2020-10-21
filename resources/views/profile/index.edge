@@ -30,7 +30,9 @@
     </div>
 
     <div class="offset-2 col-6">
-      <form action="" method="POST">
+      <form action="{{ route('profile.update.name') }}?_method=PUT" method="POST">
+        {{ csrfField() }}
+
         <p class="form__field">
           <label class="form__control">
             <span class="form__label">Name</span>
@@ -46,90 +48,115 @@
           --}}-->
           <span style="display: block;">Note: We value your privacy. Your personal information will always be withheld from public display.</span>
         </p>
+
+        <p>
+          <button type="submit" class="ui__btn">Update</button>
+        </p>
       </form>
 
-      <form action="" method="POST">
+      <form action="{{ route('profile.update.address') }}?_method=PUT" method="POST">
+        {{ csrfField() }}
+
         <p class="form__field">
           <label class="form__control">
             <span class="form__label">Address</span>
-            <input type="text" name="address[0]" value="{{ profile.address }}" />
-            <input type="text" name="address[1]" value="{{ profile.address }}" />
-            <input type="text" name="address[2]" value="{{ profile.address }}" />
+            <input type="text" name="address_identity" value="{{ profile.address_identity }}" />
+            <input type="text" name="address_line_1" value="{{ profile.address_line_1 }}" />
+            <input type="text" name="address_line_2" value="{{ profile.address_line_2 }}" />
+          </label>
+        </p>
+
+        <p class="form__field">
+          <label class="form__control">
+            <span class="form__label">City/Town</span>
+            <input type="text" name="address_location" value="{{ profile.address_location }}" />
+          </label>
+        </p>
+
+        <p class="form__field">
+          <!-- to be dropdown with intellisense -->
+          <label class="form__control">
+            <span class="form__label">County</span>
+            <input type="text" name="address_region" value="{{ profile.address_region }}" />
           </label>
         </p>
 
         <p class="form__field">
           <label class="form__control">
             <span class="form__label">Post Code</span>
-            <input type="text" name="address[post_code]" value="" />
+            <input type="text" name="address_postcode" value="{{ profile.address_postcode }}" />
           </label>
         </p>
 
-        <p class="form__field">
-          <label class="form__control">
-            <span class="form__label">City</span>
-            <input type="text" name="address[city]" value="" />
-          </label>
-        </p>
-
-        <p class="form__field">
-          <label class="form__control">
-            <span class="form__label">County</span>
-            <input type="text" name="address[country]" value="" />
-          </label>
+        <p>
+          <button type="submit" class="ui__btn">Update</button>
         </p>
       </form>
 
       <hr>
 
-      <div style="background-color: silver; padding: 6px; border-radius: 1px;">
-        <p class="form__field">
-          <label class="form__control">
-            <span class="form__label">(Primary)Phone number</span>
-            <input type="text" name="contact[phone][primary]" value="" />
-          </label>
-        </p>
-      </div>
+      <form action="" method="POST">
+        {{ csrfField() }}
 
-      <dl>
-        <dt><span>Additional phone numbers</span>: <button type="button" class="ui__btn"><span>Add</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use></svg></button></dt>
-        <dd></dd>
-      </dl>
+        <div style="background-color: silver; padding: 6px; border-radius: 1px;">
+          <p class="form__field">
+            <label class="form__control">
+              <span class="form__label">(Primary)Phone number</span>
+              <input type="text" name="contact[phone][primary]" value="{{ profile.contact_primary_phone }}" />
+            </label>
+          </p>
+        </div>
 
-      <div style="background-color: silver; padding: 6px; border-radius: 1px;">
-        <p class="form__field">
-          <label class="form__control">
-            <span class="form__label">(Primary)Email</span>
-            <input type="text" name="contact[phone][primary]" value="{{ auth.user.email }}" />
-          </label>
-        </p>
+        <dl>
+          <dt><span>Additional phone numbers</span>: <button type="button" class="ui__btn"><span>Add</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use></svg></button></dt>
+          <dd></dd>
+        </dl>
+      </form>
 
-        <p>
-          <button type="button" class="ui__btn"><span>Change</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#pencil-alt"></use></svg></button>
-        </p>
+      <form action="" method="POST">
+        {{ csrfField() }}
 
-        <p>
-          <span style="display: block;">Important: The primary email will be used to identify your account when logging in</span>
-        </p>
-      </div>
+        <div style="background-color: silver; padding: 6px; border-radius: 1px;">
+          <p class="form__field">
+            <label class="form__control">
+              <span class="form__label">(Primary)Email</span>
+              <input type="text" name="contact[phone][primary]" value="{{ auth.user.email }}" />
+            </label>
+          </p>
 
-      <dl>
-        <dt><span>Additional emails</span>: <button type="button" class="ui__btn"><span>Add</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use></svg></button></dt>
-        <dd></dd>
-      </dl>
+          <p>
+            <button type="button" class="ui__btn"><span>Change</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#pencil-alt"></use></svg></button>
+          </p>
+
+          <p>
+            <span style="display: block;">Important: The primary email will be used to identify your account when logging in</span>
+          </p>
+        </div>
+
+        <dl>
+          <dt><span>Additional emails</span>: <button type="button" class="ui__btn"><span>Add</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use></svg></button></dt>
+          <dd></dd>
+        </dl>
+      </form>
 
       <hr>
 
       <div class="ui__well">
-        <p class="form__field">
-          <label class="form__control">
-            <span class="form__label">Change password</span>
-            <input type="password" name="password[master]" value="" />
-            <input type="password" name="password[confirmation]" value="" />
-          </label>
-        </p>
+        <form action="" method="POST">
+          {{ csrfField() }}
 
-        <button type="button" class="ui__btn">Change password</button>
+          <p class="form__field">
+            <label class="form__control">
+              <span class="form__label">Change password</span>
+              <input type="password" name="password[master]" value="" />
+              <input type="password" name="password[confirmation]" value="" />
+            </label>
+          </p>
+
+          <p>
+            <button type="submit" class="ui__btn">Change password</button>
+          </p>
+        </form>
       </div>
 
       <hr>

@@ -25,11 +25,13 @@ class UserSeeder {
         .create(user)
 
       //associate to profile
+      /*
       let $profile = await Factory
         .model('App/Models/Profile')
         .create()
 
-      $user.profile().save($profile)
+      await $user.profile().save($profile)
+      */
     }
 
   }

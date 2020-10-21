@@ -113,6 +113,9 @@ Route.group(() => {
 **/
 Route.group(() => {
   Route.get('', 'ProfileController.index').as('profile.index')
+
+  Route.put('/name', 'ProfileController.updateName').as('profile.update.name')
+  Route.put('/address', 'ProfileController.updateAddress').as('profile.update.address')
 }).prefix('/profile/').middleware(["auth"])
 
 /*

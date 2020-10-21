@@ -9,7 +9,7 @@
 | seeding appears to scrap all files and folders in seeds directory including the folder itself which will cause the message 'Object does not have a run method' to appear in terminal
 */
 const UserSeeder = require('./partials/UserSeeder')
-// const ProfileSeeder = require('./partials/ProfileSeeder') //DEVNOTE: redundant
+const ProfileSeeder = require('./partials/ProfileSeeder')
 const TagSeeder = require('./partials/TagSeeder')
 const PostSeeder = require('./partials/PostSeeder')
 const EntrySeeder = require('./partials/EntrySeeder')
@@ -30,7 +30,7 @@ class MainSeeder {
 
     // Declare seeders in sequential order. Note: run() exposed as Class method via static type
     await UserSeeder.run()
-    // await ProfileSeeder.run()
+    await ProfileSeeder.run()
     await TagSeeder.run()
     await PostSeeder.run()
     await EntrySeeder.run()

@@ -24,16 +24,23 @@ Factory.blueprint('App/Models/User', async (faker, i, data) => {
   }
 })
 
-Factory.blueprint('App/Models/Profile', (faker) => {
+Factory.blueprint('App/Models/Profile', (faker, i, data) => {
   return {
-    // username: data[i].username,
-    username: faker.username(),
-    firstname: 'Joe',
-    lastname: 'Bloggs',
-    address: '',
-    postcode: '1ABAB1',
-    country: 'GB',
-    avatar: ''
+    avatar: data.avatar,
+    username: data.username || faker.username(),
+    firstname: data.firstname,
+    lastname: data.lastname,
+    //DEVNOTE: for data protection it might be wise to detach and segment personalised information so it is stored anonymised
+    address_identity: data.address_identity,
+    address_line_1: data.address_line_1,
+    address_line_2: data.address_line_2,
+    address_location: data.address_location,
+    address_region: data.address_region,
+    address_postcode: data.address_postcode,
+    contact_primary_phone: data.contact_primary_phone,
+    contact_primary_email: data.contact_primary_email,
+    is_verified: data.is_verified,
+    is_breeder: data.is_breeder
   }
 })
 
@@ -43,7 +50,7 @@ Factory.blueprint('App/Models/Tag', (faker, i, data) => {
   }
 })
 
-Factory.blueprint('App/Models/Post', async (faker, i, data) => {
+Factory.blueprint('App/Models/Post', (faker, i, data) => {
   return {
     // title: faker.sentence({ words: faker.natural({ min: 2, max: 6 }) }),
     title: data.title,

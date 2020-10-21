@@ -8,10 +8,10 @@ class PivotPostTagSchema extends Schema {
   up () {
     this.create('pivot_post_tag', (table) => {
       table.increments()
-      table.timestamps()
-      table.integer('post_id').unsigned()
-      table.integer('draft_id').unsigned()
       table.integer('tag_id').unsigned()
+      table.integer('draft_id').unsigned()
+      table.integer('post_id').unsigned()
+      table.timestamps()
     })
   }
 

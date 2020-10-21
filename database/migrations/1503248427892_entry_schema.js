@@ -7,6 +7,8 @@ class EntrySchema extends Schema {
   up () {
     this.create('entries', (table) => {
       table.increments()
+      table.integer('draft_id').unsigned()
+      table.integer('post_id').unsigned()
       table.timestamps()
       table.string('title')
       table.text('body')
@@ -16,9 +18,8 @@ class EntrySchema extends Schema {
       table.string('colour')
       table.string('type')
       table.decimal('value', 2)
-      table.boolean('is_registered')
+      table.boolean('is_registered') //is registered breed
       table.boolean('is_available')
-      table.integer('post_id').unsigned()
     })
   }
 

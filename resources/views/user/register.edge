@@ -8,7 +8,7 @@
     <form action="{{ route('UserController.create') }}" method="POST">
       {{ csrfField() }} <!-- Adonisjs cross-site forgery protection feature -->
 
-      <div class="form__field field form-group">
+      <p class="form__field field form-group">
         <label class="form__control">
           <span class="form__label">Username</span>
           <input type="text" name="username" value="{{ old('username', '') }}" />
@@ -16,9 +16,9 @@
         @if(hasErrorFor('username'))
           <span>{{ getErrorFor('username')}}</span>
         @endif
-      </div>
+      </p>
 
-      <div class="form__field field form-group">
+      <p class="form__field field form-group">
         <label class="form__control">
           <span class="form__label">Email</span>
           <input type="text" name="email" value="{{ old('email', '') }}" />
@@ -26,9 +26,9 @@
         @if(hasErrorFor('email'))
           <span>{{ getErrorFor('email')}}</span>
         @endif
-      </div>
+      </p>
 
-      <div class="form__field field form-group">
+      <p class="form__field field form-group">
         <label class="form__control">
           <span class="form__label">Password</span>
           <input type="password" name="password" value="{{ old('password', '') }}" />
@@ -36,9 +36,11 @@
         @if(hasErrorFor('password'))
           <span>{{ getErrorFor('password')}}</span>
         @endif
-      </div>
+      </p>
 
-      <button type="submit" class="ui__btn btn__primary">Sign up</button>
+      <p>
+        <button type="submit" class="ui__btn btn__primary">Sign up</button>
+      </p>
     </form>
   </div>
 </div>

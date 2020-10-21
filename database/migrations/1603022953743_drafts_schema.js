@@ -7,10 +7,10 @@ class DraftsSchema extends Schema {
   up () {
     this.create('drafts', (table) => {
       table.increments()
+      table.integer('user_id').unsigned()
       table.timestamps()
       table.string('title')
       table.text('body')
-      table.integer('user_id').unsigned()
     })
   }
 
