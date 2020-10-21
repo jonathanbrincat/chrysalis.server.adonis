@@ -97,14 +97,17 @@
 
             <p class="form__field">
               <label class="form__control">
-                <span class="form__label">Title</span>
-                <input type="text" name="entry[{{ entry.id }}][title]" value="{{ entry.title }}" />
+                <span class="form__label">Title #{{ entry.id }}</span>
+                <!-- encode the decimal number? arabic to roman numerals? or different numbering system? hex? binary? -->
+                <input type="hidden" name="entry[enforce_string]" />
+                {{-- <input type="text" name="entry[foo][{{12}}][title]" value="testicles 123" /> <!-- the presence of a string primitive foo at the 2nd position --> --}}
+                <input type="text" name="entry[{{ entry.id }}][title]" value="{{ entry.title }}" /> <!-- forces the entry.id(also in the 2nd position) to be implicitly a string(associative array) type too; so now it won't be converted to an array and the key will properly respected -->
               </label>
             </p>
 
             <p class="form__field">
               <label class="form__control">
-                <span class="form__label">Content</span>
+                <span class="form__label">Content #{{ entry.id }}</span>
                 <textarea class="ckeditor" name="entry[{{ entry.id }}][body]">{{ entry.body }}</textarea>
               </label>
             </p>
@@ -140,6 +143,8 @@
                     <label class="form__control">
                       <span class="form__label">Description</span>
                       <span>{{ $parent.entry.id }}</span>:<span>{{ resource.id }}</span>
+                      <input type="hidden" name="entry[{{ $parent.entry.id }}][resource][enforce_string]" />
+
                       <input type="text" name="entry[{{ $parent.entry.id }}][resource][{{ resource.id }}]" value="{{ resource.description }}" />
                     </label>
                   </p>

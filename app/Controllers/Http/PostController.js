@@ -119,7 +119,7 @@ class PostController {
           // body: entry[parseInt(key)].body
         })
 
-      const $entry = await $post.entries().where('id', key).first()
+      const $entry = await $post.entries().where('id', parseInt(key)).first()
 
       // for(const [j,  resource] of request.input('entry_image')[i].entries() ) {
       for(const hey in entry[parseInt(key)].resource) {
@@ -240,7 +240,7 @@ class PostController {
           // body: entry[parseInt(key)].body
         })
 
-      const $entry = await $post.entries().where('id', key).first()
+      const $entry = await $post.entries().where('id', parseInt(key)).first()
 
       for(const hey in entry[parseInt(key)].resource) {
         // console.log('resource_id = ', parseInt(hey), '::', entry[parseInt(key)].resource[hey])
