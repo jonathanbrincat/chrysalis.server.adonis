@@ -45,7 +45,13 @@
               <label class="form__control">
                 <span>Content</span>
                 {{-- <textarea name="body">{{ old('body', '') }}</textarea> --}}
-                <textarea name="body">{{ post.body }}</textarea>
+                {{-- <textarea name="body">{{ post.body }}</textarea> --}}
+
+                <!--{{-- <div class="quill">
+                  <textarea name="body">{{ post.body }}</textarea>
+                </div> --}}-->
+
+                <textarea class="ckeditor" name="body">{{ post.body }}</textarea>
               </label>
               {{-- {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }} --}}
 
@@ -99,7 +105,7 @@
             <p class="form__field">
               <label class="form__control">
                 <span class="form__label">Content</span>
-                <input type="text" name="entry[{{ entry.id }}][body]" value="{{ entry.body }}" />
+                <textarea class="ckeditor" name="entry[{{ entry.id }}][body]">{{ entry.body }}</textarea>
               </label>
             </p>
 

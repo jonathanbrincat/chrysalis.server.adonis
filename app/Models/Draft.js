@@ -13,6 +13,7 @@ class Draft extends Model {
   }
 
   entries() {
+    // return this.hasMany('App/Models/Entry', 'id', 'post_id')
     return this.hasMany('App/Models/Entry')
   }
 }

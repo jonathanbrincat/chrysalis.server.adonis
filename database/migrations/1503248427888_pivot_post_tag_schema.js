@@ -10,6 +10,7 @@ class PivotPostTagSchema extends Schema {
       table.increments()
       table.timestamps()
       table.integer('post_id').unsigned()
+      table.integer('draft_id').unsigned()
       table.integer('tag_id').unsigned()
     })
   }

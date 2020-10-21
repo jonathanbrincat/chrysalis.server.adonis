@@ -3,25 +3,116 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-3">
       <picture style="width: 260px; border-radius: 50%; display: block; overflow: hidden;">
         {{-- <img src="https://picsum.photos/480/480" alt="" /> --}}
         <span style="width: 260px; height: 260px; background-color: skyblue; color: white; font-size: 9.2rem; border-radius: 50%; display: flex; overflow: hidden; align-items: center; justify-content: center;">JB</span>
       </picture>
+
+      <p class="form__field">
+        <label class="form__control">
+          <span class="form__label">Display name</span>
+          <input type="text" name="username" value="{{ profile.username }}" />
+        </label>
+      </p>
+
+      <div>
+        <p>Account Status: Unverified</p>
+        <p>
+          <button type="button" class="ui__btn">
+            <span>Verify account</span>
+            <svg class="ui__icon icon__svg">
+              <use xlink:href="/assets/svg/fontawesome/solid.svg#user-check"></use>
+            </svg>
+          </button>
+        </p>
+      </div>
     </div>
-    <div class="col-8">
-      <p>
-        <span>Name</span>: {{ profile.firstname }} {{ profile.lastname }}
-        <a href=""><span>Edit</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#pencil-alt"></use></svg></a>
-        <span style="display: block;">Note: We value your privacy. Your personal information will be withheld from public display.</span>
-      </p>
-      <p><span>Display name</span>: {{ profile.username }}</p>
-      <p><apan>Address</apan>: {{ profile.address }}</p>
-      <p><apan>Contact number</apan>:</p>
-      <p style="background-color: silver; padding: 6px; border-radius: 1px;">
-        <span>(Primary)Email</span>: {{ auth.user.email }} <button type="button" class="ui__btn"><span>Change</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#pencil-alt"></use></svg></button>
-        <span style="display: block;">Important: The primary email will be used to identify your account when logging in</span>
-      </p>
+
+    <div class="offset-2 col-6">
+      <form action="" method="POST">
+        <p class="form__field">
+          <label class="form__control">
+            <span class="form__label">Name</span>
+            <input type="text" name="firstname" value="{{ profile.firstname }}" />
+            <input type="text" name="lastname" value="{{ profile.lastname }}" />
+          </label>
+        </p>
+
+        <p>
+          <!--{{--
+          <span>Name</span>: {{ profile.firstname }} {{ profile.lastname }}
+          <a href=""><span>Edit</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#pencil-alt"></use></svg></a>
+          --}}-->
+          <span style="display: block;">Note: We value your privacy. Your personal information will always be withheld from public display.</span>
+        </p>
+      </form>
+
+      <form action="" method="POST">
+        <p class="form__field">
+          <label class="form__control">
+            <span class="form__label">Address</span>
+            <input type="text" name="address[0]" value="{{ profile.address }}" />
+            <input type="text" name="address[1]" value="{{ profile.address }}" />
+            <input type="text" name="address[2]" value="{{ profile.address }}" />
+          </label>
+        </p>
+
+        <p class="form__field">
+          <label class="form__control">
+            <span class="form__label">Post Code</span>
+            <input type="text" name="address[post_code]" value="" />
+          </label>
+        </p>
+
+        <p class="form__field">
+          <label class="form__control">
+            <span class="form__label">City</span>
+            <input type="text" name="address[city]" value="" />
+          </label>
+        </p>
+
+        <p class="form__field">
+          <label class="form__control">
+            <span class="form__label">County</span>
+            <input type="text" name="address[country]" value="" />
+          </label>
+        </p>
+      </form>
+
+      <hr>
+
+      <div style="background-color: silver; padding: 6px; border-radius: 1px;">
+        <p class="form__field">
+          <label class="form__control">
+            <span class="form__label">(Primary)Phone number</span>
+            <input type="text" name="contact[phone][primary]" value="" />
+          </label>
+        </p>
+      </div>
+
+      <dl>
+        <dt><span>Additional phone numbers</span>: <button type="button" class="ui__btn"><span>Add</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use></svg></button></dt>
+        <dd></dd>
+      </dl>
+
+      <div style="background-color: silver; padding: 6px; border-radius: 1px;">
+        <p class="form__field">
+          <label class="form__control">
+            <span class="form__label">(Primary)Email</span>
+            <input type="text" name="contact[phone][primary]" value="{{ auth.user.email }}" />
+          </label>
+        </p>
+
+        <p>
+          <button type="button" class="ui__btn"><span>Change</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#pencil-alt"></use></svg></button>
+        </p>
+
+        <p>
+          <span style="display: block;">Important: The primary email will be used to identify your account when logging in</span>
+        </p>
+      </div>
+
       <dl>
         <dt><span>Additional emails</span>: <button type="button" class="ui__btn"><span>Add</span><svg class="ui__icon icon__svg"><use xlink:href="/assets/svg/fontawesome/solid.svg#plus"></use></svg></button></dt>
         <dd></dd>
@@ -30,24 +121,35 @@
       <hr>
 
       <div class="ui__well">
-        <p>Change password</p>
+        <p class="form__field">
+          <label class="form__control">
+            <span class="form__label">Change password</span>
+            <input type="password" name="password[master]" value="" />
+            <input type="password" name="password[confirmation]" value="" />
+          </label>
+        </p>
+
+        <button type="button" class="ui__btn">Change password</button>
       </div>
 
       <hr>
 
-      <div class="ui__well">
+      <div class="ui__well" style="background-color: crimson; padding: 6px; border-radius: 1px;">
         <p>
           <span>Danger zone</span>
           <svg class="ui__icon icon__svg">
             <use xlink:href="/assets/svg/fontawesome/solid.svg#exclamation-triangle"></use>
           </svg>
         </p>
-        <button type="button" class="ui__btn">
-          <span>Deactivate account</span>
-          <svg class="ui__icon icon__svg">
-            <use xlink:href="/assets/svg/fontawesome/solid.svg#skull-crossbones"></use>
-          </svg>
-        </button>
+
+        <p>
+          <button type="button" class="ui__btn">
+            <span>Deactivate account</span>
+            <svg class="ui__icon icon__svg">
+              <use xlink:href="/assets/svg/fontawesome/solid.svg#skull-crossbones"></use>
+            </svg>
+          </button>
+        </p>
       </div>
     </div>
   </div>

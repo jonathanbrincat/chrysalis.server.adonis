@@ -3,11 +3,12 @@ const path = require("path");
 
 module.exports = {
   entry: [
-    './resources/scss/foo.scss'
+    './resources/js/main.js',
+    // './resources/scss/main.scss'
   ],
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: 'foo.js',
+    path: path.resolve(__dirname, "public/scripts/"),
+    filename: 'main.js',
   },
   module: {
     rules: [
@@ -31,7 +32,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       // filename: '[name].css'
-      filename: 'foo.css'
+      // filename: 'foo.css'
     }),
   ]
 }

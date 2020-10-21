@@ -7,9 +7,8 @@ class DraftController {
 
   async show() {}
 
+  // DEVNOTE: this should be store method and route should be to 'draft.store'
   async create({ response, request, view, auth }) {
-
-    //if draft exists then return it's data else create new
 
     if(!auth.user) {
       return response.redirect('back')
@@ -35,13 +34,9 @@ class DraftController {
     })
   }
 
+  // DEVNOTE: this should be update method and 'save' button should call 'draft.update'
   async store({ request, response, view, auth, session }) {
-    const $foobar = await auth.user.draft().fetch()
-    // const $foobar = await auth.user.posts().where('id', 4).first()
-
-    // await $foobar.tags().attach(request.input('tags') === null ? [] : [6, 7, 8])
-    await $foobar.tags().attach(request.input('tags') === null ? [] : request.input('tags'))
-    // return $foobar.tags().fetch()
+    // console.log('jb :: ', request.all() )
 
     if(!auth.user) {
       return response.redirect('back')
@@ -49,35 +44,42 @@ class DraftController {
 
     const { title, body } = request.all();
 
-    // combination of update and store operations!!
-
     const $draft = await auth.user.draft().fetch()
+
     $draft.merge({ title, body })
     await $draft.save($draft)
+    // await auth.user.draft().save({title, body})
 
-    // const $draft = await auth.user.draft().save({title, body})
-    //DEVNOTE; going to be broken because of automagic id mismatch in pivot table -  post_id Vs draft_id
-    // await $draft.tags().attach(request.input('tags') === null ? [] : request.input('tags'))  //DEVNOTE: you can't not attach tags until the post is persisted(saved) to the DB as the post ID needs to be generated for the pivot table
+    await $draft.tags().attach(request.input('tags') === null ? [] : request.input('tags'))
 
-    //DEVNOTE: going to be broken because no entries exist in markup and would not be in the post request
-    /*for(const [i, entry] of (request.all().entry_title).entries() ) {
-      // console.log(i, " :: ", entry )
+    //DEVNOTE: going to be broken because no entries exist in markup and would not be in the post request - rememeber this was ripped from update which assumes data is entered
+    const { entry } = request.only(['entry'])
 
-      let $entry = await $draft.entries().create({
-        'title': entry, //request.input('entry_title'),
-        'body': 'bar'
-      })
+    for(const key in entry) {
+      // console.log('entry_id = ', parseInt(key), '::', entry[parseInt(key)])
+      // console.log('resource >> ', await entry[parseInt(key)].resource )
 
-      for(const [j,  resource] of request.input('entry_image')[i].entries() ) {
-        // console.log(j, " :: ", resource )
-
-        await $entry.resources().create({
-          'filename': `id/10${j}`,
-          'description': resource,
-          'contenttype': 'jpg'
+      await $draft.entries()
+        .where('id', parseInt(key))
+        .update({
+          title: entry[parseInt(key)].title,
+          // body: entry[parseInt(key)].body
         })
+
+      const $entry = await $post.entries().where('id', key).first()
+
+      for(const hey in entry[parseInt(key)].resource) {
+        // console.log('resource_id = ', parseInt(hey), '::', entry[parseInt(key)].resource[hey])
+
+        await $entry.resources()
+          .where('id', parseInt(hey))
+          .update({
+            // filename: `id/10${k}`,
+            description: entry[parseInt(key)].resource[hey],
+            contenttype: 'jpg'
+          })
       }
-    }*/
+    }
 
     session.flash({ notification: 'Your draft post has been saved'})
   }

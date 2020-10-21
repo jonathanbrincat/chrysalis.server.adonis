@@ -5,6 +5,7 @@ const Model = use('Model')
 
 class Entry extends Model {
   draft() {
+    // return this.belongsTo('App/Models/Draft', 'post_id')
     return this.belongsTo('App/Models/Draft')
   }
 
