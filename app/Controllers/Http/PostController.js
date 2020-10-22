@@ -100,7 +100,7 @@ class PostController {
 
     await $post.tags().attach(request.input('tags') === null ? [] : request.input('tags'))  //DEVNOTE: you can't not attach tags until the post is persisted(saved) to the DB as the post ID needs to be generated for the pivot table
 
-    const { entry } = request.only(['entry'])
+    const entry = request.only(['entry'])
 
     // for(const [i, entry] of (request.all().entry_title).entries() ) {
     for(const key in entry) {
@@ -200,7 +200,7 @@ class PostController {
     await $post.tags().sync(request.input('tags') === null ? [] : request.input('tags'))
 
     //
-    const { entry } = request.only(['entry'])
+    const entry = request.only(['entry'])
     // console.log('request >> ', entry)
 
     // const $bar = await $post.entries().where('id', 50).fetch() //fetch will return in an array(assuming a collection of data) so can access the lucid object itself via .row[]

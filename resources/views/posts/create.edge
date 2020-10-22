@@ -30,7 +30,7 @@
               <label class="form__control">
                 <span>Title</span>
                 {{-- <input type="text" name="title" value="{{ old('title', '') }}" /> --}}
-                <input type="text" name="title" value="{{ post.title }}" />
+                {{-- <input type="text" name="title" value="{{ post.title }}" /> --}}
               </label>
               {{-- {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }} --}}
 
@@ -51,7 +51,7 @@
                   <textarea name="body">{{ post.body }}</textarea>
                 </div> --}}-->
 
-                <textarea class="ckeditor" name="body">{{ post.body }}</textarea>
+                {{-- <textarea class="ckeditor" name="body">{{ post.body }}</textarea> --}}
               </label>
               {{-- {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }} --}}
 
@@ -99,16 +99,15 @@
               <label class="form__control">
                 <span class="form__label">Title #{{ entry.id }}</span>
                 <!-- encode the decimal number? arabic to roman numerals? or different numbering system? hex? binary? -->
-                <input type="hidden" name="entry[enforce_string]" />
-                {{-- <input type="text" name="entry[foo][{{12}}][title]" value="testicles 123" /> <!-- the presence of a string primitive foo at the 2nd position --> --}}
-                <input type="text" name="entry[{{ entry.id }}][title]" value="{{ entry.title }}" /> <!-- forces the entry.id(also in the 2nd position) to be implicitly a string(associative array) type too; so now it won't be converted to an array and the key will properly respected -->
+                <input type="hidden" name="id[]" value="{{ entry.id }}" />
+                <input type="text" name="title[]" value="{{ entry.title }}" />
               </label>
             </p>
 
             <p class="form__field">
               <label class="form__control">
                 <span class="form__label">Content #{{ entry.id }}</span>
-                <textarea class="ckeditor" name="entry[{{ entry.id }}][body]">{{ entry.body }}</textarea>
+                <textarea class="ckeditor" name="body[]">{{ entry.body }}</textarea>
               </label>
             </p>
 
@@ -142,10 +141,9 @@
                   <p class="form__field">
                     <label class="form__control">
                       <span class="form__label">Description</span>
-                      <span>{{ $parent.entry.id }}</span>:<span>{{ resource.id }}</span>
-                      <input type="hidden" name="entry[{{ $parent.entry.id }}][resource][enforce_string]" />
+                      <input type="hidden" name="resources[id][]" value="{{ resource.id }}" />
 
-                      <input type="text" name="entry[{{ $parent.entry.id }}][resource][{{ resource.id }}]" value="{{ resource.description }}" />
+                      <input type="text" name="resources[description][]" value="{{ resource.description }}" />
                     </label>
                   </p>
 

@@ -30,6 +30,7 @@ class TagController {
   async index2({ request, response, view }) {
     // console.log('jb :1: ', request.all().category)
     // console.log('jb :2: ', request.input('category'))
+    //const test = request.collect(['tags'])
 
     const id = request.input('category')
     const $tag = await TagModel.find(id)

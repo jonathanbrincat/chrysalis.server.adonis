@@ -44,50 +44,54 @@ class DraftController {
       return response.redirect('back')
     }
 
-    const { title, body } = request.all();
+    // const { title, body } = request.all();
 
     const $draft = await auth.user.draft().fetch()
 
-    $draft.merge({ title, body })
-    await $draft.save($draft)
+    // $draft.merge({ title, body })
+    // await $draft.save($draft)
     // await auth.user.draft().save({title, body})
 
     await $draft.tags().attach(request.input('tags') === null ? [] : request.input('tags'))
 
     //DEVNOTE: going to be broken because no entries exist in markup and would not be in the post request - rememeber this was ripped from update which assumes data is entered
-    const { entry } = request.only(['entry'])
+    // const entry = request.only(['entry'])
+    let entries = request.collect(['id', 'title', 'body', 'resources'])
+
+    entries = entries.map( (entry, i) => {
+      const json = Object.entries(entry.resources || {}).reduce( (accum, curr, index) => {
+        curr[1].forEach( (value, i) => {
+          accum[i] = Object.assign({}, accum[i], { [curr[0]] : value });
+        });
+
+        return accum;
+      }, [])
+
+      entry.resources = json
+
+      return entry
+    });
 
     //DEVNOTE: BUG: there is an infuriating bug when there is only one item either entry or resource and your try to
     // access the key's value it is always assigned to 0 instead of the true number
     // the view markup is correct. it must be something is doing to resolve the name=entry[12][title]; maybe because there's only one item it puts it at name=entry[0][title]?
     // this will cause the 'where' clause to fail
-    for(const key in entry) {
-      // console.log(key, 'entry_id = ', parseInt(key), '::', entry[parseInt(key)])
-      // console.log('resource >> ', await entry[parseInt(key)].resource )
-
-      if(isNaN(parseInt(key))) continue
-
-      // const $foo = await auth.user.draft().fetch()
+    for(const { id, title, body, resources } of entries) {
       await $draft.entries()
-        .where('id', parseInt(key))
+        .where('id', id)
         .update({
-          title: entry[parseInt(key)].title,
-          // body: entry[parseInt(key)].body
+          title,
+          body
         })
 
-      const $entry = await $draft.entries().where('id', parseInt(key)).first()
-      // const $entry = await $foo.entries().where('id', parseInt(key)).first()
+      const $entry = await $draft.entries().where('id', id).first()
 
-      for(const hey in entry[parseInt(key)].resource) {
-        // console.log('resource_id = ', parseInt(hey), '::', entry[parseInt(key)].resource[hey])
-
-        if(isNaN(parseInt(hey))) continue
-
+      for(const [index, { id, description }] of (resources).entries()) {
         await $entry.resources()
-          .where('id', parseInt(hey))
+          .where('id', id)
           .update({
-            // filename: `id/10${k}`,
-            description: entry[parseInt(key)].resource[hey],
+            filename: `id/10${index}`,
+            description,
             contenttype: 'jpg'
           })
       }
