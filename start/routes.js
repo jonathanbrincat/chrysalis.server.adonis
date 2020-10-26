@@ -64,10 +64,12 @@ Route.post('/posts/:id/entry/:eid/resource', 'ResourceController.store').as('res
 * Draft
 **/
 Route.group(() => {
-  Route.get('create', 'DraftController.create').as('draft.create')
+  // Route.get('create', 'DraftController.create').as('draft.create')
   Route.post('store', 'DraftController.store').as('draft.store')
   // Route.delete(':id', 'DraftController.destroy').as('draft.destroy')
 }).prefix('/draft/')
+
+Route.get('/post/create/draft', 'DraftController.create').as('posts.create.draft')
 
 /*
 * Post

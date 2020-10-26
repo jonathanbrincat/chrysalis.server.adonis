@@ -30,7 +30,7 @@
               <label class="form__control">
                 <span>Title</span>
                 {{-- <input type="text" name="title" value="{{ old('title', '') }}" /> --}}
-                {{-- <input type="text" name="title" value="{{ post.title }}" /> --}}
+                <input type="text" name="post_title" value="{{ post.title }}" />
               </label>
               {{-- {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }} --}}
 
@@ -47,9 +47,9 @@
                 {{-- <textarea name="body">{{ old('body', '') }}</textarea> --}}
                 {{-- <textarea name="body">{{ post.body }}</textarea> --}}
 
-                <!--{{-- <div class="quill">
-                  <textarea name="body">{{ post.body }}</textarea>
-                </div> --}}-->
+                <div class="quill">
+                  <textarea name="post_body">{{ post.body }}</textarea>
+                </div>
 
                 {{-- <textarea class="ckeditor" name="body">{{ post.body }}</textarea> --}}
               </label>
@@ -99,8 +99,8 @@
               <label class="form__control">
                 <span class="form__label">Title #{{ entry.id }}</span>
                 <!-- encode the decimal number? arabic to roman numerals? or different numbering system? hex? binary? -->
-                <input type="hidden" name="id[]" value="{{ entry.id }}" />
-                <input type="text" name="title[]" value="{{ entry.title }}" />
+                <input type="hidden" name="id[]" value="{{ entry.id }}" />         <!-- entry[id][] -->
+                <input type="text" name="title[]" value="{{ entry.title }}" />     <!-- entry[title][] -->
               </label>
             </p>
 
