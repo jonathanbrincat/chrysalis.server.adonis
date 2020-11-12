@@ -1,5 +1,37 @@
 console.log('JavaScript ready...');
 
+/*const App = {
+  template: `<div class="row">Vue <div class="offset-4 col-8"><article class="ui__card" v-for="(post, index) in posts" :key="post.id"><div class="card__body"><h2 class="post__title">{{ post.title }}</h2><p class="post__body">{{ post.body }}</p></div></article></div></div>`,
+
+  async created() {
+
+    try {
+      const response = await fetch('http://127.0.0.1:3333/posts', {
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      // console.log('response =', response);
+      const { posts, tags, favourites } = await response.json();
+      // console.log('data = ', posts);
+
+      this.posts = posts.data;
+
+    }catch(error) {
+      console.log('Something went wrong ', error);
+    }
+
+  },
+
+  data() {
+    return {
+      posts: 'Hello Vue!!'
+    }
+  }
+}
+
+Vue.createApp(App).mount('#app')*/
+
 const Quill = require('quill');
 // const { ClassicEditor } = require('@ckeditor/ckeditor5-build-classic');
 

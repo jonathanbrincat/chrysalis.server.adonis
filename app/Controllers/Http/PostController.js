@@ -37,11 +37,14 @@ class PostController {
     const contentNegotiation = request.accepts([ 'application/json', ...request.accepts() ])
     switch(contentNegotiation) {
       case 'application/json':
-        return response.status(200).json({
-          posts: $posts.toJSON(),
-          tags: $tags.toJSON(),
-          favourites: Array.from(favourites_id)
-        })
+        return response
+          .status(200)
+          .header('Access-Control-Allow-Origin', '*')
+          .json({
+            posts: $posts.toJSON(),
+            tags: $tags.toJSON(),
+            favourites: Array.from(favourites_id)
+          })
       default:
         return view.render('posts.index', {
           posts: $posts.toJSON(), // DEVNOTE: is a mixed object with page JSON + vanillaSerializer collection('rows' property). each row is already serialized data. I think that's how it works
