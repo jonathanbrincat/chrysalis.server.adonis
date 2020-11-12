@@ -12,6 +12,9 @@ const { validate } = use('Validator')
 
 class PostController {
   async index({ request, response, view, auth }) {
+    // console.log('request.format() = ', request.format() );
+    // console.log('Content Header => Accept = ', request.accepts() );
+
     const ordering = ['created_at', 'desc']
     const resultsPerPage = 5
 
@@ -31,11 +34,21 @@ class PostController {
 
     const $tags = await Tag.all()
 
-    return view.render('posts.index', {
-      posts: $posts.toJSON(), // DEVNOTE: is a mixed object with page JSON + vanillaSerializer collection('rows' property). each row is already serialized data. I think that's how it works
-      tags: $tags.toJSON(),
-      favourites: Array.from(favourites_id)
-    })
+    const contentNegotiation = request.accepts([ 'application/json', ...request.accepts() ])
+    switch(contentNegotiation) {
+      case 'application/json':
+        return response.status(200).json({
+          posts: $posts.toJSON(),
+          tags: $tags.toJSON(),
+          favourites: Array.from(favourites_id)
+        })
+      default:
+        return view.render('posts.index', {
+          posts: $posts.toJSON(), // DEVNOTE: is a mixed object with page JSON + vanillaSerializer collection('rows' property). each row is already serialized data. I think that's how it works
+          tags: $tags.toJSON(),
+          favourites: Array.from(favourites_id)
+        })
+    }
   }
 
   async show({ request, response, view, params, auth }) {
