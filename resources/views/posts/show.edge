@@ -86,7 +86,8 @@
       </div>
 
       <div class="col-4">
-        <p>{{ post.__meta__.likes_count }} Likes
+        <p>
+          {{ post.__meta__.likes_count }} Likes
           <svg class="ui__icon icon__svg">
             <use xlink:href="/assets/svg/fontawesome/regular.svg#thumbs-up"></use>
           </svg>
@@ -94,22 +95,22 @@
           <a class="btn btn__primary" href="{{ route('posts.like', { id: post.id }) }}">
             Like
           </a>
-
-          <ul>
-            <li>
-              <svg class="ui__icon icon__svg" style="color: blue;">
-                <use xlink:href="/assets/svg/fontawesome/solid.svg#cat"></use>
-              </svg>
-              <span>2</span>
-            </li>
-            <li>
-              <svg class="ui__icon icon__svg" style="color: pink;">
-                <use xlink:href="/assets/svg/fontawesome/solid.svg#cat"></use>
-              </svg>
-              <span>2</span>
-            </li>
-          </ul>
         </p>
+
+        <ul>
+          <li>
+            <svg class="ui__icon icon__svg" style="color: blue;">
+              <use xlink:href="/assets/svg/fontawesome/solid.svg#cat"></use>
+            </svg>
+            <span>2</span>
+          </li>
+          <li>
+            <svg class="ui__icon icon__svg" style="color: pink;">
+              <use xlink:href="/assets/svg/fontawesome/solid.svg#cat"></use>
+            </svg>
+            <span>2</span>
+          </li>
+        </ul>
       </div>
 
       <div class="col-8">
@@ -140,7 +141,9 @@
               @if(entry.resources.length)
               <ul>
                 @each(resource in entry.resources)
-                <li><img src="https://picsum.photos/{{resource.filename}}/120/120" alt="{{ resource.description }}" /></li>
+                <li>
+                  <img src="https://picsum.photos/{{resource.filename}}/120/120" alt="{{ resource.description }}" />
+                </li>
                 @endeach
               </ul>
               @endif

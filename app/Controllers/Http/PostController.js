@@ -67,11 +67,24 @@ class PostController {
       currentUserFavouritesWithPosts = await auth.user.favourites().ids() // convenience method; will return the current user's favourited post in an array containing their ids
     }
 
-    return view.render('posts.show', {
-      post: $post.toJSON(),
-      entries: $entries.toJSON(),
-      favourites: Array.from(currentUserFavouritesWithPosts)
-    })
+    const contentNegotiation = request.accepts([ 'application/json', ...request.accepts() ])
+    switch(contentNegotiation) {
+      case 'application/json':
+        return response
+          .status(200)
+          .header('Access-Control-Allow-Origin', '*')
+          .json({
+            post: $post.toJSON(),
+            entries: $entries.toJSON(),
+            favourites: Array.from(currentUserFavouritesWithPosts)
+          })
+      default:
+        return view.render('posts.show', {
+          post: $post.toJSON(),
+          entries: $entries.toJSON(),
+          favourites: Array.from(currentUserFavouritesWithPosts)
+        })
+    }
   }
 
   async create({ view }) {
